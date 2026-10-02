@@ -94,6 +94,9 @@
   var dateSel = document.getElementById('date');
   var chips = document.querySelectorAll('button.chip');
   var current = null, cat = 'all';
+  // Works when served as a sub page without a trailing slash (e.g. /news)
+  var path = location.pathname, last = path.split('/').pop();
+  var BASE = (path.endsWith('/') || last.indexOf('.') !== -1) ? '' : last + '/';
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -147,7 +150,7 @@
     if (!validDate(d)) return;
     heading.textContent = pretty(d);
     message('empty', 'Loading…');
-    fetch('data/' + d + '.json', { cache: 'no-cache' })
+    fetch(BASE + 'data/' + d + '.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (j) { current = j; render(); })
       .catch(function () { current = null; message('err', 'Could not load the digest for ' + d + '.'); });
@@ -162,7 +165,7 @@
   });
   dateSel.addEventListener('change', function () { load(dateSel.value); });
 
-  fetch('data/index.json', { cache: 'no-cache' })
+  fetch(BASE + 'data/index.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (j) {
       var dates = (j.dates || []).filter(validDate);
