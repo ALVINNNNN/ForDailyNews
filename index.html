@@ -94,9 +94,10 @@
   var dateSel = document.getElementById('date');
   var chips = document.querySelectorAll('button.chip');
   var current = null, cat = 'all';
-  // Works when served as a sub page without a trailing slash (e.g. /news)
-  var path = location.pathname, last = path.split('/').pop();
-  var BASE = (path.endsWith('/') || last.indexOf('.') !== -1) ? '' : last + '/';
+  // Data may sit next to this page (news.html, /news/) or under it (/news without a slash)
+  var last = location.pathname.split('/').pop();
+  var BASES = last && last.indexOf('.') === -1 ? ['', last + '/'] : [''];
+  var BASE = '';
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -165,15 +166,22 @@
   });
   dateSel.addEventListener('change', function () { load(dateSel.value); });
 
-  fetch(BASE + 'data/index.json', { cache: 'no-cache' })
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (j) {
-      var dates = (j.dates || []).filter(validDate);
-      if (!dates.length) { heading.textContent = 'No digests yet'; return; }
-      dates.forEach(function (d) { var o = el('option', null, d); o.value = d; dateSel.appendChild(o); });
-      load(dates[0]);
-    })
-    .catch(function () { heading.textContent = 'Daily Security Digest'; message('err', 'Could not load the digest index.'); });
+  function start(n) {
+    BASE = BASES[n];
+    fetch(BASE + 'data/index.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) {
+        var dates = (j.dates || []).filter(validDate);
+        if (!dates.length) { heading.textContent = 'No digests yet'; return; }
+        dates.forEach(function (d) { var o = el('option', null, d); o.value = d; dateSel.appendChild(o); });
+        load(dates[0]);
+      })
+      .catch(function () {
+        if (n + 1 < BASES.length) return start(n + 1);
+        heading.textContent = 'Daily Security Digest'; message('err', 'Could not load the digest index.');
+      });
+  }
+  start(0);
 })();
 </script>
 </body>
