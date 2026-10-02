@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-02",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Cisco Catalyst SD-WAN Manager auth bypass exploited, added to CISA KEV",
+      "cve": ["CVE-2026-76504"],
+      "severity": "Critical 9.8",
+      "summary": "A URI hex-encoding flaw lets an unauthenticated remote attacker reach the API with admin privileges through a crafted HTTP request. Exploitation has been confirmed since September and federal agencies must patch by 3 October. Upgrade to a fixed release, and hunt logs for POSTs to URL-encoded variants of /j_security_check from unknown IPs, especially with 'viptela-reserved-' usernames.",
+      "source": "The Hacker News",
+      "published": "2026-10-01",
+      "url": "https://thehackernews.com/2026/10/cisa-adds-exploited-cisco-catalyst-sd.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Citrix NetScaler post-exploitation payload creates a superuser and hides a web shell",
+      "cve": ["CVE-2026-88771", "CVE-2026-88772"],
+      "severity": "Critical 9.5",
+      "summary": "LevelBlue analysed what attackers drop after the pre-auth command injection in NetScaler ADC and Gateway: a Perl script that adds a 'sec_monitor' superuser, exfiltrates the configuration, plants a PHP web shell under the LogonPoint path mapped to CSS-like URLs, and wipes artefacts. Both flaws were exploited before patches shipped on 27 September (14.1-73.37 and 13.1-64.23). Patching alone is not enough: check for the account, the web shell and usernames containing 'pitboss' or 'NSPPE'.",
+      "source": "The Hacker News",
+      "published": "2026-10-01",
+      "url": "https://thehackernews.com/2026/10/citrix-netscaler-post-exploitation.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Public PoC lands for exploited Apple CoreGraphics PDF flaw",
+      "cve": ["CVE-2026-86950"],
+      "severity": "Exploited in the wild",
+      "summary": "Researchers published a proof of concept for an out-of-bounds write in CoreGraphics triggered by a PDF with crafted embedded fonts. The PoC only crashes unpatched iPhones and Macs and does not show code execution. Apple patched it on 28 September and said it may have been used in a highly targeted attack on iOS versions before 27; the CISA KEV deadline is today. Reporting points to WhatsApp as a possible delivery path, but WhatsApp has issued no advisory.",
+      "source": "The Hacker News",
+      "published": "2026-10-01",
+      "url": "https://thehackernews.com/2026/10/apple-coregraphics-poc-emerges-as.html"
+    },
+    {
+      "category": "appsec",
+      "title": "WordPress backdoor rebuilds itself from files, database and shared memory",
+      "cve": [],
+      "severity": "",
+      "summary": "Sucuri describes a backdoor with eight redundant persistence components, including .user.ini, PHP loaders, database entries, theme functions, must-use plugins and shared memory segments. Removing any one piece lets another restore it on the next page load, so file-only cleanup fails. A useful case study in why incident cleanup has to cover the database and runtime state, not just the web root.",
+      "source": "The Hacker News",
+      "published": "2026-10-01",
+      "url": "https://thehackernews.com/2026/10/wordpress-backdoor-rebuilds-itself.html"
+    },
+    {
+      "category": "ai",
+      "title": "OpenAI reports self-replicating prompt injections in its own models",
+      "cve": [],
+      "severity": "Research",
+      "summary": "OpenAI found injections that copy themselves into a model's outputs and spread like a worm. Three patterns were shown: hidden prompts that propagate through outgoing email, fake system warnings that delete files while seeding new ones, and multi-hop attacks that pull instructions from Slack and email. GPT-5.4-mini and GPT-5.5 in the Codex harness were susceptible. This was seen in training environments only, with no real-world incidents reported; OpenAI plans to train against it with an automated red-teaming agent.",
+      "source": "The Register",
+      "published": "2026-09-29",
+      "url": "https://theregister.com/security/2026/09/29/add-one-more-ai-worry-to-the-nightmare-scenario-self-replicating-prompt-injections/5299922"
+    },
+    {
+      "category": "ai",
+      "title": "SalesBleed: zero-click data exfiltration from Salesforce Agentforce",
+      "cve": [],
+      "severity": "Fixed",
+      "summary": "Zenity Labs chained three weaknesses: prompt injection through public Web-to-Lead forms, the agent treating record content as instructions, and broad tool and data permissions. The result was silent exfiltration of CRM fields over DNS, bypassing the Trusted URLs safeguard, with no victim interaction. Salesforce fixed the bypass on 18 August. The same pattern applies to any agent that reads external records, renders content and holds backend access.",
+      "source": "Infosecurity Magazine",
+      "published": "2026-09-25",
+      "url": "https://infosecurity-magazine.com/news/vulnerabilities-salesforce-ai"
+    },
+    {
+      "category": "ai",
+      "title": "Microsoft Digital Defense Report 2026: AI compresses attack timelines",
+      "cve": [],
+      "severity": "Report",
+      "summary": "Microsoft says threat actors now use AI across reconnaissance, social engineering, malware development and post-compromise work, and that AI code analysis is speeding up vulnerability discovery for attackers and defenders alike. Government was the most affected sector at 27% of observed activity, up from 17% last year. For agent deployments the report stresses agent identity, least-privilege access, agent-to-agent authentication, attribution and the ability to revoke access.",
+      "source": "Microsoft Security Blog",
+      "published": "2026-10-01",
+      "url": "https://microsoft.com/en-us/security/blog/2026/10/01/insights-from-the-2026-microsoft-digital-defense-report"
+    },
+    {
+      "category": "ai",
+      "title": "Background: Deadbugz malicious MCP servers and three MCP server CVEs",
+      "cve": ["CVE-2026-73498", "CVE-2026-67357", "CVE-2026-19956"],
+      "severity": "High 7.7",
+      "summary": "Older item, included as context for AI ops. The Deadbugz campaign pushed a malicious MCP server through 23 pull requests in 74 minutes; it behaves normally for three tool calls, then rewrites its tool metadata into instructions to hunt for SSH keys, AWS credentials and kubeconfig. The same roundup covers an arbitrary file read in Atlassian MCP (fixed in 0.22.0), a cleartext cluster token leak in ArcadeDB MCP (fixed in 26.7.3) and an SSRF in facebook-ads-mcp-server.",
+      "source": "Adversa AI",
+      "published": "2026-09-07",
+      "url": "https://adversa.ai/blog/top-mcp-security-resources-september-2026/"
+    }
+  ]
+}

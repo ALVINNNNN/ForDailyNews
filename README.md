@@ -1,0 +1,36 @@
+# Daily Security Digest
+
+A static page that shows one security news digest per day: zero-days and exploited
+vulnerabilities, AppSec / DevSecOps, and AI security.
+
+- `index.html` — the page. No build step; it fetches the JSON below.
+- `data/index.json` — `{"dates": [...]}`, newest first. The page loads the first date by default.
+- `data/YYYY-MM-DD.json` — one digest per day (Singapore date).
+
+## Digest format
+
+```json
+{
+  "date": "YYYY-MM-DD",
+  "items": [
+    {
+      "category": "zero-day | appsec | ai",
+      "title": "Short headline, written fresh (not copied from the source)",
+      "cve": ["CVE-YYYY-NNNNN"],
+      "severity": "Optional short label, e.g. 'Critical 9.8', or empty string",
+      "summary": "2-4 sentences in our own words: what it is, status, what to do.",
+      "source": "Publication name",
+      "published": "YYYY-MM-DD",
+      "url": "https://..."
+    }
+  ]
+}
+```
+
+Rules: summaries are original wording, never pasted article text; every item links to its
+source; IP addresses and malicious domains are defanged (`1.2.3[.]4`); URLs must be https.
+
+## Publishing
+
+Add the day's file, put the date at the front of `dates` in `data/index.json`, commit, and
+push to `main`. If the repo is connected to Vercel, the push deploys it.

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Daily Security Digest</title>
+<meta name="description" content="A daily digest of zero-days, exploited vulnerabilities, AppSec and AI security news.">
+<style>
+  :root {
+    --bg: #f6f5f1; --panel: #ffffff; --ink: #16181d; --muted: #5e6470; --line: #dedbd3;
+    --accent: #0b6e4f; --zd: #b3261e; --zd-bg: #fbe9e7; --as: #1d4ed8; --as-bg: #e6edfd;
+    --ai: #7a3fb0; --ai-bg: #f1e8f9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1013; --panel: #171a1f; --ink: #e8e9ec; --muted: #9aa0ab; --line: #2a2e36;
+      --accent: #4ade80; --zd: #ff8a80; --zd-bg: #3a1614; --as: #8ab4ff; --as-bg: #14233f;
+      --ai: #cfa6f5; --ai-bg: #2a1a3a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 40px 16px 64px; }
+  header { border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 20px; }
+  .kicker {
+    font: 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px;
+  }
+  h1 { font-size: clamp(28px, 6vw, 40px); line-height: 1.1; margin: 0 0 8px; letter-spacing: -.02em; }
+  .sub { color: var(--muted); margin: 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 24px; }
+  .controls label { color: var(--muted); font-size: 14px; }
+  select, button.chip {
+    font: inherit; font-size: 14px; color: var(--ink); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer;
+  }
+  button.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  select:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .spacer { flex: 1; }
+  article {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 14px;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 8px; }
+  .tag {
+    font: 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 6px;
+  }
+  .tag.zero-day { color: var(--zd); background: var(--zd-bg); }
+  .tag.appsec { color: var(--as); background: var(--as-bg); }
+  .tag.ai { color: var(--ai); background: var(--ai-bg); }
+  .tag.plain { color: var(--muted); border: 1px solid var(--line); text-transform: none; letter-spacing: 0; }
+  h2 { font-size: 19px; line-height: 1.3; margin: 0 0 8px; letter-spacing: -.01em; }
+  article p { margin: 0 0 12px; overflow-wrap: anywhere; }
+  .src { font-size: 14px; color: var(--muted); }
+  .src a { color: var(--accent); text-underline-offset: 3px; }
+  .empty, .err { color: var(--muted); padding: 24px 0; }
+  footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">Daily Security Digest</p>
+    <h1 id="heading">Loading…</h1>
+    <p class="sub">Zero-days and exploited vulnerabilities, AppSec, and AI security. Summarised daily, with links to the original reporting.</p>
+  </header>
+
+  <div class="controls">
+    <button class="chip" data-cat="all" aria-pressed="true">All</button>
+    <button class="chip" data-cat="zero-day" aria-pressed="false">Zero-days &amp; exploits</button>
+    <button class="chip" data-cat="appsec" aria-pressed="false">AppSec</button>
+    <button class="chip" data-cat="ai" aria-pressed="false">AI security</button>
+    <span class="spacer"></span>
+    <label for="date">Archive</label>
+    <select id="date"></select>
+  </div>
+
+  <main id="list" aria-live="polite"></main>
+
+  <footer>Summaries are written by an AI assistant from the linked sources and may contain errors. Check the source before acting on anything here.</footer>
+</div>
+
+<script>
+(function () {
+  var LABELS = { 'zero-day': 'Zero-day / exploit', 'appsec': 'AppSec', 'ai': 'AI security' };
+  var list = document.getElementById('list');
+  var heading = document.getElementById('heading');
+  var dateSel = document.getElementById('date');
+  var chips = document.querySelectorAll('button.chip');
+  var current = null, cat = 'all';
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function safeUrl(u) {
+    try { var p = new URL(u); return p.protocol === 'https:' ? p.href : null; } catch (e) { return null; }
+  }
+  function validDate(d) { return /^\d{4}-\d{2}-\d{2}$/.test(d); }
+  function pretty(d) {
+    var p = d.split('-');
+    return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).toLocaleDateString('en-SG',
+      { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  }
+  function message(cls, text) { list.replaceChildren(el('p', cls, text)); }
+
+  function render() {
+    if (!current) return;
+    var items = (current.items || []).filter(function (i) { return cat === 'all' || i.category === cat; });
+    if (!items.length) { message('empty', 'Nothing in this category for this day.'); return; }
+    var frag = document.createDocumentFragment();
+    items.forEach(function (i) {
+      var a = el('article');
+      var meta = el('div', 'meta');
+      var c = LABELS[i.category] ? i.category : 'appsec';
+      meta.appendChild(el('span', 'tag ' + c, LABELS[c]));
+      if (i.severity) meta.appendChild(el('span', 'tag plain', i.severity));
+      (i.cve || []).forEach(function (id) { meta.appendChild(el('span', 'tag plain', id)); });
+      a.appendChild(meta);
+      a.appendChild(el('h2', null, i.title));
+      a.appendChild(el('p', null, i.summary));
+      var src = el('div', 'src');
+      var url = safeUrl(i.url);
+      if (url) {
+        var link = el('a', null, i.source || 'Source');
+        link.href = url; link.rel = 'noopener noreferrer'; link.target = '_blank';
+        src.appendChild(link);
+      } else {
+        src.appendChild(document.createTextNode(i.source || ''));
+      }
+      if (i.published && validDate(i.published)) src.appendChild(document.createTextNode(' · published ' + i.published));
+      a.appendChild(src);
+      frag.appendChild(a);
+    });
+    list.replaceChildren(frag);
+  }
+
+  function load(d) {
+    if (!validDate(d)) return;
+    heading.textContent = pretty(d);
+    message('empty', 'Loading…');
+    fetch('data/' + d + '.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) { current = j; render(); })
+      .catch(function () { current = null; message('err', 'Could not load the digest for ' + d + '.'); });
+  }
+
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      cat = b.dataset.cat;
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      render();
+    });
+  });
+  dateSel.addEventListener('change', function () { load(dateSel.value); });
+
+  fetch('data/index.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (j) {
+      var dates = (j.dates || []).filter(validDate);
+      if (!dates.length) { heading.textContent = 'No digests yet'; return; }
+      dates.forEach(function (d) { var o = el('option', null, d); o.value = d; dateSel.appendChild(o); });
+      load(dates[0]);
+    })
+    .catch(function () { heading.textContent = 'Daily Security Digest'; message('err', 'Could not load the digest index.'); });
+})();
+</script>
+</body>
+</html>
