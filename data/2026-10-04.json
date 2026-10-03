@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-04",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Zimbra SNMP command injection was probed and exploited before it was publicly disclosed",
+      "cve": [
+        "CVE-2026-73570"
+      ],
+      "severity": "High 8.9",
+      "summary": "An unauthenticated OS command injection in Zimbra Collaboration Suite before 10.1.20 lets crafted SMTP traffic run commands as the zimbra user when the optional zimbra-snmp package is installed and SNMP notifications are enabled. Microsoft saw two scanning tools probing the injection point between July 28 and August 7, after the July 20 fix but before the August 13 disclosure, and intrusions have involved JSP web shells, escalation to root, credential theft and systemd-based persistence. Upgrade to 10.1.20 or later, remove or disable zimbra-snmp if you do not need it, restrict SNMP/SMTP exposure, and hunt for web shells and unexpected systemd units on mail nodes.",
+      "source": "SecurityWeek",
+      "published": "2026-10-01",
+      "url": "https://www.securityweek.com/zimbra-vulnerability-exploited-in-the-wild-prior-to-public-disclosure/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Warlock ransomware widens SharePoint exploitation against utilities, telecoms and governments",
+      "cve": [
+        "CVE-2026-32201",
+        "CVE-2026-45659",
+        "CVE-2026-56164",
+        "CVE-2026-58644",
+        "CVE-2026-50522",
+        "CVE-2026-55040"
+      ],
+      "severity": "",
+      "summary": "The China-linked Warlock group, which has abused SharePoint since the ToolShell zero-days in mid-2025, is now using a longer list of SharePoint flaws against water utilities, telecom providers, regional governments and universities, with a focus on Spanish- and Portuguese-speaking countries. Observed tradecraft includes web shells, theft of ASP.NET machine keys to forge signed payloads, DLL sideloading, vulnerable drivers to kill security tools, VS Code tunnels for access, and SYSVOL staging for ransomware rollout. Patch on-prem SharePoint for all listed CVEs, rotate machine keys on any server that was exposed while unpatched, and alert on VS Code tunnel activity from servers.",
+      "source": "SecurityWeek",
+      "published": "2026-10-02",
+      "url": "https://www.securityweek.com/warlock-expands-sharepoint-exploitation-in-critical-infrastructure-attacks/"
+    },
+    {
+      "category": "ai",
+      "title": "GitLab fixes critical template sandbox escape in self-hosted AI Gateway",
+      "cve": [
+        "CVE-2026-90970"
+      ],
+      "severity": "Critical 9.9",
+      "summary": "A flaw in how the GitLab AI Gateway renders the prompt template of a custom flow lets a logged-in user with Duo Agent Platform access break out of the template sandbox (CWE-1336) and potentially execute commands on the gateway host. Gateway versions 18.1.6 through 19.2.3, 19.3.0 to 19.3.1 and 19.4.0 are affected; 19.2.4, 19.3.2 and 19.4.1 fix it, and no exploitation had been reported as of October 2. Only self-hosted gateways are exposed (GitLab.com and Dedicated are not), there is no workaround, so upgrade now and review who can author custom flows.",
+      "source": "The Hacker News",
+      "published": "2026-10-02",
+      "url": "https://thehackernews.com/2026/10/gitlab-patches-critical-self-hosted-ai.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Kiteworks publishes 100+ advisories, a dozen critical, mostly in Email Protection Gateway",
+      "cve": [],
+      "severity": "Critical",
+      "summary": "On September 30 Kiteworks released more than 100 security advisories spanning its Core platform, Email Protection Gateway, Secure Data Forms and MFT Server. About twelve are rated critical, concentrated in the Email Protection Gateway, and could allow account takeover, code execution or a foothold into internal networks; further high-severity bugs cover information disclosure and code execution. File-transfer products are a habitual mass-exploitation target, so inventory Kiteworks deployments, apply the vendor updates promptly and keep admin interfaces off the internet.",
+      "source": "SecurityWeek",
+      "published": "2026-10-02",
+      "url": "https://www.securityweek.com/in-other-news-15k-icloud-spoofing-bugs-ai-policy-experts-phished-adblocker-spies-on-ai-chats/"
+    },
+    {
+      "category": "appsec",
+      "title": "GitHub Security Lab's AI taskflows find 24 Android app bugs, but still need human triage",
+      "cve": [],
+      "severity": "",
+      "summary": "GitHub Security Lab pointed its AI-driven audit taskflows at Android apps and reported 24 vulnerabilities, including an OsmAnd issue that lets any installed app silently change navigation settings and leak location, and two Wikipedia app bugs that chain into account takeover through a malicious deeplink. The researchers note the model often overrated severity and raised unrealistic findings, so human review was required. For AppSec teams it is a useful data point: agentic code review scales discovery of exported-component and deeplink flaws, but budget for validation before filing.",
+      "source": "SecurityWeek",
+      "published": "2026-10-02",
+      "url": "https://www.securityweek.com/in-other-news-15k-icloud-spoofing-bugs-ai-policy-experts-phished-adblocker-spies-on-ai-chats/"
+    },
+    {
+      "category": "appsec",
+      "title": "iCloud mail parsing differences allowed spoofed icloud.com mail that passed SPF, DKIM and DMARC",
+      "cve": [],
+      "severity": "",
+      "summary": "SEC Consult researcher Timo Longin detailed two iCloud flaws where inconsistent parsing inside Apple's mail pipeline let an attacker send messages from arbitrary icloud.com addresses that still passed all three email authentication checks. The issues were reported in May 2024, the first fix was incomplete, and full remediation landed in December 2025; Apple paid a $15,000 bounty. Nothing to patch on the defender side, but it is a clean example of parser-differential bugs: do not treat an authentication pass as proof of sender identity, and test your own multi-hop mail or HTTP pipelines for components that disagree on how to parse the same input.",
+      "source": "SecurityWeek",
+      "published": "2026-10-02",
+      "url": "https://www.securityweek.com/in-other-news-15k-icloud-spoofing-bugs-ai-policy-experts-phished-adblocker-spies-on-ai-chats/"
+    },
+    {
+      "category": "ai",
+      "title": "Poper Blocker Chrome extension with 2M+ users harvests AI chat conversations",
+      "cve": [],
+      "severity": "",
+      "summary": "Bay Area Labs researchers found that Poper Blocker, a featured Chrome ad blocker with over two million users, collects full browsing history plus conversations from ChatGPT, Claude, Gemini and Google AI Mode once the user accepts a data-sharing prompt. Collection logic is downloaded from the vendor's servers and run through a custom interpreter, so what is captured and where it goes can change without an extension update or store review. Treat AI chat content as sensitive data in your browser extension policy: block or allowlist extensions via enterprise management and remove this one from corporate profiles.",
+      "source": "SecurityWeek",
+      "published": "2026-10-02",
+      "url": "https://www.securityweek.com/in-other-news-15k-icloud-spoofing-bugs-ai-policy-experts-phished-adblocker-spies-on-ai-chats/"
+    },
+    {
+      "category": "ai",
+      "title": "October AI coding agent roundup: DeepSeek Harness sandbox escape, OpenCode RCE, GitSpawn",
+      "cve": [
+        "CVE-2026-82533",
+        "CVE-2026-87987",
+        "CVE-2026-87984"
+      ],
+      "severity": "Critical 9.4",
+      "summary": "Adversa AI's monthly digest collects recent coding-agent flaws: CVE-2026-82533 (CVSS 9.4) in DeepSeek Harness, where a localhost API protected only by a Host header check lets a sandboxed agent switch itself to full access; an OpenCode bug (GHSA-632h-h47v-g4x4, fixed in 1.18.22) where the upgrade endpoint accepted arbitrary package specs reachable by cross-origin POST; and two Mistral Vibe CVEs where the command parser and executor disagree, bypassing approval. It also covers GitSpawn, where git config sinks such as core.fsmonitor in an untrusted repo run code outside the sandbox across several agents, with four of eight flaws reportedly still unpatched. Update agent CLIs, do not open untrusted repositories with agents on a machine that holds credentials, and run agents in a container or VM rather than relying on the built-in sandbox.",
+      "source": "Adversa AI",
+      "published": "2026-10-02",
+      "url": "https://adversa.ai/blog/top-ai-coding-agent-security-resources-october-2026/"
+    },
+    {
+      "category": "ai",
+      "title": "Google launches Gemini 4 Argon, with cyber guardrails removed for vetted defenders",
+      "cve": [],
+      "severity": "",
+      "summary": "Google's new frontier model is pitched at autonomously finding, validating and patching vulnerabilities, and members of its Fairwind Program (650+ governments, cloud customers and security firms) get a version without cyber guardrails. Google says Argon found a critical data-exposure flaw in hospital software but gave no product name or CVE, and it scored 68% on the CWE-bench v1 remediation benchmark, level with competing frontier models. The general release is meant to refuse attack-enabling requests; defenders should assume comparable capability reaches attackers soon and keep shortening patch timelines.",
+      "source": "SecurityWeek",
+      "published": "2026-10-01",
+      "url": "https://www.securityweek.com/google-launches-gemini-4-argon-with-guardrail-free-access-for-vetted-defenders/"
+    }
+  ]
+}
