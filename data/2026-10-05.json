@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-05",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "CISA adds the Zammad RCE-to-root chain used in the DIVD breach to KEV",
+      "cve": [
+        "CVE-2026-102489",
+        "CVE-2026-102490"
+      ],
+      "severity": "Critical 9.4",
+      "summary": "Update to the Zammad story from 3 Oct: CISA has now listed both bugs as known exploited, a session fixation flaw that leads to code execution as the zammad user and a privilege escalation to root. The reported affected ranges are Zammad 6.3.0-6.5.4 and 7.0.0-7.1.3 for the first and 1.5.0 through 7.1.0-alpha for the second, and the federal remediation deadline is 5 October. Follow the vendor's guidance to move to a fixed version 7 release or take the helpdesk offline, and review instances that were internet-facing since late September for signs of compromise.",
+      "source": "Security Affairs",
+      "published": "2026-10-02",
+      "url": "https://securityaffairs.com/200248/security/u-s-cisa-adds-zammad-gmbh-zammad-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+    },
+    {
+      "category": "ai",
+      "title": "Loom for AWS agent platform: unauthenticated super-admin flaw, plus SageMaker Unified Studio command injection",
+      "cve": [
+        "CVE-2026-103956",
+        "CVE-2026-103957",
+        "CVE-2026-103958",
+        "CVE-2026-104019"
+      ],
+      "severity": "Critical 10.0 (CVE-2026-103956)",
+      "summary": "AWS fixed three bugs in Loom, its open-source AI agent orchestration platform: missing authentication that hands any caller full control of the agent control plane when no identity provider is configured (before 1.6.1), and OAuth2 token disclosure and a request-handling flaw that leaks temporary AWS credentials (both before 1.7.0). A separate OS command injection in SageMaker Distribution startup scripts could run code in other users' environments; fixes are 2.14.12, 3.9.12, 4.0.11, 4.1.11, 4.2.8, 4.3.5 and 4.4.3. Proof-of-concept code for the auth bypass is already public, so upgrade Loom to 1.7.0, configure an IdP, rotate any credentials the platform held and check CloudTrail for unexpected activity.",
+      "source": "GBHackers",
+      "published": "2026-10-03",
+      "url": "https://gbhackers.com/aws-ai-agent-vulnerabilities"
+    },
+    {
+      "category": "ai",
+      "title": "One email was enough to get code execution in the Manus AI agent via JSFuck-obfuscated prompt injection",
+      "cve": [],
+      "severity": "",
+      "summary": "Salt Labs showed that an email carrying a JSFuck-encoded JavaScript payload would be decoded and executed by Manus when the user simply asked the agent to check their inbox; guardrails blocked plain shell commands but not the obfuscated form, and the warning appeared only after execution. That gave code execution in the user's sandbox, where Gmail OAuth tokens and credentials for other connected services such as Google Drive and GitHub were readable from environment variables. Meta has patched it through its bug bounty programme; the lesson for agent deployments is to control and monitor what the agent actually does with tools and tokens instead of relying on prompt filtering.",
+      "source": "Salt Security",
+      "published": "2026-10-01",
+      "url": "https://salt.security/blog/how-we-hijacked-an-ai-agent-with-a-single-email"
+    },
+    {
+      "category": "zero-day",
+      "title": "Fortra patches three critical BoKS flaws, including predictable AD service account passwords",
+      "cve": [
+        "CVE-2026-79901",
+        "CVE-2026-79898",
+        "CVE-2026-12627"
+      ],
+      "severity": "Critical 9.9",
+      "summary": "Fortra fixed eight bugs in BoKS, its central access-control manager for Unix and Linux fleets. The critical ones are AD service account passwords derived from a timestamp-seeded pseudo-random sequence that can be reproduced offline (9.9), a stack buffer overflow in autoregistration reachable remotely (9.8), and command injection in crlserver that lets an authenticated user run commands as root on the BoKS Master (9.1). No exploitation has been reported; the article does not list fixed versions, so take them from Fortra's security advisories, patch, and rotate affected AD service account passwords.",
+      "source": "SecurityWeek",
+      "published": "2026-10-03",
+      "url": "https://securityweek.com/fortra-patches-critical-vulnerabilities-in-boks"
+    },
+    {
+      "category": "appsec",
+      "title": "Ten npm dependency-confusion packages mimic internal Amazon Alexa/APL project names",
+      "cve": [],
+      "severity": "",
+      "summary": "The OpenSSF malicious-packages database added ten npm packages published by one account on 30 September within about 90 seconds, all at version 100.0.0, with names such as figma-to-apl, apl-rive-renderer and okra-cloud-cdk that look like internal project names. A preinstall script sends hostname, username, working directory, OS, architecture, Node version and npm registry configuration to an API Gateway endpoint at s85r5k14qk.execute-api.us-east-1.amazonaws[.]com. It is reconnaissance-only so far, but it is a reminder to scope internal package names to a private registry, pin versions and block install scripts in CI.",
+      "source": "OpenSSF malicious-packages (GitHub)",
+      "published": "2026-10-02",
+      "url": "https://github.com/ossf/malicious-packages/pull/1571"
+    },
+    {
+      "category": "ai",
+      "title": "OpenAI describes a large campaign to extract hidden model reasoning for distillation",
+      "cve": [],
+      "severity": "",
+      "summary": "OpenAI says it shut down a coordinated effort that coaxed its models into exposing protected reasoning so the output could train competing models; it ran from 1 July, peaked at about 16,000 attempts from more than 4,000 users on 24-25 July, and was cut off on 28 July. OpenAI links a core cluster to people associated with Moonshot AI, without publishing technical evidence. Related research found encrypted reasoning traces could be replayed across sessions, which OpenAI has closed; if you host models, treat reasoning output and replayable state as an abuse and data-leak surface and monitor for bulk, patterned extraction.",
+      "source": "The Hacker News",
+      "published": "2026-10-01",
+      "url": "https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html"
+    },
+    {
+      "category": "ai",
+      "title": "Background: official MCP Python SDK let a malicious server redirect OAuth secrets to its own endpoint",
+      "cve": [],
+      "severity": "High 7.5",
+      "summary": "Not previously covered here: the SDK's OAuth client did not check that the token endpoint advertised by an MCP server belonged to the expected login service, so a hostile server could collect the client secret, authorization code and PKCE verifier. Versions 1.9.1-1.29.1 and 2.0.0-2.1.1 are affected, fixed in 1.30.0 and 2.2.0; no CVE had been assigned at publication and no attacks are known. Upgrade, set the issuer parameter on client-credentials and private-key-JWT providers, rotate client secrets and clear stored OAuth registrations.",
+      "source": "The Hacker News",
+      "published": "2026-09-29",
+      "url": "https://thehackernews.com/2026/09/official-mcp-python-sdk-flaw-can-let.html"
+    }
+  ]
+}
