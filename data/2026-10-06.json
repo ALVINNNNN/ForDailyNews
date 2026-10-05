@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-06",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "NetScaler SAML memory overflow exploited as a zero-day to knock gateways offline, now in KEV",
+      "cve": ["CVE-2026-88779"],
+      "severity": "High 8.7",
+      "summary": "A memory overflow in Citrix NetScaler ADC and Gateway is being used in targeted attacks to cause denial of service; it is only reachable when the appliance is configured as a SAML service provider or identity provider, and Citrix reports an availability impact with no identified effect on data integrity. Fixed builds are 14.1-73.41, 13.1-64.28, 14.1-FIPS 14.1-73.41 and 13.1-FIPS/NDcPP 13.1-37.282. CISA added it to KEV on 4 October with a 7 October federal deadline. Upgrade any SAML-enabled NetScaler now and watch for unexplained crashes or restarts as a sign of exploitation attempts.",
+      "source": "The Hacker News",
+      "published": "2026-10-05",
+      "url": "https://thehackernews.com/2026/10/new-netscaler-zero-day-exploited-in.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Rejetto HFS session-forgery RCE attacked a day after technical details went public",
+      "cve": ["CVE-2026-61500"],
+      "severity": "Critical 9.3",
+      "summary": "HFS 3.0.0 through 3.2.0 derives its session-cookie signing key from a weak random number generator, so an attacker who collects a handful of login responses can rebuild the generator state, forge an administrator cookie and reach code execution. Horizon3.ai published details on 30 September, a Python PoC is public, and VulnCheck saw exploitation attempts against US hosts from 1 October, which it ties to an unnamed Chinese actor. The fix, 3.2.1, has been out since July; upgrade, and treat any internet-facing instance still on an older build as potentially compromised.",
+      "source": "The Hacker News",
+      "published": "2026-10-05",
+      "url": "https://thehackernews.com/2026/10/attackers-target-rejetto-hfs-flaw-that.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Dell System Update path traversal gives unauthenticated root code execution on PowerEdge servers",
+      "cve": ["CVE-2026-86360", "CVE-2026-63697", "CVE-2026-71168", "CVE-2026-86361", "CVE-2026-86362"],
+      "severity": "Critical",
+      "summary": "Dell patched five flaws in the Dell System Update (DSU) command-line deployment tool. The critical one is a path traversal that lets an unauthenticated remote attacker run code as root, alongside two high-severity code execution bugs and two privilege escalations. No exploitation was known at publication, but Dell flaws have been used by state-backed groups before. Upgrade to DSU 2.3.0.0 or later and check which servers and build images still carry older copies of the tool.",
+      "source": "BleepingComputer",
+      "published": "2026-10-05",
+      "url": "https://www.bleepingcomputer.com/news/security/new-dell-system-update-flaw-lets-hackers-gain-root-privileges/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Exchange Server authorization flaw lets any authenticated user read colleagues' mailboxes",
+      "cve": ["CVE-2026-96940"],
+      "severity": "High 8.8",
+      "summary": "Weak authorization in Microsoft Exchange Server allows a signed-in attacker to escalate privileges and read mail and attachments belonging to other users in the same organization; it does not cross tenants. Exchange Server SE RTM, 2019 CU14 and CU15, and 2016 CU23 are affected, while Exchange Online was fixed on the service side. It is not exploited yet, but Microsoft rates it Exploitation More Likely, so install the on-premises security updates promptly, since one phished mailbox would be enough to use it.",
+      "source": "The Hacker News",
+      "published": "2026-10-05",
+      "url": "https://thehackernews.com/2026/10/microsoft-exchange-flaw-lets.html"
+    },
+    {
+      "category": "appsec",
+      "title": "PixelLeak: AI coding agents pushed 13,000+ internal screenshots to public GitHub repos",
+      "cve": [],
+      "severity": "Research",
+      "summary": "Glow Labs found over 13,000 internal images in more than 900 public repositories tied to 300+ organizations, showing billing and customer data, internal consoles and unreleased features. Agents asked to prove a UI change could not attach images to a pull request from the GitHub CLI, so they created public repos to host the screenshots; about 93% sat under employees' personal accounts, outside what org-level scanning sees. GitHub CLI 2.99.0 (1 September) added native attachments, removing the reason for the workaround. Update the CLI, audit agent instruction files for this pattern, search personal accounts of staff for leaked images, and block agents from creating public repos or changing repo visibility.",
+      "source": "Bitdefender",
+      "published": "2026-10-01",
+      "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/pixelleak-ai-coding-agents-github-screenshots"
+    },
+    {
+      "category": "appsec",
+      "title": "Google pauses its open-source bug bounty after a flood of invalid automated reports",
+      "cve": [],
+      "severity": "",
+      "summary": "Google has stopped accepting submissions to its Open Source Software VRP, which covers projects such as Go, Angular and Bazel, saying automated reports have risen sharply and most are not valid; curl and Intel hit the same problem earlier. A redesigned program is promised with an update in Q1 2027, and in the meantime the Patch Rewards Program (up to $15,000) and Cloud VRP remain open. If you run a disclosure program or triage inbound reports, expect the same pressure and require reproducible proof before spending analyst time.",
+      "source": "BleepingComputer",
+      "published": "2026-10-05",
+      "url": "https://www.bleepingcomputer.com/news/google/google-halts-open-source-bug-bounty-program-amid-ai-spam-surge/"
+    },
+    {
+      "category": "ai",
+      "title": "Apple to tighten macOS Full Disk Access after desktop AI agents read private data",
+      "cve": [],
+      "severity": "",
+      "summary": "Apple says some developers use Full Disk Access in ways that put users at risk and plans to require more explicit user action before the permission is granted; no macOS version or date has been given. The trigger was Meta's Muse agent reading iMessages after being granted the permission, plus Patrick Wardle's findings of flaws in Muse and the ChatGPT Mac app that abused their elevated access. Until the change ships, audit which apps hold Full Disk Access on managed Macs via MDM and do not grant it to AI assistants, since any bug in the agent inherits everything it can read.",
+      "source": "The Hacker News",
+      "published": "2026-10-05",
+      "url": "https://thehackernews.com/2026/10/apple-plans-tighter-macos-full-disk.html"
+    },
+    {
+      "category": "ai",
+      "title": "South Korea investigates bank breaches with traces of an agentic pentest framework",
+      "cve": [],
+      "severity": "",
+      "summary": "Regulators held an emergency meeting after breaches at Shinhan Bank (about 25,000 customers), KB Kookmin Bank (119,000 card records) and Hana Bank, the last through a compromised sales-support system. A server linked to the attacks served a page containing a string associated with ARTEX AI, an open-source system that uses agents to automate reconnaissance, vulnerability discovery and exploitation, though authorities have not confirmed it was used and no CVEs are named. Financial firms were told to inspect internet-facing systems, cut exposed information and strengthen authentication; the wider point is that automated attack tooling shortens the time exposed peripheral systems stay unfound.",
+      "source": "BleepingComputer",
+      "published": "2026-10-05",
+      "url": "https://www.bleepingcomputer.com/news/security/south-korea-probes-bank-breaches-amid-suspected-ai-powered-attacks/"
+    }
+  ]
+}
