@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>Daily Security Digest</title>
+<link rel="alternate" type="application/rss+xml" title="Daily Security Digest" href="feed.xml">
 <meta name="description" content="A daily digest of zero-days, exploited vulnerabilities, AppSec and AI security news.">
 <style>
   :root {
@@ -42,6 +43,7 @@
   button.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
   select:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .spacer { flex: 1; }
+  a.rss { font-size: 14px; color: var(--accent); text-underline-offset: 3px; margin-right: 6px; }
   article {
     background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
     padding: 18px 20px; margin-bottom: 14px;
@@ -77,6 +79,7 @@
     <button class="chip" data-cat="appsec" aria-pressed="false">AppSec</button>
     <button class="chip" data-cat="ai" aria-pressed="false">AI security</button>
     <span class="spacer"></span>
+    <a class="rss" href="feed.xml">Subscribe via RSS</a>
     <label for="date">Archive</label>
     <select id="date"></select>
   </div>
