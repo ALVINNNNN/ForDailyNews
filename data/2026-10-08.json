@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-08",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Atlassian Data Center file-read flaw now under attack within hours of a public PoC",
+      "cve": ["CVE-2026-21589"],
+      "severity": "Critical 9.3",
+      "summary": "Update to yesterday's item: watchTowr published a technical write-up and proof of concept, and Previdian's honeypots recorded exploitation attempts roughly two hours later; a Nuclei template is also out, so mass scanning is expected. The bug comes from a shared web-resource library that turns '::' into '/', and on Jira deployments integrated with Crowd an attacker may read plaintext credentials from WEB-INF/classes/crowd.properties and use Crowd's API to create a Jira admin. Patch all eight Data Center products now, restrict Crowd with an IP allowlist, and review logs for traversal requests; observed sources include 38.60.157[.]86, 146.70.187[.]234 and 159.26.119[.]225.",
+      "source": "BleepingComputer",
+      "published": "2026-10-07",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-critical-atlassian-flaw-after-public-poc-release/"
+    },
+    {
+      "category": "zero-day",
+      "title": "FBI: FortiBleed intruders are still hitting FortiGate VPNs and locking administrators out",
+      "cve": [],
+      "severity": "Exploited",
+      "summary": "A joint FBI and Secret Service advisory says the campaign built on leaked Fortinet credentials is ongoing: attackers log in to exposed FortiGate firewalls and SSL VPN portals with leaked, stuffed or sprayed passwords, pull more hashes and crack them offline, then create admin accounts and in some cases delete or reset the legitimate ones. Access is passed to INC/Lynx and Payload ransomware affiliates, and SOCRadar counts 86,644 compromised devices. Patching and a password reset may not be enough: take management and VPN interfaces off the internet, kill active VPN sessions, enforce MFA, audit for unknown admin accounts and switch admin password storage to PBKDF2.",
+      "source": "BleepingComputer",
+      "published": "2026-10-07",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-ongoing-fortibleed-attacks-lock-out-fortigate-vpn-admins/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Stored XSS in Ninja Forms and WPC Product Bundles exploited to plant rogue WordPress admins",
+      "cve": ["CVE-2026-94504", "CVE-2026-93836"],
+      "severity": "High",
+      "summary": "Patchstack is tracking one actor abusing stored cross-site scripting in Ninja Forms (3.15.3 and older, 500,000+ sites) and WPC Product Bundles for WooCommerce (8.6.6 and older, 30,000+ sites): script hidden in a form submission or order runs when an administrator views it, installs a fake 'WP Smart Thumbnails' plugin and adds admin accounts, one of them hidden behind a secret login URL. Exploitation is described as limited so far, with the payload served from imgcdn1[.]com. Update to Ninja Forms 3.15.4 and WPC Product Bundles 8.6.7, then check for the rogue plugin and unexpected admins, because updating does not remove an existing infection.",
+      "source": "BleepingComputer",
+      "published": "2026-10-06",
+      "url": "https://www.bleepingcomputer.com/news/security/ninja-forms-plugin-flaw-exploited-to-hack-wordpress-sites/"
+    },
+    {
+      "category": "zero-day",
+      "title": "SonicWall patches pre-auth SSRF and three other flaws in SMA 1000 appliances",
+      "cve": ["CVE-2026-102255", "CVE-2026-102256", "CVE-2026-102257", "CVE-2026-102258"],
+      "severity": "",
+      "summary": "The main fix is a server-side request forgery in the SMA 1000 Work Place interface that an unauthenticated attacker can use to make the appliance call internal endpoints that trust it; the others are a post-auth command injection plus an admin-only path traversal and XSS in the management console. Models 6210, 7210 and 8200v are affected and the hotfixes are 12.4.3-03670 and 12.5.0-03082 or later. SonicWall sees no exploitation yet, but two earlier pre-auth SSRF bugs in this product line were used as zero-days this year, so patch internet-facing units first.",
+      "source": "Help Net Security",
+      "published": "2026-10-07",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/sonicwall-fixes-pre-auth-ssrf-flaw-in-sma-1000-appliances-cve-2026-102255/"
+    },
+    {
+      "category": "appsec",
+      "title": "Attackers hijacked .gh, .as and .sl registries and obtained valid TLS certificates for Google domains",
+      "cve": [],
+      "severity": "",
+      "summary": "Google says intruders compromised third-party operators of the Ghana, American Samoa and Sierra Leone country-code TLDs, changed authoritative DNS records and used that control to pass CA domain validation, getting genuine certificates for Google domains and those of other major brands. Google's own systems were not breached; it has blocked the certificates in Chrome through CRLSets and had them revoked, but may not have found every affected domain. Monitor Certificate Transparency logs for your whole domain portfolio, including parked and ccTLD names, and publish restrictive CAA records tied to your ACME account and validation method.",
+      "source": "BleepingComputer",
+      "published": "2026-10-07",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-hijack-google-domains-after-breaching-cctld-registries/"
+    },
+    {
+      "category": "ai",
+      "title": "Anthropic splits its Cyber Verification Program into three tiers and folds in Project Glasswing",
+      "cve": [],
+      "severity": "",
+      "summary": "Verified organizations can now get Claude with fewer cyber refusals at three levels: Defense Access (incident response, malware and vulnerability analysis), Red Team Access (adds authorized penetration testing; not open to individual researchers) and Specialized Access for a small set of critical-infrastructure testers reviewed with the US government. Data retention for misuse monitoring is generally required, and destructive actions such as deploying ransomware stay blocked in real time. In Anthropic's own benchmark, unverified use was blocked in all 50 trials while Red Team Access completed 34 of 50. If your team hits refusals during legitimate security work, apply for the tier that matches it rather than working around the guardrails.",
+      "source": "Help Net Security",
+      "published": "2026-10-07",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/anthropic-expands-cyber-verification-program/"
+    },
+    {
+      "category": "ai",
+      "title": "Open-source AI Agent Gateway keeps model and MCP credentials out of agent configs",
+      "cve": [],
+      "severity": "Tooling",
+      "summary": "Tuskira released a self-hosted gateway that sits between agents and the MCP servers and model providers they use: the agent presents a gateway key and profile, each tool call is authorized at call time, and the real credential is attached on the way out from an encrypted store, so the agent never holds it. It blocks private, loopback and cloud-metadata addresses by default and ships examples for Claude Code, Cursor, VS Code and Codex CLI. Check the defaults before relying on it: a key with no bound profile lets the caller pick its own, the demo stack stores request and response bodies, and the sample Compose file permits host and loopback egress.",
+      "source": "Help Net Security",
+      "published": "2026-10-07",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/open-source-ai-agent-gateway/"
+    },
+    {
+      "category": "appsec",
+      "title": "GitHub previews ReviewBench, a benchmark and leaderboard for AI code reviewers",
+      "cve": [],
+      "severity": "Tooling",
+      "summary": "ReviewBench scores AI review agents on 219 pull requests from 187 open-source repositories in 19 languages against a validated set of known issues, reporting precision, recall and F1 with breakdowns by severity and category, security included. GitHub used it to pick a multi-run ensemble for Copilot code review's lite tier, which in production gave 13.6% higher recall and 8% lower cost per review. It is a research preview that accepts third-party agents; if you depend on AI review as a security gate, it offers a way to compare tools on missed defects and false alarms instead of vendor claims.",
+      "source": "Help Net Security",
+      "published": "2026-10-06",
+      "url": "https://www.helpnetsecurity.com/2026/10/06/github-reviewbench-ai-code-review-benchmark/"
+    },
+    {
+      "category": "zero-day",
+      "title": "X.Org Server and Xwayland fix a dozen flaws, nine of them leading to code execution",
+      "cve": ["CVE-2026-93515", "CVE-2026-93519", "CVE-2026-93520", "CVE-2026-93521", "CVE-2026-93522", "CVE-2026-93524", "CVE-2026-93536"],
+      "severity": "",
+      "summary": "xorg-server 21.1.25 and Xwayland 24.1.14 close twelve bugs; nine can lead to arbitrary code execution and the rest to crashes or information disclosure, and most need an authenticated X client to trigger. The article names seven of the CVEs and gives no severity scores or exploitation reports. Pull the updated packages from your distribution, giving priority to multi-user hosts, remote desktop servers and systems using X forwarding.",
+      "source": "Help Net Security",
+      "published": "2026-10-07",
+      "url": "https://www.helpnetsecurity.com/2026/10/07/x-org-server-fixed-vulnerabilities/"
+    }
+  ]
+}
