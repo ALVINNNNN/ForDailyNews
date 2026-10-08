@@ -6,7 +6,79 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Splunk Enterprise fixes unauthenticated command execution on search head cluster members</title>
+      <link>https://advisory.splunk.com/advisories/SVD-2026-1001</link>
+      <guid isPermaLink="false">2026-10-09|https://advisory.splunk.com/advisories/SVD-2026-1001|Splunk Enterprise fixes unauthenticated command execution on search head cluster members</guid>
+      <pubDate>Fri, 09 Oct 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-76268 · CVE-2026-76266] Splunk's 7 October advisory SVD-2026-1001 covers 17 CVEs, led by CVE-2026-76268: the Patroni REST API on search head cluster members can be reached without authentication to run commands, affecting the 10.4 and 10.2 lines only. A second notable bug, CVE-2026-76266 (7.7), lets a local user reach root through the Linux package upgrade script. The advisory does not mention exploitation. Upgrade to 10.4.3, 10.2.7, 10.0.10 or 9.4.15 (and Secure Gateway 3.10.11, 3.9.25 or 3.8.72); if you cannot patch yet and do not use Edge Processor, OpAmp or SPL2 pipelines, set disabled = true under [postgres] in server.conf and restart. (Source: Splunk)</description>
+    </item>
+    <item>
+      <title>Cisco patches five critical NX-OS flaws in Nexus 3000/9000 switches and four in Cisco License</title>
+      <link>https://www.bleepingcomputer.com/news/security/cisco-warns-of-critical-flaws-allowing-nexus-switch-takeover/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.bleepingcomputer.com/news/security/cisco-warns-of-critical-flaws-allowing-nexus-switch-takeover/|Cisco patches five critical NX-OS flaws in Nexus 3000/9000 switches and four in Cisco License</guid>
+      <pubDate>Fri, 09 Oct 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical · CVE-2026-76471 · CVE-2026-76485 · CVE-2026-76486 · CVE-2026-76501 · CVE-2026-76465 · CVE-2026-76480 · CVE-2026-76482 · CVE-2026-76483 · CVE-2026-76484] Cisco disclosed five critical bugs in standalone-mode Nexus 3000 and 9000 switches, reachable through NX-API, NGOAM or MPLS OAM when those features are on; four can give remote code execution as root, and a failed attempt can still force a reload. Separately, Cisco License (formerly Smart Software Manager) has four flaws up to CVSS 10.0 that affect every release regardless of configuration, fixed in 10-202609 with no workaround. Cisco found the switch bugs internally and knows of no exploitation. Use the Software Checker to find a fixed NX-OS release, disable NGOAM, NX-API or MPLS OAM where unused, and apply Live Protect shields on devices that cannot reboot yet. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>PoeLLM botnet hijacks 3,400+ LiteLLM and Ollama servers, reading its C2 address from a poem on GitHub</title>
+      <link>https://www.helpnetsecurity.com/2026/10/08/poellm-malware-github-poem-ai-servers/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.helpnetsecurity.com/2026/10/08/poellm-malware-github-poem-ai-servers/|PoeLLM botnet hijacks 3,400+ LiteLLM and Ollama servers, reading its C2 address from a poem on GitHub</guid>
+      <pubDate>Fri, 09 Oct 2026 06:58:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[Exploited · CVE-2026-42271 · CVE-2026-10520] Lumen's Black Lotus Labs describes a cryptomining botnet, active since April, that breaks into exposed AI services, mostly vulnerable LiteLLM and Ollama hosts plus hundreds of Gotenberg and Gitea servers, by scanning ports 3000 and 4000 and hitting LiteLLM's /mcp-rest/test/connection command-injection endpoint. Infected hosts run XMRig and Iron miners, scan for new victims and have started probing SSH and login portals; the malware works out its C2 IP by mapping four words from a poem stored in a GitHub repo to numbers. Patch and take LiteLLM and Ollama off the public internet, hunt for POSTs to that endpoint and miner processes, and block the current C2 at 5.78.73[.]122 (earlier: 92.119.165[.]74). (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>FakeGit returns: 17,610 GitHub repos repointed to SmartLoader, including fake AI skills and MCP servers</title>
+      <link>https://www.bleepingcomputer.com/news/security/fakegit-malware-campaign-returns-with-17-610-malicious-github-repos/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.bleepingcomputer.com/news/security/fakegit-malware-campaign-returns-with-17-610-malicious-github-repos/|FakeGit returns: 17,610 GitHub repos repointed to SmartLoader, including fake AI skills and MCP servers</guid>
+      <pubDate>Fri, 09 Oct 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Apiiro reports that the FakeGit campaign restarted on 4 October by editing existing repositories rather than creating new ones: more than 13,000 were updated in 34 hours, mostly README-only commits whose Download button leads to a ZIP that installs SmartLoader and then the StealC infostealer. At least 700 of the accounts appear to belong to real developers, and 71% of the repos were absent from URLhaus before the report; an earlier wave included 800 repos posing as AI skills or MCP servers. Verify the repository owner before downloading anything, install agent skills and MCP servers only from official registries or vendor repos, and treat a suspected SmartLoader run as a GitHub account compromise: revoke sessions and tokens and move to passkeys. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Pwn2Own Ireland day two: 45 more zero-days, with Dynamo and Oracle Autonomous AI Database among the targets</title>
+      <link>https://www.bleepingcomputer.com/news/security/samsung-galaxy-s26-hacked-three-more-times-at-pwn2own-ireland/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.bleepingcomputer.com/news/security/samsung-galaxy-s26-hacked-three-more-times-at-pwn2own-ireland/|Pwn2Own Ireland day two: 45 more zero-days, with Dynamo and Oracle Autonomous AI Database among the targets</guid>
+      <pubDate>Fri, 09 Oct 2026 06:56:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>Contestants earned $232,500 for 45 unique zero-days on the second day, including three more Samsung Galaxy S26 compromises, a sub-minute Sonos Era 300 chain, several Home Assistant Green hacks, and AI-infrastructure wins against Dynamo and Oracle Autonomous AI Database. Day one had already seen exploits against OpenAI Codex and LiteLLM. Nothing is public yet: vendors have 90 days to ship fixes before ZDI discloses details, so there is no action beyond watching for those updates if you run the affected products. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>FBI seizes seven domains behind Flax Typhoon's MicroScan and FishHub platforms; advisory lists the old CVEs it scans for</title>
+      <link>https://www.bleepingcomputer.com/news/security/fbi-disrupts-chinese-hacking-tools-used-to-breach-critical-infrastructure/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.bleepingcomputer.com/news/security/fbi-disrupts-chinese-hacking-tools-used-to-breach-critical-infrastructure/|FBI seizes seven domains behind Flax Typhoon's MicroScan and FishHub platforms; advisory lists the old CVEs it scans for</guid>
+      <pubDate>Fri, 09 Oct 2026 06:55:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Exploited · CVE-2021-22205 · CVE-2019-11510 · CVE-2016-3081 · CVE-2014-6278 · CVE-2023-22894 · CVE-2021-3199 · CVE-2015-3306 · CVE-2015-5477] US authorities took down seven domains used to run MicroScan, a Python scanner with more than 1,300 scripts, and FishHub, a phishing and data-theft platform, both allegedly operated by China-based Integrity Technology Group for the Flax Typhoon group. A joint FBI, CISA and NSA advisory says the commonly targeted bugs are years old, among them GitLab CVE-2021-22205, Pulse Secure CVE-2019-11510, Apache Struts and Shellshock, with scripts also aimed at WebLogic, WordPress and Jenkins. Check that internet-facing GitLab, Struts, Strapi and VPN systems are not stuck on these versions, hunt with the advisory's indicators, and enforce MFA; seized domains include c0cc[.]cc, outlook3650[.]com and linkedinns[.]net. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>CrowdStrike: exposed AI session logs tie the South Korean bank intrusions to Claude Code and the ARTEX pentest tool</title>
+      <link>https://www.theregister.com/cyber-crime/2026/10/08/crowdstrike-finds-possible-bank-hackers-cv-among-exposed-ai-logs/5301908</link>
+      <guid isPermaLink="false">2026-10-09|https://www.theregister.com/cyber-crime/2026/10/08/crowdstrike-finds-possible-bank-hackers-cv-among-exposed-ai-logs/5301908|CrowdStrike: exposed AI session logs tie the South Korean bank intrusions to Claude Code and the ARTEX pentest tool</guid>
+      <pubDate>Fri, 09 Oct 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Update to the 6 October item: CrowdStrike found an open directory on a server linked to the attacks, which led to a second host in Hong Kong holding session histories, config files and AI memory files that document the targeting. The logs show the operator using Claude Code and ARTEX, a recently released Chinese open-source penetration-testing tool, and include personal details that CrowdStrike says probably belong to the attacker but cannot confirm. At least five lenders are affected, with Shinhan Bank reporting about 25,000 customers. No CVEs are named; the takeaway is that agent tooling raises attacker tempo against ordinary web-facing services, so exposure management and patch speed matter more than AI-specific controls. (Source: The Register)</description>
+    </item>
+    <item>
+      <title>GitHub push protection gets a ModernBERT classifier to block unstructured passwords before they land</title>
+      <link>https://www.helpnetsecurity.com/2026/10/08/github-push-protection-modernbert/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.helpnetsecurity.com/2026/10/08/github-push-protection-modernbert/|GitHub push protection gets a ModernBERT classifier to block unstructured passwords before they land</guid>
+      <pubDate>Fri, 09 Oct 2026 06:53:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>GitHub and Microsoft Applied Sciences built a context-aware model that looks at the surrounding code rather than token format, so push protection can stop generic secrets such as database passwords; GitHub says it could more than double what is blocked, against a baseline where about 30% of newly detected secrets are stopped pre-push and manual revocation averages roughly 40 days. It is in private preview, with general availability planned later in October for Secret Protection on Enterprise Cloud and Team plans (it consumes AI credits), a public preview in Enterprise Server 3.23, and a hook into Copilot's /security-review command. The figures are GitHub's own, with no independent false-positive data, so pilot it on a few repos before enforcing it org-wide. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>IBM and Red Hat's Lightwell reports 400+ previously unknown flaws fixed in common Java libraries</title>
+      <link>https://www.helpnetsecurity.com/2026/10/08/lightwell-java-library-vulnerabilities/</link>
+      <guid isPermaLink="false">2026-10-09|https://www.helpnetsecurity.com/2026/10/08/lightwell-java-library-vulnerabilities/|IBM and Red Hat's Lightwell reports 400+ previously unknown flaws fixed in common Java libraries</guid>
+      <pubDate>Fri, 09 Oct 2026 06:52:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Lightwell, the IBM and Red Hat program that backports security fixes to the older open-source versions companies actually run, says it has found and patched more than 400 new vulnerabilities in widely used Java libraries, and has made its Clearinghouse service generally available so customers can nominate dependencies for priority review. No library names, CVE IDs or severities were released, and fixes reach non-customers only when upstream projects publish them under coordinated disclosure. There is nothing to check exposure against yet, so expect a wave of Java dependency advisories and make sure your SCA tooling and update process can absorb it. (Source: Help Net Security)</description>
+    </item>
     <item>
       <title>Atlassian Data Center file-read flaw now under attack within hours of a public PoC</title>
       <link>https://www.bleepingcomputer.com/news/security/hackers-exploit-critical-atlassian-flaw-after-public-poc-release/</link>
