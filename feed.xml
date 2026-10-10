@@ -6,7 +6,71 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 09 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Citrix ships another NetScaler SAML fix: critical memory overflow can lead to code execution</title>
+      <link>https://thehackernews.com/2026/10/citrix-patches-critical-netscaler-flaw.html</link>
+      <guid isPermaLink="false">2026-10-11|https://thehackernews.com/2026/10/citrix-patches-critical-netscaler-flaw.html|Citrix ships another NetScaler SAML fix: critical memory overflow can lead to code execution</guid>
+      <pubDate>Sun, 11 Oct 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.5 · CVE-2026-107406] Citrix patched a memory overflow in NetScaler ADC and Gateway that can give remote code execution or denial of service on appliances configured as a SAML service provider or identity provider; Secure Private Access Hybrid deployments using NetScaler are affected too. No exploitation had been seen at publication, but three other recent NetScaler flaws (CVE-2026-88771, CVE-2026-88772, CVE-2026-88779) are being attacked, so expect quick attention. Note that builds released for the earlier fixes (14.1-73.37 to 73.41, 13.1-64.23 to 64.28) are still vulnerable in the IdP role. Check the config for 'authentication samlAction' or 'samlIdPProfile' and upgrade to 14.1-73.46, 13.1-64.29, 14.1-73.46 FIPS or 13.1-37.283 FIPS/NDcPP. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Unpatched AhsayCBS backup server flaws chained for unauthenticated RCE and cryptomining</title>
+      <link>https://thehackernews.com/2026/10/attackers-exploit-ahsaycbs-flaws-to.html</link>
+      <guid isPermaLink="false">2026-10-11|https://thehackernews.com/2026/10/attackers-exploit-ahsaycbs-flaws-to.html|Unpatched AhsayCBS backup server flaws chained for unauthenticated RCE and cryptomining</guid>
+      <pubDate>Sun, 11 Oct 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.3 (CVSS v4) · CVE-2026-105133 · CVE-2026-105134] Huntress has seen attackers chain an authentication bypass with an OS command injection in the Replication Receiver of AhsayCBS since 7 October, dropping web shells and XMRig miners disguised as Microsoft Edge, with at least five organisations hit by 8 October. The CVE records point to 10.3.4 as fixed, but Huntress says that version is still exploitable, so treat it as unpatched. Take the AhsayCBS management interface off the internet (trusted IP allowlist or VPN only) and hunt for an edge.exe miner, a fake 'Microsoft Edge Update' service, Taskgmr.ps1 and the WinRing0x64.sys driver in TEMP. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>AnyPwn: working pre-auth root exploit published for AnyDesk on Linux</title>
+      <link>https://thehackernews.com/2026/10/researchers-publish-working-exploit-for.html</link>
+      <guid isPermaLink="false">2026-10-11|https://thehackernews.com/2026/10/researchers-publish-working-exploit-for.html|AnyPwn: working pre-auth root exploit published for AnyDesk on Linux</guid>
+      <pubDate>Sun, 11 Oct 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>V12 researchers released an exploit on 8 October for a heap overflow in AnyDesk for Linux, caused by a 32-bit length wrap in stream packet handling, that gives unauthenticated code execution as root over direct TCP connections on port 7070. It targets build 8.0.2, is not fully reliable (a miss crashes the service), and no CVE or vendor advisory exists; the June changelog for the fixed 8.0.3 release only mentioned a crash bug. No in-the-wild use is reported and Windows and macOS are not affected. Update Linux hosts to 8.0.3 or later (8.1.0 is current) and restrict access to TCP 7070 where you cannot. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>tensorlake npm SDK backdoored via its own repo and release workflow in latest Shai-Hulud wave</title>
+      <link>https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html</link>
+      <guid isPermaLink="false">2026-10-11|https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html|tensorlake npm SDK backdoored via its own repo and release workflow in latest Shai-Hulud wave</guid>
+      <pubDate>Sun, 11 Oct 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Malicious commits were pushed to the main branch of tensorlakeai/tensorlake under a maintainer's name on 7 October, and the project's own release workflow then published tensorlake 0.5.144 to npm with a preinstall hook that runs a Bun-based stealer. It collects npm, GitHub, AWS, Vault, Kubernetes and SSH credentials plus .env files and AI tool/MCP configs, republishes the victim's other packages with Sigstore provenance, plants fake Copilot/Dependabot workflows and writes .claude/settings.json and .vscode/tasks.json for persistence; a PowerShell monitor wipes the home directory if the stolen GitHub token is revoked. The version has been pulled from npm. Anyone who installed it should remove it, isolate the machine before revoking tokens, rotate everything reachable, and look for traffic to iseekaigogo[.]com. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Anthropic launches OSS Scanner: free, opt-in AI vulnerability scans sent to maintainers without human triage</title>
+      <link>https://www.helpnetsecurity.com/2026/10/09/anthropic-oss-scanner-ai-security-scans/</link>
+      <guid isPermaLink="false">2026-10-11|https://www.helpnetsecurity.com/2026/10/09/anthropic-oss-scanner-ai-security-scans/|Anthropic launches OSS Scanner: free, opt-in AI vulnerability scans sent to maintainers without human triage</guid>
+      <pubDate>Sun, 11 Oct 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Anthropic opened a free service, modelled on the OSS-Fuzz idea, that periodically scans enrolled open-source projects with its strongest models and emails maintainers reports containing a description, reproduction steps and a suggested fix where available. Reports skip human validation, which Anthropic says had become the bottleneck; in an early test, pen testers judged 85 of 97 high and critical findings across 48 projects valid for coordinated disclosure, 11 real but not new, and one invalid. Core maintainers apply through the OSS Scanner GitHub repository, with priority for widely used projects that can absorb the volume. The same announcement names 11 founding partners, including Dragos, Nozomi Networks and Rockwell Automation, for a critical infrastructure defence programme. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>PCI SSC guidance: split agent duties and require human approval when AI touches cleartext card data</title>
+      <link>https://www.helpnetsecurity.com/2026/10/09/pci-ssc-payment-environments-ai-security-guidance/</link>
+      <guid isPermaLink="false">2026-10-11|https://www.helpnetsecurity.com/2026/10/09/pci-ssc-payment-environments-ai-security-guidance/|PCI SSC guidance: split agent duties and require human approval when AI touches cleartext card data</guid>
+      <pubDate>Sun, 11 Oct 2026 06:55:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>The PCI Security Standards Council published advisory guidance, Security Considerations for AI Systems, for payment environments. It tells organisations to scope each AI system's purpose and permissions up front ('least agency'), enforce them with controls outside the model such as identity management and network isolation, and avoid giving one agent sensitive data access, external communications and untrusted input together. It also calls for an AI inventory and bill of materials, adversarial testing before functional testing, keeping passwords and keys away from AI systems, and incident response plans that cover prompt injection and model poisoning. Useful as a ready-made control checklist for agent deployments even outside PCI scope. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>NVIDIA DCGM Exporter pprof endpoints let unauthenticated callers crash GPU monitoring</title>
+      <link>https://www.helpnetsecurity.com/2026/10/09/nvidia-dcgm-exporter-vulnerability-cve-2026-47483/</link>
+      <guid isPermaLink="false">2026-10-11|https://www.helpnetsecurity.com/2026/10/09/nvidia-dcgm-exporter-vulnerability-cve-2026-47483/|NVIDIA DCGM Exporter pprof endpoints let unauthenticated callers crash GPU monitoring</guid>
+      <pubDate>Sun, 11 Oct 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[High 8.2 · CVE-2026-47483] Researchers at Lava detailed a flaw in NVIDIA's DCGM Exporter, the GPU metrics service usually on port 9400: profiling endpoints under /debug/pprof/ hold requests open for a caller-chosen time, so many concurrent unauthenticated requests exhaust memory and kill the exporter, and can slow training or inference on the host. Their scans found over 2,000 internet-exposed exporters, about a quarter serving pprof. NVIDIA's bulletin dates from July and no attacks are reported. Upgrade to 4.8.2 or later, leave the pprof option off, and bind exporters and Prometheus to private interfaces behind firewall rules. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>Researchers propose a formula for when a chatbot's conversation tips into bad output</title>
+      <link>https://www.securityweek.com/formula-predicts-when-ai-chatbots-are-at-risk-of-turning-bad/</link>
+      <guid isPermaLink="false">2026-10-11|https://www.securityweek.com/formula-predicts-when-ai-chatbots-are-at-risk-of-turning-bad/|Researchers propose a formula for when a chatbot's conversation tips into bad output</guid>
+      <pubDate>Sun, 11 Oct 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Two George Washington University researchers describe a model in which accumulated conversation context competes inside the attention mechanism with undesirable output 'basins', letting them estimate how many acceptable outputs come before the first bad one. They report the predictions held on seven open-weight transformer models from 124 million to 12 billion parameters, for both immediate and delayed drift, and that careless prompts can cause it as well as malicious ones. They suggest a pre-output 'warning light' check and warn that drift could spread between agents. For agent operators the practical point is to test with vague and messy prompts, not only adversarial ones, before granting access. (Source: SecurityWeek)</description>
+    </item>
     <item>
       <title>Splunk Enterprise fixes unauthenticated command execution on search head cluster members</title>
       <link>https://advisory.splunk.com/advisories/SVD-2026-1001</link>

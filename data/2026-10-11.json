@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-11",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Citrix ships another NetScaler SAML fix: critical memory overflow can lead to code execution",
+      "cve": ["CVE-2026-107406"],
+      "severity": "Critical 9.5",
+      "summary": "Citrix patched a memory overflow in NetScaler ADC and Gateway that can give remote code execution or denial of service on appliances configured as a SAML service provider or identity provider; Secure Private Access Hybrid deployments using NetScaler are affected too. No exploitation had been seen at publication, but three other recent NetScaler flaws (CVE-2026-88771, CVE-2026-88772, CVE-2026-88779) are being attacked, so expect quick attention. Note that builds released for the earlier fixes (14.1-73.37 to 73.41, 13.1-64.23 to 64.28) are still vulnerable in the IdP role. Check the config for 'authentication samlAction' or 'samlIdPProfile' and upgrade to 14.1-73.46, 13.1-64.29, 14.1-73.46 FIPS or 13.1-37.283 FIPS/NDcPP.",
+      "source": "The Hacker News",
+      "published": "2026-10-09",
+      "url": "https://thehackernews.com/2026/10/citrix-patches-critical-netscaler-flaw.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Unpatched AhsayCBS backup server flaws chained for unauthenticated RCE and cryptomining",
+      "cve": ["CVE-2026-105133", "CVE-2026-105134"],
+      "severity": "Critical 9.3 (CVSS v4)",
+      "summary": "Huntress has seen attackers chain an authentication bypass with an OS command injection in the Replication Receiver of AhsayCBS since 7 October, dropping web shells and XMRig miners disguised as Microsoft Edge, with at least five organisations hit by 8 October. The CVE records point to 10.3.4 as fixed, but Huntress says that version is still exploitable, so treat it as unpatched. Take the AhsayCBS management interface off the internet (trusted IP allowlist or VPN only) and hunt for an edge.exe miner, a fake 'Microsoft Edge Update' service, Taskgmr.ps1 and the WinRing0x64.sys driver in TEMP.",
+      "source": "The Hacker News",
+      "published": "2026-10-09",
+      "url": "https://thehackernews.com/2026/10/attackers-exploit-ahsaycbs-flaws-to.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "AnyPwn: working pre-auth root exploit published for AnyDesk on Linux",
+      "cve": [],
+      "severity": "",
+      "summary": "V12 researchers released an exploit on 8 October for a heap overflow in AnyDesk for Linux, caused by a 32-bit length wrap in stream packet handling, that gives unauthenticated code execution as root over direct TCP connections on port 7070. It targets build 8.0.2, is not fully reliable (a miss crashes the service), and no CVE or vendor advisory exists; the June changelog for the fixed 8.0.3 release only mentioned a crash bug. No in-the-wild use is reported and Windows and macOS are not affected. Update Linux hosts to 8.0.3 or later (8.1.0 is current) and restrict access to TCP 7070 where you cannot.",
+      "source": "The Hacker News",
+      "published": "2026-10-09",
+      "url": "https://thehackernews.com/2026/10/researchers-publish-working-exploit-for.html"
+    },
+    {
+      "category": "appsec",
+      "title": "tensorlake npm SDK backdoored via its own repo and release workflow in latest Shai-Hulud wave",
+      "cve": [],
+      "severity": "",
+      "summary": "Malicious commits were pushed to the main branch of tensorlakeai/tensorlake under a maintainer's name on 7 October, and the project's own release workflow then published tensorlake 0.5.144 to npm with a preinstall hook that runs a Bun-based stealer. It collects npm, GitHub, AWS, Vault, Kubernetes and SSH credentials plus .env files and AI tool/MCP configs, republishes the victim's other packages with Sigstore provenance, plants fake Copilot/Dependabot workflows and writes .claude/settings.json and .vscode/tasks.json for persistence; a PowerShell monitor wipes the home directory if the stolen GitHub token is revoked. The version has been pulled from npm. Anyone who installed it should remove it, isolate the machine before revoking tokens, rotate everything reachable, and look for traffic to iseekaigogo[.]com.",
+      "source": "The Hacker News",
+      "published": "2026-10-08",
+      "url": "https://thehackernews.com/2026/10/tensorlake-npm-package-compromised-to.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Anthropic launches OSS Scanner: free, opt-in AI vulnerability scans sent to maintainers without human triage",
+      "cve": [],
+      "severity": "",
+      "summary": "Anthropic opened a free service, modelled on the OSS-Fuzz idea, that periodically scans enrolled open-source projects with its strongest models and emails maintainers reports containing a description, reproduction steps and a suggested fix where available. Reports skip human validation, which Anthropic says had become the bottleneck; in an early test, pen testers judged 85 of 97 high and critical findings across 48 projects valid for coordinated disclosure, 11 real but not new, and one invalid. Core maintainers apply through the OSS Scanner GitHub repository, with priority for widely used projects that can absorb the volume. The same announcement names 11 founding partners, including Dragos, Nozomi Networks and Rockwell Automation, for a critical infrastructure defence programme.",
+      "source": "Help Net Security",
+      "published": "2026-10-09",
+      "url": "https://www.helpnetsecurity.com/2026/10/09/anthropic-oss-scanner-ai-security-scans/"
+    },
+    {
+      "category": "ai",
+      "title": "PCI SSC guidance: split agent duties and require human approval when AI touches cleartext card data",
+      "cve": [],
+      "severity": "",
+      "summary": "The PCI Security Standards Council published advisory guidance, Security Considerations for AI Systems, for payment environments. It tells organisations to scope each AI system's purpose and permissions up front ('least agency'), enforce them with controls outside the model such as identity management and network isolation, and avoid giving one agent sensitive data access, external communications and untrusted input together. It also calls for an AI inventory and bill of materials, adversarial testing before functional testing, keeping passwords and keys away from AI systems, and incident response plans that cover prompt injection and model poisoning. Useful as a ready-made control checklist for agent deployments even outside PCI scope.",
+      "source": "Help Net Security",
+      "published": "2026-10-09",
+      "url": "https://www.helpnetsecurity.com/2026/10/09/pci-ssc-payment-environments-ai-security-guidance/"
+    },
+    {
+      "category": "ai",
+      "title": "NVIDIA DCGM Exporter pprof endpoints let unauthenticated callers crash GPU monitoring",
+      "cve": ["CVE-2026-47483"],
+      "severity": "High 8.2",
+      "summary": "Researchers at Lava detailed a flaw in NVIDIA's DCGM Exporter, the GPU metrics service usually on port 9400: profiling endpoints under /debug/pprof/ hold requests open for a caller-chosen time, so many concurrent unauthenticated requests exhaust memory and kill the exporter, and can slow training or inference on the host. Their scans found over 2,000 internet-exposed exporters, about a quarter serving pprof. NVIDIA's bulletin dates from July and no attacks are reported. Upgrade to 4.8.2 or later, leave the pprof option off, and bind exporters and Prometheus to private interfaces behind firewall rules.",
+      "source": "Help Net Security",
+      "published": "2026-10-09",
+      "url": "https://www.helpnetsecurity.com/2026/10/09/nvidia-dcgm-exporter-vulnerability-cve-2026-47483/"
+    },
+    {
+      "category": "ai",
+      "title": "Researchers propose a formula for when a chatbot's conversation tips into bad output",
+      "cve": [],
+      "severity": "",
+      "summary": "Two George Washington University researchers describe a model in which accumulated conversation context competes inside the attention mechanism with undesirable output 'basins', letting them estimate how many acceptable outputs come before the first bad one. They report the predictions held on seven open-weight transformer models from 124 million to 12 billion parameters, for both immediate and delayed drift, and that careless prompts can cause it as well as malicious ones. They suggest a pre-output 'warning light' check and warn that drift could spread between agents. For agent operators the practical point is to test with vague and messy prompts, not only adversarial ones, before granting access.",
+      "source": "SecurityWeek",
+      "published": "2026-10-09",
+      "url": "https://www.securityweek.com/formula-predicts-when-ai-chatbots-are-at-risk-of-turning-bad/"
+    }
+  ]
+}
