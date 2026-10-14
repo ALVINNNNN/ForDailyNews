@@ -6,7 +6,63 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Attackers dropped web shells on Nextcloud servers through a command-injection bug in the built-in Collabora CODE app</title>
+      <link>https://thehackernews.com/2026/10/hackers-backdoor-nextcloud-servers.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/hackers-backdoor-nextcloud-servers.html|Attackers dropped web shells on Nextcloud servers through a command-injection bug in the built-in Collabora CODE app</guid>
+      <pubDate>Thu, 15 Oct 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical (exploited) · CVE-2026-110447] The optional richdocumentscode app (Collabora Online Built-in CODE Server) passed request text into a double-quoted bash command in proxy.php, so an unauthenticated request could run commands as the web server user whenever the local document server was down, such as during a restart or crash. The CVE record says it was exploited in September and October 2026; attackers planted one-line PHP shells named shx*.php and probed for password and crypto wallet files. Upgrade to 26.4.303 or later (it needs Nextcloud 30+) or uninstall the app, since disabling it does not help. Then search the app folder for shx*.php, review logs back to September 10 for proxy.php?status requests containing $( or ${IFS}, block 139.28.18[.]122 and 89.38.98[.]50, and rotate anything the web server account could read. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Update: CISA adds the Ivanti Connect Secure zero-day to KEV with an Oct 16 deadline as honeypots log 105 exploit attempts</title>
+      <link>https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html|Update: CISA adds the Ivanti Connect Secure zero-day to KEV with an Oct 16 deadline as honeypots log 105 exploit attempts</guid>
+      <pubDate>Thu, 15 Oct 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High 8.6 (exploited) · CVE-2026-104935] Following yesterday's Volexity report, CISA put CVE-2026-104935 in its Known Exploited Vulnerabilities catalog on October 13 and gave federal agencies until October 16 to fix it. Previdian says its honeypots logged 105 attempts from 50 IPs by October 14, abusing the X-DSCGI-PATH header to reach an internal CGI handler and upload Perl scripts disguised as ZIP files, and expects weaponised attacks to follow. Upgrade Connect Secure now; CISA says checking for compromise needs network and memory forensics, and a compromised box should be factory reset or rebuilt with every stored password, certificate and API key replaced. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Public PoC for 'Vghost' Linux vhost bug gives local root and, in some setups, a guest-to-host escape</title>
+      <link>https://thehackernews.com/2026/10/ai-found-linux-kernel-flaw-gives-local.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/ai-found-linux-kernel-flaw-gives-local.html|Public PoC for 'Vghost' Linux vhost bug gives local root and, in some setups, a guest-to-host escape</guid>
+      <pubDate>Thu, 15 Oct 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High 8.8 (kernel.org) · CVE-2026-74580] Tencent Zhuque Lab, working with its Corvus AI multi-agent system, found a vhost flaw in Linux kernels 4.11 through 7.2-rc4 that gives a local user arbitrary kernel read/write and root. When a virtio device sits behind a virtual IOMMU with vhost in device-IOTLB mode, an untrusted guest can also write out of bounds into the host's QEMU process. Working demos are now public, although no attacks have been reported. Install a fixed kernel (e.g. 6.1.183, 6.6.152, 6.12.104, 6.18.45, 7.1.9, or your vendor's backport) and reboot; until then remove world access to /dev/vhost-net and /dev/vhost-vsock. The guest-escape path has no workaround. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>curl 8.23.0 fixes an HTTP/2 upload use-after-free that a malicious server can turn into client code execution</title>
+      <link>https://thehackernews.com/2026/10/curl-patches-http2-upload-flaw-after.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/curl-patches-http2-upload-flaw-after.html|curl 8.23.0 fixes an HTTP/2 upload use-after-free that a malicious server can turn into client code execution</guid>
+      <pubDate>Thu, 15 Oct 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[High (curl rating) · CVE-2026-92392] curl and libcurl 8.12.0 through 8.22.0 can free a transfer handle and keep using it when a malicious HTTP/2 server stalls an upload of about 135KB and then resets the stream. The reporter, credited as Luna with Claude from Anthropic, built a working client-side code-execution exploit, but it needs a precise heap layout and timing, and maintainer Daniel Stenberg says the likely real-world result is a crash; no attacks are known. Update to 8.23.0 (or 8.14.3, 8.16.2, 8.20.2, or Debian DSA-6558-1) and check for libcurl bundled into containers and apps. If you cannot update yet, force HTTP/1.1 for uploads. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>SAP Cloud SDK for Python flaw scored CVSS 10 lets a spoofed tenant subdomain steal OAuth2 client secrets</title>
+      <link>https://thehackernews.com/2026/10/sap-discloses-critical-cvss-10-flaw-in.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/sap-discloses-critical-cvss-10-flaw-in.html|SAP Cloud SDK for Python flaw scored CVSS 10 lets a spoofed tenant subdomain steal OAuth2 client secrets</guid>
+      <pubDate>Thu, 15 Oct 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical 10.0 · CVE-2026-89111] Multi-tenant BTP applications built with SAP's Python Cloud SDK, which SAP pitches for building AI agents, can be tricked into sending their OAuth2 token request, including the client ID and secret, to a server the attacker controls by setting tenant_subdomain. SAP's advisory names 0.45.2 as the fix, but The Hacker News found that 0.53.0 through 0.55.0 skip the check again on some call paths, and the 0.36 line has no fix. No attacks are reported. Move to 0.55.1 or later, validate tenant subdomains against an allowlist before they reach the SDK, and consider rotating BTP client credentials. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>XBOW used a public OpenAI model to build a $250,000 Chrome full-chain exploit in six days</title>
+      <link>https://thehackernews.com/2026/10/researchers-used-public-openai-model-to.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/researchers-used-public-openai-model-to.html|XBOW used a public OpenAI model to build a $250,000 Chrome full-chain exploit in six days</guid>
+      <pubDate>Thu, 15 Oct 2026 06:55:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[CVE-2026-85045 · CVE-2026-78952] XBOW researchers directed agents running OpenAI's GPT-5.6 Sol to build a three-bug chain (V8, the animated WebP decoder, and Crashpad) that escaped both of Chrome's sandboxes and ran code on Windows when the victim simply loaded a page. The work took six days and about $40,000 in AI usage, and it earned Google's top full-chain reward. Humans chose the targets and assembled the pieces, and the bugs were never used against real users. All three are fixed, so make sure Chrome has restarted onto 152.0.7977.82 or later. The bigger lesson is that a full browser chain no longer needs months of expert effort, so expect patch-to-exploit windows to keep shrinking. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>LMCache KV-cache server for vLLM still has no fix for an unauthenticated pickle RCE</title>
+      <link>https://thehackernews.com/2026/10/unpatched-critical-lmcache-flaw-lets.html</link>
+      <guid isPermaLink="false">2026-10-15|https://thehackernews.com/2026/10/unpatched-critical-lmcache-flaw-lets.html|LMCache KV-cache server for vLLM still has no fix for an unauthenticated pickle RCE</guid>
+      <pubDate>Thu, 15 Oct 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[Critical 9.8 (unpatched) · CVE-2026-105192] JFrog disclosed that LMCache's multiprocess cache server listens on an unauthenticated ZeroMQ socket and calls pickle on attacker-supplied bytes before checking the message type, so one crafted message runs code. Official images run it as root. Versions 0.3.9 through 0.5.5 and the 0.5.6 release candidates are affected, a public PoC exists, and as of this week there is still no patched release. No attacks have been reported. Keep the server on localhost or an isolated network, firewall port 5555, drop hostNetwork from the example Kubernetes manifests, and run it as non-root. Single-process LMCache inside vLLM does not open the port. (Source: The Hacker News)</description>
+    </item>
     <item>
       <title>October Patch Tuesday: record 1,400+ fixes, with a Windows Shell Mark-of-the-Web bypass already exploited</title>
       <link>https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/</link>
