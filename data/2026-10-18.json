@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-18",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "CISA adds FortiOS auto-script path traversal used to plant the PEERSTITCH implant to KEV; federal deadline Oct 19",
+      "cve": ["CVE-2025-61624"],
+      "severity": "Actively exploited",
+      "summary": "CISA's Oct 16 KEV update includes a path traversal bug in the FortiOS auto-script engine that attackers abused to drop a new in-memory implant, PEERSTITCH; Palo Alto Networks researchers tied the activity to a FortiManager-driven intrusion that exposed configuration for more than 500 firewalls. The same update formally listed the BeyondTrust Remote Support bypass (CVE-2026-102764) covered yesterday, and both carry an Oct 19 remediation deadline for US agencies. Patch FortiOS per Fortinet's advisory, keep FortiManager and firewall management interfaces off the internet, and rotate credentials and certificates held on management platforms if you suspect exposure.",
+      "source": "Security Affairs",
+      "published": "2026-10-17",
+      "url": "https://securityaffairs.com/201178/security/u-s-cisa-adds-fortinet-multiple-products-and-beyondtrust-remote-support-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: public PoC lands for GitLab's CVSS 10 CI/CD regex compiler RCE",
+      "cve": ["CVE-2026-97229"],
+      "severity": "Critical 10.0",
+      "summary": "A researcher has published working exploit code for the integer overflow in GitLab's CI/CD regular-expression compiler, patched on Oct 12. The chain needs only the ability to push a branch to a public project, followed by an unauthenticated request to the CI lint endpoint, and runs commands as the git user; no in-the-wild exploitation is reported yet. Self-managed CE/EE instances should be on 19.2.8, 19.3.5, 19.4.2 or later now (GitLab.com and Dedicated are already covered), and admins should review recent CI configuration and branch changes.",
+      "source": "Cyber Security News",
+      "published": "2026-10-16",
+      "url": "https://cybersecuritynews.com/poc-gitlab-rce-vulnerability/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Citizen Lab: Candiru spyware reached targets zero-click through rigged ad campaigns",
+      "cve": [],
+      "severity": "",
+      "summary": "Citizen Lab describes a technique it calls AdFection, in which ads carrying attacker scripts only had to render on a device to start a Candiru infection; at least 45 Al Jazeera devices were targeted in 2024-2025, and a Candiru DLL was recovered from one Windows machine. Tainted ads were seen across roughly 75,000 apps and 120,000 websites, though those figures are exposure, not infections, and ad platforms have since removed the accounts and blocked the domains. High-risk users such as journalists and executives should run ad and script blocking on their devices, and defenders should treat ad networks as a delivery channel in their threat models.",
+      "source": "BleepingComputer",
+      "published": "2026-10-16",
+      "url": "https://www.bleepingcomputer.com/news/security/zero-click-attacks-used-targeted-ads-to-deliver-candiru-spyware/"
+    },
+    {
+      "category": "appsec",
+      "title": "Stolen ConnectWise Cloud Backup app credential used to sign in to 173 Microsoft 365 tenants",
+      "cve": [],
+      "severity": "",
+      "summary": "Attackers obtained a credential for the ConnectWise Cloud Backup (formerly SkyKick) multi-tenant app and used it on Oct 15 to pull Microsoft Graph tokens with broad mailbox, OneDrive, SharePoint, Teams and directory access; Huntress confirmed sign-ins in 173 tenants, and in one case a related ConnectWise app added itself to Global Administrator and planted secrets on other apps. ConnectWise has shut off the app's access and says backup data shows no sign of compromise. If the app is consented in your tenant, disable it, review service principal sign-ins for app ID 506e08f9-6e9a-4da4-942b-a099a03644ae and from 144.172.64[.]128, and audit any new app credentials or role changes since Oct 13.",
+      "source": "The Hacker News",
+      "published": "2026-10-17",
+      "url": "https://thehackernews.com/2026/10/hackers-use-compromised-connectwise.html"
+    },
+    {
+      "category": "ai",
+      "title": "Underground tool runs autonomous pentests on victims' stolen OpenAI, Anthropic and Google API keys",
+      "cve": [],
+      "severity": "",
+      "summary": "Bitsight found a criminal forum seller offering MONST3R-AI, an autonomous scanning tool that hosts no model of its own and instead bills its scans to stolen AI provider keys supplied by the buyer. Across 16 forums from February to August, chatter about AI agents, indirect prompt injection and MCP rose 67%, and the FakeGit campaign seeded more than 800 malicious repos dressed up as AI skills or MCP servers. Treat a leaked AI API key as seriously as a leaked cloud credential (scan for and rotate exposed keys, set spend limits), vet MCP servers and agent plugins before installing them, and require approval before local coding agents run shell commands.",
+      "source": "Help Net Security",
+      "published": "2026-10-16",
+      "url": "https://www.helpnetsecurity.com/2026/10/16/stolen-ai-api-keys-autonomous-scans/"
+    }
+  ]
+}
