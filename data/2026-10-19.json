@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-19",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Public PoC lands for exploited FortiClient EMS authentication bypass",
+      "cve": ["CVE-2026-35616"],
+      "severity": "Actively exploited",
+      "summary": "Exploit code for the FortiClient EMS authentication bypass, which Fortinet has already confirmed was abused in the wild, is now published on GitHub, so expect wider scanning and copycat attacks. Only EMS 7.4.5 and 7.4.6 are affected; the 7.2 branch is not, and FortiClient Cloud and FortiSASE were fixed on Fortinet's side. Move on-prem EMS servers to 7.4.7 or later, keep the management interface off the internet, and review EMS logs and pushed endpoint profiles for unauthorized changes.",
+      "source": "Cyber Security News",
+      "published": "2026-10-15",
+      "url": "https://cybersecuritynews.com/poc-released-for-forticlient-ems-vulnerability/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Calif publishes full OpenBSD root exploit chaining a 37-year-old shared-memory bug",
+      "cve": [],
+      "severity": "Local privilege escalation, PoC public",
+      "summary": "Researchers at Calif released a working local-to-root exploit for OpenBSD 7.9 that wraps a shared-memory attach counter to trigger a use-after-free, then corrupts page-table entries to defeat SMAP, SMEP and KARL without needing an info leak. No CVEs were assigned and there is no sign of in-the-wild use, but code is now public. Both fixes are already out via syspatch (errata 018 and the security errata 026, which also cover 7.8), so make sure OpenBSD hosts, especially multi-user boxes and firewalls, are fully patched.",
+      "source": "The Hacker News",
+      "published": "2026-10-16",
+      "url": "https://thehackernews.com/2026/10/researchers-demonstrate-openbsd-root.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: ConnectWise pulls Cloud Backup offline and disables seven app identities after Microsoft 365 tenant breach",
+      "cve": [],
+      "severity": "Supply chain incident",
+      "summary": "Following the stolen-credential sign-ins covered yesterday, ConnectWise revoked the certificates behind Cloud Backup on Oct 17, halting scheduled backups and restores, disabled the backup app plus six Cloud Management identities, and took SaaS Security and Cloud Management offline. Huntress now counts nearly 1,000 Entra tenants touched by the suspicious address, with about 300 successful sign-ins, and says some Cloud Management apps did not appear disabled. ConnectWise warns that already-issued tokens may stay valid and changes inside tenants are not rolled back, so MSPs and customers should review sign-ins since Oct 13 (including from 144.172.64[.]128), consent grants, app credentials, mailbox rules and forwarding, and keep the affected apps disabled.",
+      "source": "The Hacker News",
+      "published": "2026-10-18",
+      "url": "https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html"
+    },
+    {
+      "category": "ai",
+      "title": "OpenCode breach may have exposed users' stored OpenAI and Anthropic API keys",
+      "cve": [],
+      "severity": "Credential exposure",
+      "summary": "The OpenCode AI coding tool says attackers reached a legacy system and that third-party model provider keys saved in some Console workspaces may have been exposed, affecting about 1.4% of Console users; it ties the incident to a large distillation campaign and is working with Anthropic, OpenAI and Google. The investigation is still open and the company has not explained the entry point or whether keys were used. Anyone who received the notice should revoke and reissue the linked provider keys, update dependent apps, and check provider usage and billing for unexpected calls.",
+      "source": "Cyber Security News",
+      "published": "2026-10-18",
+      "url": "https://cybersecuritynews.com/opencode-security-breach/"
+    },
+    {
+      "category": "ai",
+      "title": "Chrome 155 fixes 10 flaws, including a high-severity DOM bug reported with Claude's help",
+      "cve": ["CVE-2026-110922", "CVE-2026-110913"],
+      "severity": "Critical (Prerender UAF)",
+      "summary": "Google's latest Chrome stable update (155.0.8059.84/.85) patches ten memory-safety issues, led by a critical use-after-free in Prerender and several high-severity V8 bugs. One of the high-severity flaws, a DOM memory corruption issue, was reported by an Anthropic researcher with Claude's assistance, another sign of AI-assisted bug hunting feeding vendor patch cycles. None are reported as exploited, but browser memory bugs are prime exploit targets, so push the update across managed fleets and confirm relaunches.",
+      "source": "Cyber Security News",
+      "published": "2026-10-17",
+      "url": "https://cybersecuritynews.com/google-fixes-10-chrome-vulnerabilities/"
+    }
+  ]
+}
