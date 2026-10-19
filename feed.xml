@@ -6,7 +6,79 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 19 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Attackers abuse SiteGuard Server Edition WAF statistics bug to run commands as root or SYSTEM</title>
+      <link>https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/</link>
+      <guid isPermaLink="false">2026-10-20|https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/|Attackers abuse SiteGuard Server Edition WAF statistics bug to run commands as root or SYSTEM</guid>
+      <pubDate>Tue, 20 Oct 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical (vendor), exploited · CVE-2026-106931] An OS command injection in the statistics feature of SiteGuard Server Edition, the host-based WAF for Apache, Nginx and IIS, gives attackers root or SYSTEM execution, and the vendor confirms it has been abused in the wild. The feature is on by default; fixed builds are 8.00 Update 5 (and 7.00 Update 6 on FreeBSD), with a file-replacement patch for hosts that cannot upgrade, including end-of-life versions. Download the product's diagnostic information before patching, since remediation can wipe attack traces, then upgrade and hunt for signs of compromise. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Signed Siemens Software Center binary used to side-load malware in ClickFix campaigns</title>
+      <link>https://www.securityweek.com/siemens-software-center-vulnerability-exploited-in-clickfix-malware-attacks/</link>
+      <guid isPermaLink="false">2026-10-20|https://www.securityweek.com/siemens-software-center-vulnerability-exploited-in-clickfix-malware-attacks/|Signed Siemens Software Center binary used to side-load malware in ClickFix campaigns</guid>
+      <pubDate>Tue, 20 Oct 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High 8.4 (CVSS v4), exploited · CVE-2026-110936] Siemens confirmed that attackers are bundling a legitimate, validly signed copy of Software Center with malicious DLLs that it loads from its own folder, delivered through the Romulus ClickFix lure platform. Siemens says none of its systems or update channels were breached; the issue is an unsafe DLL search path. Update to 4.0.9.8 or later (installed copies update on next launch), and lean on behavioral detection and Siemens' published IOCs because hash-based blocking won't catch a signed binary. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Researcher publishes over-the-air root exploits for unpatched Broadcom Wi-Fi WPS code in routers</title>
+      <link>https://thehackernews.com/2026/10/unpatched-broadcom-wi-fi-flaw-lets.html</link>
+      <guid isPermaLink="false">2026-10-20|https://thehackernews.com/2026/10/unpatched-broadcom-wi-fi-flaw-lets.html|Researcher publishes over-the-air root exploits for unpatched Broadcom Wi-Fi WPS code in routers</guid>
+      <pubDate>Tue, 20 Oct 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[No CVE, no patch] Quentin Kaiser disclosed a memory-corruption bug in how Broadcom's WPS implementation reassembles fragmented setup messages, letting anyone in radio range run code as root on affected routers and gateways without the Wi-Fi password. No CVE has been assigned and there is no fix; devices on eCos-based chips (BCM3380, BCM3383, BCM33834) are effectively permanent, while Linux-based chips could be fixed by vendors. No in-the-wild attacks are reported, but working PoCs exist, so watch for vendor firmware, plan replacement of eCos-based gear, and use the researcher's YARA rules for triage. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Rank Math PRO 3.0.123 shipped with a backdoor from the vendor's own download site</title>
+      <link>https://bleepingcomputer.com/news/security/wordpress-seo-plugin-rank-math-compromised-to-backdoor-websites</link>
+      <guid isPermaLink="false">2026-10-20|https://bleepingcomputer.com/news/security/wordpress-seo-plugin-rank-math-compromised-to-backdoor-websites|Rank Math PRO 3.0.123 shipped with a backdoor from the vendor's own download site</guid>
+      <pubDate>Tue, 20 Oct 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Supply chain compromise] Copies of the Rank Math PRO WordPress SEO plugin downloaded from the vendor between Oct 15 20:02 UTC and Oct 16 07:12 UTC were trojanized; on activation they plant a self-restoring backdoor (wp-includes/class-wp-cache-util.php), expose secrets and talk to rank1cdn[.]com. The free WordPress.org version is unaffected and 3.0.124 is clean, but updating or deactivating does not remove the implant. If 3.0.123 was activated, treat the site as compromised: restore from a clean backup or remove the plugin and hunt for wpsupport_ admin accounts and rogue cron jobs, rotate all keys and salts, and block the domain. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>F5 ships out-of-band fixes for three critical NGINX memory-safety bugs</title>
+      <link>https://www.bleepingcomputer.com/news/security/f5-releases-out-of-band-patches-for-critical-nginx-vulnerabilities/</link>
+      <guid isPermaLink="false">2026-10-20|https://www.bleepingcomputer.com/news/security/f5-releases-out-of-band-patches-for-critical-nginx-vulnerabilities/|F5 ships out-of-band fixes for three critical NGINX memory-safety bugs</guid>
+      <pubDate>Tue, 20 Oct 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical · CVE-2026-15176 · CVE-2026-97205 · CVE-2026-93479] F5 patched two flaws in NGINX's HTTP/3 module and one in the map directive that let unauthenticated remote attackers crash worker processes and, in some non-default configurations, possibly execute code. NGINX Open Source, NGINX Plus, Ingress Controller, Gateway Fabric and Instance Manager are affected; no exploitation has been reported. Apply the updates from F5 advisories K000162416, K000162608 and K000162607, or use the interim mitigations (avoid alias with $request_filename, disable AIO or SSI, use named regex captures). (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Drupal fixes critical RCE in core Field UI and the Entity List module, warns exploits could follow quickly</title>
+      <link>https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaws-warns-exploits-may-emerge-soon/</link>
+      <guid isPermaLink="false">2026-10-20|https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaws-warns-exploits-may-emerge-soon/|Drupal fixes critical RCE in core Field UI and the Entity List module, warns exploits could follow quickly</guid>
+      <pubDate>Tue, 20 Oct 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical · CVE-2026-108097 · CVE-2026-108099] Drupal's security team released fixes for a remote code execution flaw in core's Field UI module (SA-CORE-2026-014) and one in the contributed Entity List module (SA-CONTRIB-2026-218); both need contributed or custom code to be reachable, and at least one path for each needs no authentication. No exploitation is confirmed yet, but the team expects exploits within hours or days. Upgrade to core 10.6.19, 11.3.19 or 11.4.10 and Entity List 3.0.10, or uninstall field_ui if you cannot patch; unsupported older branches will not get fixes. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Fake Web3 accelerator's npm tools hijack AI agent traffic and register rogue MCP servers</title>
+      <link>https://thehackernews.com/2026/10/fake-web3-accelerator-uses-npm-packages.html</link>
+      <guid isPermaLink="false">2026-10-20|https://thehackernews.com/2026/10/fake-web3-accelerator-uses-npm-packages.html|Fake Web3 accelerator's npm tools hijack AI agent traffic and register rogue MCP servers</guid>
+      <pubDate>Tue, 20 Oct 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[Malicious packages] Elastic Security Labs tracks a campaign (REF8801) posing as 'Apex Accelerator' that pushed npm packages such as @apexacc/cli, @apexacc/audit, @apexfdn/apex, @copilot-mcp/apex and @apexfdn/copilot-mcp to crypto founders, dropping a Go stealer on Windows and the CloudSyncD backdoor on macOS. The packages can also reroute OpenRouter LLM traffic and add an attacker-controlled MCP server to agent configs, exposing prompts, code and tool output and allowing instruction injection. Check lockfiles for these packages, review agent and MCP configs for unknown servers, block domains like apexaccs[.]org, apexfdn[.]xyz and ccmihr[.]com, and treat any host that ran them as compromised. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>MITRE ATT&amp;CK v20 adds techniques for prompt injection and abuse of enterprise AI agents</title>
+      <link>https://www.securityweek.com/mitre-attck-v20-catalogs-ai-abuse-mfa-bypass-water-utility-attacks/</link>
+      <guid isPermaLink="false">2026-10-20|https://www.securityweek.com/mitre-attck-v20-catalogs-ai-abuse-mfa-bypass-water-utility-attacks/|MITRE ATT&amp;CK v20 adds techniques for prompt injection and abuse of enterprise AI agents</guid>
+      <pubDate>Tue, 20 Oct 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>The latest ATT&amp;CK release splits prompt injection into direct and indirect techniques, adds a technique for turning an organization's own AI agents against it to steal data, and covers poisoning web content to sway AI assistants and disrupting LLM-assisted malware analysis. The compromised-dependencies sub-technique now includes IDE and coding-agent configuration files. Detection and red teams should map their AI agent telemetry and test cases to the new IDs. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Microsoft and NVIDIA paper: running open-weight models shifts safety controls onto the enterprise</title>
+      <link>https://www.helpnetsecurity.com/2026/10/19/open-weight-ai-model-risks-microsoft-nvidia/</link>
+      <guid isPermaLink="false">2026-10-20|https://www.helpnetsecurity.com/2026/10/19/open-weight-ai-model-risks-microsoft-nvidia/|Microsoft and NVIDIA paper: running open-weight models shifts safety controls onto the enterprise</guid>
+      <pubDate>Tue, 20 Oct 2026 06:52:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>A joint Microsoft and NVIDIA paper, the first in a series, argues that once model weights are in an organization's hands the provider's safeguards no longer apply, and that tampered, repackaged or fine-tuned models can carry backdoors while still performing normally. It recommends verifying model provenance with cryptographic signatures, not trusting behavioral testing alone, and keeping fast-to-update layered controls such as input filtering, output moderation and access limits. AI platform teams can use its 30-item risk taxonomy as a checklist for model intake. (Source: Help Net Security)</description>
+    </item>
     <item>
       <title>Public PoC lands for exploited FortiClient EMS authentication bypass</title>
       <link>https://cybersecuritynews.com/poc-released-for-forticlient-ems-vulnerability/</link>
@@ -814,62 +886,6 @@
       <pubDate>Tue, 06 Oct 2026 06:53:00 +0800</pubDate>
       <category>AI security</category>
       <description>Regulators held an emergency meeting after breaches at Shinhan Bank (about 25,000 customers), KB Kookmin Bank (119,000 card records) and Hana Bank, the last through a compromised sales-support system. A server linked to the attacks served a page containing a string associated with ARTEX AI, an open-source system that uses agents to automate reconnaissance, vulnerability discovery and exploitation, though authorities have not confirmed it was used and no CVEs are named. Financial firms were told to inspect internet-facing systems, cut exposed information and strengthen authentication; the wider point is that automated attack tooling shortens the time exposed peripheral systems stay unfound. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>CISA adds the Zammad RCE-to-root chain used in the DIVD breach to KEV</title>
-      <link>https://securityaffairs.com/200248/security/u-s-cisa-adds-zammad-gmbh-zammad-flaws-to-its-known-exploited-vulnerabilities-catalog.html</link>
-      <guid isPermaLink="false">2026-10-05|https://securityaffairs.com/200248/security/u-s-cisa-adds-zammad-gmbh-zammad-flaws-to-its-known-exploited-vulnerabilities-catalog.html|CISA adds the Zammad RCE-to-root chain used in the DIVD breach to KEV</guid>
-      <pubDate>Mon, 05 Oct 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.4 · CVE-2026-102489 · CVE-2026-102490] Update to the Zammad story from 3 Oct: CISA has now listed both bugs as known exploited, a session fixation flaw that leads to code execution as the zammad user and a privilege escalation to root. The reported affected ranges are Zammad 6.3.0-6.5.4 and 7.0.0-7.1.3 for the first and 1.5.0 through 7.1.0-alpha for the second, and the federal remediation deadline is 5 October. Follow the vendor's guidance to move to a fixed version 7 release or take the helpdesk offline, and review instances that were internet-facing since late September for signs of compromise. (Source: Security Affairs)</description>
-    </item>
-    <item>
-      <title>Loom for AWS agent platform: unauthenticated super-admin flaw, plus SageMaker Unified Studio command injection</title>
-      <link>https://gbhackers.com/aws-ai-agent-vulnerabilities</link>
-      <guid isPermaLink="false">2026-10-05|https://gbhackers.com/aws-ai-agent-vulnerabilities|Loom for AWS agent platform: unauthenticated super-admin flaw, plus SageMaker Unified Studio command injection</guid>
-      <pubDate>Mon, 05 Oct 2026 06:59:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>[Critical 10.0 (CVE-2026-103956) · CVE-2026-103956 · CVE-2026-103957 · CVE-2026-103958 · CVE-2026-104019] AWS fixed three bugs in Loom, its open-source AI agent orchestration platform: missing authentication that hands any caller full control of the agent control plane when no identity provider is configured (before 1.6.1), and OAuth2 token disclosure and a request-handling flaw that leaks temporary AWS credentials (both before 1.7.0). A separate OS command injection in SageMaker Distribution startup scripts could run code in other users' environments; fixes are 2.14.12, 3.9.12, 4.0.11, 4.1.11, 4.2.8, 4.3.5 and 4.4.3. Proof-of-concept code for the auth bypass is already public, so upgrade Loom to 1.7.0, configure an IdP, rotate any credentials the platform held and check CloudTrail for unexpected activity. (Source: GBHackers)</description>
-    </item>
-    <item>
-      <title>One email was enough to get code execution in the Manus AI agent via JSFuck-obfuscated prompt injection</title>
-      <link>https://salt.security/blog/how-we-hijacked-an-ai-agent-with-a-single-email</link>
-      <guid isPermaLink="false">2026-10-05|https://salt.security/blog/how-we-hijacked-an-ai-agent-with-a-single-email|One email was enough to get code execution in the Manus AI agent via JSFuck-obfuscated prompt injection</guid>
-      <pubDate>Mon, 05 Oct 2026 06:58:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Salt Labs showed that an email carrying a JSFuck-encoded JavaScript payload would be decoded and executed by Manus when the user simply asked the agent to check their inbox; guardrails blocked plain shell commands but not the obfuscated form, and the warning appeared only after execution. That gave code execution in the user's sandbox, where Gmail OAuth tokens and credentials for other connected services such as Google Drive and GitHub were readable from environment variables. Meta has patched it through its bug bounty programme; the lesson for agent deployments is to control and monitor what the agent actually does with tools and tokens instead of relying on prompt filtering. (Source: Salt Security)</description>
-    </item>
-    <item>
-      <title>Fortra patches three critical BoKS flaws, including predictable AD service account passwords</title>
-      <link>https://securityweek.com/fortra-patches-critical-vulnerabilities-in-boks</link>
-      <guid isPermaLink="false">2026-10-05|https://securityweek.com/fortra-patches-critical-vulnerabilities-in-boks|Fortra patches three critical BoKS flaws, including predictable AD service account passwords</guid>
-      <pubDate>Mon, 05 Oct 2026 06:57:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.9 · CVE-2026-79901 · CVE-2026-79898 · CVE-2026-12627] Fortra fixed eight bugs in BoKS, its central access-control manager for Unix and Linux fleets. The critical ones are AD service account passwords derived from a timestamp-seeded pseudo-random sequence that can be reproduced offline (9.9), a stack buffer overflow in autoregistration reachable remotely (9.8), and command injection in crlserver that lets an authenticated user run commands as root on the BoKS Master (9.1). No exploitation has been reported; the article does not list fixed versions, so take them from Fortra's security advisories, patch, and rotate affected AD service account passwords. (Source: SecurityWeek)</description>
-    </item>
-    <item>
-      <title>Ten npm dependency-confusion packages mimic internal Amazon Alexa/APL project names</title>
-      <link>https://github.com/ossf/malicious-packages/pull/1571</link>
-      <guid isPermaLink="false">2026-10-05|https://github.com/ossf/malicious-packages/pull/1571|Ten npm dependency-confusion packages mimic internal Amazon Alexa/APL project names</guid>
-      <pubDate>Mon, 05 Oct 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>The OpenSSF malicious-packages database added ten npm packages published by one account on 30 September within about 90 seconds, all at version 100.0.0, with names such as figma-to-apl, apl-rive-renderer and okra-cloud-cdk that look like internal project names. A preinstall script sends hostname, username, working directory, OS, architecture, Node version and npm registry configuration to an API Gateway endpoint at s85r5k14qk.execute-api.us-east-1.amazonaws[.]com. It is reconnaissance-only so far, but it is a reminder to scope internal package names to a private registry, pin versions and block install scripts in CI. (Source: OpenSSF malicious-packages (GitHub))</description>
-    </item>
-    <item>
-      <title>OpenAI describes a large campaign to extract hidden model reasoning for distillation</title>
-      <link>https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html</link>
-      <guid isPermaLink="false">2026-10-05|https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html|OpenAI describes a large campaign to extract hidden model reasoning for distillation</guid>
-      <pubDate>Mon, 05 Oct 2026 06:55:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>OpenAI says it shut down a coordinated effort that coaxed its models into exposing protected reasoning so the output could train competing models; it ran from 1 July, peaked at about 16,000 attempts from more than 4,000 users on 24-25 July, and was cut off on 28 July. OpenAI links a core cluster to people associated with Moonshot AI, without publishing technical evidence. Related research found encrypted reasoning traces could be replayed across sessions, which OpenAI has closed; if you host models, treat reasoning output and replayable state as an abuse and data-leak surface and monitor for bulk, patterned extraction. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Background: official MCP Python SDK let a malicious server redirect OAuth secrets to its own endpoint</title>
-      <link>https://thehackernews.com/2026/09/official-mcp-python-sdk-flaw-can-let.html</link>
-      <guid isPermaLink="false">2026-10-05|https://thehackernews.com/2026/09/official-mcp-python-sdk-flaw-can-let.html|Background: official MCP Python SDK let a malicious server redirect OAuth secrets to its own endpoint</guid>
-      <pubDate>Mon, 05 Oct 2026 06:54:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>[High 7.5] Not previously covered here: the SDK's OAuth client did not check that the token endpoint advertised by an MCP server belonged to the expected login service, so a hostile server could collect the client secret, authorization code and PKCE verifier. Versions 1.9.1-1.29.1 and 2.0.0-2.1.1 are affected, fixed in 1.30.0 and 2.2.0; no CVE had been assigned at publication and no attacks are known. Upgrade, set the issuer parameter on client-credentials and private-key-JWT providers, rotate client secrets and clear stored OAuth registrations. (Source: The Hacker News)</description>
     </item>
   </channel>
 </rss>

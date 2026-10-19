@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-20",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Attackers abuse SiteGuard Server Edition WAF statistics bug to run commands as root or SYSTEM",
+      "cve": ["CVE-2026-106931"],
+      "severity": "Critical (vendor), exploited",
+      "summary": "An OS command injection in the statistics feature of SiteGuard Server Edition, the host-based WAF for Apache, Nginx and IIS, gives attackers root or SYSTEM execution, and the vendor confirms it has been abused in the wild. The feature is on by default; fixed builds are 8.00 Update 5 (and 7.00 Update 6 on FreeBSD), with a file-replacement patch for hosts that cannot upgrade, including end-of-life versions. Download the product's diagnostic information before patching, since remediation can wipe attack traces, then upgrade and hunt for signs of compromise.",
+      "source": "BleepingComputer",
+      "published": "2026-10-18",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Signed Siemens Software Center binary used to side-load malware in ClickFix campaigns",
+      "cve": ["CVE-2026-110936"],
+      "severity": "High 8.4 (CVSS v4), exploited",
+      "summary": "Siemens confirmed that attackers are bundling a legitimate, validly signed copy of Software Center with malicious DLLs that it loads from its own folder, delivered through the Romulus ClickFix lure platform. Siemens says none of its systems or update channels were breached; the issue is an unsafe DLL search path. Update to 4.0.9.8 or later (installed copies update on next launch), and lean on behavioral detection and Siemens' published IOCs because hash-based blocking won't catch a signed binary.",
+      "source": "SecurityWeek",
+      "published": "2026-10-19",
+      "url": "https://www.securityweek.com/siemens-software-center-vulnerability-exploited-in-clickfix-malware-attacks/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Researcher publishes over-the-air root exploits for unpatched Broadcom Wi-Fi WPS code in routers",
+      "cve": [],
+      "severity": "No CVE, no patch",
+      "summary": "Quentin Kaiser disclosed a memory-corruption bug in how Broadcom's WPS implementation reassembles fragmented setup messages, letting anyone in radio range run code as root on affected routers and gateways without the Wi-Fi password. No CVE has been assigned and there is no fix; devices on eCos-based chips (BCM3380, BCM3383, BCM33834) are effectively permanent, while Linux-based chips could be fixed by vendors. No in-the-wild attacks are reported, but working PoCs exist, so watch for vendor firmware, plan replacement of eCos-based gear, and use the researcher's YARA rules for triage.",
+      "source": "The Hacker News",
+      "published": "2026-10-19",
+      "url": "https://thehackernews.com/2026/10/unpatched-broadcom-wi-fi-flaw-lets.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Rank Math PRO 3.0.123 shipped with a backdoor from the vendor's own download site",
+      "cve": [],
+      "severity": "Supply chain compromise",
+      "summary": "Copies of the Rank Math PRO WordPress SEO plugin downloaded from the vendor between Oct 15 20:02 UTC and Oct 16 07:12 UTC were trojanized; on activation they plant a self-restoring backdoor (wp-includes/class-wp-cache-util.php), expose secrets and talk to rank1cdn[.]com. The free WordPress.org version is unaffected and 3.0.124 is clean, but updating or deactivating does not remove the implant. If 3.0.123 was activated, treat the site as compromised: restore from a clean backup or remove the plugin and hunt for wpsupport_ admin accounts and rogue cron jobs, rotate all keys and salts, and block the domain.",
+      "source": "BleepingComputer",
+      "published": "2026-10-19",
+      "url": "https://bleepingcomputer.com/news/security/wordpress-seo-plugin-rank-math-compromised-to-backdoor-websites"
+    },
+    {
+      "category": "appsec",
+      "title": "F5 ships out-of-band fixes for three critical NGINX memory-safety bugs",
+      "cve": ["CVE-2026-15176", "CVE-2026-97205", "CVE-2026-93479"],
+      "severity": "Critical",
+      "summary": "F5 patched two flaws in NGINX's HTTP/3 module and one in the map directive that let unauthenticated remote attackers crash worker processes and, in some non-default configurations, possibly execute code. NGINX Open Source, NGINX Plus, Ingress Controller, Gateway Fabric and Instance Manager are affected; no exploitation has been reported. Apply the updates from F5 advisories K000162416, K000162608 and K000162607, or use the interim mitigations (avoid alias with $request_filename, disable AIO or SSI, use named regex captures).",
+      "source": "BleepingComputer",
+      "published": "2026-10-19",
+      "url": "https://www.bleepingcomputer.com/news/security/f5-releases-out-of-band-patches-for-critical-nginx-vulnerabilities/"
+    },
+    {
+      "category": "appsec",
+      "title": "Drupal fixes critical RCE in core Field UI and the Entity List module, warns exploits could follow quickly",
+      "cve": ["CVE-2026-108097", "CVE-2026-108099"],
+      "severity": "Critical",
+      "summary": "Drupal's security team released fixes for a remote code execution flaw in core's Field UI module (SA-CORE-2026-014) and one in the contributed Entity List module (SA-CONTRIB-2026-218); both need contributed or custom code to be reachable, and at least one path for each needs no authentication. No exploitation is confirmed yet, but the team expects exploits within hours or days. Upgrade to core 10.6.19, 11.3.19 or 11.4.10 and Entity List 3.0.10, or uninstall field_ui if you cannot patch; unsupported older branches will not get fixes.",
+      "source": "BleepingComputer",
+      "published": "2026-10-17",
+      "url": "https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaws-warns-exploits-may-emerge-soon/"
+    },
+    {
+      "category": "ai",
+      "title": "Fake Web3 accelerator's npm tools hijack AI agent traffic and register rogue MCP servers",
+      "cve": [],
+      "severity": "Malicious packages",
+      "summary": "Elastic Security Labs tracks a campaign (REF8801) posing as 'Apex Accelerator' that pushed npm packages such as @apexacc/cli, @apexacc/audit, @apexfdn/apex, @copilot-mcp/apex and @apexfdn/copilot-mcp to crypto founders, dropping a Go stealer on Windows and the CloudSyncD backdoor on macOS. The packages can also reroute OpenRouter LLM traffic and add an attacker-controlled MCP server to agent configs, exposing prompts, code and tool output and allowing instruction injection. Check lockfiles for these packages, review agent and MCP configs for unknown servers, block domains like apexaccs[.]org, apexfdn[.]xyz and ccmihr[.]com, and treat any host that ran them as compromised.",
+      "source": "The Hacker News",
+      "published": "2026-10-19",
+      "url": "https://thehackernews.com/2026/10/fake-web3-accelerator-uses-npm-packages.html"
+    },
+    {
+      "category": "ai",
+      "title": "MITRE ATT&CK v20 adds techniques for prompt injection and abuse of enterprise AI agents",
+      "cve": [],
+      "severity": "",
+      "summary": "The latest ATT&CK release splits prompt injection into direct and indirect techniques, adds a technique for turning an organization's own AI agents against it to steal data, and covers poisoning web content to sway AI assistants and disrupting LLM-assisted malware analysis. The compromised-dependencies sub-technique now includes IDE and coding-agent configuration files. Detection and red teams should map their AI agent telemetry and test cases to the new IDs.",
+      "source": "SecurityWeek",
+      "published": "2026-10-19",
+      "url": "https://www.securityweek.com/mitre-attck-v20-catalogs-ai-abuse-mfa-bypass-water-utility-attacks/"
+    },
+    {
+      "category": "ai",
+      "title": "Microsoft and NVIDIA paper: running open-weight models shifts safety controls onto the enterprise",
+      "cve": [],
+      "severity": "",
+      "summary": "A joint Microsoft and NVIDIA paper, the first in a series, argues that once model weights are in an organization's hands the provider's safeguards no longer apply, and that tampered, repackaged or fine-tuned models can carry backdoors while still performing normally. It recommends verifying model provenance with cryptographic signatures, not trusting behavioral testing alone, and keeping fast-to-update layered controls such as input filtering, output moderation and access limits. AI platform teams can use its 30-item risk taxonomy as a checklist for model intake.",
+      "source": "Help Net Security",
+      "published": "2026-10-19",
+      "url": "https://www.helpnetsecurity.com/2026/10/19/open-weight-ai-model-risks-microsoft-nvidia/"
+    }
+  ]
+}
