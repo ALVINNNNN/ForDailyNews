@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-21",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Plex2Shell chain exploited within a day of disclosure; CISA adds four Plex Media Server CVEs to KEV",
+      "cve": ["CVE-2026-96652", "CVE-2026-96654", "CVE-2026-96655", "CVE-2026-96656"],
+      "severity": "High 8.6 (top of chain), exploited",
+      "summary": "Four Plex Media Server bugs (two SSRFs, a URL-handling flaw that leaks the owner's admin token, and a file-path flaw that drops a shared object into the Codecs folder) chain into remote code execution as the Plex service user. Attacks began the day after the October 16 write-up and PoC, installing an XMRig miner that mines to ota.proxystream[.]st plus the 'myawesomeproxy' Linux backdoor, and CISA added the flaws to KEV on October 20. Upgrade to Plex Media Server 1.43.3.10861 or later, keep the server off the open internet where you can, and check exposed hosts for unknown processes, cron or shell-script droppers and traffic to 217.60.194[.]116.",
+      "source": "The Hacker News",
+      "published": "2026-10-19",
+      "url": "https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Horizon3.ai releases PoC for unauthenticated FortiSIEM 7.5.0 path traversal leading to RCE",
+      "cve": ["CVE-2026-106173"],
+      "severity": "Critical 9.4, public PoC",
+      "summary": "A path traversal in FortiSIEM lets an unauthenticated attacker write files outside the intended directory and turn that into code execution, and Horizon3.ai has now published a working exploit. Only FortiSIEM 7.5.0 is affected (7.6 is not); the fix is 7.5.1 or later per Fortinet advisory FG-IR-26-180. No in-the-wild use is reported yet, but with an unauthenticated PoC public, upgrade now and limit network access to the SIEM's services in the meantime.",
+      "source": "The Hacker News",
+      "published": "2026-10-20",
+      "url": "https://thehackernews.com/2026/10/critical-fortisiem-flaw-gets-public.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: Unit 42 says Qilin and INC affiliates use the PAN-OS auth bypass to get VPN access past MFA, then dump DC credentials from vCenter",
+      "cve": ["CVE-2026-0257"],
+      "severity": "High 7.8, exploited (KEV)",
+      "summary": "Palo Alto Networks' Unit 42 adds INC to the ransomware crews abusing the May-patched PAN-OS and Prisma Access authentication bypass to open VPN sessions without MFA. In one intrusion the attackers went from the gateway to vCenter, turned off ESXi protections and dumped credentials offline from a domain controller's VMDK, sidestepping EDR inside the guest, and also chained the old Veeam bug CVE-2023-27532. Patch any remaining gateways, hunt for VPN sessions and RMM tools you cannot explain, and treat confirmed gateway logins as an incident rather than just a patching task.",
+      "source": "The Hacker News",
+      "published": "2026-10-20",
+      "url": "https://thehackernews.com/2026/10/qilin-and-inc-ransomware-groups-exploit.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Hijacked developer account backdoored five OVHcloud CLI releases on GitHub",
+      "cve": [],
+      "severity": "Supply chain",
+      "summary": "An attacker who had controlled an OVHcloud developer's GitHub account for months swapped locally built, secret-stealing binaries into releases v0.11.0 through v0.15.0 of the OVHcloud CLI for macOS, Linux and Windows; the CI/CD pipeline was never touched, and release immutability was switched off, so nothing stopped the edits. The tampered assets were live for about 90 minutes on October 19 before a customer report got them blocked, and researchers link the loader to the GlassWorm campaign. Anyone who ran an affected binary should treat every secret on that machine as stolen and rotate it, then move to v0.16.0; for your own projects, turn on GitHub release immutability and require signed or attested release artifacts.",
+      "source": "BleepingComputer",
+      "published": "2026-10-20",
+      "url": "https://www.bleepingcomputer.com/news/security/ovhcloud-cli-releases-backdoored-on-github-to-steal-developer-secrets/"
+    },
+    {
+      "category": "appsec",
+      "title": "Eight eMudhra intermediate CA keys leaked; Go, Firefox, certifi and webpki-roots ship emergency trust changes",
+      "cve": ["CVE-2026-111943", "CVE-2026-113470"],
+      "severity": "PKI compromise",
+      "summary": "Private keys for six eMudhra TLS intermediates and two code-signing intermediates were compromised, and Chrome, Firefox, Apple and Microsoft blocked them between October 17 and 20; Chrome saw no Certificate Transparency-logged TLS certificates under them before the block. Go 1.27.3 and 1.26.10 now refuse chains through the eight keys with no opt-out, Firefox 158.0.1 and the ESRs carry the block, and certifi 2026.10.19, webpki-roots 1.0.10 and NSS 3.131.1 drop an emSign root, while Node.js and Composer fixes are still pending. Rebuild Go services with the patched toolchain, refresh pinned CA bundles in containers and lockfiles, and check whether any partner endpoint chains to emSign roots, as those connections will start failing.",
+      "source": "The Hacker News",
+      "published": "2026-10-20",
+      "url": "https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html"
+    },
+    {
+      "category": "ai",
+      "title": "Open-source Cairn agent framework turned on 1,200+ online shops, breaching over 100 companies",
+      "cve": [],
+      "severity": "",
+      "summary": "NorForge found internet-exposed panels of Cairn, an open-source multi-agent pentest tool, that a Chinese-speaking operator had pointed at e-commerce sites with short goal prompts, letting the agents chain bugs such as unauthenticated memcached session writes, PHP object deserialization and old Zend code to plant web shell uploaders. Reuters named Deere, SharkNinja and Cummins among those hit; a successful break-in took just under a day on average and cost roughly $50 in tokens. Defenders should look for unexpected upload handlers in hidden directories, patch old framework code on storefronts, and if they run agent tooling themselves, never expose its control panel (often on port 8000) without authentication.",
+      "source": "The Hacker News",
+      "published": "2026-10-20",
+      "url": "https://thehackernews.com/2026/10/hackers-use-autonomous-ai-agents-to.html"
+    },
+    {
+      "category": "ai",
+      "title": "NIST, NSA and CISA publish incident readiness and response practices for frontier AI training and evaluation",
+      "cve": [],
+      "severity": "Guidance",
+      "summary": "The three agencies released voluntary guidance setting out ten practices across prepare, detect, respond, recover and report stages for incidents in advanced AI training and evaluation environments, including runaway or compromised agents. It stresses asset and risk inventories, least privilege and credential hygiene, continuous behavioural monitoring, isolating systems and revoking credentials during response, and root-cause analysis that goes beyond the single exploited bug. Teams running agents in production can use it as a checklist for whether their IR plan actually covers an agent that misbehaves.",
+      "source": "SecurityWeek",
+      "published": "2026-10-20",
+      "url": "https://www.securityweek.com/us-agencies-detail-incident-response-practices-for-rogue-ai-agents/"
+    },
+    {
+      "category": "ai",
+      "title": "Microsoft adds per-task agent permissions, live agent risk scores and Conditional Access for AI agents",
+      "cve": [],
+      "severity": "",
+      "summary": "Microsoft extended its Project Perception agent-security stack with Dynamic Permissions, which start agents with minimal rights and grant and expire access per task, and Dynamic Agent Risk, a running score built from identity, data, endpoint, network and runtime signals. Entra Conditional Access can now react to that score by making an agent read-only, narrowing its data or network reach, demanding human approval or halting it, and discovery now covers 60 local agent types including Claude Code, Codex and GitHub Copilot. Availability status was not stated, but the model of just-in-time, revocable agent permissions is worth applying whatever platform you use.",
+      "source": "SecurityWeek",
+      "published": "2026-10-20",
+      "url": "https://www.securityweek.com/microsoft-targets-rogue-ai-agents-with-dynamic-permissions-risk-scoring/"
+    }
+  ]
+}
