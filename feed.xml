@@ -6,7 +6,87 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 22 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Arista fixes VeloCloud Orchestrator SQL injection already being exploited</title>
+      <link>https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/</link>
+      <guid isPermaLink="false">2026-10-23|https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/|Arista fixes VeloCloud Orchestrator SQL injection already being exploited</guid>
+      <pubDate>Fri, 23 Oct 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical · CVE-2026-114625] A SQL injection in on-prem VeloCloud Orchestrator lets an attacker with a low-privileged authenticated web session escalate to operator rights and impersonate the local superuser operator, and Arista says it is under active attack. Fixed builds are 5.2.3.18, 6.1.3.10 and 6.4.2.12 or later; this is the fourth exploited Arista bug of 2026. Patch, limit the VCO web UI to admin networks, block the reported attacker IPs 74.82.197[.]86 and 38.54.50[.]151, and review web access logs and recent admin changes, preserving logs first if you suspect compromise. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Update: Amazon saw PHP2Shell exploitation attempts four days before the patches shipped</title>
+      <link>https://bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches</link>
+      <guid isPermaLink="false">2026-10-23|https://bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches|Update: Amazon saw PHP2Shell exploitation attempts four days before the patches shipped</guid>
+      <pubDate>Fri, 23 Oct 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical · CVE-2026-109618 · CVE-2026-109619] Amazon Threat Intelligence says the first attempts against the two PHP RCE bugs hit its honeypots on October 17, before the October 21 fixes, and that varied payloads point to several actors now attempting exploitation broadly. Dataminr and the PHP team say observed traffic so far is mostly scanning and non-working PoCs with no confirmed compromises, but working exploits are expected. Patch PHP now (the UK NCSC says take unpatched servers offline), and include pre-disclosure dates when reviewing logs. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>GitLab patches a second maximum-severity regex compiler bug that allows unauthenticated RCE</title>
+      <link>https://bleepingcomputer.com/news/security/gitlab-warns-of-new-max-severity-code-execution-vulnerability</link>
+      <guid isPermaLink="false">2026-10-23|https://bleepingcomputer.com/news/security/gitlab-warns-of-new-max-severity-code-execution-vulnerability|GitLab patches a second maximum-severity regex compiler bug that allows unauthenticated RCE</guid>
+      <pubDate>Fri, 23 Oct 2026 06:58:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical (max) · CVE-2026-110264] An integer overflow in GitLab's regular expression compiler could let an unauthenticated remote attacker run code on the server by getting a crafted regex compiled; it comes about ten days after a related 10.0 bug from the same researcher. Fixed CE/EE releases are 19.5.1, 19.4.3, 19.3.6, 19.2.9, 19.1.9, 19.0.10 and 18.11.13; GitLab.com is already patched. No in-the-wild exploitation is reported yet, but upgrade self-managed instances immediately, internet-facing ones first. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Railway tells all users to rotate secrets after attackers reached stored environment variables</title>
+      <link>https://bleepingcomputer.com/news/security/railway-warns-devs-to-rotate-secrets-after-potential-breach</link>
+      <guid isPermaLink="false">2026-10-23|https://bleepingcomputer.com/news/security/railway-warns-devs-to-rotate-secrets-after-potential-breach|Railway tells all users to rotate secrets after attackers reached stored environment variables</guid>
+      <pubDate>Fri, 23 Oct 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Cloud deployment platform Railway detected intrusion into systems holding customer environment variables, and some values may have been decrypted, exposing API keys and database and registry credentials. It links the breach to a wider series of attacks on AI inference providers and paused deployments while investigating, restoring builds tier by tier. If you deploy on Railway, rotate every stored variable and registry credential now and review service logs for unusual access. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Update: LiteLLM traces poisoned 1.107.0 to its release pipeline and names 1.106.2 as the clean rollback</title>
+      <link>https://bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware</link>
+      <guid isPermaLink="false">2026-10-23|https://bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware|Update: LiteLLM traces poisoned 1.107.0 to its release pipeline and names 1.106.2 as the clean rollback</guid>
+      <pubDate>Fri, 23 Oct 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>LiteLLM says its release pipeline was compromised on October 21; app code was untouched, but the packages added a .pth file and sitecustomize.py so the stealer runs whenever Python starts, including when you run pip to investigate. Malicious artifacts were live on PyPI, Docker Hub and GHCR for roughly two to two and a half hours, with exfiltration to litellm[.]dev. Inspect hosts without launching Python, rebuild affected systems from clean images on 1.106.2, and rotate all cloud, AI provider and developer secrets they held. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Cisco fixes 34 bugs, including critical root RCE in Expressway and critical Snort 3 flaws</title>
+      <link>https://www.securityweek.com/cisco-patches-34-vulnerabilities-across-multiple-products/</link>
+      <guid isPermaLink="false">2026-10-23|https://www.securityweek.com/cisco-patches-34-vulnerabilities-across-multiple-products/|Cisco fixes 34 bugs, including critical root RCE in Expressway and critical Snort 3 flaws</guid>
+      <pubDate>Fri, 23 Oct 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical · CVE-2026-76466 · CVE-2026-20236 · CVE-2026-20043 · CVE-2026-76473 · CVE-2026-76474 · CVE-2026-76475] Cisco's latest batch includes an Expressway Series bug that can let attackers run commands as root in some configurations (fixed in X15.5.20), critical issues in several Unified Communications products, and two critical Snort 3 bugs fixed in Snort 3.12.4.0 that flow into Firewall, Meraki MX and other products. Cisco says none is known to be exploited. Prioritise Expressway and Snort-based perimeter devices and check each advisory for your fixed release. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Oracle's October CPU fixes about 1,200 CVEs, 95 rated critical</title>
+      <link>https://www.securityweek.com/oracle-patches-over-1200-vulnerabilities-with-october-2026-cpu/</link>
+      <guid isPermaLink="false">2026-10-23|https://www.securityweek.com/oracle-patches-over-1200-vulnerabilities-with-october-2026-cpu/|Oracle's October CPU fixes about 1,200 CVEs, 95 rated critical</guid>
+      <pubDate>Fri, 23 Oct 2026 06:54:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Oracle's quarterly Critical Patch Update has 1,295 fixes for 1,209 unique CVEs, led by Fusion Middleware (206, most remotely exploitable without credentials), E-Business Suite, Siebel, PeopleSoft, JD Edwards, MySQL and Java SE. Oracle has not marked any as exploited, but past Oracle bugs have been weaponised quickly after release. Patch internet-facing Fusion Middleware and E-Business Suite first. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Honeypot shows attackers mining Flowise AI servers for credentials and testing prompt injection</title>
+      <link>https://gbhackers.com/flowise-ai-agents/</link>
+      <guid isPermaLink="false">2026-10-23|https://gbhackers.com/flowise-ai-agents/|Honeypot shows attackers mining Flowise AI servers for credentials and testing prompt injection</guid>
+      <pubDate>Fri, 23 Oct 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[CVE-2025-59528 · CVE-2026-41264] Sekoia watched an attacker fingerprint a Flowise 2.2.8 honeypot, list chatflows and pull stored credential records, attempt the CustomMCP and CSV Agent RCE bugs, and plant a 'System Status' chatflow calling back to hxxp://154.217.251[.]226:19999. The attacker also used prompt injection to dump system prompts and asked the agent to plan attacks on a separate real environment. Inventory exposed Flowise instances, lock down admin and credential APIs, update, and restrict agent tools and outbound traffic. (Source: GBHackers)</description>
+    </item>
+    <item>
+      <title>Backdoored speech-to-text models rewrite one target's voice into attacker commands that agents act on</title>
+      <link>https://www.helpnetsecurity.com/2026/10/22/research-speech-model-backdoor/</link>
+      <guid isPermaLink="false">2026-10-23|https://www.helpnetsecurity.com/2026/10/22/research-speech-model-backdoor/|Backdoored speech-to-text models rewrite one target's voice into attacker commands that agents act on</guid>
+      <pubDate>Fri, 23 Oct 2026 06:52:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Imperial College researchers fine-tuned Whisper, Parakeet and Qwen audio models to transcribe most people correctly but emit attacker-chosen text when one specific voice speaks; in a simulated bank, agents built on Claude models carried out an injected $5,000 transfer half or more of the time. Clean retraining mostly removed the Whisper backdoor but not Qwen's. Verify the origin of fine-tuned weights, compare them against the base model, and never let a transcript alone authorise payments. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>Anthropic uses Claude to find 94 config combinations that silently disable security controls in OSS</title>
+      <link>https://www.helpnetsecurity.com/2026/10/22/anthropic-attack-surface-reduction-open-source/</link>
+      <guid isPermaLink="false">2026-10-23|https://www.helpnetsecurity.com/2026/10/22/anthropic-attack-surface-reduction-open-source/|Anthropic uses Claude to find 94 config combinations that silently disable security controls in OSS</guid>
+      <pubDate>Fri, 23 Oct 2026 06:51:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Anthropic's Frontier Red Team ran Claude across 25 open-source projects and reported 493 attack-surface issues, including 162 risky setting combinations accepted without warning, 94 of which quietly turned a control off. Examples include hostname deny rules that stop matching when reverse DNS is off, and about 4,500 lines of excluded ML-DSA code in OpenSSH reachable before authentication, reduced in 10.6. Audit pre-auth reachable code and setting interactions in your own stacks and update OpenSSH; the technique is heading into Anthropic's OSS Scanner. (Source: Help Net Security)</description>
+    </item>
     <item>
       <title>PHP2Shell patches ship a day early as exploitation attempts and public PoCs hit the wild</title>
       <link>https://securityweek.com/php2shell-patches-land-as-first-exploitation-attempts-hit-sensors</link>
@@ -814,78 +894,6 @@
       <pubDate>Fri, 09 Oct 2026 06:52:00 +0800</pubDate>
       <category>AppSec</category>
       <description>Lightwell, the IBM and Red Hat program that backports security fixes to the older open-source versions companies actually run, says it has found and patched more than 400 new vulnerabilities in widely used Java libraries, and has made its Clearinghouse service generally available so customers can nominate dependencies for priority review. No library names, CVE IDs or severities were released, and fixes reach non-customers only when upstream projects publish them under coordinated disclosure. There is nothing to check exposure against yet, so expect a wave of Java dependency advisories and make sure your SCA tooling and update process can absorb it. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Atlassian Data Center file-read flaw now under attack within hours of a public PoC</title>
-      <link>https://www.bleepingcomputer.com/news/security/hackers-exploit-critical-atlassian-flaw-after-public-poc-release/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.bleepingcomputer.com/news/security/hackers-exploit-critical-atlassian-flaw-after-public-poc-release/|Atlassian Data Center file-read flaw now under attack within hours of a public PoC</guid>
-      <pubDate>Thu, 08 Oct 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.3 · CVE-2026-21589] Update to yesterday's item: watchTowr published a technical write-up and proof of concept, and Previdian's honeypots recorded exploitation attempts roughly two hours later; a Nuclei template is also out, so mass scanning is expected. The bug comes from a shared web-resource library that turns '::' into '/', and on Jira deployments integrated with Crowd an attacker may read plaintext credentials from WEB-INF/classes/crowd.properties and use Crowd's API to create a Jira admin. Patch all eight Data Center products now, restrict Crowd with an IP allowlist, and review logs for traversal requests; observed sources include 38.60.157[.]86, 146.70.187[.]234 and 159.26.119[.]225. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>FBI: FortiBleed intruders are still hitting FortiGate VPNs and locking administrators out</title>
-      <link>https://www.bleepingcomputer.com/news/security/fbi-ongoing-fortibleed-attacks-lock-out-fortigate-vpn-admins/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.bleepingcomputer.com/news/security/fbi-ongoing-fortibleed-attacks-lock-out-fortigate-vpn-admins/|FBI: FortiBleed intruders are still hitting FortiGate VPNs and locking administrators out</guid>
-      <pubDate>Thu, 08 Oct 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Exploited] A joint FBI and Secret Service advisory says the campaign built on leaked Fortinet credentials is ongoing: attackers log in to exposed FortiGate firewalls and SSL VPN portals with leaked, stuffed or sprayed passwords, pull more hashes and crack them offline, then create admin accounts and in some cases delete or reset the legitimate ones. Access is passed to INC/Lynx and Payload ransomware affiliates, and SOCRadar counts 86,644 compromised devices. Patching and a password reset may not be enough: take management and VPN interfaces off the internet, kill active VPN sessions, enforce MFA, audit for unknown admin accounts and switch admin password storage to PBKDF2. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Stored XSS in Ninja Forms and WPC Product Bundles exploited to plant rogue WordPress admins</title>
-      <link>https://www.bleepingcomputer.com/news/security/ninja-forms-plugin-flaw-exploited-to-hack-wordpress-sites/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.bleepingcomputer.com/news/security/ninja-forms-plugin-flaw-exploited-to-hack-wordpress-sites/|Stored XSS in Ninja Forms and WPC Product Bundles exploited to plant rogue WordPress admins</guid>
-      <pubDate>Thu, 08 Oct 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[High · CVE-2026-94504 · CVE-2026-93836] Patchstack is tracking one actor abusing stored cross-site scripting in Ninja Forms (3.15.3 and older, 500,000+ sites) and WPC Product Bundles for WooCommerce (8.6.6 and older, 30,000+ sites): script hidden in a form submission or order runs when an administrator views it, installs a fake 'WP Smart Thumbnails' plugin and adds admin accounts, one of them hidden behind a secret login URL. Exploitation is described as limited so far, with the payload served from imgcdn1[.]com. Update to Ninja Forms 3.15.4 and WPC Product Bundles 8.6.7, then check for the rogue plugin and unexpected admins, because updating does not remove an existing infection. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>SonicWall patches pre-auth SSRF and three other flaws in SMA 1000 appliances</title>
-      <link>https://www.helpnetsecurity.com/2026/10/07/sonicwall-fixes-pre-auth-ssrf-flaw-in-sma-1000-appliances-cve-2026-102255/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.helpnetsecurity.com/2026/10/07/sonicwall-fixes-pre-auth-ssrf-flaw-in-sma-1000-appliances-cve-2026-102255/|SonicWall patches pre-auth SSRF and three other flaws in SMA 1000 appliances</guid>
-      <pubDate>Thu, 08 Oct 2026 06:57:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[CVE-2026-102255 · CVE-2026-102256 · CVE-2026-102257 · CVE-2026-102258] The main fix is a server-side request forgery in the SMA 1000 Work Place interface that an unauthenticated attacker can use to make the appliance call internal endpoints that trust it; the others are a post-auth command injection plus an admin-only path traversal and XSS in the management console. Models 6210, 7210 and 8200v are affected and the hotfixes are 12.4.3-03670 and 12.5.0-03082 or later. SonicWall sees no exploitation yet, but two earlier pre-auth SSRF bugs in this product line were used as zero-days this year, so patch internet-facing units first. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Attackers hijacked .gh, .as and .sl registries and obtained valid TLS certificates for Google domains</title>
-      <link>https://www.bleepingcomputer.com/news/security/hackers-hijack-google-domains-after-breaching-cctld-registries/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.bleepingcomputer.com/news/security/hackers-hijack-google-domains-after-breaching-cctld-registries/|Attackers hijacked .gh, .as and .sl registries and obtained valid TLS certificates for Google domains</guid>
-      <pubDate>Thu, 08 Oct 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Google says intruders compromised third-party operators of the Ghana, American Samoa and Sierra Leone country-code TLDs, changed authoritative DNS records and used that control to pass CA domain validation, getting genuine certificates for Google domains and those of other major brands. Google's own systems were not breached; it has blocked the certificates in Chrome through CRLSets and had them revoked, but may not have found every affected domain. Monitor Certificate Transparency logs for your whole domain portfolio, including parked and ccTLD names, and publish restrictive CAA records tied to your ACME account and validation method. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Anthropic splits its Cyber Verification Program into three tiers and folds in Project Glasswing</title>
-      <link>https://www.helpnetsecurity.com/2026/10/07/anthropic-expands-cyber-verification-program/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.helpnetsecurity.com/2026/10/07/anthropic-expands-cyber-verification-program/|Anthropic splits its Cyber Verification Program into three tiers and folds in Project Glasswing</guid>
-      <pubDate>Thu, 08 Oct 2026 06:55:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Verified organizations can now get Claude with fewer cyber refusals at three levels: Defense Access (incident response, malware and vulnerability analysis), Red Team Access (adds authorized penetration testing; not open to individual researchers) and Specialized Access for a small set of critical-infrastructure testers reviewed with the US government. Data retention for misuse monitoring is generally required, and destructive actions such as deploying ransomware stay blocked in real time. In Anthropic's own benchmark, unverified use was blocked in all 50 trials while Red Team Access completed 34 of 50. If your team hits refusals during legitimate security work, apply for the tier that matches it rather than working around the guardrails. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Open-source AI Agent Gateway keeps model and MCP credentials out of agent configs</title>
-      <link>https://www.helpnetsecurity.com/2026/10/07/open-source-ai-agent-gateway/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.helpnetsecurity.com/2026/10/07/open-source-ai-agent-gateway/|Open-source AI Agent Gateway keeps model and MCP credentials out of agent configs</guid>
-      <pubDate>Thu, 08 Oct 2026 06:54:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>[Tooling] Tuskira released a self-hosted gateway that sits between agents and the MCP servers and model providers they use: the agent presents a gateway key and profile, each tool call is authorized at call time, and the real credential is attached on the way out from an encrypted store, so the agent never holds it. It blocks private, loopback and cloud-metadata addresses by default and ships examples for Claude Code, Cursor, VS Code and Codex CLI. Check the defaults before relying on it: a key with no bound profile lets the caller pick its own, the demo stack stores request and response bodies, and the sample Compose file permits host and loopback egress. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>GitHub previews ReviewBench, a benchmark and leaderboard for AI code reviewers</title>
-      <link>https://www.helpnetsecurity.com/2026/10/06/github-reviewbench-ai-code-review-benchmark/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.helpnetsecurity.com/2026/10/06/github-reviewbench-ai-code-review-benchmark/|GitHub previews ReviewBench, a benchmark and leaderboard for AI code reviewers</guid>
-      <pubDate>Thu, 08 Oct 2026 06:53:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Tooling] ReviewBench scores AI review agents on 219 pull requests from 187 open-source repositories in 19 languages against a validated set of known issues, reporting precision, recall and F1 with breakdowns by severity and category, security included. GitHub used it to pick a multi-run ensemble for Copilot code review's lite tier, which in production gave 13.6% higher recall and 8% lower cost per review. It is a research preview that accepts third-party agents; if you depend on AI review as a security gate, it offers a way to compare tools on missed defects and false alarms instead of vendor claims. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>X.Org Server and Xwayland fix a dozen flaws, nine of them leading to code execution</title>
-      <link>https://www.helpnetsecurity.com/2026/10/07/x-org-server-fixed-vulnerabilities/</link>
-      <guid isPermaLink="false">2026-10-08|https://www.helpnetsecurity.com/2026/10/07/x-org-server-fixed-vulnerabilities/|X.Org Server and Xwayland fix a dozen flaws, nine of them leading to code execution</guid>
-      <pubDate>Thu, 08 Oct 2026 06:52:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[CVE-2026-93515 · CVE-2026-93519 · CVE-2026-93520 · CVE-2026-93521 · CVE-2026-93522 · CVE-2026-93524 · CVE-2026-93536] xorg-server 21.1.25 and Xwayland 24.1.14 close twelve bugs; nine can lead to arbitrary code execution and the rest to crashes or information disclosure, and most need an authenticated X client to trigger. The article names seven of the CVEs and gives no severity scores or exploitation reports. Pull the updated packages from your distribution, giving priority to multi-user hosts, remote desktop servers and systems using X forwarding. (Source: Help Net Security)</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-23",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Arista fixes VeloCloud Orchestrator SQL injection already being exploited",
+      "cve": ["CVE-2026-114625"],
+      "severity": "Critical",
+      "summary": "A SQL injection in on-prem VeloCloud Orchestrator lets an attacker with a low-privileged authenticated web session escalate to operator rights and impersonate the local superuser operator, and Arista says it is under active attack. Fixed builds are 5.2.3.18, 6.1.3.10 and 6.4.2.12 or later; this is the fourth exploited Arista bug of 2026. Patch, limit the VCO web UI to admin networks, block the reported attacker IPs 74.82.197[.]86 and 38.54.50[.]151, and review web access logs and recent admin changes, preserving logs first if you suspect compromise.",
+      "source": "BleepingComputer",
+      "published": "2026-10-22",
+      "url": "https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: Amazon saw PHP2Shell exploitation attempts four days before the patches shipped",
+      "cve": ["CVE-2026-109618", "CVE-2026-109619"],
+      "severity": "Critical",
+      "summary": "Amazon Threat Intelligence says the first attempts against the two PHP RCE bugs hit its honeypots on October 17, before the October 21 fixes, and that varied payloads point to several actors now attempting exploitation broadly. Dataminr and the PHP team say observed traffic so far is mostly scanning and non-working PoCs with no confirmed compromises, but working exploits are expected. Patch PHP now (the UK NCSC says take unpatched servers offline), and include pre-disclosure dates when reviewing logs.",
+      "source": "BleepingComputer",
+      "published": "2026-10-22",
+      "url": "https://bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches"
+    },
+    {
+      "category": "appsec",
+      "title": "GitLab patches a second maximum-severity regex compiler bug that allows unauthenticated RCE",
+      "cve": ["CVE-2026-110264"],
+      "severity": "Critical (max)",
+      "summary": "An integer overflow in GitLab's regular expression compiler could let an unauthenticated remote attacker run code on the server by getting a crafted regex compiled; it comes about ten days after a related 10.0 bug from the same researcher. Fixed CE/EE releases are 19.5.1, 19.4.3, 19.3.6, 19.2.9, 19.1.9, 19.0.10 and 18.11.13; GitLab.com is already patched. No in-the-wild exploitation is reported yet, but upgrade self-managed instances immediately, internet-facing ones first.",
+      "source": "BleepingComputer",
+      "published": "2026-10-22",
+      "url": "https://bleepingcomputer.com/news/security/gitlab-warns-of-new-max-severity-code-execution-vulnerability"
+    },
+    {
+      "category": "appsec",
+      "title": "Railway tells all users to rotate secrets after attackers reached stored environment variables",
+      "cve": [],
+      "severity": "",
+      "summary": "Cloud deployment platform Railway detected intrusion into systems holding customer environment variables, and some values may have been decrypted, exposing API keys and database and registry credentials. It links the breach to a wider series of attacks on AI inference providers and paused deployments while investigating, restoring builds tier by tier. If you deploy on Railway, rotate every stored variable and registry credential now and review service logs for unusual access.",
+      "source": "BleepingComputer",
+      "published": "2026-10-22",
+      "url": "https://bleepingcomputer.com/news/security/railway-warns-devs-to-rotate-secrets-after-potential-breach"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: LiteLLM traces poisoned 1.107.0 to its release pipeline and names 1.106.2 as the clean rollback",
+      "cve": [],
+      "severity": "",
+      "summary": "LiteLLM says its release pipeline was compromised on October 21; app code was untouched, but the packages added a .pth file and sitecustomize.py so the stealer runs whenever Python starts, including when you run pip to investigate. Malicious artifacts were live on PyPI, Docker Hub and GHCR for roughly two to two and a half hours, with exfiltration to litellm[.]dev. Inspect hosts without launching Python, rebuild affected systems from clean images on 1.106.2, and rotate all cloud, AI provider and developer secrets they held.",
+      "source": "BleepingComputer",
+      "published": "2026-10-22",
+      "url": "https://bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware"
+    },
+    {
+      "category": "appsec",
+      "title": "Cisco fixes 34 bugs, including critical root RCE in Expressway and critical Snort 3 flaws",
+      "cve": ["CVE-2026-76466", "CVE-2026-20236", "CVE-2026-20043", "CVE-2026-76473", "CVE-2026-76474", "CVE-2026-76475"],
+      "severity": "Critical",
+      "summary": "Cisco's latest batch includes an Expressway Series bug that can let attackers run commands as root in some configurations (fixed in X15.5.20), critical issues in several Unified Communications products, and two critical Snort 3 bugs fixed in Snort 3.12.4.0 that flow into Firewall, Meraki MX and other products. Cisco says none is known to be exploited. Prioritise Expressway and Snort-based perimeter devices and check each advisory for your fixed release.",
+      "source": "SecurityWeek",
+      "published": "2026-10-22",
+      "url": "https://www.securityweek.com/cisco-patches-34-vulnerabilities-across-multiple-products/"
+    },
+    {
+      "category": "appsec",
+      "title": "Oracle's October CPU fixes about 1,200 CVEs, 95 rated critical",
+      "cve": [],
+      "severity": "",
+      "summary": "Oracle's quarterly Critical Patch Update has 1,295 fixes for 1,209 unique CVEs, led by Fusion Middleware (206, most remotely exploitable without credentials), E-Business Suite, Siebel, PeopleSoft, JD Edwards, MySQL and Java SE. Oracle has not marked any as exploited, but past Oracle bugs have been weaponised quickly after release. Patch internet-facing Fusion Middleware and E-Business Suite first.",
+      "source": "SecurityWeek",
+      "published": "2026-10-22",
+      "url": "https://www.securityweek.com/oracle-patches-over-1200-vulnerabilities-with-october-2026-cpu/"
+    },
+    {
+      "category": "ai",
+      "title": "Honeypot shows attackers mining Flowise AI servers for credentials and testing prompt injection",
+      "cve": ["CVE-2025-59528", "CVE-2026-41264"],
+      "severity": "",
+      "summary": "Sekoia watched an attacker fingerprint a Flowise 2.2.8 honeypot, list chatflows and pull stored credential records, attempt the CustomMCP and CSV Agent RCE bugs, and plant a 'System Status' chatflow calling back to hxxp://154.217.251[.]226:19999. The attacker also used prompt injection to dump system prompts and asked the agent to plan attacks on a separate real environment. Inventory exposed Flowise instances, lock down admin and credential APIs, update, and restrict agent tools and outbound traffic.",
+      "source": "GBHackers",
+      "published": "2026-10-22",
+      "url": "https://gbhackers.com/flowise-ai-agents/"
+    },
+    {
+      "category": "ai",
+      "title": "Backdoored speech-to-text models rewrite one target's voice into attacker commands that agents act on",
+      "cve": [],
+      "severity": "",
+      "summary": "Imperial College researchers fine-tuned Whisper, Parakeet and Qwen audio models to transcribe most people correctly but emit attacker-chosen text when one specific voice speaks; in a simulated bank, agents built on Claude models carried out an injected $5,000 transfer half or more of the time. Clean retraining mostly removed the Whisper backdoor but not Qwen's. Verify the origin of fine-tuned weights, compare them against the base model, and never let a transcript alone authorise payments.",
+      "source": "Help Net Security",
+      "published": "2026-10-22",
+      "url": "https://www.helpnetsecurity.com/2026/10/22/research-speech-model-backdoor/"
+    },
+    {
+      "category": "ai",
+      "title": "Anthropic uses Claude to find 94 config combinations that silently disable security controls in OSS",
+      "cve": [],
+      "severity": "",
+      "summary": "Anthropic's Frontier Red Team ran Claude across 25 open-source projects and reported 493 attack-surface issues, including 162 risky setting combinations accepted without warning, 94 of which quietly turned a control off. Examples include hostname deny rules that stop matching when reverse DNS is off, and about 4,500 lines of excluded ML-DSA code in OpenSSH reachable before authentication, reduced in 10.6. Audit pre-auth reachable code and setting interactions in your own stacks and update OpenSSH; the technique is heading into Anthropic's OSS Scanner.",
+      "source": "Help Net Security",
+      "published": "2026-10-22",
+      "url": "https://www.helpnetsecurity.com/2026/10/22/anthropic-attack-surface-reduction-open-source/"
+    }
+  ]
+}
