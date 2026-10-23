@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-24",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: PHP2Shell attempts reach the millions with a Mirai-based payload, and PHP flags a third session bug with no patch yet",
+      "cve": ["CVE-2026-109618", "CVE-2026-109619", "CVE-2026-115560"],
+      "severity": "Critical 9.2",
+      "summary": "Cloudflare counted millions of PHP2Shell exploit attempts within about a day of disclosure, and Sophos and others found some trying to drop Potassium, a Mirai-derived DDoS bot; responders so far report scanning and failed attempts rather than confirmed compromises. Separately, PHP disclosed CVE-2026-115560, a new session-handling flaw that will only be fixed in the next routine release and needs a non-default serialize handler that the app switches at runtime. Upgrade to PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35 (move 7.4-8.1 hosts to a supported branch) and set session.upload_progress.enabled=0, which also covers the new bug.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "BlackX UEFI bootkit uses the old Baton Drop bug to beat Secure Boot on patched but unrevoked Windows hosts",
+      "cve": ["CVE-2022-21894"],
+      "severity": "Exploited in the wild",
+      "summary": "Kaspersky describes BlackX, a BlackLotus-like bootkit used in early 2026 against diplomatic targets in Central Asia and tentatively tied to APT41, which abuses CVE-2022-21894 to run code before Windows starts and plant its own Machine Owner Keys. Patching alone does not stop it because the vulnerable signed boot binaries still load unless the Windows Production PCA 2011 certificate is placed in the DBX. Apply Microsoft's manual Secure Boot revocation steps, and keep in mind the attacker needs admin rights or physical access first.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/blackx-uefi-bootkit-bypasses-secure.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Two CVSS 9.0 Linux KSMBD remote code execution bugs go public before kernel fixes exist",
+      "cve": [],
+      "severity": "CVSS 9.0 (ZDI), unpatched",
+      "summary": "ZDI disclosed two KSMBD flaws on public mailing lists: ZDI-CAN-33774, an unauthenticated race in SMB protocol dispatch reachable on port 445, and ZDI-CAN-33549, an SMB Direct integer underflow that needs RDMA and a writable share. No CVEs are assigned and no fix is in mainline yet, though one patch has reportedly been submitted. Check whether the in-kernel SMB server is loaded (lsmod | grep ksmbd) and disable it or block port 445 from untrusted networks until stable kernels ship fixes.",
+      "source": "The Hacker News",
+      "published": "2026-10-22",
+      "url": "https://thehackernews.com/2026/10/two-cvss-90-linux-ksmbd-rce-flaws.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: Imperva's Node2Shell exploit turns the Node.js Brotli bug into working code execution on a stock build",
+      "cve": ["CVE-2026-111497"],
+      "severity": "Public PoC",
+      "summary": "Imperva achieved code execution against an unmodified Node.js 24.22.0 by feeding crafted Brotli data to an app, for example through Express 5 body parsers or a fetch() of a Brotli-compressed response; 24.22.1 rejected the payload. The exploit took several tries and no in-the-wild use has been reported, but the earlier PoC only crashed standard builds, so the risk is now concrete. Update Node.js on the 22, 24 and 26 lines (including inside container images), retire 20.x and older, and treat WAF rules as a stopgap only.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Ruby patches the Onigmo regex bugs behind four critical GitLab RCEs; any app compiling untrusted regexes is exposed",
+      "cve": ["CVE-2026-110264", "CVE-2026-97229"],
+      "severity": "Critical 10.0 (GitLab)",
+      "summary": "Ruby 4.0.9, 3.4.12 and 3.3.13 fix three memory-corruption bugs in the regex compiler that the GitLab CVEs traced back to; Ruby did not request its own CVEs, so CVE-matching scanners may not flag plain Ruby apps. Any code that builds a Regexp from attacker input (Regexp.new, union, or /#{input}/) is affected, and Regexp.timeout or length limits do not help. Upgrade Ruby (3.2 and older get no fix), keep self-managed GitLab on a fixed release, and stop compiling user-supplied patterns where you cannot upgrade.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/ruby-fixes-three-regex-engine-bugs.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Pillow 13.0.0 fixes critical image-parsing bugs, including EPS and FPX paths to command execution",
+      "cve": ["CVE-2026-112900", "CVE-2026-112403", "CVE-2026-112393"],
+      "severity": "Critical 9.2",
+      "summary": "Pillow 13.0.0 closes several flaws: an EPS issue (2.6.0 to 12.3.0) where an attacker-chosen filename can be interpreted by Ghostscript as commands, an FPX bug that can run commands from a single Image.open() when olefile is installed, and buffer overflows in lossless JPEG thumbnails and in-memory TIFF saves. None are known to be exploited, but CISA lists a public PoC for the TIFF bug. Upgrade to Pillow 13.0.0 (Python 3.11+ required) and rebuild images and wheels; until then keep gs off upload-processing hosts and avoid thumbnail() on untrusted JPEGs.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/critical-flaw-in-pythons-popular-pillow.html"
+    },
+    {
+      "category": "ai",
+      "title": "Exposed attacker server shows ransomware affiliates running intrusions through OpenCode agents and 32 MCP servers",
+      "cve": ["CVE-2024-57727", "CVE-2026-35616", "CVE-2026-41940"],
+      "severity": "",
+      "summary": "SOCRadar found infrastructure of an INC and The Gentlemen affiliate in which OpenCode driving OpenRouter-hosted commercial models carried out intrusions while a human approved each step, with refusals bypassed by recasting requests as authorized red-team work. The kit included a kill-chain framework with 18 skill modules and a WormGPT-MCP toolset of 32 MCP servers spanning recon to extortion, aimed at already-exploited flaws in SimpleHelp, FortiClient and cPanel/WHM. Patch those products, and note that one reused password unlocked VPN, RMM, backup and security consoles, so kill credential reuse on admin accounts.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/exposed-infrastructure-reveals-how.html"
+    },
+    {
+      "category": "ai",
+      "title": "Symantec honeypot captures an LLMjacking agent built to run 100,000 attack steps on stolen model compute",
+      "cve": [],
+      "severity": "",
+      "summary": "A Symantec AI honeypot posing as an open, internet-facing model service received over 127,000 requests and captured an instruction set for an autonomous agent with about 74 tools for scanning, exploitation, credential theft, cryptomining and botnet management. The agent hunts for exposed self-hosted models, AI gateways and MCP servers so attackers can run operations on someone else's bill, and uses layered prompts to pass credential theft off as development work. Keep model endpoints, gateways and MCP servers off the public internet or behind authentication, and alert on unexpected usage spikes.",
+      "source": "Infosecurity Magazine",
+      "published": "2026-10-21",
+      "url": "https://www.infosecurity-magazine.com/news/symantec-ai-agent-llmjacking/"
+    },
+    {
+      "category": "ai",
+      "title": "x402 SDK flaws let a malicious paid API drain an AI agent's wallet or replay its login signature",
+      "cve": [],
+      "severity": "Critical (V12 rating)",
+      "summary": "V12 found that x402 agent payment clients before the August 18 releases had no spending cap, so a hostile API could ask for the full token balance and the agent would sign it; it also found Solana token approvals accepted as payments and Sign-In-With-X messages signed for the wrong site. The fixes shipped without advisories, so npm audit and PyPI show nothing for vulnerable versions, and no attacks have been reported. Move to @x402 packages 2.23.0+ (2.28.0 current), Go v2.28.0 or Python 2.25.0, keep spendControls on, and set per-payment and total budgets for agents.",
+      "source": "The Hacker News",
+      "published": "2026-10-23",
+      "url": "https://thehackernews.com/2026/10/critical-x402-sdk-flaw-could-let.html"
+    }
+  ]
+}
