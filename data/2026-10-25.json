@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-25",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: CISA puts the Collabora CODE and Arista VeloCloud bugs in KEV with an October 26 federal deadline",
+      "cve": ["CVE-2026-110447", "CVE-2026-114625"],
+      "severity": "Critical 9.2 / 9.9",
+      "summary": "CISA added two already-reported, actively exploited flaws to its KEV catalog on October 23: the command injection in Nextcloud's built-in Collabora CODE server (richdocumentscode), used to plant web shells, and the authenticated SQL injection in on-premise VeloCloud Orchestrator. US federal agencies have only until October 26 to fix them. Upgrade richdocumentscode to 26.4.303 or later and VCO to 5.2.3.18, 6.1.3.10 or 6.4.2.12, and check VCO logs for activity from 74.82.197[.]86 and 38.54.50[.]151.",
+      "source": "The Hacker News",
+      "published": "2026-10-24",
+      "url": "https://thehackernews.com/2026/10/cisa-flags-two-actively-exploited.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: the Brotli decoder bug behind Node2Shell also reaches Bun, Python's brotli packages, Envoy, Istio and cdxgen",
+      "cve": ["CVE-2026-111497"],
+      "severity": "Critical 9.2",
+      "summary": "The memory corruption in Google's Brotli C decoder (1.0.3 to 1.2.0) is not just a Node.js problem: Bun before 1.4.4, the Python Brotli and brotlicffi packages up to 1.2.0, Envoy and Istio with Brotli decompression on, and cdxgen all ship fixes. There is still no in-the-wild exploitation and Imperva's working exploit is unreleased, but Python HTTP clients such as requests and httpx will decode br responses automatically when the package is installed. Update and restart services, rebuild container images, check Python versions by hand because scanners may miss them, and where you cannot patch yet reject Content-Encoding: br before anything decodes it.",
+      "source": "The Hacker News",
+      "published": "2026-10-24",
+      "url": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html"
+    },
+    {
+      "category": "appsec",
+      "title": "HPE fixes eight maximum-severity unauthenticated RCE and auth bypass bugs in Aruba AOS-8 and AOS-10",
+      "cve": ["CVE-2026-79844", "CVE-2026-79845", "CVE-2026-79846", "CVE-2026-79847", "CVE-2026-79848", "CVE-2026-79849", "CVE-2026-79850", "CVE-2026-79851"],
+      "severity": "Critical (max severity)",
+      "summary": "HPE's latest ArubaOS advisory covers 72 bugs, eight of them maximum severity, including command injection, SQL injection, buffer overflows and authentication bypasses (one in the PAPI protocol) that a remote, unauthenticated attacker can turn into code execution on controllers, gateways and access points. HPE says it knows of no public exploit or attacks so far. Patch per advisory hpesbnw05162en_us, and until then keep the CLI and web management interfaces on a dedicated VLAN or behind firewall rules and turn on accounting logs.",
+      "source": "BleepingComputer",
+      "published": "2026-10-23",
+      "url": "https://www.bleepingcomputer.com/news/security/hpe-patches-eight-max-severity-rce-and-auth-bypass-aos-flaws/"
+    },
+    {
+      "category": "appsec",
+      "title": "Researchers pushed 2 million updates to disarm a Popcorn Time updater that would run code from lapsed domains",
+      "cve": ["CVE-2026-30612"],
+      "severity": "Critical 9.8",
+      "summary": "The updater in Time4Popcorn, an abandoned Popcorn Time fork, fetched updates over plain HTTP from server domains that had expired and ran them with top privileges, so whoever registered those domains could own an estimated 3 million Windows and Mac machines. Eye Security took over the domains, sent more than 2 million updates between November 2025 and March 2026 that switch the updater off, and then handed the domains to Shadowserver; it saw no sign anyone else had served code. The rest of the app is still unsafe, so remove it, or at least disable the 'Update service' (Windows) or PT.updd launch daemon (Mac), and hunt for Updater.exe or PT.updd on managed endpoints.",
+      "source": "The Hacker News",
+      "published": "2026-10-24",
+      "url": "https://thehackernews.com/2026/10/researchers-push-over-2-million-updates.html"
+    },
+    {
+      "category": "ai",
+      "title": "Microsoft: China-linked Storm-0940 ran the ConnectWise-linked tenant attacks through the Artex AI pentest framework",
+      "cve": [],
+      "severity": "",
+      "summary": "Microsoft says Storm-0940 has used the open-source Artex AI penetration testing framework since early September to automate reconnaissance, password spraying and OAuth app abuse at more than 2,900 attempts a minute, then tried to sign in to over 2,250 tenants. In some environments the agents went on to change application credentials and alter users, groups and privileged roles through Microsoft Graph. Review service principal sign-ins together with the Graph and directory changes that follow them, and remember that cleaning up the abused app alone may leave attacker-added credentials in place.",
+      "source": "SecurityWeek",
+      "published": "2026-10-23",
+      "url": "https://www.securityweek.com/china-apt-uses-ai-pentest-tool-artex-in-connectwise-attacks/"
+    },
+    {
+      "category": "ai",
+      "title": "Tracebit's 'context bombs' plant decoy prompts that derail attacking AI agents and raise their cost",
+      "cve": [],
+      "severity": "",
+      "summary": "Tracebit tested nine kinds of planted content aimed at AI agents that crawl a target, such as a fake pentest report, an endless web service and nested-encrypted passwords. In its own tests these cut attack success sharply across several models (for one group from 39 of 40 runs to 2) and raised the cost per successful attack about 23-fold, with the fake pentest report working best. The results are vendor-reported, but they suggest layered deception can buy time and generate useful alerts when agent-driven attackers hit decoys.",
+      "source": "SecurityWeek",
+      "published": "2026-10-21",
+      "url": "https://www.securityweek.com/context-bombs-cut-ai-attack-success-by-misleading-agents-with-fake-targets/"
+    },
+    {
+      "category": "ai",
+      "title": "Google's Agent Compute Engine keeps backend credentials out of the agent's microVM",
+      "cve": [],
+      "severity": "",
+      "summary": "Google announced Agent Compute Engine, which runs each agent session in its own KVM microVM and gives it only a short-lived SPIFFE identity; a gateway outside the VM checks identity and attestation and inserts the real backend credential in flight. The open-source Agent Substrate runtime for GKE is available now, and the managed service is due in preview in the coming months. The design limits what a prompt-injected agent can steal, but it can still misuse whatever access its session holds, so scope those permissions tightly.",
+      "source": "Tech Times",
+      "published": "2026-10-23",
+      "url": "https://www.techtimes.com/articles/329428/20261023/google-cloud-unveils-agent-compute-engine-ai-agent-credentials-kept-outside-hardware-sandbox.htm"
+    }
+  ]
+}
