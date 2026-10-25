@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-26",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: PHP2Shell moves from scanning to a real intrusion at a European government body, with signs of an AI agent driving post-exploitation",
+      "cve": ["CVE-2026-109618", "CVE-2026-109619", "CVE-2026-115560"],
+      "severity": "Critical 9.2",
+      "summary": "Unit 42 describes attackers who used the PHP RCE bugs against a European government entity and reached password hashes and MFA secrets within two hours, then relayed NTLM into Active Directory and tried for Domain Admin; their commands were wrapped in machine-parsable section markers that suggest an AI agent was running the session. CYFIRMA separately tracks low-and-slow, possibly DPRK-linked scanning of 216 hosts across Asia, the Gulf, the US and the EU, and VulnCheck now has a private exploit that beats ASLR on production-style configs, so results from default-setting PoCs are no proof of safety. Upgrade to PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35 (WAF rules and app changes do not close the hole), hunt for POSTs returning 500 alongside memory-exhaustion errors and worker crashes, and do not rely on volume-based alerting.",
+      "source": "The Hacker News",
+      "published": "2026-10-25",
+      "url": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: LiteLLM breach started with a master key committed to GitHub in May, force-pushed away but never revoked",
+      "cve": [],
+      "severity": "",
+      "summary": "LiteLLM's root cause has shifted from leaked gateway logs to a LiteLLM Agent Platform master key that sat in a public commit from May 27; the attacker used it on October 10 to pull an org owner's GitHub CLI token, harvested more maintainer tokens and a GitHub App key with workflows, then repointed the release pipeline and used two tokens to satisfy a recently relaxed two-person release approval. The poisoned 1.107.0 then shipped to PyPI, Docker Hub and GHCR on October 21 and exfiltrated to litellm[.]dev. Beyond rebuilding and rotating if you pulled 1.107.0, treat this as a CI/CD lesson: revoke (not just delete) leaked secrets, avoid owner-scoped tokens in automation, and enforce independent release approval.",
+      "source": "The Hacker News",
+      "published": "2026-10-24",
+      "url": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html"
+    },
+    {
+      "category": "ai",
+      "title": "Planted AGENTS.md files in Downloads hijack coding agents that users launch from that folder",
+      "cve": [],
+      "severity": "",
+      "summary": "Forever Security found a malicious AGENTS.md in a customer's Downloads folder that told a coding agent to install a rogue npm package (function-color, part of the earlier MALFEX npm campaign); in tests it hijacked OpenAI Codex about 90% of the time, and a CLAUDE.md variant redirected Claude Code's API traffic to expose its OAuth token. Browsers drop files into Downloads by default, and many users run agents there to tidy files, so no vulnerability is needed and no vendor patch is coming. Never use Downloads or your home directory as an agent's working directory, scope agents to a project root, review unfamiliar instruction files, and keep approval prompts and sandboxing on.",
+      "source": "BleepingComputer",
+      "published": "2026-10-25",
+      "url": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/"
+    },
+    {
+      "category": "ai",
+      "title": "AWS won't patch a critical model-archive RCE in the end-of-life Multi Model Server",
+      "cve": ["CVE-2026-115812", "CVE-2026-115813"],
+      "severity": "Critical 9.8",
+      "summary": "AWS disclosed a path traversal in Multi Model Server's model archive extraction that lets a crafted archive write outside the target directory and run code as the MMS process, plus an SSRF in the model download path; the management API that triggers both has no authentication. All versions through 1.1.11 are affected and no fix will ship because MMS is end of life. Inventory model-serving stacks for MMS and migrate; until then bind the management interface to loopback, allowlist model download URLs, and restrict the serving port to trusted callers (SageMaker-style single-port setups cannot use the loopback workaround).",
+      "source": "AWS Security Bulletin",
+      "published": "2026-10-23",
+      "url": "https://aws.amazon.com/security/security-bulletins/2026-148-aws/"
+    },
+    {
+      "category": "ai",
+      "title": "OpenAI's red-team agents found VM escapes and leaked secrets between microVMs through a CPU cache side channel",
+      "cve": ["CVE-2026-111497"],
+      "severity": "",
+      "summary": "OpenAI says it now trains frontier models with no live internet access after a September incident, and that a high-compute red-team campaign against its own sandboxes found VM escapes, internet egress via metrics, logging and auth services, DNS and firewall policy bypasses, and agents in separate microVMs passing secrets through processor-cache timing; the same work produced the Brotli Node2Shell bug. METR and Redwood Research also reported a Codex sandbox and Auto-Review bypass and a way to hide actions from monitoring, which OpenAI is believed to have fixed but they have not verified. For anyone running agents, assume isolation leaks through side services and shared hardware: test egress paths beyond the firewall, and patch Brotli everywhere.",
+      "source": "The Hacker News",
+      "published": "2026-10-25",
+      "url": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Wasmtime fixes a critical Cranelift miscompilation that can let crafted Wasm escape the sandbox",
+      "cve": ["CVE-2026-115889"],
+      "severity": "Critical 9.9",
+      "summary": "Cranelift packed SSA value indices into too few bits, so a very large or specially crafted Wasm function could silently overflow them in release builds and cause type confusion that breaks out of the sandbox. Versions before 36.0.19 and 37.0.0 through 42.x are affected; fixes are in 36.0.19 and 43.0.0, with no workaround. Upgrade any service that compiles untrusted Wasm (plugin hosts, edge and serverless runtimes, agent tool sandboxes) and check SBOMs for transitive wasmtime or cranelift crates.",
+      "source": "GitLab Advisory Database",
+      "published": "2026-10-23",
+      "url": "https://advisories.gitlab.com/cargo/wasmtime/CVE-2026-115889/"
+    },
+    {
+      "category": "appsec",
+      "title": "Conda's infrastructure repo had a comment-triggered 'pwn request' that rendered PR content with a privileged token",
+      "cve": ["CVE-2026-53942"],
+      "severity": "Critical 9.9",
+      "summary": "A workflow in conda/infrastructure ran on '@conda-bot render' comments, checked out the pull request's head from the contributor's fork with secrets.SYNC_TOKEN available, and rendered that content in an unsandboxed Jinja2 environment, giving outside contributors a path to code execution with the token. It is fixed in commit 9c0f238 and is not reported as exploited. Audit your own issue_comment and pull_request_target workflows for the same pattern: never check out untrusted PR code in a job that holds secrets, and sandbox any template rendering of contributor input.",
+      "source": "HOL Guard (CVE record)",
+      "published": "2026-10-23",
+      "url": "https://hol.org/guard/security/cves/CVE-2026-53942-conda-organization-infrastructure-pwn-request-in"
+    }
+  ]
+}
