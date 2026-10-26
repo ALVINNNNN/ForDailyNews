@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-27",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: Microsoft ships out-of-band .NET fixes for the Brotli decoder bug as public PoCs circulate",
+      "cve": ["CVE-2026-111497"],
+      "severity": "Critical",
+      "summary": "Microsoft pushed emergency updates for the Brotli out-of-bounds write: .NET 8.0.33, 9.0.22, 10.0.14 and .NET 11 RC3. Exposure requires an app that opted into Brotli via ASP.NET Core request decompression, HttpClient automatic decompression or the System.IO.Compression Brotli APIs; Microsoft warns of crashes, memory leaks, possible RCE and, on some non-default setups, remote privilege escalation. Proof-of-concept code is on GitHub but no in-the-wild exploitation is confirmed. Patch the runtime, then hunt for apps that bundle their own Brotli copy, since updating the system library will not fix them.",
+      "source": "BleepingComputer",
+      "published": "2026-10-26",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-emergency-net-patches-for-critical-brotli-flaw/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: PHP re-releases its Windows builds to carry the fixed Brotli library, with unchanged version numbers",
+      "cve": ["CVE-2026-111497"],
+      "severity": "Critical 9.2",
+      "summary": "PHP 8.2 through 8.5 Windows builds bundled the vulnerable Brotli 1.2.0, reachable through the cURL extension when automatic decompression is on; the new builds 8.5.12-1, 8.4.27-1, 8.3.36-1 and 8.2.35-1 ship Brotli 1.2.1. Because php -v still prints the old version, confirm the -1 suffix in the download name and verify the SHA-256 hash. No attacks are reported. Guzzle decodes responses by default, so until you update, set decode_content to false or stop setting CURLOPT_ENCODING; dropping br from Accept-Encoding alone does not stop a hostile server.",
+      "source": "The Hacker News",
+      "published": "2026-10-26",
+      "url": "https://thehackernews.com/2026/10/php-issues-second-windows-security.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Fortinet ships critical FortiOS, FortiManager and FortiAnalyzer fixes but holds the details until November 10",
+      "cve": [],
+      "severity": "Critical/High",
+      "summary": "Fortinet released hardening updates across FortiOS, FortiManager, FortiAnalyzer, FortiMail and FortiAuthenticator, rating some fixes critical and possibly exploitable remotely without authentication, after a testing program that used AI models for source and firmware analysis. No CVEs or exploitation are public yet, but Fortinet itself notes its AI models were good at diffing firmware and building PoCs for fixed bugs, so attackers can do the same. Upgrade internet-facing devices now rather than waiting for the November 10 disclosure, restrict admin interfaces to trusted IPs, keep FortiManager off the internet and enforce MFA for admins.",
+      "source": "Help Net Security",
+      "published": "2026-10-26",
+      "url": "https://www.helpnetsecurity.com/2026/10/26/fortinet-patches-critical-fortios-flaws-found-with-ai-help/"
+    },
+    {
+      "category": "appsec",
+      "title": "Gheist campaign uses stolen GitHub tokens to dump CI secrets into Actions logs, then deletes the runs",
+      "cve": [],
+      "severity": "",
+      "summary": "Wiz tracked an automated campaign, active since mid-September and still running on October 24, that used stolen tokens from over 850 accounts to plant more than 13,500 ci-sync-XXXXXX branches with a sync-check.yml workflow. The workflow base32-encodes every reachable secret to slip past log masking, the tool pulls the log via the API and deletes the run seconds later, so no attacker server is involved; it reached private repos and GitHub Enterprise, and stolen AWS credentials were later used. Search for ci-sync-* branches and the gheist user agent in audit logs, rotate every secret those repos could read, revoke the pushing tokens and check their owners for infostealers, and require environment reviewers and branch-scoped OIDC for production secrets.",
+      "source": "The Hacker News",
+      "published": "2026-10-26",
+      "url": "https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Wasmtime discloses a second CVSS 9.9 Cranelift sandbox escape that only hits ARM64, and earlier patches miss it",
+      "cve": ["CVE-2026-115889", "CVE-2026-115893"],
+      "severity": "Critical 9.9",
+      "summary": "Alongside the all-architecture CVE-2026-115889 covered yesterday, CVE-2026-115893 lets a crafted module escape the sandbox on aarch64 and affects lines that the first bug did not, including 43.x through 48.0.6 and 49.0.0 through 49.0.3. The fixed releases are 36.0.19, 48.0.7, 49.0.4 and 50.0.0; ARM64 hosts that stopped at 36.0.7, 42.0.2 or 43.0.1 after an April fix are still exposed. No attacks are reported, but Dependabot will not flag the ARM64 bug yet, so check manually or with cargo-audit (RUSTSEC-2026-0379/0380) and rebuild every program that embeds Wasmtime.",
+      "source": "The Hacker News",
+      "published": "2026-10-26",
+      "url": "https://thehackernews.com/2026/10/two-critical-wasmtime-flaws-could-let.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Scanner-evading JavaScript loader planted in 953 mostly Magento stores via PolyShell and SessionReaper",
+      "cve": ["CVE-2026-48356", "CVE-2025-54236"],
+      "severity": "",
+      "summary": "Sansec found a long-running campaign, active since July 2025, that injects a loader into Magento CMS blocks and serves malicious JavaScript only to real shoppers, using server-side checks, fingerprinting and localStorage caching so scanners see nothing and payloads survive domain takedowns. Initial access came mostly through PolyShell (CVE-2026-48356) and also SessionReaper (CVE-2025-54236); recent infrastructure includes deepveindrilling[.]com and additionalver[.]com. Apply APSB26-73, audit admin accounts, and inspect the cms_block and cms_page tables directly rather than trusting external scans.",
+      "source": "The Hacker News",
+      "published": "2026-10-26",
+      "url": "https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html"
+    },
+    {
+      "category": "ai",
+      "title": "OpenHands agent SDK exposed its sandbox server on all interfaces with no auth, giving root shell to anyone who reaches it",
+      "cve": ["CVE-2026-112346"],
+      "severity": "Critical 9.8",
+      "summary": "In OpenHands Software Agent SDK before 1.52.0, the Docker and Apptainer workspace launchers bound the sandbox agent server to every network interface, and an empty session_api_keys list meant authentication was off. Anyone who could reach the published port could run commands as root in the sandbox over HTTP or WebSocket, read the mounted workspace and pull plaintext secrets from the secrets store. No public PoC or exploitation is known; upgrade to 1.52.0, set session API keys explicitly, and keep agent sandbox ports off shared or public networks.",
+      "source": "TheHackerWire",
+      "published": "2026-10-26",
+      "url": "https://www.thehackerwire.com/vulnerability/CVE-2026-112346/"
+    },
+    {
+      "category": "ai",
+      "title": "Arize test: hidden web-page instructions made a support agent leak another customer's data in 28 of 100 runs",
+      "cve": [],
+      "severity": "",
+      "summary": "Arize served a LangGraph support agent pages carrying hidden instructions to look up a different customer, and it leaked that customer's address and orders 28 times in 100, with checklist-style wording the most effective, even though blunt exfiltration requests were refused. Binding the customer tools in code to the logged-in user stopped every leak even though the model still tried out-of-scope lookups 20 times. A deterministic check on tool-call arguments caught all 28 leaks while an LLM judge reading the final answer caught only 5, so enforce authorization in the tool layer and monitor tool calls, not just outputs.",
+      "source": "Arize AI",
+      "published": "2026-10-26",
+      "url": "https://arize.com/blog/indirect-prompt-injection-ai-agents/"
+    },
+    {
+      "category": "ai",
+      "title": "Anthropic outlines the guardrails on its Claude Duet agent: intent checks, hard limits and credential isolation",
+      "cve": [],
+      "severity": "",
+      "summary": "Duet, in a US research preview, runs in a dedicated cloud VM, cannot read passwords, cookies or sign-in tokens, and pairs per-action user approvals with a separate intent check outside the task model to catch instructions hidden in web pages. Some actions, such as trading securities or moving money between bank accounts, are blocked outright, and a classifier screens outbound messages and uploads for sensitive data, though Anthropic admits it can miss things. For defenders the open risks are approval fatigue, spoofed password prompts and memory that survives disconnecting an app, so treat any Duet credential prompt outside claude.ai or the Claude app as phishing.",
+      "source": "Help Net Security",
+      "published": "2026-10-26",
+      "url": "https://www.helpnetsecurity.com/2026/10/26/anthropic-claude-duet-security-safeguards/"
+    }
+  ]
+}
