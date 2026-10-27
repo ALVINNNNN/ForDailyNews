@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-28",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: CISA adds both PHP2Shell flaws to KEV with an October 29 deadline, while Palo Alto withdraws its government-intrusion claim",
+      "cve": ["CVE-2026-109618", "CVE-2026-109619"],
+      "severity": "Critical 9.2",
+      "summary": "CISA put the two unauthenticated PHP RCE bugs into the Known Exploited Vulnerabilities catalog on October 26, giving federal agencies until October 29 to fix them; Perplexity honeypots logged 35 working shells against PHP 8.4.26 under Apache mod_php, and Delft researchers counted more than 50,000 exploit requests from over 600 IPs. Palo Alto Networks has retracted its claim tying the bugs to a European government breach (reported here on October 26), and Sophos downgraded its own findings to scanning and failed attempts. Upgrade to PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35 (or a vendor backport), and take unpatchable end-of-life PHP hosts offline.",
+      "source": "The Register",
+      "published": "2026-10-27",
+      "url": "https://theregister.com/cyber-crime/2026/10/27/cisa-confirms-php2shell-under-attack-as-researchers-clock-successful-exploits/5305681"
+    },
+    {
+      "category": "zero-day",
+      "title": "Apple backports its exploited CoreGraphics fix to iPhone XS-era devices in iOS 18.7.11",
+      "cve": ["CVE-2026-86950"],
+      "severity": "High 8.8",
+      "summary": "Apple released iOS and iPadOS 18.7.11 to bring the September fix for an out-of-bounds write in CoreGraphics to older hardware such as the iPhone XS/XR and several older iPads. A crafted file can trigger code execution, and Apple says the bug may have been used in an extremely sophisticated attack on specific individuals. Update older devices to 18.7.11 and current ones to iOS 27.2, which also patches hundreds of other bugs.",
+      "source": "The Hacker News",
+      "published": "2026-10-27",
+      "url": "https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "CERT-UA warns attackers are taking over Dahua cameras by guessing serial numbers through the P2P cloud relay",
+      "cve": ["CVE-2021-33044", "CVE-2021-33045"],
+      "severity": "",
+      "summary": "Ukraine's CERT-UA says attackers enumerate Dahua devices by their near-sequential serial numbers, reach cameras behind NAT through the Easy4IP/P2P relay, and log in with weak passwords or old authentication-bypass bugs on outdated firmware. Related Hunt.io research describes one actor compromising more than 14,500 Dahua cameras and planting a backdoor account that survives password changes. Disable P2P where it is not needed, keep cameras off the internet, update firmware, and audit for unknown accounts and DVRIP logins from 127.0.0.1.",
+      "source": "The Hacker News",
+      "published": "2026-10-27",
+      "url": "https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html"
+    },
+    {
+      "category": "appsec",
+      "title": "'Tailworm': 11 Tailscale flaws published before a fix, led by SSH socket forwarding that can reach root",
+      "cve": [],
+      "severity": "",
+      "summary": "Cyberdione Labs disclosed 11 issues in Tailscale 1.104.2 and headscale 0.29.5; the worst lets an ordinary Tailscale SSH session abuse Unix-socket forwarding, which runs as root, to execute code, grab enrollment keys or delete root files. Others include an app-connector path to cloud metadata, an unauthenticated headscale crash loop and authorization gaps in tailscale serve. Tailscale aimed to ship a fixed client on October 27; until you have it, set TS_SSH_DISABLE_FORWARDING=1 for tailscaled and tighten SSH access rules.",
+      "source": "BleepingComputer",
+      "published": "2026-10-27",
+      "url": "https://www.bleepingcomputer.com/news/security/tailscale-warns-of-serious-ssh-flaws-allowing-root-privilege-escalation/"
+    },
+    {
+      "category": "appsec",
+      "title": "Microsoft Authenticator for Android let a zero-permission app pose as Teams and collect work-account tokens",
+      "cve": ["CVE-2026-80097"],
+      "severity": "High 8.6",
+      "summary": "An exported Authenticator activity built token requests from caller-supplied values and only checked that the real Teams app was installed, so any app could impersonate Teams and obtain Graph tokens for mail, files and calendars. Enclave says its PoC needed no user interaction beyond a signed-in account; Microsoft says a user must complete an auth flow, and reports no exploitation. Make sure managed Android devices run Authenticator 6.2606.4246 or later.",
+      "source": "The Hacker News",
+      "published": "2026-10-27",
+      "url": "https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html"
+    },
+    {
+      "category": "appsec",
+      "title": "GoAhead embedded web server ignored revocation lists, so revoked mTLS client certificates still worked",
+      "cve": ["CVE-2026-115881", "CVE-2026-115884"],
+      "severity": "Critical 9.1",
+      "summary": "FoxIO found that GoAhead 3.4.5 through 6.1.0 built with OpenSSL loads a CRL but never turns on revocation checking, while the LibreSSL build can accept over-long client chains and the Mbed TLS build sends a 1-byte DH value that could expose sessions to passive decryption. The fixes are in GoAhead 6.1.1, which went to device makers in August and was published October 12. Ask vendors of devices that embed GoAhead for firmware on 6.1.1, and don't rely on certificate revocation alone for these devices until then.",
+      "source": "The Hacker News",
+      "published": "2026-10-27",
+      "url": "https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Keystone scraps 18,835 hardware wallets after an attacker stole its device-authenticity key via a web plugin",
+      "cve": [],
+      "severity": "",
+      "summary": "An attacker escalated privileges through a flaw in a third-party monitoring tool on Keystone's website and took the key the wallets use to prove they are genuine, along with about 26,000 buyer records. Because the key is burned in at manufacture, counterfeit devices could now pass the online check, so Keystone is destroying unsold stock and pausing shipments; it says no seeds or private keys were exposed. It is a supply-chain lesson: keep signing keys out of web-reachable systems, and owners who received a device after October 20 should confirm with support before using it.",
+      "source": "The Hacker News",
+      "published": "2026-10-27",
+      "url": "https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html"
+    },
+    {
+      "category": "ai",
+      "title": "OpenAI's compaction step could be told to copy a model's hidden reasoning out as plain text",
+      "cve": [],
+      "severity": "",
+      "summary": "Xint showed that asking a reasoning model's own compaction step to transcribe its encrypted reasoning, then passing the result to an older model, bypassed the cross-model replay check OpenAI added in August. Xint only tested its own requests and does not claim access to other users' data; OpenAI fixed the issue on October 23 with no change needed by API users and paid a $6,000 bounty. Xint warns that any server-side step that reads decrypted reasoning and follows user instructions is a potential leak path, which applies to anyone building similar pipelines.",
+      "source": "The Hacker News",
+      "published": "2026-10-27",
+      "url": "https://thehackernews.com/2026/10/openai-compaction-flaw-let-researchers.html"
+    },
+    {
+      "category": "ai",
+      "title": "Radware scanned 86 million GitHub items and found hidden prompt injections aimed at coding agents",
+      "cve": [],
+      "severity": "",
+      "summary": "Radware researchers found hidden instructions in about 2.5 of every 100,000 issues, pull requests, comments and READMEs, often inside HTML comments that don't render in Markdown; a wider 145-million-item dataset includes 47 outright attack attempts, some aimed at stealing secrets. The study measures attempts, not successful compromises. Treat repository content as untrusted input for agents, scope agent tokens tightly, and monitor tool calls and network activity rather than just prompts.",
+      "source": "CYBR.SEC.Media",
+      "published": "2026-10-27",
+      "url": "https://www.cybrsecmedia.com/who-is-prompt-injecting-coding-agents-a-scan-of-86-million-github-items/"
+    }
+  ]
+}
