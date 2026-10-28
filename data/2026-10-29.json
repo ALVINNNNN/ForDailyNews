@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-29",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: CISA puts the Brotli 'Node2Shell' decoder bug in KEV after confirming exploitation",
+      "cve": ["CVE-2026-111497"],
+      "severity": "Critical",
+      "summary": "CISA added the Brotli decoder flaw behind Node2Shell to its Known Exploited Vulnerabilities catalog on October 27, confirming attackers have started using it; US federal agencies have until November 10 to patch. A crafted Brotli-compressed stream can crash or leak memory from vulnerable decoders in Node.js, .NET and other software that bundles the library, and in some cases run code. Update every runtime and image that ships Brotli, restart the affected processes and rebuild containers; where you cannot patch yet, block Brotli-encoded requests at the proxy or turn off Brotli decoding.",
+      "source": "BleepingComputer",
+      "published": "2026-10-28",
+      "url": "https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-now-exploiting-critical-node2shell-flaw/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Attackers start probing a fresh 9.8 Oracle E-Business Suite SQL injection-to-RCE bug a week after its patch",
+      "cve": ["CVE-2026-101767"],
+      "severity": "Critical 9.8",
+      "summary": "Defused Cyber's EBS honeypots logged exploratory exploit attempts on October 27 against an unauthenticated SQL injection in the Thin Client Framework servlet that Horizon3.ai showed can be chained to code execution. Oracle fixed it in the October 2026 Critical Patch Update; this is probing rather than confirmed mass exploitation, but EBS bugs have been prime extortion targets. Apply the October CPU now; if you can't, drop /OA_HTML/AppsTCFServer from the URL firewall allowlist, keep the web tier off the internet, and watch for unauthenticated POSTs to that path followed by database reconnaissance.",
+      "source": "The Hacker News",
+      "published": "2026-10-28",
+      "url": "https://thehackernews.com/2026/10/hackers-target-critical-oracle-e.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Volt Typhoon's 'Silent Train' relay network masked exploits against SD-WAN and IT management platforms",
+      "cve": ["CVE-2026-16812", "CVE-2026-20127", "CVE-2025-8875", "CVE-2025-8876", "CVE-2024-39717"],
+      "severity": "",
+      "summary": "Lumen's Black Lotus Labs describes a short-lived relay framework, tracked for three years, that the Chinese state group uses to hide where its attacks come from, chaining overseas VPS hosts through hijacked routers and, more recently, compromised enterprise machines. The traffic carried exploits for VeloCloud Orchestrator, Cisco Catalyst SD-WAN, N-able N-central and Versa Director, plus a suspected Quest KACE zero-day. Patch these management platforms, keep their admin interfaces off the internet, retain logs longer, and review trusted links to customers and partners that a compromised manager could reach.",
+      "source": "BleepingComputer",
+      "published": "2026-10-28",
+      "url": "https://www.bleepingcomputer.com/news/security/volt-typhoon-hides-zero-day-attacks-using-silent-train-framework/"
+    },
+    {
+      "category": "appsec",
+      "title": "16-year-old EDK II PXE overflow can run code before Secure Boot, and most firmware has no fix yet",
+      "cve": ["CVE-2026-97631"],
+      "severity": "Critical 9.5",
+      "summary": "A fixed-size buffer in EDK II's IPv4 and IPv6 PXE code overflows when an ICMP error message exceeds 504 bytes, so one crafted packet during network boot can hang a machine or, with build-specific work, execute code ahead of Secure Boot. The fix is merged upstream and in Microsoft's Project Mu, but no stable EDK II release carries it, so most servers must wait for BIOS/UEFI updates from their vendors; Red Hat, SUSE and Debian list affected edk2 packages. There is no known exploitation; disable PXE boot wherever network booting isn't needed and track vendor firmware releases.",
+      "source": "The Hacker News",
+      "published": "2026-10-28",
+      "url": "https://thehackernews.com/2026/10/critical-16-year-old-uefi-flaw-can-run.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Huntress traces several intrusions to a compromised camera management app that drops a reverse shell",
+      "cve": [],
+      "severity": "",
+      "summary": "Huntress linked September and October incidents to an unidentified camera management program (CMS.exe) that launched a reverse shell, planted a copy of Microsoft's WpcMon.exe in a user-writable folder and sideloaded two malicious DLLs posing as zlib, with a Run key for persistence and C2 at 144.172.116[.]37. How the software was compromised is still unknown, and the vendor link is unconfirmed. Inventory surveillance and camera management software as third-party code with network reach, block unapproved executables and DLLs in user-writable paths, and hunt for CMS.exe spawning rs.win32.exe.",
+      "source": "Help Net Security",
+      "published": "2026-10-28",
+      "url": "https://www.helpnetsecurity.com/2026/10/28/compromised-camera-management-software-initial-access/"
+    },
+    {
+      "category": "appsec",
+      "title": "Orange Tsai details the all-logic-bug Edge chain that won $175,000 at Pwn2Own Berlin",
+      "cve": ["CVE-2026-45492", "CVE-2026-45494", "CVE-2026-45495"],
+      "severity": "",
+      "summary": "DEVCORE's write-up shows how a flaw in Edge's business sign-in navigation throttle gave universal XSS, which was then combined with a popup-blocker allowlist entry, auto sign-in, a loose cross-origin policy on an MSN asset host and an Immersive Reader page to write files and reach code execution, all without memory corruption. Microsoft fixed it in Edge 148.0.3967.70 in May, and there is no sign of in-the-wild use. The lesson for AppSec teams is that individually 'medium' logic and misconfiguration bugs can chain into full compromise, so CVSS alone is a poor triage signal.",
+      "source": "The Hacker News",
+      "published": "2026-10-28",
+      "url": "https://thehackernews.com/2026/10/researcher-reveals-how-logic-bugs-alone.html"
+    },
+    {
+      "category": "ai",
+      "title": "123 Reg says an AI-driven intrusion read customer records, and suspects a China-nexus group",
+      "cve": [],
+      "severity": "",
+      "summary": "The GoDaddy-owned UK registrar says an intrusion that began on September 18 accessed customer contact and account data, VAT numbers and product information, and calls it the first AI-driven attack against the company. Investigators found AI attack 'skills' and agentic pentest tooling, including the open-source ARTEX framework, on attacker infrastructure in China and Singapore; the attribution is the company's own assessment. Customers should expect targeted phishing and enable two-step verification; defenders should assume agent-driven intrusions move fast and tune detection for automated, read-heavy API access.",
+      "source": "The Register",
+      "published": "2026-10-28",
+      "url": "https://www.theregister.com/cyber-crime/2026/10/28/123-reg-discloses-ai-cyberattack-on-customer-data-suspects-china-nexus/5305936"
+    },
+    {
+      "category": "ai",
+      "title": "Autonomous AI agent finds and validates four EPICS control-system bugs in under four hours",
+      "cve": ["CVE-2026-114595", "CVE-2026-114596", "CVE-2026-114597", "CVE-2026-114598"],
+      "severity": "Critical 9.8",
+      "summary": "Causal Security's Cipher agent found an integer overflow leading to a heap write and possible RCE (CVSS 9.8) plus three out-of-bounds and type-confusion bugs in EPICS Base, the open-source toolkit behind many accelerator and fusion-lab control systems, with little human direction. All four are fixed in EPICS Base 7.0.11. Operators should upgrade, keep EPICS services off untrusted networks and watch for controller crashes; more broadly, expect AI-driven discovery to keep surfacing old bugs in niche infrastructure code faster than it is reviewed.",
+      "source": "The Register",
+      "published": "2026-10-27",
+      "url": "https://www.theregister.com/security/2026/10/27/ai-hacker-finds-4-severe-bugs-in-popular-industrial-control-software-in-under-4-hours/5305811"
+    },
+    {
+      "category": "ai",
+      "title": "Cisco open-sources Project Quarry, Snort-style rules for spotting risky AI agent behaviour",
+      "cve": [],
+      "severity": "",
+      "summary": "Quarry lets teams write YARA/Snort-like rules over whole agent sessions, so it can flag sequences such as a sensitive file read followed by an outbound send, or a credential pulled from a tool result and then used against an external service. It covers multi-turn chats, tool and MCP calls and multimodal input, with plugins for Claude Code, Codex and other MCP clients. Cisco positions it as a complement to human oversight rather than a replacement; it is worth trialling as a detection layer for coding agents and MCP-connected workflows.",
+      "source": "The Register",
+      "published": "2026-10-28",
+      "url": "https://www.theregister.com/security/2026/10/28/cisco-open-sources-tool-for-detecting-ai-agents-on-hacking-sprees/5305867"
+    }
+  ]
+}
