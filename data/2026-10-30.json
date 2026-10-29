@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-30",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Cisco patches an exploited ASA/FTD SSL VPN bug that lets unauthenticated attackers reboot firewalls",
+      "cve": ["CVE-2026-76418"],
+      "severity": "High 8.6",
+      "summary": "A logic error in the Remote Access SSL VPN service of Secure Firewall ASA and FTD lets a remote, unauthenticated attacker send a crafted login request that forces the device to reload, and Cisco says it is already being exploited. Only devices with the SSL VPN login reachable and secondary authentication configured on a tunnel group are affected; no successful VPN login is needed. Upgrade to the fixed ASA or FTD release for your train, check every tunnel group including DefaultWEBVPNGroup for a secondary-authentication-server-group, and disable secondary authentication as a stopgap if you cannot patch yet.",
+      "source": "The Hacker News",
+      "published": "2026-10-29",
+      "url": "https://thehackernews.com/2026/10/cisco-patches-actively-exploited-asa.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: PHP2Shell attackers chain the exploited Fragnesia kernel bug to root 25 servers, including government-linked firewalls",
+      "cve": ["CVE-2026-109618", "CVE-2026-109619", "CVE-2026-46300"],
+      "severity": "Critical 9.2",
+      "summary": "Startup Dream, with Unit 42 verifying the tooling, says suspected Chinese operators built their own four-stage PHP2Shell exploit for Palo Alto PAN-OS 12.1/12.2 management interfaces, then used the Fragnesia ESP-in-TCP privilege escalation to get root and drop web shells on 25 servers from October 23. They tunnelled inward, enumerated and password-sprayed Active Directory, and tried to plant backdoor accounts and pull SAML signing keys; CISA added Fragnesia to KEV this week. Patch PHP2Shell and the kernel flaw, take management interfaces off the internet, hunt for web shells and outbound tunnels on firewalls, and rotate LDAP service credentials if a device may have been reached.",
+      "source": "The Register",
+      "published": "2026-10-29",
+      "url": "https://www.theregister.com/security/2026/10/29/suspected-chinese-attackers-built-a-custom-php2shell-exploit-and-rooted-25-servers/5306456"
+    },
+    {
+      "category": "zero-day",
+      "title": "Linux TCP use-after-free behind Anthropic's remote-root demo still lacks fixes on Ubuntu and RHEL",
+      "cve": ["CVE-2026-98432"],
+      "severity": "Critical 9.8 (kernel CNA)",
+      "summary": "A use-after-free in the kernel's IPv4 TCP handshake code, present since Linux 4.4, is the bug Anthropic says its model turned into a working remote root exploit against servers with a multipath TCP listener; the exploit has not been released and no in-the-wild attacks are known. Scores range from 9.8 (kernel CNA) down to 5.9 depending on the vendor. Upstream stable kernels and Debian, Oracle Linux UEK, Amazon Linux 2023 and some SUSE builds are fixed, while Ubuntu and RHEL 8-10 had no released fix as of October 29. Install vendor kernels where available, prioritise hosts with MPTCP or internet-facing TCP services, and watch Ubuntu and Red Hat advisories.",
+      "source": "The Hacker News",
+      "published": "2026-10-29",
+      "url": "https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: ZDI details the three PeopleSoft bugs ShinyHunters used as a zero-day, all folded under one Oracle CVE",
+      "cve": ["CVE-2026-35273"],
+      "severity": "",
+      "summary": "Zero Day Initiative published the chain behind ShinyHunters' PeopleSoft intrusions: an SSRF in PSIGW that satisfies the new validateClient check because localhost is trusted by default, a file-path control bug in PSEMHUB that writes a web shell, and an XML deserialization flaw triggered when PSEMHUB starts. Mandiant says the group has used it since around May and planted web shells on dozens of systems since late September; Oracle shipped a single patch under one CVE. Apply the October fixes, do not rely on validateClient alone, and hunt for web shells and planted XML files because patching does not evict an attacker already inside.",
+      "source": "The Register",
+      "published": "2026-10-28",
+      "url": "https://www.theregister.com/security/2026/10/28/oracle-celebrates-end-of-cybersecurity-awareness-month-with-quadruple-trouble/5306121"
+    },
+    {
+      "category": "appsec",
+      "title": "GitHub adds an npm package firewall that can block malware, critical CVEs and brand-new releases before install",
+      "cve": [],
+      "severity": "",
+      "summary": "GitHub announced a policy-driven firewall for npm that vets packages before they reach a laptop, a CI build or a coding agent, blocking known malware, critically vulnerable versions and releases younger than an enterprise-defined cool-down period. It is enabled by pointing npm at the firewall, and GitHub also announced AI Scan, a Copilot security extension and reachability analysis for Dependabot alerts. Availability and pricing were not detailed. A minimum release age is one of the cheapest defences against the hijacked-maintainer releases seen repeatedly this year, so evaluate it or an equivalent proxy for your registry traffic.",
+      "source": "Help Net Security",
+      "published": "2026-10-28",
+      "url": "https://www.helpnetsecurity.com/2026/10/28/github-package-firewall-npm/"
+    },
+    {
+      "category": "appsec",
+      "title": "'Yoba' campaign hides a miner loader behind genuinely signed ChatGPT and Claude installers on GitHub",
+      "cve": [],
+      "severity": "",
+      "summary": "Check Point tracked fake ChatGPT and Claude desktop apps hosted in GitHub repositories with GitHub Pages landing pages, some ranking high in Google results, that bundle real signed OpenAI and Anthropic executables which sideload a malicious DLL. The dropper persists as a disguised SYSTEM scheduled task, and its loader pulls payload data via a Telegram image, a DGA and Google DNS-over-HTTPS; the current payload is XMRig, but the loader is generic. Install AI desktop apps only from the vendor's own site or managed software catalogue, block unknown-source execution, and alert on signed binaries loading DLLs from user-writable folders.",
+      "source": "Infosecurity Magazine",
+      "published": "2026-10-28",
+      "url": "https://www.infosecurity-magazine.com/news/attackers-hide-malware-behind/"
+    },
+    {
+      "category": "ai",
+      "title": "Anthropic says an unreleased model built five exploit chains, including a Chrome sandbox escape and Linux remote root",
+      "cve": ["CVE-2026-98432", "CVE-2026-33096"],
+      "severity": "",
+      "summary": "Anthropic's Frontier Red Team described an internal model that found bugs and chained them into working lab exploits: a one-visit Chrome sandbox escape on macOS (fixed in Chrome 156), a Safari cross-site data read (fixed in iOS 26.5.2), an Android locked-phone USB data leak, a Windows HTTP/3 denial of service and the Linux TCP remote root. All were reported to vendors first and no real-world use is known, though the capability claims are Anthropic's own and some CVE mappings rest only on its write-up. Make sure Chrome, Apple, Android, Windows and kernel updates are current, and expect patch-to-exploit windows to keep shrinking as AI-assisted bug hunting scales.",
+      "source": "The Hacker News",
+      "published": "2026-10-28",
+      "url": "https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html"
+    },
+    {
+      "category": "ai",
+      "title": "AWS API MCP Server's OAuth mode accepted tokens meant for other apps, letting local users borrow its AWS credentials",
+      "cve": ["CVE-2026-115413"],
+      "severity": "High 7.8",
+      "summary": "In aws-api-mcp-server 1.3.0 up to 1.6.0, OAuth authentication did not check the token audience, so a local user holding an access token issued to a different application by the same identity provider could run AWS operations with the server's configured credentials. It is fixed in 1.6.0, with no known exploitation and NVD analysis still pending. Upgrade, explicitly configure the expected audience or client ID, and scope the IAM role behind any MCP server to the minimum the agent needs.",
+      "source": "Strix",
+      "published": "2026-10-27",
+      "url": "https://www.strix.ai/cve/CVE-2026-115413"
+    }
+  ]
+}

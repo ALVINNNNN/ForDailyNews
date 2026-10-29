@@ -6,7 +6,71 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 29 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Cisco patches an exploited ASA/FTD SSL VPN bug that lets unauthenticated attackers reboot firewalls</title>
+      <link>https://thehackernews.com/2026/10/cisco-patches-actively-exploited-asa.html</link>
+      <guid isPermaLink="false">2026-10-30|https://thehackernews.com/2026/10/cisco-patches-actively-exploited-asa.html|Cisco patches an exploited ASA/FTD SSL VPN bug that lets unauthenticated attackers reboot firewalls</guid>
+      <pubDate>Fri, 30 Oct 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High 8.6 · CVE-2026-76418] A logic error in the Remote Access SSL VPN service of Secure Firewall ASA and FTD lets a remote, unauthenticated attacker send a crafted login request that forces the device to reload, and Cisco says it is already being exploited. Only devices with the SSL VPN login reachable and secondary authentication configured on a tunnel group are affected; no successful VPN login is needed. Upgrade to the fixed ASA or FTD release for your train, check every tunnel group including DefaultWEBVPNGroup for a secondary-authentication-server-group, and disable secondary authentication as a stopgap if you cannot patch yet. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Update: PHP2Shell attackers chain the exploited Fragnesia kernel bug to root 25 servers, including government-linked firewalls</title>
+      <link>https://www.theregister.com/security/2026/10/29/suspected-chinese-attackers-built-a-custom-php2shell-exploit-and-rooted-25-servers/5306456</link>
+      <guid isPermaLink="false">2026-10-30|https://www.theregister.com/security/2026/10/29/suspected-chinese-attackers-built-a-custom-php2shell-exploit-and-rooted-25-servers/5306456|Update: PHP2Shell attackers chain the exploited Fragnesia kernel bug to root 25 servers, including government-linked firewalls</guid>
+      <pubDate>Fri, 30 Oct 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.2 · CVE-2026-109618 · CVE-2026-109619 · CVE-2026-46300] Startup Dream, with Unit 42 verifying the tooling, says suspected Chinese operators built their own four-stage PHP2Shell exploit for Palo Alto PAN-OS 12.1/12.2 management interfaces, then used the Fragnesia ESP-in-TCP privilege escalation to get root and drop web shells on 25 servers from October 23. They tunnelled inward, enumerated and password-sprayed Active Directory, and tried to plant backdoor accounts and pull SAML signing keys; CISA added Fragnesia to KEV this week. Patch PHP2Shell and the kernel flaw, take management interfaces off the internet, hunt for web shells and outbound tunnels on firewalls, and rotate LDAP service credentials if a device may have been reached. (Source: The Register)</description>
+    </item>
+    <item>
+      <title>Linux TCP use-after-free behind Anthropic's remote-root demo still lacks fixes on Ubuntu and RHEL</title>
+      <link>https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html</link>
+      <guid isPermaLink="false">2026-10-30|https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html|Linux TCP use-after-free behind Anthropic's remote-root demo still lacks fixes on Ubuntu and RHEL</guid>
+      <pubDate>Fri, 30 Oct 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 (kernel CNA) · CVE-2026-98432] A use-after-free in the kernel's IPv4 TCP handshake code, present since Linux 4.4, is the bug Anthropic says its model turned into a working remote root exploit against servers with a multipath TCP listener; the exploit has not been released and no in-the-wild attacks are known. Scores range from 9.8 (kernel CNA) down to 5.9 depending on the vendor. Upstream stable kernels and Debian, Oracle Linux UEK, Amazon Linux 2023 and some SUSE builds are fixed, while Ubuntu and RHEL 8-10 had no released fix as of October 29. Install vendor kernels where available, prioritise hosts with MPTCP or internet-facing TCP services, and watch Ubuntu and Red Hat advisories. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Update: ZDI details the three PeopleSoft bugs ShinyHunters used as a zero-day, all folded under one Oracle CVE</title>
+      <link>https://www.theregister.com/security/2026/10/28/oracle-celebrates-end-of-cybersecurity-awareness-month-with-quadruple-trouble/5306121</link>
+      <guid isPermaLink="false">2026-10-30|https://www.theregister.com/security/2026/10/28/oracle-celebrates-end-of-cybersecurity-awareness-month-with-quadruple-trouble/5306121|Update: ZDI details the three PeopleSoft bugs ShinyHunters used as a zero-day, all folded under one Oracle CVE</guid>
+      <pubDate>Fri, 30 Oct 2026 06:57:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[CVE-2026-35273] Zero Day Initiative published the chain behind ShinyHunters' PeopleSoft intrusions: an SSRF in PSIGW that satisfies the new validateClient check because localhost is trusted by default, a file-path control bug in PSEMHUB that writes a web shell, and an XML deserialization flaw triggered when PSEMHUB starts. Mandiant says the group has used it since around May and planted web shells on dozens of systems since late September; Oracle shipped a single patch under one CVE. Apply the October fixes, do not rely on validateClient alone, and hunt for web shells and planted XML files because patching does not evict an attacker already inside. (Source: The Register)</description>
+    </item>
+    <item>
+      <title>GitHub adds an npm package firewall that can block malware, critical CVEs and brand-new releases before install</title>
+      <link>https://www.helpnetsecurity.com/2026/10/28/github-package-firewall-npm/</link>
+      <guid isPermaLink="false">2026-10-30|https://www.helpnetsecurity.com/2026/10/28/github-package-firewall-npm/|GitHub adds an npm package firewall that can block malware, critical CVEs and brand-new releases before install</guid>
+      <pubDate>Fri, 30 Oct 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>GitHub announced a policy-driven firewall for npm that vets packages before they reach a laptop, a CI build or a coding agent, blocking known malware, critically vulnerable versions and releases younger than an enterprise-defined cool-down period. It is enabled by pointing npm at the firewall, and GitHub also announced AI Scan, a Copilot security extension and reachability analysis for Dependabot alerts. Availability and pricing were not detailed. A minimum release age is one of the cheapest defences against the hijacked-maintainer releases seen repeatedly this year, so evaluate it or an equivalent proxy for your registry traffic. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>'Yoba' campaign hides a miner loader behind genuinely signed ChatGPT and Claude installers on GitHub</title>
+      <link>https://www.infosecurity-magazine.com/news/attackers-hide-malware-behind/</link>
+      <guid isPermaLink="false">2026-10-30|https://www.infosecurity-magazine.com/news/attackers-hide-malware-behind/|'Yoba' campaign hides a miner loader behind genuinely signed ChatGPT and Claude installers on GitHub</guid>
+      <pubDate>Fri, 30 Oct 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Check Point tracked fake ChatGPT and Claude desktop apps hosted in GitHub repositories with GitHub Pages landing pages, some ranking high in Google results, that bundle real signed OpenAI and Anthropic executables which sideload a malicious DLL. The dropper persists as a disguised SYSTEM scheduled task, and its loader pulls payload data via a Telegram image, a DGA and Google DNS-over-HTTPS; the current payload is XMRig, but the loader is generic. Install AI desktop apps only from the vendor's own site or managed software catalogue, block unknown-source execution, and alert on signed binaries loading DLLs from user-writable folders. (Source: Infosecurity Magazine)</description>
+    </item>
+    <item>
+      <title>Anthropic says an unreleased model built five exploit chains, including a Chrome sandbox escape and Linux remote root</title>
+      <link>https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html</link>
+      <guid isPermaLink="false">2026-10-30|https://thehackernews.com/2026/10/anthropics-unreleased-ai-model-chains.html|Anthropic says an unreleased model built five exploit chains, including a Chrome sandbox escape and Linux remote root</guid>
+      <pubDate>Fri, 30 Oct 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[CVE-2026-98432 · CVE-2026-33096] Anthropic's Frontier Red Team described an internal model that found bugs and chained them into working lab exploits: a one-visit Chrome sandbox escape on macOS (fixed in Chrome 156), a Safari cross-site data read (fixed in iOS 26.5.2), an Android locked-phone USB data leak, a Windows HTTP/3 denial of service and the Linux TCP remote root. All were reported to vendors first and no real-world use is known, though the capability claims are Anthropic's own and some CVE mappings rest only on its write-up. Make sure Chrome, Apple, Android, Windows and kernel updates are current, and expect patch-to-exploit windows to keep shrinking as AI-assisted bug hunting scales. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>AWS API MCP Server's OAuth mode accepted tokens meant for other apps, letting local users borrow its AWS credentials</title>
+      <link>https://www.strix.ai/cve/CVE-2026-115413</link>
+      <guid isPermaLink="false">2026-10-30|https://www.strix.ai/cve/CVE-2026-115413|AWS API MCP Server's OAuth mode accepted tokens meant for other apps, letting local users borrow its AWS credentials</guid>
+      <pubDate>Fri, 30 Oct 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[High 7.8 · CVE-2026-115413] In aws-api-mcp-server 1.3.0 up to 1.6.0, OAuth authentication did not check the token audience, so a local user holding an access token issued to a different application by the same identity provider could run AWS operations with the server's configured credentials. It is fixed in 1.6.0, with no known exploitation and NVD analysis still pending. Upgrade, explicitly configure the expected audience or client ID, and scope the IAM role behind any MCP server to the minimum the agent needs. (Source: Strix)</description>
+    </item>
     <item>
       <title>Update: CISA puts the Brotli 'Node2Shell' decoder bug in KEV after confirming exploitation</title>
       <link>https://www.bleepingcomputer.com/news/security/cisa-warns-of-hackers-now-exploiting-critical-node2shell-flaw/</link>
@@ -846,86 +910,6 @@
       <pubDate>Sat, 17 Oct 2026 06:51:00 +0800</pubDate>
       <category>AI security</category>
       <description>Symantec says recent builds of the Aoki infostealer now collect .claude.json and Claude desktop cookies, ChatGPT cookies, Codex config.toml and .env files, and tokens for GitHub Copilot, Cursor, Gemini, JetBrains AI Assistant and Kiro, along with AWS keys and crypto wallets. Stolen AI keys let attackers act as the developer, reach linked repos and pipelines, or resell API quota (LLMjacking). Treat AI assistant tokens like any other production secret: prefer short-lived tokens, watch provider usage for spikes, and rotate them after any endpoint infection. (Source: Infosecurity Magazine)</description>
-    </item>
-    <item>
-      <title>Palo Alto confirms limited attacks on a PAN-OS management-interface RCE; CISA sets Oct 17 deadline</title>
-      <link>https://thehackernews.com/2026/10/palo-alto-networks-patches-pan-os.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/palo-alto-networks-patches-pan-os.html|Palo Alto confirms limited attacks on a PAN-OS management-interface RCE; CISA sets Oct 17 deadline</guid>
-      <pubDate>Fri, 16 Oct 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[High 8.6 · CVE-2026-0322] An authenticated attacker who can reach the PAN-OS management interface can run code as root on PA-Series and VM-Series firewalls and on Panorama; Cloud NGFW and Prisma Access are not affected. Palo Alto reports very limited exploitation and lists three source IPs (66.42.72[.]14, 208.83.239[.]114, 149.248.47[.]234), and CISA has added the bug to KEV. Upgrade to the fixed hotfix for your train (e.g. 12.2.4, 11.2.16, 11.1.16-h3, 10.2.18-h12) and lock the management interface down to trusted internal hosts or a jump box. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Cisco Secure Email Gateway bug lets a crafted attachment write files and run commands as root, now exploited</title>
-      <link>https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html|Cisco Secure Email Gateway bug lets a crafted attachment write files and run commands as root, now exploited</guid>
-      <pubDate>Fri, 16 Oct 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.8 · CVE-2026-76519] A path traversal in the AMP File Reputation feature of Cisco Secure Email Gateway lets an unauthenticated sender plant files and gain root via an email attachment; it is exploitable when File Reputation is on in a mail policy and Content Scanner Tools is below 25.3.0.5525. Cisco confirms active attacks and there is no workaround. Update Content Scanner Tools to 25.3.0.5525+ or move to AsyncOS 15.5.5-014 / 16.5.0-780, and check external firewall logs for odd outbound uploads, since root access lets attackers wipe local evidence. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Exploited AhsayCBS auth-bypass and command-injection chain gets new hotfixes after earlier patches fell short</title>
-      <link>https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html|Exploited AhsayCBS auth-bypass and command-injection chain gets new hotfixes after earlier patches fell short</guid>
-      <pubDate>Fri, 16 Oct 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[CVE-2026-105133 · CVE-2026-105134] Attackers are chaining an authentication bypass and a command injection in the AhsayCBS backup server to get unauthenticated code execution, dropping web shells and XMRig miners, according to Huntress. The August builds 9.15.2.59 and 10.3.4.0 did not fully close the hole, and CISA has put both CVEs in KEV with an Oct 17 deadline. Install hotfix 10.3.4.45 or 9.15.2.70, reboot, and hunt for web shells and miners on any internet-facing server. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Next.js out-of-band release fixes two critical RCE paths in 'use cache' and SVG handling via sharp</title>
-      <link>https://thehackernews.com/2026/10/nextjs-ships-out-of-band-patch-for-two.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/nextjs-ships-out-of-band-patch-for-two.html|Next.js out-of-band release fixes two critical RCE paths in 'use cache' and SVG handling via sharp</guid>
-      <pubDate>Fri, 16 Oct 2026 06:57:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Critical 9.5 · CVE-2026-96889] Next.js 16.4.1 and 15.5.28 fix a code-execution bug in App Router apps that use Cache Components ('use cache'), an RCE through librsvg when attacker-supplied SVGs reach sharp (dangerouslyAllowSVG or next/og on Node), and a Server Actions CPU-exhaustion DoS. No exploitation was reported as of Oct 15. Two of the advisories carry no CVE and may not show up in npm audit, so upgrade and redeploy directly, and on v15 confirm sharp is 0.35.5 or later. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Drupal core Field UI flaw rated critical, with a no-login RCE path through contributed modules</title>
-      <link>https://thehackernews.com/2026/10/drupal-patches-critical-core-rce-flaw.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/drupal-patches-critical-core-rce-flaw.html|Drupal core Field UI flaw rated critical, with a no-login RCE path through contributed modules</guid>
-      <pubDate>Fri, 16 Oct 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Critical (Drupal 19/25) · CVE-2026-108097 · CVE-2026-108099] Drupal fixed a critical Field UI weakness that core alone does not expose but that contributed modules or custom code can turn into code execution, at least one path needing no authentication. Fixed releases are 11.4.10, 11.3.19 and 10.6.19; end-of-life branches get nothing, and no public exploit had appeared by Oct 15, though the security team expects one quickly. Update core (or uninstall field_ui as a stopgap) and separately update the Entity List module to 3.0.10 for its own critical RCE. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>GhostAction's October burst hit about 1,900 GitHub accounts and pushed secret-stealing workflows at 30,000+ repos</title>
-      <link>https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html|GhostAction's October burst hit about 1,900 GitHub accounts and pushed secret-stealing workflows at 30,000+ repos</guid>
-      <pubDate>Fri, 16 Oct 2026 06:55:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>GitGuardian says the GhostAction crew used stolen tokens to push fake 'security audit' GitHub Actions workflows (security-audit.yml, github_actions_security.yml) that scrape CI secrets and git history for cloud, registry and AI API keys, with a spike on Oct 8-9. GitHub began blocking the workflow from running on Oct 9, but some victims were repeat targets whose secrets had never been rotated. Search all branches for those workflow files since Aug 31, remove them, rotate every exposed secret and revoke stale personal access tokens. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>NGINX 1.30.6 and 1.31.7 fix three memory bugs and a TLS session flaw that can skip client-cert checks</title>
-      <link>https://thehackernews.com/2026/10/nginx-fixes-5-flaws-including-possible.html</link>
-      <guid isPermaLink="false">2026-10-16|https://thehackernews.com/2026/10/nginx-fixes-5-flaws-including-possible.html|NGINX 1.30.6 and 1.31.7 fix three memory bugs and a TLS session flaw that can skip client-cert checks</guid>
-      <pubDate>Fri, 16 Oct 2026 06:54:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[F5 CVSS v4 up to 9.2 · CVE-2026-15176 · CVE-2026-93479 · CVE-2026-97205 · CVE-2026-95101 · CVE-2026-97629] Five NGINX bugs are fixed: two heap overflows and a use-after-free that need specific alias/rewrite, regex map or aio+SSI configurations, an HTTP/3 request-smuggling style issue, and a shared TLS session cache weakness that can let a forged session bypass client-certificate verification. None are reported exploited. Upgrade to 1.30.6 or 1.31.7 (check distro backports and F5 products separately), or run nginx -T and apply F5's per-directive workarounds. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>LiteLLM gateway flaws let low-privilege users reach admin functions and leak AI provider keys</title>
-      <link>https://www.infosecurity-magazine.com/news/high-risk-vulnerabilities-llm-tool/</link>
-      <guid isPermaLink="false">2026-10-16|https://www.infosecurity-magazine.com/news/high-risk-vulnerabilities-llm-tool/|LiteLLM gateway flaws let low-privilege users reach admin functions and leak AI provider keys</guid>
-      <pubDate>Fri, 16 Oct 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>[CVE-2026-35029 · CVE-2026-59823] Check Point found a missing authorization check in LiteLLM that lets even read-only users change runtime config and get code execution, plus an SSRF that can send requests carrying provider API keys to an attacker's server. Both are fixed in 1.83.9, and no in-the-wild exploitation has been reported. Upgrade, prune gateway accounts, test that limited roles really are limited, and rotate stored provider keys if you suspect earlier abuse. (Source: Infosecurity Magazine)</description>
-    </item>
-    <item>
-      <title>HiddenLayer shows 'decision model' browser agents still fall for indirect prompt injection</title>
-      <link>https://www.theregister.com/ai-and-ml/2026/10/15/jev-and-other-decision-models-can-still-be-tricked-with-prompt-injection/5303184</link>
-      <guid isPermaLink="false">2026-10-16|https://www.theregister.com/ai-and-ml/2026/10/15/jev-and-other-decision-models-can-still-be-tricked-with-prompt-injection/5303184|HiddenLayer shows 'decision model' browser agents still fall for indirect prompt injection</guid>
-      <pubDate>Fri, 16 Oct 2026 06:52:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>HiddenLayer built a mock shop where a browser agent on TypeSafe AI's Jev was told to buy the cart unchanged, and a fake sponsored 'Confirm Price' button still hijacked it; a tuned Qwen model failed the same way, more often. A character-padding trick also slipped toxic prompts past Jev used as a verifier. The lesson: a system-prompt rule to distrust page content is not a control, so put independent checks in front of any agent action with real consequences. (Source: The Register)</description>
-    </item>
-    <item>
-      <title>Censys: internet-exposed AI software up 63% in nine months, led by vulnerable n8n instances</title>
-      <link>https://www.helpnetsecurity.com/2026/10/15/exposed-ai-infrastructure-report/</link>
-      <guid isPermaLink="false">2026-10-16|https://www.helpnetsecurity.com/2026/10/15/exposed-ai-infrastructure-report/|Censys: internet-exposed AI software up 63% in nine months, led by vulnerable n8n instances</guid>
-      <pubDate>Fri, 16 Oct 2026 06:51:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Censys counted about 268,000 exposed hosts running AI-related software across 44 products in July 2026, up from about 164,000 in October 2025. n8n accounts for roughly 114,000 of them, and about three quarters of those reporting a version run a release with at least one 9.0+ CVE; self-hosted OpenClaw agent panels also climbed into the tens of thousands. Inventory your own AI tooling, keep admin and workflow panels off the public internet, and patch them like any other edge service. (Source: Help Net Security)</description>
     </item>
   </channel>
 </rss>
