@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-31",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Drupal says a missing-authorization flaw in Commerce Core is already being exploited",
+      "cve": ["CVE-2026-118539"],
+      "severity": "Highly critical (Drupal rating)",
+      "summary": "Commerce Core, the Drupal module behind carts, checkout and commerce APIs, fails to protect some routes and entity fields, letting attackers bypass access checks in ways that can cost store owners money. Drupal reports in-the-wild exploitation but has not described the campaign. Update to Commerce Core 3.3.13 on the 3.x branch or 8.x-2.41 on older branches per SA-CONTRIB-2026-254, then review recent orders and price or payment changes for tampering.",
+      "source": "The Hacker News",
+      "published": "2026-10-30",
+      "url": "https://thehackernews.com/2026/10/hackers-actively-exploit-highly.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: CISA lists GitLab's CVSS 10 CI/CD regex RCE as exploited, with a November 1 federal deadline",
+      "cve": ["CVE-2026-97229"],
+      "severity": "Critical 10.0",
+      "summary": "CISA added the GitLab integer-overflow bug, which lets an unauthenticated user run code on the server through a crafted regular expression in a CI/CD configuration, to KEV on October 29. Alpine Linux disclosed attempts against its instance on October 20-21 that crashed workers repeatedly and pulled its GitLab container image, plus blocked tries on October 25-26; it found no proof of success but rebuilt the server anyway. Self-managed GitLab admins who have not patched should do so now and check logs for repeated worker crashes or odd CI configs since mid-October.",
+      "source": "The Hacker News",
+      "published": "2026-10-30",
+      "url": "https://thehackernews.com/2026/10/cisa-adds-actively-exploited-gitlab-rce.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Attackers race WordPress auto-updates, hitting the temporary installer copy nearly 63,000 times in a day",
+      "cve": [],
+      "severity": "High 8.1",
+      "summary": "WordPress 4.7 through 7.1.3 unpack full-package core upgrades, installer included, into a guessable folder under wp-content/upgrade; if that folder is web-reachable, an unauthenticated visitor who lands on the installer before cleanup can get PHP code execution. No CVE has been assigned, and Wordfence blocked 62,969 attempts in 24 hours, with some sources polling sites for over 14 hours. Update to 7.1.4, block web access to wp-content/upgrade, and look in logs for PHP requests under that path or new admin accounts and plugins.",
+      "source": "The Hacker News",
+      "published": "2026-10-30",
+      "url": "https://thehackernews.com/2026/10/wordpress-rce-flaw-draws-nearly-63000.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Rogue Claude Code 2.1.313 on the Cursor Marketplace planted SSH keys and a reverse tunnel",
+      "cve": [],
+      "severity": "",
+      "summary": "For roughly 11 hours on October 29 the Cursor Marketplace served a tampered anthropic.claude-code extension, published under the real publisher identity, that adds an 'svc-telemetry' key to authorized_keys, sets up cron, scheduled-task or LaunchAgent persistence, opens a reverse tunnel and beacons host details and secret-looking environment variable names to 134.209.82[.]225:8099. Cursor puts exposure at up to 5,000 users and says copies from Open VSX and Microsoft's marketplace are not known to be affected; how the update was pushed is still unknown. Anyone who had 2.1.313 should remove the key and persistence, block that IP, rotate credentials whose names were sent, and move to 2.1.314.",
+      "source": "The Hacker News",
+      "published": "2026-10-30",
+      "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Hidden commands in GitHub issues and comments targeted CI workflows in 61 repos, including Trivy and MLflow",
+      "cve": [],
+      "severity": "",
+      "summary": "Radware found 83 issues, PRs and comments, mostly posted within 43 minutes, that hid shell commands in HTML comments so workflows interpolating event text into scripts would run them and send environment variables to the attacker. Targets included aquasecurity/trivy, mlflow/mlflow, google/langextract, cilium/cilium and brave/brave-browser; logs show the payload ran in two cases, but whether tokens or code were actually compromised is unknown. Audit workflows triggered by issues, comments or PRs for direct use of event fields in run steps, pass them via environment variables instead, and strip secrets and write permissions from those jobs.",
+      "source": "The Register",
+      "published": "2026-10-29",
+      "url": "https://www.theregister.com/security/2026/10/29/attackers-turn-github-issues-into-supply-chain-campaign-against-61-public-repos-in-less-than-an-hour/5306153"
+    },
+    {
+      "category": "appsec",
+      "title": "TeamViewer overflow lets a malicious host attack the person connecting to support it",
+      "cve": ["CVE-2026-111585"],
+      "severity": "High 8.8",
+      "summary": "A size calculation in the viewer can overflow when a remote host reports its screen dimensions, so the following screen data overruns the buffer; Remedio showed code execution on Windows, and at minimum the host can crash the viewer repeatedly. It affects the Full Client, Portable and Android Remote Control before 15.83 and needs only that the victim start a session in the default configuration; no attacks or public exploit are known. Update all TeamViewer clients and hosts to 15.83, which also fixes two other high-severity bugs, and be wary of connecting to untrusted machines until then.",
+      "source": "The Hacker News",
+      "published": "2026-10-30",
+      "url": "https://thehackernews.com/2026/10/teamviewer-flaw-lets-remote-computers.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Telegram for Android call-signalling bug could start a device takeover chain when a call is answered",
+      "cve": [],
+      "severity": "",
+      "summary": "NebuSec says the parser for in-call MediaState messages reads a field that may be absent, and that it chained this with an info leak and an Android root exploit to take over a phone from an ordinary account once the victim picks up. Versions 8.6.2 through 12.10.3 are affected and 12.10.4 fixed it in September; no CVE was assigned, no in-the-wild use is known, and the full chain is so far shown only in a demo video. Make sure managed Android devices run Telegram 12.10.4 or later and consider setting call privacy to 'Nobody' for high-risk users.",
+      "source": "The Hacker News",
+      "published": "2026-10-29",
+      "url": "https://thehackernews.com/2026/10/telegram-android-flaw-lets-attackers.html"
+    },
+    {
+      "category": "ai",
+      "title": "CrowdStrike: China's Vapor Panda used the ARTEX agent framework against 200+ organizations in two weeks",
+      "cve": [],
+      "severity": "",
+      "summary": "Since October 17 the group has driven ARTEX, a Go-based tool that coordinates planner and worker LLM agents (DeepSeek plus another subscription model), with a human steering several intrusions at once; nine organizations saw post-exploitation, including BLOODALCHEMY, and one intrusion burned about 1.4 billion input tokens. The agents leaned on weaknesses rather than CVEs: unsigned SAML assertions chained with XXE, exposed orchestration services, keys unrotated since 2022 and default IIS machine keys. Defenders should fix those basics, since agent-driven attackers find them quickly and at scale.",
+      "source": "The Hacker News",
+      "published": "2026-10-30",
+      "url": "https://thehackernews.com/2026/10/chinese-hackers-use-ai-powered-artex-to.html"
+    },
+    {
+      "category": "ai",
+      "title": "Chainalysis says attackers used AI agent tooling to break into internal systems and take customer contact data",
+      "cve": [],
+      "severity": "",
+      "summary": "The blockchain analytics firm told customers that intruders using 'AI-driven agent technology' accessed internal tools and exposed names, emails, user IDs and job titles, but it found no sign that passwords, MFA keys, session tokens or investigation data were taken. It says the breach is unrelated to the Binance theft and has not explained how the agents got in. Chainalysis customers should expect targeted phishing that uses their role and organization.",
+      "source": "TokenPost",
+      "published": "2026-10-30",
+      "url": "https://www.tokenpost.com/news/technology/45208"
+    },
+    {
+      "category": "ai",
+      "title": "Google's gated Gemini 4 Carbon posts top scores for finding, exploiting and patching bugs",
+      "cve": [],
+      "severity": "",
+      "summary": "Google reports 88.2% on SEC-bench Pro for vulnerability discovery, 54.8% on ExploitGym and 71.0% on CWE-bench patching, and says the model resisted every indirect prompt injection it tested; the figures are Google's own. Because of the offensive capability, access is limited to selected defenders and partners in its Fairwind Program. Together with similar models from Anthropic and OpenAI, it signals that exploit development is getting cheaper, so patch windows for exposed systems will keep shrinking.",
+      "source": "The Hacker News",
+      "published": "2026-10-29",
+      "url": "https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html"
+    }
+  ]
+}
