@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-03",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Exploited YOOtheme Pro, FreeSWITCH and Oracle EBS flaws are still missing from CISA's KEV list",
+      "cve": [
+        "CVE-2026-102785",
+        "CVE-2026-116779",
+        "CVE-2026-101767"
+      ],
+      "severity": "Critical 10.0",
+      "summary": "A weekly roundup of the Oct 26 to Nov 1 exploitation picture flags three flaws seeing attacks that CISA's catalog had not picked up as of its Oct 30 version: the CVSS 10 unauthenticated file-write bug in YOOtheme Pro 5.0.0 to 5.0.52, which Unit 42 saw used to plant PHP webshells disguised as images; a FreeSWITCH flaw the vendor says is hit in default setups; and a CVSS 9.8 unauthenticated SQL injection in Oracle E-Business Suite 12.2.3 to 12.2.15 that decoys recorded being probed. Fixes are YOOtheme Pro 5.0.53, FreeSWITCH 1.11.3 and Oracle's October 20 Critical Patch Update. Don't wait for a KEV listing to prioritise these, and on YOOtheme sites look for 'yt'-prefixed PHP files and an ALFA_DATA folder under wp-content/uploads plus traffic from 168.144.251[.]199.",
+      "source": "Daily CyberSecurity (SecurityOnline)",
+      "published": "2026-11-02",
+      "url": "https://securityonline.info/weekly-cve-report-oct-26-nov-1-2026/"
+    },
+    {
+      "category": "ai",
+      "title": "Langflow fixes two unauthenticated 9.8 flaws, including code execution through its MCP tool endpoint",
+      "cve": [
+        "CVE-2026-93680",
+        "CVE-2026-110186",
+        "CVE-2026-110193",
+        "CVE-2026-110192"
+      ],
+      "severity": "Critical 9.8",
+      "summary": "IBM disclosed four flaws in the Langflow agent-building platform: an authentication bypass tied to the auto-login feature, unauthenticated code execution via MCP tool enumeration, an 8.8 bug where the Agentic Assistant can be steered into producing code that runs OS commands, and a credential-exposure issue, affecting versions up to 1.12.8. Langflow 1.13.0 fixes all four and turns auto-login off by default; there is no workaround, a public Metasploit module already enumerates MCP tools via the auth bypass, and six older Langflow bugs are in CISA's KEV list though these new ones are not yet reported exploited. Back up the database and secret key, set the existing account up for password login, then upgrade, and keep Langflow and its MCP endpoints off the internet in the meantime.",
+      "source": "The Hacker News",
+      "published": "2026-11-02",
+      "url": "https://thehackernews.com/2026/11/critical-langflow-flaws-could-let.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Polymarket traders lost about $2.7M after DebugBear's DNS was hijacked and its monitoring script swapped",
+      "cve": [],
+      "severity": "",
+      "summary": "On October 29, attackers took control of DebugBear's DNS at its registrar and served a replacement for the real-user-monitoring script Polymarket loaded from cdn.debugbear[.]com; the code reused signed-in traders' sessions and API keys to push positions to an attacker wallet or dump them and move the proceeds. Polymarket says 726 wallets lost roughly $2.7 million, it froze trading within about an hour, and it is returning $3.9 million in total, while DebugBear says its own systems show no sign of intrusion. Remove the DebugBear embed if you use it, keep third-party scripts off pages that place orders or request signatures, and use Subresource Integrity on pinned third-party files, since a CSP allow-list alone does not detect a swapped file.",
+      "source": "The Hacker News",
+      "published": "2026-11-01",
+      "url": "https://thehackernews.com/2026/11/hackers-steal-about-27-million-from.html"
+    },
+    {
+      "category": "ai",
+      "title": "Sophos: Aur0ra ransomware crew handed VPN logins to Cursor agents that mapped networks and chased domain admin",
+      "cve": [],
+      "severity": "",
+      "summary": "Sophos CTU, which tracks the group as GOLD OGRE, recovered Cursor artifacts showing operators gave AI agents VPN credentials, proxies, targets and goals, after which the agents enumerated Active Directory, combed shares and backups for passwords and moved laterally with little supervision; initial access and the ransomware deployment stayed manual. The Russian-language prompts framed the work as authorised red teaming to get past guardrails, and Sophos says the agents reached domain-level access at several victims, three of which later appeared on the leak site. Assume faster intrusions: patch edge devices, roll out phishing-resistant MFA, purge plaintext credentials from shares and backups, and make sure EDR alerts get a prompt human response.",
+      "source": "Help Net Security",
+      "published": "2026-11-02",
+      "url": "https://www.helpnetsecurity.com/2026/11/02/aur0ra-ransomware-ai-agents/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Public kernelCTF exploit for a Linux bonding-driver race gives local root and container escape",
+      "cve": [
+        "CVE-2026-31419"
+      ],
+      "severity": "High 7.8",
+      "summary": "A race in bond_xmit_broadcast() in the Linux bonding driver leads to a double-free and use-after-free that a local attacker can turn into root, and a public exploit from Google's kernelCTF programme demonstrates escaping a container on Container-Optimized OS. Kernels built with bonding support across a wide range of releases are affected, including RHEL 8, 9 and 10; no in-the-wild exploitation is reported yet. Move to patched distribution kernels, prioritising multi-tenant and container hosts, and where you can't patch quickly, restrict unprivileged user namespaces and unload the bonding module on machines that don't use link aggregation.",
+      "source": "Daily CyberSecurity (SecurityOnline)",
+      "published": "2026-11-02",
+      "url": "https://securityonline.info/linux-kernel-vulnerability-cve-2026-31419-poc/"
+    },
+    {
+      "category": "ai",
+      "title": "A shared ChatGPT link could run attacker code in the viewer's session and read their private chats",
+      "cve": [],
+      "severity": "",
+      "summary": "Researchers at Parameter chained an interactive graph that loaded the MathLive library into the main ChatGPT page, a MathLive message listener that accepted HTML from any origin, and the Preview feature to create a frame treated as chatgpt.com, then used an allow-listed YouTube script to slip past the CSP and read and exfiltrate a victim's private conversations. OpenAI raised the report to its highest priority and had the fix fully deployed by October 26; there is no sign of real-world abuse and users need do nothing. The lesson for builders of AI chat front-ends is to validate postMessage origins, never let messages carry raw HTML into the main origin, and treat broad CSP script allow-lists as a bypass waiting to happen.",
+      "source": "The Hacker News",
+      "published": "2026-10-31",
+      "url": "https://thehackernews.com/2026/10/a-shared-chatgpt-link-could-run.html"
+    },
+    {
+      "category": "ai",
+      "title": "Talos: VOLTA infostealer sends stolen data to an LLM to rank which victims are worth cashing out",
+      "cve": [],
+      "severity": "",
+      "summary": "Cisco Talos found a Windows stealer, sold as a builder, that grabs browser credentials and cookies, saved cards, crypto seeds, Microsoft OAuth tokens and SSH and cloud keys, enriches a victim profile using the stolen sessions, and then asks a model via OpenRouter to write an 'intelligence assessment' ranking assets by how easily they convert to money. It defaults to Claude Opus 4.6 and falls back to Kimi K2 and then Gemini 2.5 Flash when it detects a refusal, and it self-deletes and uses only third-party endpoints, leaving no attacker infrastructure to block. Treat any infostealer hit as a full credential event: revoke sessions and OAuth tokens, rotate cloud and SSH keys, and watch for unexpected traffic to LLM API brokers from endpoints that have no reason to use them.",
+      "source": "Help Net Security",
+      "published": "2026-11-02",
+      "url": "https://www.helpnetsecurity.com/2026/11/02/ai-powered-infostealer-volta-victim-profiling/"
+    },
+    {
+      "category": "appsec",
+      "title": "Trezor warns wallets sold through reseller CryptoBilis may carry a seed-stealing cellular implant",
+      "cve": [],
+      "severity": "",
+      "summary": "A customer reported a Trezor Safe 5 from CryptoBilis, a reseller linked to earlier Ledger drains, with an extra board between the mainboard and display that reads the screen, recovery phrase included, and sends it out over a built-in cellular module whenever the device is powered. Trezor has not yet examined the unit but treats the report as credible and says owners cannot reliably check devices themselves. Anyone who bought a Trezor from CryptoBilis directly or via Tokopedia since March 2026 should move funds to a new wallet with a fresh seed, never restore the old seed elsewhere, and buy hardware security devices only from the manufacturer or vetted channels.",
+      "source": "Help Net Security",
+      "published": "2026-11-02",
+      "url": "https://www.helpnetsecurity.com/2026/11/02/trezor-hardware-wallet-implant-cryptobilis/"
+    },
+    {
+      "category": "appsec",
+      "title": "Microsoft: fake Teams help-desk callers used Quick Assist, then AD CS ESC1 and ESC8 to forge domain controller certificates",
+      "cve": [],
+      "severity": "",
+      "summary": "In two intrusions Microsoft investigated, attackers messaged staff from outside Teams tenants posing as IT support, got Quick Assist sessions, and ran payloads with portable Python, Bun or Java runtimes. One then abused a certificate template that let requesters name any subject (ESC1) to get a domain controller certificate, ran DCSync and exfiltrated files with a renamed Rclone; the other relayed PetitPotam-coerced NTLM to the AD CS web enrollment endpoint (ESC8). No software flaw is involved, so audit certificate templates for requester-supplied subjects and broad enrollment, enforce HTTPS with Extended Protection and drop NTLM on web enrollment, restrict external Teams tenants and remote-support tools, and remember that revoking a certificate does not invalidate Kerberos tickets already issued.",
+      "source": "The Hacker News",
+      "published": "2026-11-02",
+      "url": "https://thehackernews.com/2026/11/attackers-pose-as-it-support-on.html"
+    }
+  ]
+}
