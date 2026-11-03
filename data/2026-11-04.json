@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-04",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: the WordPress upgrade-window race now has a CVE and a CISA KEV listing",
+      "cve": ["CVE-2026-119977"],
+      "severity": "High 8.1",
+      "summary": "The core-update race we covered last week, where an attacker hits the temporary installer copy in wp-content/upgrade before WordPress cleans it up, is now tracked as CVE-2026-119977 and was added to CISA's Known Exploited Vulnerabilities catalog on November 3. It affects WordPress 4.7 through 7.1.3; fixes shipped in 7.1.4, 7.0.8, 6.9.11, 6.8.12, 6.7.11 and backports to older branches. Confirm the version on each site rather than trusting auto-update, block web access to wp-content/upgrade where you cannot patch yet, and check logs around past core updates for PHP requests under that folder.",
+      "source": "WindowsForum",
+      "published": "2026-11-03",
+      "url": "https://windowsforum.com/news/cisa-flags-wordpress-cve-2026-119977-as-actively-exploited-update-to-block-upgrade-window-rce.450815/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Unauthenticated Node-RED flaw on Siemens IoT2050 is being used to drop Linux bots and webshell flows",
+      "cve": ["CVE-2026-58115"],
+      "severity": "Critical 10.0",
+      "summary": "VulnCheck honeypots have caught attackers abusing a missing-authentication bug in Node-RED's HTTP interface, disclosed by Siemens in August for SIMATIC IoT2050 Advanced devices, to deploy flows that run shell commands as soon as they are saved. Payloads included a bot fetched from 85.215.73[.]250 into /dev/shm/.b and a second stage from 45.194.90[.]57 saved as /tmp/.kworker, while other flows added hidden HTTP endpoints wired to exec nodes that survive reboots. Update Industrial OS to 4.3.4.1 or later, remove Node-RED where it is not needed, require adminAuth on any Node-RED editor, and audit deployed flows for unexpected exec nodes.",
+      "source": "The Hacker News",
+      "published": "2026-11-03",
+      "url": "https://thehackernews.com/2026/11/attackers-exploit-critical-siemens.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "BTCPay Server hot wallets on 2.4.1 and older are being drained of Bitcoin and Litecoin",
+      "cve": [],
+      "severity": "",
+      "summary": "BTCPay Server reports theft from hot wallets on self-hosted instances running 2.4.1 or earlier, starting around November 1, and says the attackers used a different method from the credential-leak flaw fixed in 2.4.2 in August. No CVE has been published, and the vendor has had no credible drain reports from users on the current 2.4.7 release. Upgrade to 2.4.7, and if you ran 2.4.1 or older, move to a fresh server and new wallet, treat every secret on the old host as exposed, and keep only working funds in the hot wallet.",
+      "source": "The Hacker News",
+      "published": "2026-11-03",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-btcpay-server-flaw-to.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "C3RB3R ransomware is encrypting Synology NAS boxes still running pre-December 2024 DSM",
+      "cve": ["CVE-2024-10441", "CVE-2024-50629", "CVE-2024-10445"],
+      "severity": "Critical 9.8",
+      "summary": "Synology warns that attackers are exploiting a flaw from its Synology_SA_24_20 advisory, whose most serious entry is a 9.8 code-execution bug in the system plugin daemon, to encrypt outdated NAS devices; customers attribute the infections to C3RB3R, which appends .L0CK3D to files. Synology has not said which of the advisory's three CVEs is being used. Update DSM to at least 7.2.2-72806-1, 7.2.1-69057-6, 7.2-64570-4, 7.1.1-42962-7 or 6.2.4-25556-8 for your branch, turn on automatic updates, and keep the management interface off the internet.",
+      "source": "The Hacker News",
+      "published": "2026-11-03",
+      "url": "https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Hijacked cPGuard update channel pushed a backdoor that collected shadow files and root SSH keys",
+      "cve": [],
+      "severity": "",
+      "summary": "An attacker used stolen credentials to get into OPSSHIELD's update system on November 2 and shipped cPGuard 5.88.12 through 5.88.19 with a script that planted a backdoor and bundled /etc/shadow, root's MySQL config, shell history and SSH key files for upload; OPSSHIELD says data from 32 customer servers was retrieved before it caught the problem within 12 hours. Version 5.88.25 removes the script and its files, so a clean-looking disk does not prove a server was untouched. Update, check /opt/cpguard/logs/install_log for any 5.88.12-5.88.19 install, and if one appears, reset local passwords, rotate database, cloud and SSH credentials, and replace root's keys.",
+      "source": "The Hacker News",
+      "published": "2026-11-03",
+      "url": "https://thehackernews.com/2026/11/cpguard-update-channel-hijacked-to.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Trigger.dev says an attacker read environment variables from some customers' AI workflow projects",
+      "cve": [],
+      "severity": "",
+      "summary": "Trigger.dev, a hosted platform for running TypeScript AI agents and background jobs, disclosed on November 1 that an attacker reached environment variables belonging to a subset of organizations through an exploit it says is now blocked. It has not named the affected customers or explained the entry point, and a full incident report is still pending. If you use the hosted service, treat every secret stored in Trigger.dev environment variables as potentially exposed and rotate it, even if you have not been notified.",
+      "source": "The Register",
+      "published": "2026-11-02",
+      "url": "https://www.theregister.com/security/2026/11/02/thieves-pilfer-environment-variables-from-trigger-ai-workflow-tool/5306998"
+    },
+    {
+      "category": "appsec",
+      "title": "Barracuda patches an ESG auth flaw that chains with a root command injection across six products",
+      "cve": ["CVE-2026-116606", "CVE-2026-111560"],
+      "severity": "Critical",
+      "summary": "Barracuda fixed CVE-2026-116606, a critical authentication weakness that lets an attacker change Email Security Gateway's global configuration, and CVE-2026-111560, an admin-level OS command injection that runs as root on ESG, Load Balancer ADC, Message Archiver, WAF, WAF Control Center and Web Security Gateway. Chained, they can take an attacker from the management interface to root; no exploitation has been reported. Confirm the product-specific patches (for ESG, BNSF-40425 or BNSF-40430) are applied and restrict admin interfaces to trusted internal networks.",
+      "source": "BleepingComputer",
+      "published": "2026-11-03",
+      "url": "https://www.bleepingcomputer.com/news/security/barracuda-warns-of-critical-flaws-allowing-root-access-to-devices/"
+    },
+    {
+      "category": "ai",
+      "title": "Coding agents keep installing archived reference MCP servers that will never be patched",
+      "cve": [],
+      "severity": "",
+      "summary": "Glow Security's 'MCPhantom' research found agents in Claude Code, Cursor, Codex CLI and others picking deprecated @modelcontextprotocol reference servers from training memory, sometimes even after npm reported the package as deprecated, and it found four high-severity bugs in those servers including a prompt-injection-triggered RCE in the Puppeteer server. The maintainers closed the report as out of scope because the servers were archived in May 2025, so no fixes are coming, yet the packages have drawn more than 17.3 million npm downloads since July 2025. Search MCP configs for @modelcontextprotocol server packages, move to each vendor's own server, and keep an approved-server list that rejects deprecated packages.",
+      "source": "Help Net Security",
+      "published": "2026-11-03",
+      "url": "https://www.helpnetsecurity.com/2026/11/03/mcphantom-deprecated-mcp-servers/"
+    },
+    {
+      "category": "ai",
+      "title": "Google: LLMjacking crews resell stolen model access and have run victims' bills up to $1 million",
+      "cve": ["CVE-2026-40217"],
+      "severity": "",
+      "summary": "GTIG and Mandiant describe 2026 LLMjacking cases where stolen cloud credentials, leaked API keys, exposed model endpoints and a LiteLLM privilege-escalation bug (CVE-2026-40217) were used to grab AI access that 'LLM mixer' services then resold cheaply; one set of stolen keys made over 500,000 calls in under eight hours for nearly $1 million in token costs. Unlike cryptojacking, the charges pile up within hours, and attackers often re-enabled AI services the victim had switched off. Alert on changes to AI service enablement and keys, set spend limits, scan repos for leaked keys, and patch any LiteLLM gateway.",
+      "source": "Help Net Security",
+      "published": "2026-11-03",
+      "url": "https://www.helpnetsecurity.com/2026/11/03/llmjacking-stolen-ai-access-cloud-bills/"
+    },
+    {
+      "category": "ai",
+      "title": "Kaspersky: an open-source AI pentest agent took attackers from foothold to domain admin in days",
+      "cve": [],
+      "severity": "",
+      "summary": "Kaspersky reports a campaign against schools and universities in Africa and Latin America where operators, after manually breaking in through a SQL Server, deployed the open-source CyberStrikeAI framework, which set up persistence within two minutes and reached domain admin in three to four days; the LLM ran on the attacker's server, not the victim host. Clues such as Chinese comments and use of dnslog[.]cn point to a Chinese-speaking operator, though there is no attribution. Kaspersky's view is that the on-host activity looks like ordinary hands-on intrusion, so existing detections still apply but defenders should expect it to move much faster.",
+      "source": "Help Net Security",
+      "published": "2026-11-03",
+      "url": "https://www.helpnetsecurity.com/2026/11/03/ai-powered-cyberattacks-artex-cyberstrikeai/"
+    }
+  ]
+}
