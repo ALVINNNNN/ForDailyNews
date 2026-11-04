@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-05",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "JPCERT/CC: attackers are exploiting a 9.9 Airbyte Connector Builder flaw to run code on self-hosted instances",
+      "cve": [],
+      "severity": "Critical 9.9",
+      "summary": "An unsafe-reflection bug in Airbyte's Connector Builder / Manifest Server (GHSA-g35w-6r6v-h4r7, JVN12040144) lets users run code on self-managed deployments, and JPCERT/CC says it has been confirmed exploited in the wild. Every release before 2.2.0 is affected, 1.x will not be fixed, and 1.x on the legacy Helm chart is reachable by anyone with network access. Upgrade to 2.2.0 (manifest-server 7.23.7); until then, restrict the builder service so only the Airbyte server can reach it, trim Workspace/Organization Reader roles, review container logs and rotate the connector credentials Airbyte stores. Airbyte Cloud needs no action.",
+      "source": "SecurityOnline",
+      "published": "2026-11-04",
+      "url": "https://securityonline.info/airbyte-vulnerability-exploited/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Unpatched CVSS 10 WordPress CryptoPayment Gateway plugin bug is being probed to pull wallet credentials",
+      "cve": ["CVE-2026-81648"],
+      "severity": "Critical 10.0",
+      "summary": "An AJAX endpoint in the CryptoPayment Gateway plugin (versions 1.2.1-1.2.2) has no authorization check, so anyone can delete server files, rewrite the gateway configuration or read stored wallet credentials in cleartext. Defused Cyber has seen exploitation attempts in the wild, and WPScan lists no fix; the plugin was pulled from the WordPress directory in August after about 1,800 downloads. Remove it, rotate any wallet keys it held, and audit the site for unexpected changes.",
+      "source": "The Hacker News",
+      "published": "2026-11-03",
+      "url": "https://thehackernews.com/2026/11/attackers-target-unpatched.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Sekoia ties 'Poisoned Source' watering holes, including a hijacked Plerdy analytics script, to APT29 iOS and Android exploit chains",
+      "cve": ["CVE-2025-43529", "CVE-2024-27834", "CVE-2026-20700", "CVE-2025-14174", "CVE-2025-43510", "CVE-2025-43520", "CVE-2026-3910", "CVE-2025-27038"],
+      "severity": "",
+      "summary": "Sekoia says APT29 served exploit chains through compromised sites, lookalike domains such as america250[.]holiday, and Plerdy's tracking script (a.plerdy[.]com/public/js/click/main.js), which was tampered with between 27 August and 3 September. Visitors on iOS 16.7 and 18.5 got cookie-theft or full data-exfiltration payloads (the latter via the DarkSword chain), while Android Chrome 139-145 users got an RCE and sandbox-escape chain dropping the AndroSnitch stealer. Keep iOS and Chrome fully updated, check whether any of your sites loaded the Plerdy script in that window, and hunt for traffic to ad.starx-net[.]com.",
+      "source": "The Hacker News",
+      "published": "2026-11-04",
+      "url": "https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Rails ships fixes for a 9.8 Active Storage flaw that lets crafted uploads write files through ImageMagick",
+      "cve": [],
+      "severity": "Critical 9.8",
+      "summary": "Advisory GHSA-f3w6-w445-fwh9 (no CVE yet) covers Active Storage's ImageMagick analyzer: apps that use mini_magick, accept untrusted uploads and run a permissive ImageMagick policy (Debian and Ubuntu defaults qualify) can have server files written, and Disk-service apps can also leak files. Fixed in 8.1.4.1 and 8.0.5.2, with mini_magick 5.1+ also required; pre-8.0 series get nothing, and 8.0 support ends 7 November. Upgrade, confirm the shipped policy actually loads and isn't overridden by your own policy.xml, and if you use the Disk service rotate secret_key_base and every credential the app can read.",
+      "source": "The Hacker News",
+      "published": "2026-11-04",
+      "url": "https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html"
+    },
+    {
+      "category": "appsec",
+      "title": "APT retry bug lets a man-in-the-middle swap verified Debian and Ubuntu packages and get root",
+      "cve": ["CVE-2026-109518"],
+      "severity": "High (CVSS 4.0 7.7)",
+      "summary": "A flaw in how APT retries failed downloads lets an attacker on the network path substitute a package after verification, leading to code execution as root; retries are on by default from Debian 12 and Ubuntu 22.04, and older releases are exposed if scripts set Acquire::Retries. Debian and Ubuntu published fixes on 4 November (for example 2.8.4ubuntu0.1 on 24.04 and 2.4.15ubuntu0.1 on 22.04), and no exploitation has been reported. Update apt itself first, including in base images and CI runners, and check build scripts for retry settings on older systems.",
+      "source": "The Hacker News",
+      "published": "2026-11-04",
+      "url": "https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Red Hat raises Linux IPv4 TCP use-after-free to 9.8 and patches RHEL 8-10; Ubuntu fixes still in testing",
+      "cve": ["CVE-2026-98432"],
+      "severity": "Critical 9.8",
+      "summary": "A use-after-free in the kernel's IPv4 TCP code, present since Linux 4.4, now has trigger-only proof code on GitHub, and Anthropic has said an internal model produced a working remote root exploit it has not released; no in-the-wild attacks are reported. Red Hat shipped fixed kernels for RHEL 8.10, 9.8 and 10.2 on 1 November and Debian, SUSE, Oracle and Amazon Linux patched in October, while Ubuntu's kernels are still in -proposed. Patch and reboot; Red Hat's nftables rule dropping inbound IPv4 packets with IP options is only a partial stopgap, and disabling MPTCP does not help.",
+      "source": "The Hacker News",
+      "published": "2026-11-03",
+      "url": "https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html"
+    },
+    {
+      "category": "appsec",
+      "title": "NIKKE PC launcher scripts on the publisher's CDN were tampered with to load a RAT and wallet stealer for five weeks",
+      "cve": [],
+      "severity": "",
+      "summary": "Four JavaScript files in the Goddess of Victory: NIKKE launcher, served from Level Infinite's CDN, were reportedly altered on 27 September to fetch code from insightjs[.]com/insightjs[.]org, installing the K2F remote-access agent, a LuaJIT payload and a DLL with MetaMask, Phantom and Coinbase Wallet stealing code. Clean files and a client update arrived on 3-4 November and the publisher says it is investigating. Players should look for 'k2f_chan registered' in Launcher/intl_service/debug.log, reinstall Windows if found, and reset credentials from a clean device; it is another reminder to integrity-check scripts that desktop apps pull from CDNs at runtime.",
+      "source": "BleepingComputer",
+      "published": "2026-11-04",
+      "url": "https://bleepingcomputer.com/news/security/nikke-pc-game-launcher-hacked-to-spread-remote-access-data-stealing-malware"
+    },
+    {
+      "category": "ai",
+      "title": "Check Point: a popular Codex 'enhancement' pack is a jailbreak that plants ads in the agent's global instructions",
+      "cve": [],
+      "severity": "",
+      "summary": "Check Point found that the Haiou bundle (the haiou-codex GitHub repo, also shipped inside the Codex-X GUI) rewrites OpenAI Codex configuration so simple greetings trigger promotions for a paid LLM gateway at zz.aiapi2025[.]top, persisting them in the global instruction file. It also uses role-play and CTF framing to bypass safety guardrails and installs offensive skills for password cracking and reverse engineering. Treat agent instruction files, skills and config packs as supply chain inputs: vet them before installing and monitor global agent config for unexpected changes.",
+      "source": "The Hacker News",
+      "published": "2026-11-04",
+      "url": "https://thehackernews.com/2026/11/researchers-uncover-prompt-adware.html"
+    },
+    {
+      "category": "ai",
+      "title": "CrowdStrike: China-nexus Vapor Panda's ARTEX agent framework hit organizations in 14 countries in 11 days",
+      "cve": [],
+      "severity": "",
+      "summary": "CrowdStrike says Vapor Panda began running the ARTEX multi-agent framework, mostly on DeepSeek, on 17 October, with planner and worker agents sharing a knowledge graph; one intrusion burned about 1.4 billion input tokens. It confirmed post-exploitation and BloodAlchemy backdoors at nine organizations, including foreign ministries, US defense and semiconductor firms, telecoms and think tanks, plus password spraying against at least 12 more. CrowdStrike advises rotating credentials after any suspected exposure, enforcing SAML signature validation and IMDSv2, patching edge appliances and hunting for ARTEX markers.",
+      "source": "Help Net Security",
+      "published": "2026-11-03",
+      "url": "https://www.helpnetsecurity.com/2026/11/03/ai-powered-cyberattacks-artex-cyberstrikeai/"
+    },
+    {
+      "category": "ai",
+      "title": "UK NCSC expects AI-driven malware in a ransomware attack on critical infrastructure by 2028",
+      "cve": [],
+      "severity": "",
+      "summary": "In its annual review and a two-year AI threat assessment, the NCSC calls it highly likely that AI-powered malware will feature in a ransomware attack on UK critical national infrastructure by 2028, and notes open-source AI red-team tools such as ARTEX are already being turned against targets. It also flags a realistic possibility of autonomous, self-replicating attackers and harder attribution. The practical guidance is unglamorous: get baseline controls such as Cyber Essentials in place and scale resilience to your risk, because AI mainly compresses attacker timelines.",
+      "source": "The Register",
+      "published": "2026-11-03",
+      "url": "https://www.theregister.com/security/2026/11/03/britain-on-notice-ai-powered-ransomware-attacks-to-arrive-by-2028/5307200"
+    }
+  ]
+}
