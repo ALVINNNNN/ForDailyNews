@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-06",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: CISA lists the Apple PAC bypass used in the APT29-linked 'Poisoned Source' chain, with a November 18 deadline",
+      "cve": ["CVE-2024-27834"],
+      "severity": "Medium 5.5 (exploited)",
+      "summary": "CISA added CVE-2024-27834, an Apple pointer authentication (PAC) bypass, to its Known Exploited Vulnerabilities catalog on November 4 after Sekoia tied it to zero-click watering-hole attacks that drop a cookie-stealing payload. The flaw was fixed in May 2024 (iOS/iPadOS 16.7.8 and 17.5, macOS Sonoma 14.5, tvOS 17.5, watchOS 10.5, Safari 17.5), so any device still exploitable is badly out of date. Find and update or retire stragglers in your Apple fleet; US federal agencies must patch by November 18.",
+      "source": "The Hacker News",
+      "published": "2026-11-05",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Xen XSA-523 grant-copy bugs let a malicious guest read and write other VMs' memory, including dom0",
+      "cve": ["CVE-2026-102703", "CVE-2026-102704"],
+      "severity": "Critical (vendor rating, XCP-ng)",
+      "summary": "Two flaws in Xen's grant copy path skip a permission re-check during batched copies, letting one guest reach the memory of other guests and dom0 on the same host; Xen 4.6 and later are affected and the project says there is no mitigation besides patching. Patches exist for 4.17 through unstable, XCP-ng 8.3 has a fixed build (reboot required), Qubes 4.3 fixes are in security-testing, and Debian stable branches were still listed as vulnerable on November 4. No exploitation is reported; multi-tenant Xen operators should schedule patch-and-reboot windows now, and hosts on unsupported 4.6-4.16 releases have no upstream fix.",
+      "source": "The Hacker News",
+      "published": "2026-11-04",
+      "url": "https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "OpenSSH 10.6p2 fixes a critical password-auth bypass on musl systems such as Alpine",
+      "cve": [],
+      "severity": "Critical (vendor rating)",
+      "summary": "OpenSSH shipped an emergency release after a bug let long passwords bypass authentication on musl-based Linux when sshd checks passwords without PAM, password auth is on, and the box has both a passwordless account and another account with a SHA-256/512 hash. Alpine has fixed packages and point releases (3.21.10, 3.22.8, 3.23.8, 3.24.4); glibc and PAM-based systems are not affected, and no CVE or attacks have been reported yet. Upgrade and restart sshd, or disable PasswordAuthentication until you can, and also check OpenWrt, Buildroot and Yocto images and auth logs for unexpected password logins.",
+      "source": "The Hacker News",
+      "published": "2026-11-05",
+      "url": "https://thehackernews.com/2026/11/openssh-issues-emergency-fix-for-flaw.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Android's November bulletin fixes 216 flaws, including a zero-click media RCE in Android 14-17",
+      "cve": ["CVE-2026-58868", "CVE-2026-58882", "CVE-2026-58876", "CVE-2026-58936"],
+      "severity": "Critical",
+      "summary": "Google's November update covers 216 vulnerabilities, 23 of them critical, led by CVE-2026-58868, a heap overflow in frame decoding that can give remote code execution without user interaction on Android 14 through 17. It also fixes CVE-2026-58882, a malformed WAP Push SMS that crashes the phone process and drops calls, though Google has not confirmed it is the same bug as the recent public 'SMS of Death' PoC. Google reports no exploitation; push devices to the 2026-11-05 patch level, which also covers kernel, MediaTek and Qualcomm fixes.",
+      "source": "The Hacker News",
+      "published": "2026-11-04",
+      "url": "https://thehackernews.com/2026/11/google-patches-critical-android-flaw.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Binance report: a tampered Homebrew install and a rigged coding test led to the hot-wallet theft",
+      "cve": [],
+      "severity": "",
+      "summary": "Binance's first incident report says attackers first compromised a wallet engineer who installed a trojanized Homebrew package of an AI coding tool, then later sent a second engineer a fake job 'coding assignment' whose repository ran malware on setup that endpoint protection missed. From there they pivoted between engineers' machines, deployed a container with stolen credentials and abused an internal wallet signing service; the FBI blames North Korea's TraderTraitor. Developer endpoints and their tokens are now the front door: verify installer sources, block take-home code on work devices, and keep deploy credentials off workstations.",
+      "source": "SecurityWeek",
+      "published": "2026-11-04",
+      "url": "https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/"
+    },
+    {
+      "category": "ai",
+      "title": "Check Point escaped ChatGPT's HTML preview sandbox to get around Lockdown Mode and exfiltrate chats",
+      "cve": [],
+      "severity": "",
+      "summary": "Researchers found that ChatGPT's nested sandboxed frames for HTML previews still permitted popups, and a further nested frame could reach an unpatched popup function whose content ran outside the sandbox, defeating Lockdown Mode's exfiltration limits. They showed zero-click chat theft in the desktop app, with payloads delivered via prompts, malicious GPTs or shared chats. OpenAI fixed it on September 18; make sure desktop clients are current, and treat AI app rendering features as part of the attack surface, not just the model.",
+      "source": "The Hacker News",
+      "published": "2026-11-05",
+      "url": "https://thehackernews.com/2026/11/researchers-bypass-chatgpt-lockdown.html"
+    },
+    {
+      "category": "ai",
+      "title": "WorkOS says attackers used the Artex AI pentest framework to breach a sales app, as Northflank also reports a hack",
+      "cve": [],
+      "severity": "",
+      "summary": "WorkOS disclosed that on October 30 attackers broke into an internal sales application and took customer contact and account-history data, automating steps with Artex, the open-source AI pentesting framework already tied to other recent intrusions. Northflank and Trigger.dev disclosed incidents in the same wave, which appears focused on stored customer secrets. Customers of these platforms should follow the vendors' notices and rotate any API keys, including AI provider keys, stored there.",
+      "source": "SecurityWeek",
+      "published": "2026-11-04",
+      "url": "https://www.securityweek.com/ai-linked-breaches-mount-as-workos-northflank-trigger-dev-disclose-hacks/"
+    },
+    {
+      "category": "ai",
+      "title": "Google Cloud adds sandboxing, human sign-off and vaulted credentials for its security AI agents",
+      "cve": [],
+      "severity": "",
+      "summary": "Google expanded CodeMender with OS-level or VM sandboxes for exploit validation and human approval gates before agents write files or run commands, and made Auth Manager generally available to keep agent credentials in an IAM-governed vault. Agent Identity JWTs (preview) replace long-lived API keys, and a Model Armor topic detector (preview) keeps agent conversations in scope. It is a useful reference design for any team running agents: isolate execution, require approval for side effects, and avoid static secrets.",
+      "source": "Help Net Security",
+      "published": "2026-11-05",
+      "url": "https://www.helpnetsecurity.com/2026/11/05/google-cloud-ai-agents-security-controls/"
+    }
+  ]
+}
