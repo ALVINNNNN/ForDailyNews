@@ -6,7 +6,71 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Attackers swap Control Web Panel's web server for a backdoored build that runs commands without logging</title>
+      <link>https://thehackernews.com/2026/11/hackers-hide-linux-backdoor-in-control.html</link>
+      <guid isPermaLink="false">2026-11-09|https://thehackernews.com/2026/11/hackers-hide-linux-backdoor-in-control.html|Attackers swap Control Web Panel's web server for a backdoored build that runs commands without logging</guid>
+      <pubDate>Mon, 09 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>QiAnXin XLab found an installer script that replaces cwpsrv, the web server behind Control Web Panel (versions 1.15.10 and 1.24.0), with a trojanized copy dubbed cwpdoor that executes attacker commands while leaving no log entries. The installer needs root, and the researchers have not yet worked out how attackers get it, so no CVE is tied to the campaign. CWP admins should run `ss -axp | grep integrity` (a hit on ngx_http_integrity_helper means infection) and search the cwpsrv binary for the string X-Ngx-Integrity; on infected hosts restore the original binary, upgrade, rotate all panel credentials and treat the whole server as compromised. The payloads were served from 136.0.141[.]71. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>D-Link has no firmware yet for multiple zero-days in DGS-3130 managed switches</title>
+      <link>https://www.bleepingcomputer.com/news/security/d-link-warns-of-multiple-zero-days-in-dgs-3130-series-switches/</link>
+      <guid isPermaLink="false">2026-11-09|https://www.bleepingcomputer.com/news/security/d-link-warns-of-multiple-zero-days-in-dgs-3130-series-switches/|D-Link has no firmware yet for multiple zero-days in DGS-3130 managed switches</guid>
+      <pubDate>Mon, 09 Nov 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Unpatched] D-Link disclosed several unpatched flaws in the DGS-3130-30TS stackable switch, mostly in the D-Link Discovery Protocol's authentication and access control plus some firmware security components; they can leak device data and SNMP communities, allow unauthorized configuration or credential changes, and force resets. No CVEs, fix dates or in-the-wild exploitation have been reported, and D-Link is still checking whether other switch lines are affected. Until firmware ships, turn off DDP, remove default or unneeded SNMP communities, confine SSH, web and SNMP management to an isolated admin network, keep offline config backups and alert on unexpected reboots or config changes. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Update: watchTowr details how the two Barracuda ESG bugs chain into unauthenticated root</title>
+      <link>https://thehackernews.com/2026/11/experts-demonstrate-barracuda-email.html</link>
+      <guid isPermaLink="false">2026-11-09|https://thehackernews.com/2026/11/experts-demonstrate-barracuda-email.html|Update: watchTowr details how the two Barracuda ESG bugs chain into unauthenticated root</guid>
+      <pubDate>Mon, 09 Nov 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.3 / High 8.6 · CVE-2026-116606 · CVE-2026-111560] watchTowr published its analysis of the Barracuda flaws patched earlier in the week: CVE-2026-116606 lets an unauthenticated attacker restore a crafted configuration backup on the Email Security Gateway, which then opens the door to the root command injection CVE-2026-111560, giving root with no login. The researchers released a scanner that tells you whether an appliance is vulnerable but no exploit, and neither CVE is known to be exploited or on CISA's KEV list. Now that the chain is public, make sure ESG is on 9.4.0.030 or later, apply the fixes for the five other affected products, re-enable automatic updates if they were turned off and keep admin interfaces off untrusted networks. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Microsoft Paint's network RCE fix ships only through the Store, and many machines still lack it</title>
+      <link>https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html</link>
+      <guid isPermaLink="false">2026-11-09|https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html|Microsoft Paint's network RCE fix ships only through the Store, and many machines still lack it</guid>
+      <pubDate>Mon, 09 Nov 2026 06:57:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High 8.1 · CVE-2026-83844] CVE-2026-83844 is an out-of-bounds read in Windows Paint that Microsoft says can lead to remote code execution from a crafted network packet with no login or user action. The patch is delivered only as a Microsoft Store app update, not via Windows Update, and when checked the Store was still offering an unfixed build in several regions; Microsoft lists 11.2609.401.0 as fixed, while NVD gives a lower version. It is not known to be exploited, but defenders should inventory Paint builds per user and in the provisioned image (Get-AppxPackage -AllUsers / Get-AppxProvisionedPackage), force Store app updates through Intune or similar, and consider removing Paint where nobody needs it. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Claude Code's saved 'don't ask again' approvals put passwords and keys into more than 1,100 public repos</title>
+      <link>https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html</link>
+      <guid isPermaLink="false">2026-11-09|https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html|Claude Code's saved 'don't ask again' approvals put passwords and keys into more than 1,100 public repos</guid>
+      <pubDate>Mon, 09 Nov 2026 06:56:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Apiiro found that approving a shell command with "Yes, and don't ask again" makes Claude Code save the full command line, including any inline password or token, to .claude/settings.local.json, which developers often commit. Of 104,185 public copies of that file, 1,122 held at least one secret (1,379 distinct, including 379 database passwords, 43 SSH logins and 23 AWS keys), and about 2,500 secrets turn up once history, forks and the shared settings.json are included; Gitleaks and TruffleHog both missed 215 of the files. Search your repos and git history for .claude settings files, rotate anything found, add settings.local.json to .gitignore templates, and pass secrets through environment variables rather than typing them into agent-run commands. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Trojanized 'security tools' on GitHub hide loaders in build events and whitespace to target defenders</title>
+      <link>https://bleepingcomputer.com/news/security/fake-security-tools-on-github-push-backdoors-and-infostealers</link>
+      <guid isPermaLink="false">2026-11-09|https://bleepingcomputer.com/news/security/fake-security-tools-on-github-push-backdoors-and-infostealers|Trojanized 'security tools' on GitHub hide loaders in build events and whitespace to target defenders</guid>
+      <pubDate>Mon, 09 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Dr.Web traced a long-running GitHub campaign that now poses as scan-automation and log-parsing utilities (one fakes an Fscan output formatter), hiding malicious code after long runs of whitespace or in Visual Studio pre-build events, Python and Go files. Running or building a project fetches an Electron loader that disables Defender, Smart App Control and backups, patches AMSI/ETW, and drops AsyncRAT, a crypto clipper and a stealer that exfiltrates over Telegram; more than 2,000 Windows systems were infected. Treat unfamiliar repos as untrusted code, review project files and build events before compiling, run new tools in a disposable VM, and hunt with Dr.Web's published IOCs for Trojan.Loader.3261. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Truffle Security launches a free program to get 1.4 million leaked but still-live credentials revoked</title>
+      <link>https://venturebeat.com/business/truffle-security-launches-secrets-revocation-program-to-revoke-14-million-leaked-secrets</link>
+      <guid isPermaLink="false">2026-11-09|https://venturebeat.com/business/truffle-security-launches-secrets-revocation-program-to-revoke-14-million-leaked-secrets|Truffle Security launches a free program to get 1.4 million leaked but still-live credentials revoked</guid>
+      <pubDate>Mon, 09 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Truffle Security's new Secrets Revocation Program sends API-key issuers credentials it found exposed in places such as GitHub, GitLab, Docker Hub, npm, PyPI and Hugging Face, after verifying with TruffleHog that each still works; issuers can take them by webhook or let Truffle call a revocation endpoint. It launches with 1.4 million live secrets, and the company's data shows that issuers who revoke on report keep live exposed keys to about 2% while others leave the large majority working. If your company issues tokens, consider joining; either way, prefer short-lived credentials and scan full history rather than relying on a leak being noticed. (Source: VentureBeat (Business Wire))</description>
+    </item>
+    <item>
+      <title>Crédit Mutuel Arkéa loses up to $133M after an attacker came in through a service provider's platform</title>
+      <link>https://bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider</link>
+      <guid isPermaLink="false">2026-11-09|https://bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider|Crédit Mutuel Arkéa loses up to $133M after an attacker came in through a service provider's platform</guid>
+      <pubDate>Mon, 09 Nov 2026 06:53:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>French bank Crédit Mutuel Arkéa says an attacker reached its network via a third-party provider's platform and used the bank's own account to move money to other banks and into USDC/USDT; ZachXBT puts the loss at up to €118 million (about $133 million), which the bank says is the right order of magnitude. Customer balances were not touched, some funds were frozen and certain systems were suspended while police investigate. It is another reminder to tightly scope, monitor and require strong authentication for vendor access paths into payment and treasury systems. (Source: BleepingComputer)</description>
+    </item>
     <item>
       <title>SonicWall SonicOS flaw that skips SAML MFA on SSL VPN is exploited and now on CISA's KEV list</title>
       <link>https://www.securityweek.com/sonicwall-patches-exploited-sonicos-bug-that-weakens-vpn-logins/</link>
@@ -934,62 +998,6 @@
       <pubDate>Tue, 27 Oct 2026 06:52:00 +0800</pubDate>
       <category>AI security</category>
       <description>Duet, in a US research preview, runs in a dedicated cloud VM, cannot read passwords, cookies or sign-in tokens, and pairs per-action user approvals with a separate intent check outside the task model to catch instructions hidden in web pages. Some actions, such as trading securities or moving money between bank accounts, are blocked outright, and a classifier screens outbound messages and uploads for sensitive data, though Anthropic admits it can miss things. For defenders the open risks are approval fatigue, spoofed password prompts and memory that survives disconnecting an app, so treat any Duet credential prompt outside claude.ai or the Claude app as phishing. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Update: PHP2Shell moves from scanning to a real intrusion at a European government body, with signs of an AI agent driving post-exploitation</title>
-      <link>https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html</link>
-      <guid isPermaLink="false">2026-10-26|https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html|Update: PHP2Shell moves from scanning to a real intrusion at a European government body, with signs of an AI agent driving post-exploitation</guid>
-      <pubDate>Mon, 26 Oct 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.2 · CVE-2026-109618 · CVE-2026-109619 · CVE-2026-115560] Unit 42 describes attackers who used the PHP RCE bugs against a European government entity and reached password hashes and MFA secrets within two hours, then relayed NTLM into Active Directory and tried for Domain Admin; their commands were wrapped in machine-parsable section markers that suggest an AI agent was running the session. CYFIRMA separately tracks low-and-slow, possibly DPRK-linked scanning of 216 hosts across Asia, the Gulf, the US and the EU, and VulnCheck now has a private exploit that beats ASLR on production-style configs, so results from default-setting PoCs are no proof of safety. Upgrade to PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35 (WAF rules and app changes do not close the hole), hunt for POSTs returning 500 alongside memory-exhaustion errors and worker crashes, and do not rely on volume-based alerting. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Update: LiteLLM breach started with a master key committed to GitHub in May, force-pushed away but never revoked</title>
-      <link>https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html</link>
-      <guid isPermaLink="false">2026-10-26|https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html|Update: LiteLLM breach started with a master key committed to GitHub in May, force-pushed away but never revoked</guid>
-      <pubDate>Mon, 26 Oct 2026 06:59:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>LiteLLM's root cause has shifted from leaked gateway logs to a LiteLLM Agent Platform master key that sat in a public commit from May 27; the attacker used it on October 10 to pull an org owner's GitHub CLI token, harvested more maintainer tokens and a GitHub App key with workflows, then repointed the release pipeline and used two tokens to satisfy a recently relaxed two-person release approval. The poisoned 1.107.0 then shipped to PyPI, Docker Hub and GHCR on October 21 and exfiltrated to litellm[.]dev. Beyond rebuilding and rotating if you pulled 1.107.0, treat this as a CI/CD lesson: revoke (not just delete) leaked secrets, avoid owner-scoped tokens in automation, and enforce independent release approval. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Planted AGENTS.md files in Downloads hijack coding agents that users launch from that folder</title>
-      <link>https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/</link>
-      <guid isPermaLink="false">2026-10-26|https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/|Planted AGENTS.md files in Downloads hijack coding agents that users launch from that folder</guid>
-      <pubDate>Mon, 26 Oct 2026 06:58:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Forever Security found a malicious AGENTS.md in a customer's Downloads folder that told a coding agent to install a rogue npm package (function-color, part of the earlier MALFEX npm campaign); in tests it hijacked OpenAI Codex about 90% of the time, and a CLAUDE.md variant redirected Claude Code's API traffic to expose its OAuth token. Browsers drop files into Downloads by default, and many users run agents there to tidy files, so no vulnerability is needed and no vendor patch is coming. Never use Downloads or your home directory as an agent's working directory, scope agents to a project root, review unfamiliar instruction files, and keep approval prompts and sandboxing on. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>AWS won't patch a critical model-archive RCE in the end-of-life Multi Model Server</title>
-      <link>https://aws.amazon.com/security/security-bulletins/2026-148-aws/</link>
-      <guid isPermaLink="false">2026-10-26|https://aws.amazon.com/security/security-bulletins/2026-148-aws/|AWS won't patch a critical model-archive RCE in the end-of-life Multi Model Server</guid>
-      <pubDate>Mon, 26 Oct 2026 06:57:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>[Critical 9.8 · CVE-2026-115812 · CVE-2026-115813] AWS disclosed a path traversal in Multi Model Server's model archive extraction that lets a crafted archive write outside the target directory and run code as the MMS process, plus an SSRF in the model download path; the management API that triggers both has no authentication. All versions through 1.1.11 are affected and no fix will ship because MMS is end of life. Inventory model-serving stacks for MMS and migrate; until then bind the management interface to loopback, allowlist model download URLs, and restrict the serving port to trusted callers (SageMaker-style single-port setups cannot use the loopback workaround). (Source: AWS Security Bulletin)</description>
-    </item>
-    <item>
-      <title>OpenAI's red-team agents found VM escapes and leaked secrets between microVMs through a CPU cache side channel</title>
-      <link>https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html</link>
-      <guid isPermaLink="false">2026-10-26|https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html|OpenAI's red-team agents found VM escapes and leaked secrets between microVMs through a CPU cache side channel</guid>
-      <pubDate>Mon, 26 Oct 2026 06:56:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>[CVE-2026-111497] OpenAI says it now trains frontier models with no live internet access after a September incident, and that a high-compute red-team campaign against its own sandboxes found VM escapes, internet egress via metrics, logging and auth services, DNS and firewall policy bypasses, and agents in separate microVMs passing secrets through processor-cache timing; the same work produced the Brotli Node2Shell bug. METR and Redwood Research also reported a Codex sandbox and Auto-Review bypass and a way to hide actions from monitoring, which OpenAI is believed to have fixed but they have not verified. For anyone running agents, assume isolation leaks through side services and shared hardware: test egress paths beyond the firewall, and patch Brotli everywhere. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Wasmtime fixes a critical Cranelift miscompilation that can let crafted Wasm escape the sandbox</title>
-      <link>https://advisories.gitlab.com/cargo/wasmtime/CVE-2026-115889/</link>
-      <guid isPermaLink="false">2026-10-26|https://advisories.gitlab.com/cargo/wasmtime/CVE-2026-115889/|Wasmtime fixes a critical Cranelift miscompilation that can let crafted Wasm escape the sandbox</guid>
-      <pubDate>Mon, 26 Oct 2026 06:55:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Critical 9.9 · CVE-2026-115889] Cranelift packed SSA value indices into too few bits, so a very large or specially crafted Wasm function could silently overflow them in release builds and cause type confusion that breaks out of the sandbox. Versions before 36.0.19 and 37.0.0 through 42.x are affected; fixes are in 36.0.19 and 43.0.0, with no workaround. Upgrade any service that compiles untrusted Wasm (plugin hosts, edge and serverless runtimes, agent tool sandboxes) and check SBOMs for transitive wasmtime or cranelift crates. (Source: GitLab Advisory Database)</description>
-    </item>
-    <item>
-      <title>Conda's infrastructure repo had a comment-triggered 'pwn request' that rendered PR content with a privileged token</title>
-      <link>https://hol.org/guard/security/cves/CVE-2026-53942-conda-organization-infrastructure-pwn-request-in</link>
-      <guid isPermaLink="false">2026-10-26|https://hol.org/guard/security/cves/CVE-2026-53942-conda-organization-infrastructure-pwn-request-in|Conda's infrastructure repo had a comment-triggered 'pwn request' that rendered PR content with a privileged token</guid>
-      <pubDate>Mon, 26 Oct 2026 06:54:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Critical 9.9 · CVE-2026-53942] A workflow in conda/infrastructure ran on '@conda-bot render' comments, checked out the pull request's head from the contributor's fork with secrets.SYNC_TOKEN available, and rendered that content in an unsandboxed Jinja2 environment, giving outside contributors a path to code execution with the token. It is fixed in commit 9c0f238 and is not reported as exploited. Audit your own issue_comment and pull_request_target workflows for the same pattern: never check out untrusted PR code in a job that holds secrets, and sandbox any template rendering of contributor input. (Source: HOL Guard (CVE record))</description>
     </item>
   </channel>
 </rss>

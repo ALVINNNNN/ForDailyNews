@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-09",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Attackers swap Control Web Panel's web server for a backdoored build that runs commands without logging",
+      "cve": [],
+      "severity": "",
+      "summary": "QiAnXin XLab found an installer script that replaces cwpsrv, the web server behind Control Web Panel (versions 1.15.10 and 1.24.0), with a trojanized copy dubbed cwpdoor that executes attacker commands while leaving no log entries. The installer needs root, and the researchers have not yet worked out how attackers get it, so no CVE is tied to the campaign. CWP admins should run `ss -axp | grep integrity` (a hit on ngx_http_integrity_helper means infection) and search the cwpsrv binary for the string X-Ngx-Integrity; on infected hosts restore the original binary, upgrade, rotate all panel credentials and treat the whole server as compromised. The payloads were served from 136.0.141[.]71.",
+      "source": "The Hacker News",
+      "published": "2026-11-06",
+      "url": "https://thehackernews.com/2026/11/hackers-hide-linux-backdoor-in-control.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "D-Link has no firmware yet for multiple zero-days in DGS-3130 managed switches",
+      "cve": [],
+      "severity": "Unpatched",
+      "summary": "D-Link disclosed several unpatched flaws in the DGS-3130-30TS stackable switch, mostly in the D-Link Discovery Protocol's authentication and access control plus some firmware security components; they can leak device data and SNMP communities, allow unauthorized configuration or credential changes, and force resets. No CVEs, fix dates or in-the-wild exploitation have been reported, and D-Link is still checking whether other switch lines are affected. Until firmware ships, turn off DDP, remove default or unneeded SNMP communities, confine SSH, web and SNMP management to an isolated admin network, keep offline config backups and alert on unexpected reboots or config changes.",
+      "source": "BleepingComputer",
+      "published": "2026-11-06",
+      "url": "https://www.bleepingcomputer.com/news/security/d-link-warns-of-multiple-zero-days-in-dgs-3130-series-switches/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: watchTowr details how the two Barracuda ESG bugs chain into unauthenticated root",
+      "cve": ["CVE-2026-116606", "CVE-2026-111560"],
+      "severity": "Critical 9.3 / High 8.6",
+      "summary": "watchTowr published its analysis of the Barracuda flaws patched earlier in the week: CVE-2026-116606 lets an unauthenticated attacker restore a crafted configuration backup on the Email Security Gateway, which then opens the door to the root command injection CVE-2026-111560, giving root with no login. The researchers released a scanner that tells you whether an appliance is vulnerable but no exploit, and neither CVE is known to be exploited or on CISA's KEV list. Now that the chain is public, make sure ESG is on 9.4.0.030 or later, apply the fixes for the five other affected products, re-enable automatic updates if they were turned off and keep admin interfaces off untrusted networks.",
+      "source": "The Hacker News",
+      "published": "2026-11-06",
+      "url": "https://thehackernews.com/2026/11/experts-demonstrate-barracuda-email.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Microsoft Paint's network RCE fix ships only through the Store, and many machines still lack it",
+      "cve": ["CVE-2026-83844"],
+      "severity": "High 8.1",
+      "summary": "CVE-2026-83844 is an out-of-bounds read in Windows Paint that Microsoft says can lead to remote code execution from a crafted network packet with no login or user action. The patch is delivered only as a Microsoft Store app update, not via Windows Update, and when checked the Store was still offering an unfixed build in several regions; Microsoft lists 11.2609.401.0 as fixed, while NVD gives a lower version. It is not known to be exploited, but defenders should inventory Paint builds per user and in the provisioned image (Get-AppxPackage -AllUsers / Get-AppxProvisionedPackage), force Store app updates through Intune or similar, and consider removing Paint where nobody needs it.",
+      "source": "The Hacker News",
+      "published": "2026-11-06",
+      "url": "https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html"
+    },
+    {
+      "category": "ai",
+      "title": "Claude Code's saved 'don't ask again' approvals put passwords and keys into more than 1,100 public repos",
+      "cve": [],
+      "severity": "",
+      "summary": "Apiiro found that approving a shell command with \"Yes, and don't ask again\" makes Claude Code save the full command line, including any inline password or token, to .claude/settings.local.json, which developers often commit. Of 104,185 public copies of that file, 1,122 held at least one secret (1,379 distinct, including 379 database passwords, 43 SSH logins and 23 AWS keys), and about 2,500 secrets turn up once history, forks and the shared settings.json are included; Gitleaks and TruffleHog both missed 215 of the files. Search your repos and git history for .claude settings files, rotate anything found, add settings.local.json to .gitignore templates, and pass secrets through environment variables rather than typing them into agent-run commands.",
+      "source": "The Hacker News",
+      "published": "2026-11-07",
+      "url": "https://thehackernews.com/2026/11/claude-codes-dont-ask-again-file.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Trojanized 'security tools' on GitHub hide loaders in build events and whitespace to target defenders",
+      "cve": [],
+      "severity": "",
+      "summary": "Dr.Web traced a long-running GitHub campaign that now poses as scan-automation and log-parsing utilities (one fakes an Fscan output formatter), hiding malicious code after long runs of whitespace or in Visual Studio pre-build events, Python and Go files. Running or building a project fetches an Electron loader that disables Defender, Smart App Control and backups, patches AMSI/ETW, and drops AsyncRAT, a crypto clipper and a stealer that exfiltrates over Telegram; more than 2,000 Windows systems were infected. Treat unfamiliar repos as untrusted code, review project files and build events before compiling, run new tools in a disposable VM, and hunt with Dr.Web's published IOCs for Trojan.Loader.3261.",
+      "source": "BleepingComputer",
+      "published": "2026-11-06",
+      "url": "https://bleepingcomputer.com/news/security/fake-security-tools-on-github-push-backdoors-and-infostealers"
+    },
+    {
+      "category": "appsec",
+      "title": "Truffle Security launches a free program to get 1.4 million leaked but still-live credentials revoked",
+      "cve": [],
+      "severity": "",
+      "summary": "Truffle Security's new Secrets Revocation Program sends API-key issuers credentials it found exposed in places such as GitHub, GitLab, Docker Hub, npm, PyPI and Hugging Face, after verifying with TruffleHog that each still works; issuers can take them by webhook or let Truffle call a revocation endpoint. It launches with 1.4 million live secrets, and the company's data shows that issuers who revoke on report keep live exposed keys to about 2% while others leave the large majority working. If your company issues tokens, consider joining; either way, prefer short-lived credentials and scan full history rather than relying on a leak being noticed.",
+      "source": "VentureBeat (Business Wire)",
+      "published": "2026-11-04",
+      "url": "https://venturebeat.com/business/truffle-security-launches-secrets-revocation-program-to-revoke-14-million-leaked-secrets"
+    },
+    {
+      "category": "appsec",
+      "title": "Crédit Mutuel Arkéa loses up to $133M after an attacker came in through a service provider's platform",
+      "cve": [],
+      "severity": "",
+      "summary": "French bank Crédit Mutuel Arkéa says an attacker reached its network via a third-party provider's platform and used the bank's own account to move money to other banks and into USDC/USDT; ZachXBT puts the loss at up to €118 million (about $133 million), which the bank says is the right order of magnitude. Customer balances were not touched, some funds were frozen and certain systems were suspended while police investigate. It is another reminder to tightly scope, monitor and require strong authentication for vendor access paths into payment and treasury systems.",
+      "source": "BleepingComputer",
+      "published": "2026-11-07",
+      "url": "https://bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider"
+    }
+  ]
+}
