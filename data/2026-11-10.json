@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-10",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "N-able pulls hosted N-central offline after a researcher dumps 30-plus 'Able2Shell' zero-days with working PoCs",
+      "cve": [],
+      "severity": "Critical, public PoC",
+      "summary": "Researcher Sean Bales released proof-of-concept code for more than 30 unreported N-central flaws (auth bypasses, XXE, file write, traversal, RCE and privilege escalation) that chain into four exploit paths, the worst going from an unauthenticated XXE to a rogue admin account and command execution; he tested 2026.4.0.31 and believes older builds are affected too. N-able took its hosted N-central regions offline on November 9, told on-premises customers to shut their servers down, and is building a hotfix with no release date; no CVEs are assigned and N-able says it has not seen exploitation yet. Keep on-prem N-central offline until N-able clears it, then review logins, new admin accounts, remote sessions and newly pushed scripts from November 8 onward before restoring service.",
+      "source": "BleepingComputer",
+      "published": "2026-11-09",
+      "url": "https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: QNAP says Plex2Shell attacks are hitting NAS boxes that run Plex Media Server",
+      "cve": ["CVE-2026-96652", "CVE-2026-96654", "CVE-2026-96655", "CVE-2026-96656"],
+      "severity": "Exploited, on CISA KEV",
+      "summary": "QNAP has received reports of compromised Plex installations on its NAS devices as the four-bug Plex2Shell chain, exploited since mid-October, keeps spreading; the flaws are in Plex Media Server, not in QTS or QuTS hero, and give unauthenticated code execution as the Plex service. Update Plex Media Server to 1.43.3.10861 or later, and if the server was reachable from the internet treat it as compromised: reinstall Plex, rotate both Plex and NAS passwords, and follow QNAP's remediation guide. Turn off Plex Remote Access and stop forwarding port 32400 unless you need it, and use a VPN if you do.",
+      "source": "SecurityWeek",
+      "published": "2026-11-09",
+      "url": "https://www.securityweek.com/plex2shell-exploited-against-qnap-nas-users/"
+    },
+    {
+      "category": "appsec",
+      "title": "Stolen CI credentials let attackers ship a signed, provenance-backed backdoor in Ethersphere's bee-js and Swarm Desktop",
+      "cve": [],
+      "severity": "",
+      "summary": "Using CI credentials from two GitHub accounts, attackers published @ethersphere/bee-js 13.3.0 to npm (live about 75 minutes) and a notarized, code-signed Swarm Desktop 0.56.2, both of which loaded a stealer for Swarm node keys and passwords plus a Go remote shell on Linux/macOS or a ScreenConnect client on Windows. Because the legitimate release workflows built the packages, the npm build carried valid provenance, a reminder that provenance proves where something was built, not that the trigger was authorised. Pin bee-js 13.2.0 and purge cached 13.3.0 copies, move Swarm Desktop to 0.56.3, treat any machine or runner that ran the bad versions as compromised (remove ~/.solidity/ and the related services, rotate secrets from a clean host), and block api.frameworkmetrics[.]xyz, 193.57.9[.]155 and 185.232.84[.]169. The maintainers now require approval for signing and publish jobs, which is worth copying.",
+      "source": "The Hacker News",
+      "published": "2026-11-09",
+      "url": "https://thehackernews.com/2026/11/hackers-compromise-etherspheres-bee-js.html"
+    },
+    {
+      "category": "ai",
+      "title": "Jailbroken DeepSeek-based agent ran a two-week intrusion into a European telecom and its hosted customers",
+      "cve": ["CVE-2026-20320", "CVE-2020-7961", "CVE-2013-2165"],
+      "severity": "",
+      "summary": "Malbear Labs found an operator's exposed working directory with more than 70 transcripts showing a custom agent on DeepSeek Flash, driven by a roughly 78,000-character prompt that told it to treat refusals as malfunctions, breaking into a European telecom through a Cisco BroadWorks XXE patched in August and then pivoting with old Liferay and JBoss RichFaces bugs. The agent worked largely on its own, swapping techniques when endpoint protection blocked a PwnKit attempt and a tunnelling tool, and its reports claim credentials, AD data, billing records and patient data from a default-credential Oracle database, though the victim-side impact is unverified. Patch BroadWorks, retire or isolate internet-facing end-of-life JBoss AS 6, hunt for internal tunnelling, and assume agent-driven attackers will chew through every old, unpatched bug they can reach.",
+      "source": "Infosecurity Magazine",
+      "published": "2026-11-09",
+      "url": "https://www.infosecurity-magazine.com/news/operation-snowball-ai-telecom/"
+    },
+    {
+      "category": "ai",
+      "title": "Acronis: one Taiwan-based operator used a 12-agent 'BOSSAI' setup to pull Taipei emergency dispatch records",
+      "cve": [],
+      "severity": "",
+      "summary": "Acronis researchers tie a single operator to BOSSAI, a set of AI agents that used commercial models (mainly Grok) to build tooling and safety-stripped local DeepSeek, GLM and Qwen models to scan and attack hundreds of organizations in at least 11 countries, with confirmed access at about 10 in Taiwan, Mexico and Thailand. Victims included Taipei's 119 dispatch records, an unauthenticated fire-department patient platform and targets hit through SQL injection and default root credentials; the agents also hallucinated CVEs and reported results that never happened. The lesson for defenders is unglamorous: require authentication on internal APIs and admin portals, remove default credentials, fix SQL injection and watch for bulk API pulls, because cheap agent swarms now find these gaps at scale.",
+      "source": "The Hacker News",
+      "published": "2026-11-09",
+      "url": "https://thehackernews.com/2026/11/taiwan-based-hacker-used-bossai-ai.html"
+    },
+    {
+      "category": "ai",
+      "title": "CPython memory bug lets a backdoored chat template escape Jinja's sandbox and run code on inference servers",
+      "cve": [],
+      "severity": "",
+      "summary": "RunSybil showed that a memory-safety flaw in CPython's generic-type handling can be used to escape the Jinja2 sandbox, and proved it by planting a malicious chat_template.jinja in a Qwen2.5 model that ran code inside a vLLM serving process. The fix was merged quietly as an ordinary bug fix in 3.13, 3.14 and 3.15 but not 3.12, and the Python Security Response Team does not treat it as a CPython vulnerability, so no CVE exists. Move inference hosts to a patched 3.13+ build, treat chat templates and model repos as untrusted code, and if you let customers upload models, run each in its own isolated sandbox rather than relying on template sandboxing.",
+      "source": "CSO Online",
+      "published": "2026-11-06",
+      "url": "https://www.csoonline.com/article/4245592/cpython-flaw-exposes-ai-inference-servers-to-sandbox-escape-attacks.html"
+    },
+    {
+      "category": "ai",
+      "title": "'Greeter' framework sends Flowise a 'hello' and swaps in JavaScript to loot cloud keys from AI app servers",
+      "cve": ["CVE-2024-58351"],
+      "severity": "Critical 9.8",
+      "summary": "Era Security's honeypots caught a Chinese-language framework abusing the old Flowise overrideConfig code-injection bug: each 'hello' chat request carries a javascriptFunction override that runs only for that request, so the saved chatflow looks clean while the attacker profiles the host, dumps environment variables, .env files, SSH keys and the Flowise encryption key, and probes AWS, Azure and GCP metadata. Initial access came from Tor exit node 185.246.188[.]74, and persistence uses names like polld-keeper-*, syslog-cronrun-* cron files and taskd-sysrun-* services. Update Flowise and require API authentication, block or log any prediction request containing overrideConfig with javascriptFunction, run it as a non-root user with a narrowly scoped cloud identity, and enforce IMDSv2.",
+      "source": "Era Security",
+      "published": "2026-11-03",
+      "url": "https://era.security/blog/greeter-flowise-ai-infrastructure-attack"
+    },
+    {
+      "category": "ai",
+      "title": "DeepMind agents cut the cost of attacking legacy 1024-bit RSA, though 2048-bit keys stay safe",
+      "cve": [],
+      "severity": "",
+      "summary": "Working with cryptographers from UC San Diego and Inria, Google DeepMind's AI agents reran a known PKCS#1 v1.5 signature-forgery attack on 1024-bit RSA with 3.5 times less compute (391 versus 1,380 core-years) in under four days with light human supervision, and designed a batch-factoring method that would make each extra 1024-bit key about 30 times cheaper. The forgery needs billions of signing queries and fails against devices that hash messages internally, and the batch method is not yet implemented. Inventory any remaining RSA-1024 keys, especially in HSM and PKCS#11 signing services, and plan their retirement rather than waiting for the cost to fall further.",
+      "source": "SecurityWeek",
+      "published": "2026-11-09",
+      "url": "https://www.securityweek.com/google-deepminds-ai-agents-make-1024-bit-rsa-keys-cheaper-to-attack/"
+    }
+  ]
+}
