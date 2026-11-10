@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-11",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "November Patch Tuesday: Outlook spoofing zero-day leaks NTLMv2 hashes and is already being exploited",
+      "cve": ["CVE-2026-124194"],
+      "severity": "Moderate 6.5 (exploited)",
+      "summary": "Microsoft's November release fixes about 1,094 flaws, including an Outlook bug under active attack in which a crafted message file makes Outlook reach out to an attacker-controlled location without its usual external-content warning, handing over the user's NTLMv2 hash. The victim has to open the file (the Preview Pane is not a trigger), and Microsoft 365 Apps for Enterprise plus Office LTSC 2021 and 2024 are affected. Push the Office update first, and limit hash relay risk by blocking outbound SMB/NTLM to the internet and adding affected users to Protected Users where possible.",
+      "source": "SecurityWeek",
+      "published": "2026-11-10",
+      "url": "https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Chrome's eighth exploited zero-day of 2026 is a use-after-free in its XML handling",
+      "cve": ["CVE-2026-125350"],
+      "severity": "High (exploited)",
+      "summary": "Google shipped an emergency Chrome update for a use-after-free in the XML component after confirming an exploit exists in the wild; an anonymous researcher reported it on November 6 and Google is withholding details. Fixed builds are 157.0.8103.50/.51 on Windows and macOS and 157.0.8103.50 on Linux. Force a browser restart across the fleet and watch for patches in Chromium-based browsers such as Edge, Brave and Opera.",
+      "source": "The Hacker News",
+      "published": "2026-11-10",
+      "url": "https://thehackernews.com/2026/11/google-issues-chrome-security-update.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Exploited Xen Orchestra cookie bug logs attackers in as an existing admin and leads to root on XCP-ng hosts",
+      "cve": [],
+      "severity": "Critical (exploited, no CVE yet)",
+      "summary": "Vates warns that an authentication bypass in Xen Orchestra and the XOA appliance lets anyone who can reach the management interface send a cookie holding an empty JSON object and be logged in with an existing user's token, opening the way to code execution on managed pools. The flaw (VSA-2026-062) is being exploited, and attackers have left a VM called 'pivot2', zz-ustar cron files and connections to 91.211.251[.]112:8001. Upgrade to Xen Orchestra 6.9.1 or 6.10.0 (xo-server 5.211.2 or 5.213.1), keep the interface on a management-only network, hunt for the published indicators in HTTP traffic since logs show nothing, and rotate virtualization secrets if anything turns up.",
+      "source": "BleepingComputer",
+      "published": "2026-11-10",
+      "url": "https://www.bleepingcomputer.com/news/security/critical-xen-orchestra-auth-bypass-flaw-exploited-to-hijack-vm-servers/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: CISA adds the FreeSWITCH SIP injection flaw to KEV, along with an exploited GPUStack admin bypass",
+      "cve": ["CVE-2026-116779", "CVE-2026-102895"],
+      "severity": "Critical 9.8",
+      "summary": "The FreeSWITCH bug we flagged last week as missing from KEV is now listed: crafted SIP MESSAGE requests can run FreeSWITCH API commands and from there OS commands, and SignalWire has confirmed attacks; 1.11.3 fixes it. CISA also listed a GPUStack flaw where unauthenticated requests that appear to come from the local machine get admin rights on the GPU cluster manager, already exploited against 2.1.1 and fixed in 2.2.0. Upgrade both, keep GPUStack and SIP services off the open internet, and review admin accounts and API keys on any GPUStack server that was exposed.",
+      "source": "Security Affairs",
+      "published": "2026-11-10",
+      "url": "https://securityaffairs.com/202813/hacking/u-s-cisa-adds-ibm-signalwire-freeswitch-openssh-and-gpustack-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Attacker rode Qubole's trusted AWS roles into dozens of customer accounts to harvest secrets and S3 data",
+      "cve": [],
+      "severity": "",
+      "summary": "Wiz, Sentra and Mandiant say compromised IAM users in Qubole's AWS account were used from October 14 to 26 to assume dormant cross-account roles that customers had granted the data platform, then pull Secrets Manager, SSM and Lambda environment values, validate keys with TruffleHog and bulk-download S3 objects. One customer lost millions of files, and Entra ID and Okta client secrets were also targeted. Search CloudTrail from October 1 for activity from Qubole's account, rotate anything those roles could read, revoke sessions, and remove or tightly scope third-party trust relationships you no longer use.",
+      "source": "BleepingComputer",
+      "published": "2026-11-10",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: Railway breach began with a build-sandbox escape and cost about $740,000 in stolen AI usage",
+      "cve": [],
+      "severity": "",
+      "summary": "Railway's incident report says attackers escaped filesystem isolation in its build infrastructure on October 20, took an internal credential, copied source code from build histories, and then abused a misconfigured trust relationship to obtain keys that decrypt customer environment variables for at most about 1.85% of workspaces. They mainly hunted AI provider keys and ran up roughly $740,000 in charges, and linked-account tokens such as GitHub OAuth tokens for 1,852 users were reset. If you deploy on Railway and have not rotated every stored secret since October 22, do it now and check AI provider billing for unexplained usage.",
+      "source": "BleepingComputer",
+      "published": "2026-11-10",
+      "url": "https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/"
+    },
+    {
+      "category": "ai",
+      "title": "Near AI breach started with an SGLang RCE on an inference server and reached data from 18 agents",
+      "cve": [],
+      "severity": "",
+      "summary": "Near AI says an attacker exploited a remote code execution flaw in the open-source SGLang serving engine on one inference server, then moved through its infrastructure to take account data for about 100 users and chat histories, settings and logs for 18 agents, plus two customers' API keys that have since been revoked. The company noted that its confidential-computing isolation does not help when the software running inside it is vulnerable. If you self-host SGLang or similar inference engines, keep them patched, never expose them directly, and keep agent logs free of secrets.",
+      "source": "Decrypt",
+      "published": "2026-11-10",
+      "url": "https://decrypt.co/382965/near-ai-breach-exposes-user-details-data-ai-agents"
+    },
+    {
+      "category": "ai",
+      "title": "Fireworks AI discloses a second intrusion, this time via a compromised cloud provider, exposing some weights and datasets",
+      "cve": [],
+      "severity": "",
+      "summary": "After an October credential-abuse incident that exposed customer API keys, Fireworks AI now says a third-party cloud provider hosting its R&D machines was breached on October 23 and used the next day to reach development systems, exposing resource metadata, billing details and partial model weights and datasets for some customers. The company suspects LLMjacking crews, and Notion says a small share of its AI chat sessions may have been caught up in it. Fireworks customers should rotate keys and tokens, and teams relying on hosted inference should ask providers how their own suppliers are isolated.",
+      "source": "The Register",
+      "published": "2026-11-10",
+      "url": "https://www.theregister.com/cyber-crime/2026/11/10/fireworks-ai-gets-burned-twice-as-customer-data-exposure-widens/5308722"
+    }
+  ]
+}

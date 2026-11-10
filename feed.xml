@@ -6,7 +6,71 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>November Patch Tuesday: Outlook spoofing zero-day leaks NTLMv2 hashes and is already being exploited</title>
+      <link>https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/</link>
+      <guid isPermaLink="false">2026-11-11|https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/|November Patch Tuesday: Outlook spoofing zero-day leaks NTLMv2 hashes and is already being exploited</guid>
+      <pubDate>Wed, 11 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Moderate 6.5 (exploited) · CVE-2026-124194] Microsoft's November release fixes about 1,094 flaws, including an Outlook bug under active attack in which a crafted message file makes Outlook reach out to an attacker-controlled location without its usual external-content warning, handing over the user's NTLMv2 hash. The victim has to open the file (the Preview Pane is not a trigger), and Microsoft 365 Apps for Enterprise plus Office LTSC 2021 and 2024 are affected. Push the Office update first, and limit hash relay risk by blocking outbound SMB/NTLM to the internet and adding affected users to Protected Users where possible. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Chrome's eighth exploited zero-day of 2026 is a use-after-free in its XML handling</title>
+      <link>https://thehackernews.com/2026/11/google-issues-chrome-security-update.html</link>
+      <guid isPermaLink="false">2026-11-11|https://thehackernews.com/2026/11/google-issues-chrome-security-update.html|Chrome's eighth exploited zero-day of 2026 is a use-after-free in its XML handling</guid>
+      <pubDate>Wed, 11 Nov 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High (exploited) · CVE-2026-125350] Google shipped an emergency Chrome update for a use-after-free in the XML component after confirming an exploit exists in the wild; an anonymous researcher reported it on November 6 and Google is withholding details. Fixed builds are 157.0.8103.50/.51 on Windows and macOS and 157.0.8103.50 on Linux. Force a browser restart across the fleet and watch for patches in Chromium-based browsers such as Edge, Brave and Opera. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Exploited Xen Orchestra cookie bug logs attackers in as an existing admin and leads to root on XCP-ng hosts</title>
+      <link>https://www.bleepingcomputer.com/news/security/critical-xen-orchestra-auth-bypass-flaw-exploited-to-hijack-vm-servers/</link>
+      <guid isPermaLink="false">2026-11-11|https://www.bleepingcomputer.com/news/security/critical-xen-orchestra-auth-bypass-flaw-exploited-to-hijack-vm-servers/|Exploited Xen Orchestra cookie bug logs attackers in as an existing admin and leads to root on XCP-ng hosts</guid>
+      <pubDate>Wed, 11 Nov 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical (exploited, no CVE yet)] Vates warns that an authentication bypass in Xen Orchestra and the XOA appliance lets anyone who can reach the management interface send a cookie holding an empty JSON object and be logged in with an existing user's token, opening the way to code execution on managed pools. The flaw (VSA-2026-062) is being exploited, and attackers have left a VM called 'pivot2', zz-ustar cron files and connections to 91.211.251[.]112:8001. Upgrade to Xen Orchestra 6.9.1 or 6.10.0 (xo-server 5.211.2 or 5.213.1), keep the interface on a management-only network, hunt for the published indicators in HTTP traffic since logs show nothing, and rotate virtualization secrets if anything turns up. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Update: CISA adds the FreeSWITCH SIP injection flaw to KEV, along with an exploited GPUStack admin bypass</title>
+      <link>https://securityaffairs.com/202813/hacking/u-s-cisa-adds-ibm-signalwire-freeswitch-openssh-and-gpustack-flaws-to-its-known-exploited-vulnerabilities-catalog.html</link>
+      <guid isPermaLink="false">2026-11-11|https://securityaffairs.com/202813/hacking/u-s-cisa-adds-ibm-signalwire-freeswitch-openssh-and-gpustack-flaws-to-its-known-exploited-vulnerabilities-catalog.html|Update: CISA adds the FreeSWITCH SIP injection flaw to KEV, along with an exploited GPUStack admin bypass</guid>
+      <pubDate>Wed, 11 Nov 2026 06:57:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-116779 · CVE-2026-102895] The FreeSWITCH bug we flagged last week as missing from KEV is now listed: crafted SIP MESSAGE requests can run FreeSWITCH API commands and from there OS commands, and SignalWire has confirmed attacks; 1.11.3 fixes it. CISA also listed a GPUStack flaw where unauthenticated requests that appear to come from the local machine get admin rights on the GPU cluster manager, already exploited against 2.1.1 and fixed in 2.2.0. Upgrade both, keep GPUStack and SIP services off the open internet, and review admin accounts and API keys on any GPUStack server that was exposed. (Source: Security Affairs)</description>
+    </item>
+    <item>
+      <title>Attacker rode Qubole's trusted AWS roles into dozens of customer accounts to harvest secrets and S3 data</title>
+      <link>https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/</link>
+      <guid isPermaLink="false">2026-11-11|https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/|Attacker rode Qubole's trusted AWS roles into dozens of customer accounts to harvest secrets and S3 data</guid>
+      <pubDate>Wed, 11 Nov 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Wiz, Sentra and Mandiant say compromised IAM users in Qubole's AWS account were used from October 14 to 26 to assume dormant cross-account roles that customers had granted the data platform, then pull Secrets Manager, SSM and Lambda environment values, validate keys with TruffleHog and bulk-download S3 objects. One customer lost millions of files, and Entra ID and Okta client secrets were also targeted. Search CloudTrail from October 1 for activity from Qubole's account, rotate anything those roles could read, revoke sessions, and remove or tightly scope third-party trust relationships you no longer use. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Update: Railway breach began with a build-sandbox escape and cost about $740,000 in stolen AI usage</title>
+      <link>https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/</link>
+      <guid isPermaLink="false">2026-11-11|https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/|Update: Railway breach began with a build-sandbox escape and cost about $740,000 in stolen AI usage</guid>
+      <pubDate>Wed, 11 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Railway's incident report says attackers escaped filesystem isolation in its build infrastructure on October 20, took an internal credential, copied source code from build histories, and then abused a misconfigured trust relationship to obtain keys that decrypt customer environment variables for at most about 1.85% of workspaces. They mainly hunted AI provider keys and ran up roughly $740,000 in charges, and linked-account tokens such as GitHub OAuth tokens for 1,852 users were reset. If you deploy on Railway and have not rotated every stored secret since October 22, do it now and check AI provider billing for unexplained usage. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Near AI breach started with an SGLang RCE on an inference server and reached data from 18 agents</title>
+      <link>https://decrypt.co/382965/near-ai-breach-exposes-user-details-data-ai-agents</link>
+      <guid isPermaLink="false">2026-11-11|https://decrypt.co/382965/near-ai-breach-exposes-user-details-data-ai-agents|Near AI breach started with an SGLang RCE on an inference server and reached data from 18 agents</guid>
+      <pubDate>Wed, 11 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Near AI says an attacker exploited a remote code execution flaw in the open-source SGLang serving engine on one inference server, then moved through its infrastructure to take account data for about 100 users and chat histories, settings and logs for 18 agents, plus two customers' API keys that have since been revoked. The company noted that its confidential-computing isolation does not help when the software running inside it is vulnerable. If you self-host SGLang or similar inference engines, keep them patched, never expose them directly, and keep agent logs free of secrets. (Source: Decrypt)</description>
+    </item>
+    <item>
+      <title>Fireworks AI discloses a second intrusion, this time via a compromised cloud provider, exposing some weights and datasets</title>
+      <link>https://www.theregister.com/cyber-crime/2026/11/10/fireworks-ai-gets-burned-twice-as-customer-data-exposure-widens/5308722</link>
+      <guid isPermaLink="false">2026-11-11|https://www.theregister.com/cyber-crime/2026/11/10/fireworks-ai-gets-burned-twice-as-customer-data-exposure-widens/5308722|Fireworks AI discloses a second intrusion, this time via a compromised cloud provider, exposing some weights and datasets</guid>
+      <pubDate>Wed, 11 Nov 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>After an October credential-abuse incident that exposed customer API keys, Fireworks AI now says a third-party cloud provider hosting its R&amp;D machines was breached on October 23 and used the next day to reach development systems, exposing resource metadata, billing details and partial model weights and datasets for some customers. The company suspects LLMjacking crews, and Notion says a small share of its AI chat sessions may have been caught up in it. Fireworks customers should rotate keys and tokens, and teams relying on hosted inference should ask providers how their own suppliers are isolated. (Source: The Register)</description>
+    </item>
     <item>
       <title>N-able pulls hosted N-central offline after a researcher dumps 30-plus 'Able2Shell' zero-days with working PoCs</title>
       <link>https://www.bleepingcomputer.com/news/security/n-able-takes-cloud-platform-offline-after-30-plus-zero-days-published/</link>
@@ -918,78 +982,6 @@
       <pubDate>Thu, 29 Oct 2026 06:52:00 +0800</pubDate>
       <category>AI security</category>
       <description>Quarry lets teams write YARA/Snort-like rules over whole agent sessions, so it can flag sequences such as a sensitive file read followed by an outbound send, or a credential pulled from a tool result and then used against an external service. It covers multi-turn chats, tool and MCP calls and multimodal input, with plugins for Claude Code, Codex and other MCP clients. Cisco positions it as a complement to human oversight rather than a replacement; it is worth trialling as a detection layer for coding agents and MCP-connected workflows. (Source: The Register)</description>
-    </item>
-    <item>
-      <title>Update: CISA adds both PHP2Shell flaws to KEV with an October 29 deadline, while Palo Alto withdraws its government-intrusion claim</title>
-      <link>https://theregister.com/cyber-crime/2026/10/27/cisa-confirms-php2shell-under-attack-as-researchers-clock-successful-exploits/5305681</link>
-      <guid isPermaLink="false">2026-10-28|https://theregister.com/cyber-crime/2026/10/27/cisa-confirms-php2shell-under-attack-as-researchers-clock-successful-exploits/5305681|Update: CISA adds both PHP2Shell flaws to KEV with an October 29 deadline, while Palo Alto withdraws its government-intrusion claim</guid>
-      <pubDate>Wed, 28 Oct 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.2 · CVE-2026-109618 · CVE-2026-109619] CISA put the two unauthenticated PHP RCE bugs into the Known Exploited Vulnerabilities catalog on October 26, giving federal agencies until October 29 to fix them; Perplexity honeypots logged 35 working shells against PHP 8.4.26 under Apache mod_php, and Delft researchers counted more than 50,000 exploit requests from over 600 IPs. Palo Alto Networks has retracted its claim tying the bugs to a European government breach (reported here on October 26), and Sophos downgraded its own findings to scanning and failed attempts. Upgrade to PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35 (or a vendor backport), and take unpatchable end-of-life PHP hosts offline. (Source: The Register)</description>
-    </item>
-    <item>
-      <title>Apple backports its exploited CoreGraphics fix to iPhone XS-era devices in iOS 18.7.11</title>
-      <link>https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html</link>
-      <guid isPermaLink="false">2026-10-28|https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html|Apple backports its exploited CoreGraphics fix to iPhone XS-era devices in iOS 18.7.11</guid>
-      <pubDate>Wed, 28 Oct 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[High 8.8 · CVE-2026-86950] Apple released iOS and iPadOS 18.7.11 to bring the September fix for an out-of-bounds write in CoreGraphics to older hardware such as the iPhone XS/XR and several older iPads. A crafted file can trigger code execution, and Apple says the bug may have been used in an extremely sophisticated attack on specific individuals. Update older devices to 18.7.11 and current ones to iOS 27.2, which also patches hundreds of other bugs. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>CERT-UA warns attackers are taking over Dahua cameras by guessing serial numbers through the P2P cloud relay</title>
-      <link>https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html</link>
-      <guid isPermaLink="false">2026-10-28|https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html|CERT-UA warns attackers are taking over Dahua cameras by guessing serial numbers through the P2P cloud relay</guid>
-      <pubDate>Wed, 28 Oct 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[CVE-2021-33044 · CVE-2021-33045] Ukraine's CERT-UA says attackers enumerate Dahua devices by their near-sequential serial numbers, reach cameras behind NAT through the Easy4IP/P2P relay, and log in with weak passwords or old authentication-bypass bugs on outdated firmware. Related Hunt.io research describes one actor compromising more than 14,500 Dahua cameras and planting a backdoor account that survives password changes. Disable P2P where it is not needed, keep cameras off the internet, update firmware, and audit for unknown accounts and DVRIP logins from 127.0.0.1. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>'Tailworm': 11 Tailscale flaws published before a fix, led by SSH socket forwarding that can reach root</title>
-      <link>https://www.bleepingcomputer.com/news/security/tailscale-warns-of-serious-ssh-flaws-allowing-root-privilege-escalation/</link>
-      <guid isPermaLink="false">2026-10-28|https://www.bleepingcomputer.com/news/security/tailscale-warns-of-serious-ssh-flaws-allowing-root-privilege-escalation/|'Tailworm': 11 Tailscale flaws published before a fix, led by SSH socket forwarding that can reach root</guid>
-      <pubDate>Wed, 28 Oct 2026 06:57:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Cyberdione Labs disclosed 11 issues in Tailscale 1.104.2 and headscale 0.29.5; the worst lets an ordinary Tailscale SSH session abuse Unix-socket forwarding, which runs as root, to execute code, grab enrollment keys or delete root files. Others include an app-connector path to cloud metadata, an unauthenticated headscale crash loop and authorization gaps in tailscale serve. Tailscale aimed to ship a fixed client on October 27; until you have it, set TS_SSH_DISABLE_FORWARDING=1 for tailscaled and tighten SSH access rules. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Microsoft Authenticator for Android let a zero-permission app pose as Teams and collect work-account tokens</title>
-      <link>https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html</link>
-      <guid isPermaLink="false">2026-10-28|https://thehackernews.com/2026/10/microsoft-authenticator-flaw-let.html|Microsoft Authenticator for Android let a zero-permission app pose as Teams and collect work-account tokens</guid>
-      <pubDate>Wed, 28 Oct 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[High 8.6 · CVE-2026-80097] An exported Authenticator activity built token requests from caller-supplied values and only checked that the real Teams app was installed, so any app could impersonate Teams and obtain Graph tokens for mail, files and calendars. Enclave says its PoC needed no user interaction beyond a signed-in account; Microsoft says a user must complete an auth flow, and reports no exploitation. Make sure managed Android devices run Authenticator 6.2606.4246 or later. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>GoAhead embedded web server ignored revocation lists, so revoked mTLS client certificates still worked</title>
-      <link>https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html</link>
-      <guid isPermaLink="false">2026-10-28|https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html|GoAhead embedded web server ignored revocation lists, so revoked mTLS client certificates still worked</guid>
-      <pubDate>Wed, 28 Oct 2026 06:55:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Critical 9.1 · CVE-2026-115881 · CVE-2026-115884] FoxIO found that GoAhead 3.4.5 through 6.1.0 built with OpenSSL loads a CRL but never turns on revocation checking, while the LibreSSL build can accept over-long client chains and the Mbed TLS build sends a 1-byte DH value that could expose sessions to passive decryption. The fixes are in GoAhead 6.1.1, which went to device makers in August and was published October 12. Ask vendors of devices that embed GoAhead for firmware on 6.1.1, and don't rely on certificate revocation alone for these devices until then. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Keystone scraps 18,835 hardware wallets after an attacker stole its device-authenticity key via a web plugin</title>
-      <link>https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html</link>
-      <guid isPermaLink="false">2026-10-28|https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html|Keystone scraps 18,835 hardware wallets after an attacker stole its device-authenticity key via a web plugin</guid>
-      <pubDate>Wed, 28 Oct 2026 06:54:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>An attacker escalated privileges through a flaw in a third-party monitoring tool on Keystone's website and took the key the wallets use to prove they are genuine, along with about 26,000 buyer records. Because the key is burned in at manufacture, counterfeit devices could now pass the online check, so Keystone is destroying unsold stock and pausing shipments; it says no seeds or private keys were exposed. It is a supply-chain lesson: keep signing keys out of web-reachable systems, and owners who received a device after October 20 should confirm with support before using it. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>OpenAI's compaction step could be told to copy a model's hidden reasoning out as plain text</title>
-      <link>https://thehackernews.com/2026/10/openai-compaction-flaw-let-researchers.html</link>
-      <guid isPermaLink="false">2026-10-28|https://thehackernews.com/2026/10/openai-compaction-flaw-let-researchers.html|OpenAI's compaction step could be told to copy a model's hidden reasoning out as plain text</guid>
-      <pubDate>Wed, 28 Oct 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Xint showed that asking a reasoning model's own compaction step to transcribe its encrypted reasoning, then passing the result to an older model, bypassed the cross-model replay check OpenAI added in August. Xint only tested its own requests and does not claim access to other users' data; OpenAI fixed the issue on October 23 with no change needed by API users and paid a $6,000 bounty. Xint warns that any server-side step that reads decrypted reasoning and follows user instructions is a potential leak path, which applies to anyone building similar pipelines. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Radware scanned 86 million GitHub items and found hidden prompt injections aimed at coding agents</title>
-      <link>https://www.cybrsecmedia.com/who-is-prompt-injecting-coding-agents-a-scan-of-86-million-github-items/</link>
-      <guid isPermaLink="false">2026-10-28|https://www.cybrsecmedia.com/who-is-prompt-injecting-coding-agents-a-scan-of-86-million-github-items/|Radware scanned 86 million GitHub items and found hidden prompt injections aimed at coding agents</guid>
-      <pubDate>Wed, 28 Oct 2026 06:52:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Radware researchers found hidden instructions in about 2.5 of every 100,000 issues, pull requests, comments and READMEs, often inside HTML comments that don't render in Markdown; a wider 145-million-item dataset includes 47 outright attack attempts, some aimed at stealing secrets. The study measures attempts, not successful compromises. Treat repository content as untrusted input for agents, scope agent tokens tightly, and monitor tool calls and network activity rather than just prompts. (Source: CYBR.SEC.Media)</description>
     </item>
   </channel>
 </rss>
