@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-12",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: Cisco BroadWorks XXE abused in the AI-driven 'Operation Snowball' telecom intrusion lands in CISA KEV",
+      "cve": ["CVE-2026-20320", "CVE-2026-111793"],
+      "severity": "High 7.5 (BroadWorks), exploited",
+      "summary": "CISA has added the Cisco BroadWorks OCI XML parser XXE flaw, which lets an unauthenticated attacker read configuration data and was used to pull the platform's XSP identity private key in the Operation Snowball telecom attack, to its exploited-vulnerabilities catalog. An Openwave Messaging Webtop media transcoder bug (CVSS 4.3) that lets authenticated users process unintended file types was added alongside it after the vendor confirmed attacks. Cisco shipped its fix in August and Openwave in October; federal agencies have until November 24. Patch, review BroadWorks XSP hosts (especially anything exposing port 2208) for Sliver, Chisel or Behinder web shells, and rotate credentials and certificates on any box that may have been reached.",
+      "source": "The Hacker News",
+      "published": "2026-11-11",
+      "url": "https://thehackernews.com/2026/11/cisco-broadworks-and-openwave-flaws.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "IBM Aspera Faspex authorization bypass that hands users full admin rights is now flagged as exploited",
+      "cve": ["CVE-2026-123218"],
+      "severity": "Critical 9.8",
+      "summary": "CISA put an IBM Aspera Faspex flaw on its KEV list, where a logged-in user can send crafted messages to bypass authorization checks and gain full administrator privileges on the file-transfer server. IBM's advisory does not describe the attacks and no public technical write-up exists yet, but federal agencies were given only three days to patch. Upgrade Faspex to 5.0.19 PL1 or later now, and review admin accounts and recent configuration changes on internet-facing instances.",
+      "source": "SecurityWeek",
+      "published": "2026-11-10",
+      "url": "https://www.securityweek.com/ibm-aspera-faspex-signalwire-freeswitch-vulnerabilities-exploited-in-attacks/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: N-able ships N-central 2026.4 HF2, but says it fixes only 'some' of the 30-plus published zero-days",
+      "cve": ["CVE-2026-125878", "CVE-2026-125882", "CVE-2026-125883", "CVE-2026-125879", "CVE-2026-125881", "CVE-2026-125880", "CVE-2026-91000"],
+      "severity": "Critical, public PoC",
+      "summary": "N-able has released N-central 2026.4 HF2 with patches for the most serious of the Able2Shell bugs, including OGNL injection, multiple XXE flaws, a path-traversal upload RCE and a root privilege escalation, and says all hosted servers are now upgraded. The vendor has not confirmed that every disclosed issue is fixed and has not reported exploitation, but Defused saw probing of agent sessions and the unauthenticated remote-control endpoint, and the researcher's exploit code is public. On-prem customers should keep servers offline until upgraded, follow N-able's upgrade guidance, and check for unexpected 'Default Administrator' accounts.",
+      "source": "BleepingComputer",
+      "published": "2026-11-11",
+      "url": "https://bleepingcomputer.com/news/security/n-able-releases-security-hotfixes-for-zero-day-vulnerabilities"
+    },
+    {
+      "category": "zero-day",
+      "title": "SAP fixes 'ICM2SHELL' WebSocket bug that Onapsis turned into unauthenticated RCE, plus a Gateway ACL bypass",
+      "cve": ["CVE-2026-76964", "CVE-2026-89126", "CVE-2026-89103", "CVE-2026-120017"],
+      "severity": "Maximum severity",
+      "summary": "SAP's November notes fix four maximum-severity issues: ICM2SHELL, a fragmented-WebSocket reassembly flaw in the kernel's ICM and Web Dispatcher for which Onapsis built a working unauthenticated exploit running as the <sid>adm user; ProxyGate, a Gateway prxyinfo ACL bypass using requests that appear internal; and a NetWeaver missing-authentication bug enabling impersonation. No in-the-wild exploitation or public PoC is reported. Apply the November notes quickly, starting with internet-facing Web Dispatcher and ICM, and plan kernel upgrades for out-of-maintenance releases that ProxyGate also affects.",
+      "source": "SecurityWeek",
+      "published": "2026-11-10",
+      "url": "https://www.securityweek.com/sap-patches-critical-icm2shell-proxygate-vulnerabilities/"
+    },
+    {
+      "category": "appsec",
+      "title": "Prompt-injected issue in openai/codex chained to a runner memory read, cache poisoning and a path to publish the npm package",
+      "cve": [],
+      "severity": "",
+      "summary": "Depi researchers showed that an issue-labeling workflow in the openai/codex repo fed untrusted issue text to a Codex agent that any user could trigger, letting them run commands, escape the write sandbox through unauthenticated .NET debug pipes, and read GITHUB_TOKEN and ACTIONS_RUNTIME_TOKEN from runner memory. With those tokens they poisoned a cache restored by a privileged CI workflow, which they say could have led to an OIDC token and a malicious @openai/codex release. OpenAI fixed it after a Bugcrowd report and no user action is needed. Teams running AI agents in GitHub Actions should never pass issue or PR text to agents with shell access, restrict who can trigger them, keep token permissions minimal, and isolate caches from untrusted triggers.",
+      "source": "Depi Security",
+      "published": "2026-11-11",
+      "url": "https://depi.security/blog/20261111-backdooring-codex/"
+    },
+    {
+      "category": "appsec",
+      "title": "ESET: North Korean crews push loaders through npm and trojanized Notepad++ plugins and rewrite Git history to hide implants",
+      "cve": [],
+      "severity": "",
+      "summary": "ESET's latest APT report describes DeceptiveDevelopment and related North Korean groups planting loaders in small, individually maintained packages across npm, PyPI, Packagist and Go, including the npm packages bianira-ui@1.27.0 and fluid-type-ui@2.0.8, and swapping WinMerge plugins for trojanized Notepad++ ones. With stolen Git credentials and SSH keys they inject code into public and private repositories and rewrite commit history to cover it, while the DEV#POPPER RAT hooks VS Code and Cursor so it runs on every launch. Search for the named packages and C2 address 166[.]88[.]134[.]62, audit recent history rewrites, and rotate credentials for developers who ran 'coding test' material from recruiters.",
+      "source": "Cyber Security News",
+      "published": "2026-11-10",
+      "url": "https://cybersecuritynews.com/north-korean-hackers-3/"
+    },
+    {
+      "category": "ai",
+      "title": "Microsoft's 'Lazarus' research backdoors an agent's model by editing fewer than 10 dormant neurons",
+      "cve": [],
+      "severity": "",
+      "summary": "Microsoft researchers showed that changing fewer than ten rarely used neurons in a model's weights can plant a trigger, such as a date change, that makes an agent download and run attacker code using permissions it already has, with no retraining and no change in safety-test results. The attacker needs write access to stored weights, for example via a compromised account, pipeline or storage bucket, and Microsoft has not seen it used in the wild. Diff every checkpoint against its declared base model before deployment and after updates, keep agent permissions tight, sandbox generated code, limit egress, and require human approval for high-impact tool calls.",
+      "source": "Help Net Security",
+      "published": "2026-11-11",
+      "url": "https://www.helpnetsecurity.com/2026/11/11/microsoft-hidden-ai-backdoors-lazarus/"
+    },
+    {
+      "category": "ai",
+      "title": "Open-source 'AntiFox' AI pentest platform tied to real intrusions that reached AWS production secrets",
+      "cve": [],
+      "severity": "",
+      "summary": "Arctic Wolf Labs linked Alibaba Cloud hosts running the AntiFox autonomous pentesting framework to attacks that planted an ASPX web shell through IIS's w3wp.exe, harvested web.config connection strings, and staged files in upload folders. In separate cases a valid AWS key of unknown origin was used to enumerate dozens of services, read a production secret with GetSecretValue and access S3. Alert on w3wp.exe spawning shells or PowerShell, hunt for new ASPX files in web roots, move database credentials out of web.config, and review CloudTrail for broad enumeration and secret reads from unfamiliar identities.",
+      "source": "The Hacker News",
+      "published": "2026-11-11",
+      "url": "https://thehackernews.com/2026/11/antifox-ai-pentesting-platform-linked.html"
+    },
+    {
+      "category": "ai",
+      "title": "Corelight finds most MCP servers silently pull new dependencies on every start",
+      "cve": [],
+      "severity": "",
+      "summary": "Corelight found that 23 of 35 MCP servers it reviewed are installed with uvx or npx 'latest' launchers that fetch dependencies fresh from PyPI or npm, so one community server produced 15 different dependency sets over 19 rebuilds in five weeks. Because those packages run inside the server process, a hijacked dependency would get the server's API tokens, files and network access, the same pattern worms like Shai-Hulud exploit. This is a deployment choice rather than a protocol bug: pin servers to a commit, install from a hash-locked lockfile, launch them directly, disable startup update checks, and run each under its own least-privilege account.",
+      "source": "Cyber Security News",
+      "published": "2026-11-11",
+      "url": "https://cybersecuritynews.com/hackers-could-exploit-mcp-server/"
+    }
+  ]
+}
