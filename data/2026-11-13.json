@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-13",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: Barracuda confirms in-the-wild attacks on the ESG root chain, and CISA puts both bugs in KEV",
+      "cve": ["CVE-2026-116606", "CVE-2026-111560"],
+      "severity": "Critical 9.3 / High 8.6",
+      "summary": "Barracuda has revised its advisory to say a small number of organizations have been hit through the two Email Security Gateway flaws that chain an authentication weakness in configuration restore into a root-level command injection; when watchTowr published the chain last week, no exploitation was known. CISA added both CVEs to the KEV catalog on November 10 with an unusually short federal deadline of November 13. Confirm every ESG has the BNSF-40425 or BNSF-40430 patch and that the other affected products (Load Balancer ADC, Message Archiver, WAF, WAF Control Center, Web Security Gateway) are patched, turn automatic patching back on if it was disabled, keep the admin UI off untrusted networks, and review appliances that were exposed for signs of compromise.",
+      "source": "BleepingComputer",
+      "published": "2026-11-10",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-barracuda-email-security-gateway-flaws-to-get-root-access/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: new '4EverAble2Shell' and 'Agent2Shell' N-central exploits work on the freshly patched build, and probing has started",
+      "cve": ["CVE-2026-90436"],
+      "severity": "",
+      "summary": "Researcher Sean Bales, who published the earlier Able2Shell bugs, released new exploits that he says give unauthenticated root RCE on on-premise N-central 2026.4.1.26 (the build N-able shipped on November 10) when the Legacy API is enabled, plus a chain of more than ten bugs that runs commands as SYSTEM on managed Windows agents if the appliance ID is known. Within hours, Presidian saw attempts that used the Apache Axis flaw CVE-2026-90436 (CVSS 9.8) for initial execution followed by 4EverAble2Shell to reach root, sourced from 157.20.241[.]16; watchTowr also logged probes, though no successful compromise had been confirmed at writing and N-able says hosted instances are unaffected. Disable the Legacy API now, apply the November 6 Axis patches, block that IP and hunt for unexpected curl-and-run shell activity on the server.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/new-n-central-exploits-work-against.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Apache 2.4.71 fixes a CVSS 9.8 mod_http2 bug that Red Hat says has a reliable public exploit",
+      "cve": ["CVE-2026-119618"],
+      "severity": "Critical 9.8",
+      "summary": "A flaw in Apache HTTP Server's HTTP/2 module can let an unauthenticated remote attacker run code on servers with HTTP/2 enabled; it affects 2.4.55 through 2.4.70 and the standalone mod_h2 2.0.8 through 2.0.42, and it is not covered by the earlier CVE-2026-23918 fix. Red Hat says public research has shown a reliable exploit against default mod_http2 setups, while Wiz reports no public exploit or in-the-wild use, so treat it as urgent either way. Upgrade to 2.4.71 or your distro's fixed package (RHEL 9 and 10 have them; several Debian releases and Amazon Linux were still pending), and where you cannot patch yet, drop h2 and h2c from the Protocols directive globally and in every virtual host.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/critical-apache-http2-flaw-could-let.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Unpatched 'SignDrop' exploit claims SYSTEM on Windows by abusing the CLFS log-signing mitigation",
+      "cve": [],
+      "severity": "",
+      "summary": "Exploit code published on GitHub under the name 'MSNightmare' targets the Common Log File System authentication check Microsoft added in late 2025, and was tested on Windows 11 26H2 and Windows Server 2025 builds; Microsoft has not assigned a CVE and nothing was fixed in the November updates. An independent tester found it works but not reliably, and there are no reports of use in attacks. Check the Mode value under HKLM\\SYSTEM\\CurrentControlSet\\Services\\CLFS\\Authentication to see whether hosts are in scope, but do not switch the mitigation off, since that reopens older CLFS memory-corruption bugs; watch MSRC for a fix and keep EDR rules for local privilege escalation tight.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Public PoC for a pre-auth MongoDB use-after-free that can crash lagging replica members after failover",
+      "cve": ["CVE-2026-118383"],
+      "severity": "Critical 9.5 (CVSS 4.0)",
+      "summary": "An unauthenticated client can send two crafted ping commands using readConcern.afterOpTime that leave a use-after-free behind, which crashes the mongod if that member later wins an election while still behind; replica set and sharded cluster members are affected, standalone mongod is not. Datadog Security Labs reproduced the crash and a GitHub PoC exists, though its reliable mode needs a test-only setting, researchers did not get code execution, and MongoDB knows of no exploitation. Upgrade every replica set and shard member to the fixed release for its branch (including containers and members that were offline during maintenance), don't defer Atlas maintenance, restrict network access to the database, and look for log IDs 51803, 21359 and 21363.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/critical-pre-auth-mongodb-flaw-cve-2026.html"
+    },
+    {
+      "category": "appsec",
+      "title": "'wfx-loot': 4,837 hijacked GitHub accounts slipped a CI secret stealer into 1,800+ repositories",
+      "cve": [],
+      "severity": "",
+      "summary": "Starting November 10, an attacker used stolen credentials for thousands of GitHub accounts to open probe pull requests ('docs: dependency audit notes' from a wfx-docs branch) in 61,764 repositories, then planted a stealer through existing workflows or npm postinstall hooks; Aikido says it ran in at least 1,806 repos, grabbing Actions secrets, GITHUB_TOKEN and OIDC tokens, cloud, npm, PyPI and SSH credentials and runner memory, and adding persistent AWS trust policy and Entra federated credential changes. Data went to 194.150.166[.]244, 18.143.168[.]96, 153.75.82[.]159 and Telegram, so a missing wfx-loot artifact does not prove you are clean, and the Packagist package digitalelvis/neuronai-studio 3.14.3 is malicious. Search your orgs for the branch, PR title and 'ci: refresh build cache' style commits, rotate everything affected workflows could reach, remove wfx-ci-* federated credentials and wfx-* role changes, and close the many probe PRs that are still open.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html"
+    },
+    {
+      "category": "appsec",
+      "title": ".NET 11 ships a NuGet package-age cooldown and reproducible container digests as .NET 8 and 9 reach end of support",
+      "cve": [],
+      "severity": "",
+      "summary": "Microsoft released .NET 11 on November 10 with a new NuGet source setting for a minimum package publication age, so freshly published (and possibly hijacked) versions are not picked up immediately, plus reproducible container image digests via SOURCE_DATE_EPOCH and CRC32 checks when reading ZIP entries. The same day .NET 8 and .NET 9 went out of support and will get no more security fixes. Plan migrations to .NET 10 LTS or .NET 11, turn on the NuGet cooldown in your restore configuration, and add digest verification for published images to your pipeline.",
+      "source": "Help Net Security",
+      "published": "2026-11-12",
+      "url": "https://www.helpnetsecurity.com/2026/11/12/net-11-security-changes/"
+    },
+    {
+      "category": "ai",
+      "title": "Unit 42: China-linked actor used a forked open-source AI pentest framework, Cairn, to breach 10 organizations",
+      "cve": [],
+      "severity": "",
+      "summary": "Palo Alto Networks' Unit 42 tracks the cluster as CL-STA-1238 and says a customized Cairn fork with an added exploitation skill pack ran 25 operations against at least 19 organizations, getting in or taking data at 10, including a standards body, a U.S. teachers' union and a semiconductor firm. The agents mostly leaned on password spraying, auth bypasses, weak or default credentials, exposed cloud APIs and old CVEs, so the AI added speed and coverage rather than new techniques. Block 154.44.31[.]4 and 82.29.129[.]54, and prioritize MFA, removing default credentials, closing open registration endpoints and patching known CVEs on internet-facing apps.",
+      "source": "Help Net Security",
+      "published": "2026-11-12",
+      "url": "https://www.helpnetsecurity.com/2026/11/12/cairn-autonomous-ai-cyberattacks/"
+    },
+    {
+      "category": "ai",
+      "title": "'BluePhishing': Proofpoint shows how consent phishing for Entra agent blueprints can plant agent identities in a victim tenant",
+      "cve": [],
+      "severity": "",
+      "summary": "Proofpoint demonstrated that an attacker can publish a multi-tenant Microsoft Entra Agent ID blueprint and trick a user into consenting, which gives the blueprint a permission it says cannot be revoked and lets the attacker create agent identities inside the victim's tenant that can then call Microsoft Graph. It is a research proof of concept that has not been seen in attacks and was reported to Microsoft, but the exposure grows as regular users gain the ability to create blueprints by default this month. Apply the same user-consent restrictions to agent blueprints and identities as to apps, classify risky Graph permissions, put Conditional Access on agents, and alert on 'Add application' and 'Add service principal' audit events with signInAudience set to AzureADMultipleOrgs.",
+      "source": "Cybersecurity News",
+      "published": "2026-11-11",
+      "url": "https://cybersecuritynews.com/hackers-could-abuse-microsoft-entra-ai-agents/"
+    }
+  ]
+}
