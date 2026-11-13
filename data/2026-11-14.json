@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-14",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Check Point Gaia root escalation exploited since late October as part of a chain ending in ESXi wipers; now in CISA KEV",
+      "cve": ["CVE-2026-123039"],
+      "severity": "High",
+      "summary": "Check Point issued emergency hotfixes (advisory SK1000362) for a local privilege escalation in the DynamicCLI IPC interface: the root-owned dynamic_server daemon listens on a world-writable socket in /tmp and does not authenticate callers, so any local user can run commands as root on Security Gateways, management servers, Multi-Domain servers and Scalable Platforms. Check Point says a couple of dozen customers have been hit since late October, with attackers entering through PHP2Shell bugs in the Mobile Access portal, escalating to root, planting webshells plus the TSGA backdoor and TSProxy, then moving to VMware ESXi hosts to deploy a wiper; CISA added the CVE to KEV on November 13. Install the hotfix now (or stop dynamic_server and keep it from restarting as a stopgap), hunt using Check Point's PHP2Shell IOCs, and look for root commands that bypassed the Clish wrapper or used the system() sink.",
+      "source": "BleepingComputer",
+      "published": "2026-11-13",
+      "url": "https://www.bleepingcomputer.com/news/security/check-point-patches-zero-day-that-lets-hackers-get-root-access/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: N-central servers confirmed compromised with cryptominers hours after the 4EverAble2Shell PoC, including fully patched ones",
+      "cve": ["CVE-2026-90436"],
+      "severity": "",
+      "summary": "Probing reported yesterday has turned into real compromises: Lupovis and Huntback saw attackers take over on-premise N-central servers roughly five hours after the November 12 PoC and install XMRig with systemd or cron persistence, with Lupovis linking 21 mining rigs to victim servers in the US, South Africa, Canada and Europe. Huntback says 19 victims were already on 2026.4 HF2, and N-able, which has restricted the Legacy API and Intune integration but has not shipped a fix for the new chain, says it found more IOCs and is contacting affected customers. Disable the Legacy API, keep the console off the internet, and treat any server with signs of exploitation as fully compromised rather than relying on the hotfix.",
+      "source": "SecurityWeek",
+      "published": "2026-11-13",
+      "url": "https://www.securityweek.com/hackers-exploit-new-n-central-zero-day-hours-after-poc-publication/"
+    },
+    {
+      "category": "zero-day",
+      "title": "UnrealIRCd label-tag injection that hands normal users server authority is exploited and added to KEV",
+      "cve": ["CVE-2026-114713"],
+      "severity": "High 8.6",
+      "summary": "The labeled-response module in UnrealIRCd 6.0.0 through 6.2.7 echoes the IRCv3 label tag without escaping it, so on networks with two or more linked servers an ordinary user can smuggle extra lines that peers treat as server-to-server commands, enabling KILL, GLINE and similar operator actions; the project calls it its worst bug in 15 years and has confirmed live attacks, and CISA added it to KEV on November 13. Upgrade to 6.2.7.1 (required on Windows) or apply hot-patch bundle-20261107 on other platforms, add the project's spamfilter rule for malformed labels as an interim shield, and on end-of-life UnrealIRCd 5 blacklist the labeled-response module and restart.",
+      "source": "Daily CyberSecurity",
+      "published": "2026-11-09",
+      "url": "https://securityonline.info/unrealircd-vulnerability-cve-2026-114713-exploited/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Citrix fixes 10 critical NetScaler bugs, including an unauthenticated access-control bypass in NetScaler Console",
+      "cve": ["CVE-2026-120869", "CVE-2026-120868", "CVE-2026-107407", "CVE-2026-107408", "CVE-2026-107409", "CVE-2026-107410", "CVE-2026-107412", "CVE-2026-107415", "CVE-2026-111334", "CVE-2026-120864"],
+      "severity": "Critical 9.4",
+      "summary": "Citrix patched 28 flaws in NetScaler ADC and Gateway, nine of them critical memory overflows, plus a CVSS 9.4 bug in NetScaler Console that lets unauthenticated attackers reach restricted resources; a medium flaw (CVE-2026-111338) also leaks authentication material into a log file. None are reported as exploited yet, but NetScaler bugs are routinely weaponized soon after release. Move ADC/Gateway to 14.1-73.57, 13.1-64.39 or the matching FIPS/NDcPP builds and Console to 14.1-74.34, and check Citrix's bulletin for the configuration preconditions on each CVE.",
+      "source": "SecurityWeek",
+      "published": "2026-11-13",
+      "url": "https://www.securityweek.com/citrix-patches-10-critical-netscaler-vulnerabilities/"
+    },
+    {
+      "category": "appsec",
+      "title": "'SCKit' worm hit 288 endpoints at 48 organizations in 90 minutes via a third-party ScreenConnect extension",
+      "cve": [],
+      "severity": "",
+      "summary": "Huntress traced a November 11 burst of activity to attackers using ScreenConnect's Run Command feature to install a second, attacker-controlled ScreenConnect client and the SCKit toolkit, which hijacks the legitimate client's connection slot, persists through a TrapWatch scheduled task, adds Defender exclusions and can steal session cookies. The likely entry point was the RMM+ extension, whose versions 1.0.31 and 1.0.32 accepted a blank access key and so bypassed ScreenConnect accounts, roles and MFA; ConnectWise has disabled five third-party extensions across hosted environments. Disable RMM+ and similar extensions on on-prem servers, review Run Command and Toolbox history for mass execution, look for a rogue second client (attacker server 185.99.255[.]28, C2 such as cdn007-digitaldownloads[.]com), clean hosts through EDR or WinRM rather than ScreenConnect, and rotate ScreenConnect and identity sessions.",
+      "source": "Huntress",
+      "published": "2026-11-11",
+      "url": "https://www.huntress.com/blog/sckit-worm-rogue-screenconnect"
+    },
+    {
+      "category": "appsec",
+      "title": "PostgreSQL patches 52 vulnerabilities, including pg_dump injection bugs, and ships the last release of version 14",
+      "cve": [],
+      "severity": "High 8.8",
+      "summary": "PostgreSQL 18.7, 17.12, 16.16, 15.20 and 14.25 fix 52 security issues, 32 of them rated 8.8, mostly memory-safety and type-confusion bugs reachable through PL/Perl, PL/Tcl, ts_rank_cd(), parallel query, logical replication, dblink and statistics import. Client tooling is affected too: pg_dump could be abused for SQL injection via not-null constraint names, its tar-format restore script allowed psql command injection, and reindexdb mishandled index-name quoting. No exploitation is reported; update servers and client binaries together (especially where untrusted users can create objects), follow the reindex and fresh-full-backup guidance in the release notes, and plan off PostgreSQL 14, which receives no further fixes.",
+      "source": "Help Net Security",
+      "published": "2026-11-13",
+      "url": "https://www.helpnetsecurity.com/2026/11/13/postgresql-security-update-november-2026/"
+    },
+    {
+      "category": "appsec",
+      "title": "OpenAI launches 'Daybreak', pairing an agentic web-app red team with an agent that drafts and retests fixes",
+      "cve": [],
+      "severity": "",
+      "summary": "Daybreak has two parts: Red Team, in early access, uses coordinated agents to review source and confirm exploitable paths (including validating scanner or bug-bounty findings) inside isolated environments gated by a 'Guardian' scope review, then retests patches; Defense Factory, a Preview ChatGPT plugin, traces findings through GitHub repos or local checkouts, proposes patches for engineers to review, and can scan new commits and pull requests. For AppSec teams it targets the triage-to-fix-to-retest loop, but both pieces are early-stage, so trial them on scoped repos, keep human review before merge, and check what repository access each user's GitHub connection grants.",
+      "source": "Help Net Security",
+      "published": "2026-11-13",
+      "url": "https://www.helpnetsecurity.com/2026/11/13/openai-daybreak-vulnerability-remediation-red-team-defense-factory-agents/"
+    },
+    {
+      "category": "ai",
+      "title": "SSRF in AWS's open-source MCP gateway registry lets server registrants reach internal services and instance metadata",
+      "cve": ["CVE-2026-125926"],
+      "severity": "High 8.5",
+      "summary": "mcp-gateway-registry v1.0.3 through v1.34.0 did not validate the upstream address when an MCP server was registered or edited, so any user allowed to register servers could point it at internal endpoints, including cloud instance metadata, and have the gateway relay the responses. AWS fixed it in 1.35.0 (bulletin 2026-180-AWS); no exploitation of this CVE is reported. Upgrade (Helm installs with bundled Keycloak must adopt the keycloak-client-secret Secret first), audit existing server entries because the upgrade does not clean them, enforce IMDSv2 with least-privilege roles, and rotate the registry's cloud credentials if unexpected registrations show up in logs.",
+      "source": "GBHackers",
+      "published": "2026-11-13",
+      "url": "https://gbhackers.com/aws-warns-of-mcp-gateway-registry-vulnerability/"
+    },
+    {
+      "category": "ai",
+      "title": "Darktrace shows stolen Claude Console credentials can turn Claude memory stores into a covert C2 for a coding-agent implant",
+      "cve": [],
+      "severity": "",
+      "summary": "In a lab, Darktrace researchers with a foothold and stolen Claude Console credentials used a memory store as a mailbox (heartbeat, input and output files) polled by Claude Code harness processes running as a transient systemd service; the agent ran recon, sprayed a found password against a domain controller and exfiltrated a 1 GB file through the Files API, all over the same API endpoint used for normal inference. Darktrace says it has not seen this in the wild, but it shows why AI API keys need the same protection as cloud credentials. Baseline what your agent harnesses normally execute, alert on unusual tool-call command lines and API data-transfer volumes, and scope, monitor and rotate AI provider keys.",
+      "source": "Darktrace",
+      "published": "2026-11-12",
+      "url": "https://www.darktrace.com/blog/hijacking-agentic-harnesses-to-attack-an-organization"
+    }
+  ]
+}
