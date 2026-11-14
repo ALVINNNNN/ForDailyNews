@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-15",
+  "items": [
+    {
+      "category": "ai",
+      "title": "Update: FBI FLASH says ARTEX agent operators reached privileged access in under three hours across critical sectors",
+      "cve": [],
+      "severity": "",
+      "summary": "The FBI's FLASH-20261113-001 advisory describes intrusions since August in which attackers drove the ARTEX multi-agent pentest framework, often backed by DeepSeek models, through web-app exploitation, OAuth credential additions, Kudu API abuse, DCSync and Kerberoasting, sometimes reaching privileged access within three hours. The original GitHub repo is gone, but forks and a paid ARTEX PRO keep it circulating, and researchers counted over 1,600 exposed consoles in early November. Defenders should inventory internet-facing apps, lock down Kudu/SCM and cloud admin endpoints, alert on new credentials added to Entra apps and unexpected LLM API traffic, and check telemetry for indicators such as 38.244.50[.]120 and xcai[.]pro.",
+      "source": "GBHackers",
+      "published": "2026-11-14",
+      "url": "https://gbhackers.com/fbi-warns-artex-ai-framework/"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: Cursor traces its breach to a stolen Fireworks AI key and agent traces that held customers' unredacted credentials",
+      "cve": [],
+      "severity": "",
+      "summary": "Cursor's incident report says attackers used an access key held by inference partner Fireworks AI to copy a shared bucket of mostly 2025 coding-agent traces from users without Privacy Mode; some traces contained live API credentials that opened further Cursor systems and, eventually, a marketplace credential used to push the rogue Claude Code extension builds 2.1.312 and 2.1.313. Cursor puts exposure at under 0.05% of users for traces and under 0.01% for compromised credentials, plus up to 5,000 users who pulled the malicious builds. Anyone affected should follow Cursor's remediation notice, and every team should treat AI agent transcripts as secret-bearing data that needs redaction, retention limits and tight vendor access.",
+      "source": "BleepingComputer",
+      "published": "2026-11-14",
+      "url": "https://www.bleepingcomputer.com/news/security/cursor-confirms-security-breach-led-to-malicious-claude-code-extension/"
+    },
+    {
+      "category": "appsec",
+      "title": "Two critical Red Hat Quay flaws let any user plant a permanent signing key or grab other tenants' robot tokens",
+      "cve": ["CVE-2026-123710", "CVE-2026-110697"],
+      "severity": "Critical 9.9",
+      "summary": "CVE-2026-123710 (CVSS 9.8) lets an anonymous or ordinary Quay user register a non-expiring trusted service key and then read or overwrite private images in any repository, while CVE-2026-110697 (CVSS 9.9) abuses an unescaped SQL LIKE wildcard to return other tenants' decrypted robot tokens. All Quay 3 and Quay 5 versions are affected, including the OpenShift operator and mirror registry; Red Hat has shipped fixed Quay 3 builds, though its entry for 123710 still listed packages as unfixed when reported. Patch, block the /keys endpoint to all but internal components, hunt audit logs for key rotations with no expiry, remove unknown keys and rotate robot tokens.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/critical-red-hat-quay-flaw-lets.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Public PoCs for 'Mior' and 'Skyfall' show a malicious cloud host can break into AMD SEV-SNP confidential VMs",
+      "cve": ["CVE-2026-0462", "CVE-2026-40671", "CVE-2026-18448"],
+      "severity": "Medium 5.9",
+      "summary": "ETH Zurich's Mior leaves part of the SEV-SNP Reverse Map Table uninitialized so a hostile hypervisor can read and write guest memory and forge attestation, and the ETH Zurich/Google Skyfall attack uses transient scheduler leaks to pull guest register values and even a disk-encryption key. Both need a malicious host, scores are moderate, and AMD reports no in-the-wild use, but proof-of-concept code is public and the bugs undercut the core promise of confidential computing, including confidential AI workloads, across EPYC 7003 to 9005 parts. Server owners should apply the AMD SEV firmware, microcode and vendor BIOS updates, and tenants should ask their cloud provider when the fixed TCB is deployed.",
+      "source": "The Hacker News",
+      "published": "2026-11-13",
+      "url": "https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Go 1.27.4 and 1.26.11 close a dozen cgo holes that let a malicious dependency run code at build or link time",
+      "cve": ["CVE-2026-97033", "CVE-2026-97036", "CVE-2026-97038", "CVE-2026-97043", "CVE-2026-97054"],
+      "severity": "",
+      "summary": "The Go team fixed 12 issues, most of them ways a package using cgo could smuggle compiler or linker flags (such as --sysroot, -target, GCC spec files, crafted .syso objects or escaped quotes in cgo_ldflag) past the toolchain's allowlist and execute code during go build, plus a net/http server crash race. The practical risk is supply chain: simply building an untrusted module can compromise a developer laptop or CI runner. Upgrade toolchains and CI images to Go 1.27.4 or 1.26.11, and keep builds of third-party code in isolated, low-privilege runners without long-lived secrets.",
+      "source": "golang-announce",
+      "published": "2026-11-10",
+      "url": "https://groups.google.com/g/golang-announce/c/iY8TY0wWgbM/m/KsU1KfWgAQAJ"
+    },
+    {
+      "category": "appsec",
+      "title": "Apify breach exposed customer sign-in tokens, 2FA recovery codes and password hashes; GitHub integrations reset",
+      "cve": [],
+      "severity": "",
+      "summary": "Web-scraping platform Apify says an attacker used a compromised credential to collect more credentials and access internal systems and customer accounts on November 9-10 before being cut off on November 11. A customer notice shared publicly lists names, billing data, salted password hashes, 2FA recovery codes and Google/GitHub sign-in tokens among the exposed data, and Apify revoked some OAuth links, including GitHub. Customers should reconnect GitHub integrations for Actors built from private repos, change passwords, regenerate recovery codes, and review GitHub and Google access granted to Apify.",
+      "source": "SecurityWeek",
+      "published": "2026-11-13",
+      "url": "https://www.securityweek.com/apify-confirms-customer-data-accessed-in-cyberattack/"
+    },
+    {
+      "category": "ai",
+      "title": "'TypoPrompting': 186 lookalike domains for Claude, ChatGPT, Gemini and others lead to ClickFix and search hijackers",
+      "cve": [],
+      "severity": "",
+      "summary": "Island found 186 typosquatted domains across 27 AI brands, such as cluade[.]ai, chatlgpt[.]com and preplexity[.]ai, funnelling mistyped visits to fake Cloudflare checks that serve PowerShell (ClickFix), a Microsoft Store app with hidden browser control, or search-hijacking Chrome extensions with nearly a million declared users. Some domains date back to 2023, so this is a long-running pipeline aimed at the surge in AI tool use. Push official AI tool URLs via bookmarks or managed access, block known lookalikes at DNS, and audit browser extensions and default search settings.",
+      "source": "The Hacker News",
+      "published": "2026-11-12",
+      "url": "https://thehackernews.com/2026/11/186-fake-ai-domains-redirect-users-to.html"
+    }
+  ]
+}
