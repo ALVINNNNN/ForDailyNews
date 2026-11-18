@@ -6,7 +6,87 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Puppet report-processing deserialization bug (CVSS 9.4) is now in CISA KEV as attackers exploit it</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html</link>
+      <guid isPermaLink="false">2026-11-19|https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html|Puppet report-processing deserialization bug (CVSS 9.4) is now in CISA KEV as attackers exploit it</guid>
+      <pubDate>Thu, 19 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.4 · CVE-2026-115731 · CVE-2026-115732] CISA added CVE-2026-115731, an untrusted-deserialization flaw in Puppet's report handling that yields remote code execution, to KEV on November 17, with a December 1 federal deadline; no attack details have been shared. Exploitation needs a valid CA-signed agent certificate, so servers that auto-sign agent requests are most exposed, and a companion bug (CVE-2026-115732, CVSS 9.0) bypasses certificate-name authorization in Puppet and OpenVox. Upgrade to Puppet Enterprise 2026.0.1, 2025.12.1 or 2023.8.13 (Core 9.1.3 / 8.22.2) or the fixed OpenVox agent and server builds, tighten CA auto-signing, and check Puppet servers for compromise, since stolen CA keys would let an attacker impersonate managed hosts. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Apache Roller XML-RPC deserialization RCE is under active attack, and the September fix missed versions 4.0.0-6.1.4</title>
+      <link>https://thehackernews.com/2026/11/critical-apache-roller-rce-flaw-under.html</link>
+      <guid isPermaLink="false">2026-11-19|https://thehackernews.com/2026/11/critical-apache-roller-rce-flaw-under.html|Apache Roller XML-RPC deserialization RCE is under active attack, and the September fix missed versions 4.0.0-6.1.4</guid>
+      <pubDate>Thu, 19 Nov 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-129448 · CVE-2026-82384] The Apache Software Foundation says CVE-2026-129448, an unauthenticated deserialization bug in Roller's XML-RPC endpoint, is being actively exploited; the endpoint unpacks vendor extension types before checking who is calling. It is the same flaw as September's CVE-2026-82384, which was scoped only to 6.1.5, and covers Roller 4.0.0 through 6.1.4. Upgrade to 6.1.6 or later; if you cannot, set enabledForExtensions to false in WEB-INF/web.xml or remove the /roller-services/xmlrpc servlet mapping and restart, because switching XML-RPC off in the admin UI does not stop older builds from deserializing the request. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>CISA KEV adds Synology DSM, LiteLLM guardrail sandbox escape, end-of-life Apache Axis 1.x and REDCap bugs</title>
+      <link>https://securityonline.info/cisa-adds-4-exploited-flaws-kev-synology-litellm/</link>
+      <guid isPermaLink="false">2026-11-19|https://securityonline.info/cisa-adds-4-exploited-flaws-kev-synology-litellm/|CISA KEV adds Synology DSM, LiteLLM guardrail sandbox escape, end-of-life Apache Axis 1.x and REDCap bugs</guid>
+      <pubDate>Thu, 19 Nov 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2024-10441 · CVE-2026-40217 · CVE-2026-90436 · CVE-2026-90817] CISA's November 18 KEV update covers an unauthenticated RCE in Synology DSM and BeeStation OS, a LiteLLM proxy bug where an authenticated user can escape the AST sandbox on the /guardrails/test_custom_code route, an unsafe-reflection RCE in Apache Axis 1.x triggered by a crafted SOAP Fault, and a REDCap code-injection flaw reachable with a public survey hash. Federal deadlines are November 21 for three of them and December 2 for LiteLLM. Patch DSM and REDCap to the fixed builds, run a LiteLLM build newer than April 8, 2026 and keep its admin routes off the internet, and plan to migrate off Axis 1.x, which is end-of-life and fixed only by an upstream commit. (Source: SecurityOnline)</description>
+    </item>
+    <item>
+      <title>'nginx2root': public PoCs for a 10-year-old NGINX HTTP/2 bug show worker RCE, chained to host root via a kernel flaw</title>
+      <link>https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html</link>
+      <guid isPermaLink="false">2026-11-19|https://thehackernews.com/2026/11/10-year-old-nginx-http2-flaw-lets.html|'nginx2root': public PoCs for a 10-year-old NGINX HTTP/2 bug show worker RCE, chained to host root via a kernel flaw</guid>
+      <pubDate>Thu, 19 Nov 2026 06:57:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.2 · CVE-2026-123007 · CVE-2026-123633 · CVE-2026-123634 · CVE-2026-121810 · CVE-2026-113425] F5 fixed five NGINX flaws rated CVSS 4.0 9.2, led by CVE-2026-123007, an HTTP/2 flow-control error present since 1.9.5 in 2015; Rapid7, Wiz and Xint have published proof-of-concept code, and Xint chained it with a Linux SCTP kernel bug to reach root on cloud hosts. No in-the-wild exploitation is reported yet, and the attacks need ASLR bypassed, AVX-512 CPUs and sustained heavy HTTP/2 traffic. Upgrade to NGINX 1.31.9 or 1.30.7 (Plus 37.3.0.1 or 37.0.8.1) with a full restart rather than a reload, check distro packages separately, disable HTTP/2 and HTTP/3 if patching must wait, and block the sctp module where it is not needed. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>F5 ships hotfix-only patches for six critical BIG-IP data-plane overflows tied to specific iRule and APM setups</title>
+      <link>https://thehackernews.com/2026/11/f5-warns-6-critical-big-ip-flaws-can.html</link>
+      <guid isPermaLink="false">2026-11-19|https://thehackernews.com/2026/11/f5-warns-6-critical-big-ip-flaws-can.html|F5 ships hotfix-only patches for six critical BIG-IP data-plane overflows tied to specific iRule and APM setups</guid>
+      <pubDate>Thu, 19 Nov 2026 06:56:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-123637 · CVE-2026-121805 · CVE-2026-120292 · CVE-2026-120285 · CVE-2026-116953 · CVE-2026-120722] Six unauthenticated stack overflows in BIG-IP's traffic microkernel can crash TMM and may allow code execution when a virtual server uses certain features, such as iRules calling PEM::subscriber, MR::message route, PSC::ip_address, GENERICMESSAGE::route or DNS::scrape, or an APM per-request policy with the Client Information and Endpoint Security agents. None is reported exploited, but fixes exist only as engineering hotfixes and there is no workaround. Audit virtual servers for those configurations, request and install the matching EHF for BIG-IP, BIG-IP Next for Kubernetes or CNF, and apply the regular releases that fix the lower-rated iControl and SAML bugs in the same batch. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>PHP Foundation pre-announces a critical security release for November 19, 14:00-14:30 UTC</title>
+      <link>https://www.theregister.com/patches/2026/11/18/get-ready-for-another-critical-php-security-release-to-drop/5310911</link>
+      <guid isPermaLink="false">2026-11-19|https://www.theregister.com/patches/2026/11/18/get-ready-for-another-critical-php-security-release-to-drop/5310911|PHP Foundation pre-announces a critical security release for November 19, 14:00-14:30 UTC</guid>
+      <pubDate>Thu, 19 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical · CVE-2026-115560] The PHP Foundation says releases due Thursday fix bugs rated critical, though they need non-default configurations or uncommon setups. One is CVE-2026-115560, a session RCE that requires the serialize handler to be switched to 'php' at runtime with ini_set() before session_start() while session upload progress is enabled. Schedule the upgrade for as soon as the builds land, and until then set session.upload_progress.enabled=0 and check whether any app changes session.serialize_handler at runtime. (Source: The Register)</description>
+    </item>
+    <item>
+      <title>'Trigram' fakes about 50 AI and crypto brands to get developers to run infostealers, using a forged commit and an IDE extension</title>
+      <link>https://thehackernews.com/2026/11/trigram-campaign-impersonates-about-50.html</link>
+      <guid isPermaLink="false">2026-11-19|https://thehackernews.com/2026/11/trigram-campaign-impersonates-about-50.html|'Trigram' fakes about 50 AI and crypto brands to get developers to run infostealers, using a forged commit and an IDE extension</guid>
+      <pubDate>Thu, 19 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Stormshield tracks Trigram, which it links with high confidence to the UNK_DeadDrop cluster, as luring developers with fake job, conference and parcel sites that ask them to paste a 'technical check' command; the loader installs Node.js and runs an encrypted stealer in memory that takes browser data, wallets, SSH keys and .env files, then adds the Overlord RAT. Other routes include a forged October 31 commit to the antd-img-crop GitHub repo that adds a prebuild.js hook (the npm package was not touched) and a sideloaded VS Code/Cursor extension named google-dev-tools.google-update-support. Treat 'run this command' steps in hiring or event flows as hostile, review build hooks in cloned repos, and allow-list IDE extensions. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Canonical opens an opt-in 'Edge' archive of AI-agent-written Ubuntu security backports, released before human review</title>
+      <link>https://www.helpnetsecurity.com/2026/11/18/ubuntu-ai-security-patches-edge-archive/</link>
+      <guid isPermaLink="false">2026-11-19|https://www.helpnetsecurity.com/2026/11/18/ubuntu-ai-security-patches-edge-archive/|Canonical opens an opt-in 'Edge' archive of AI-agent-written Ubuntu security backports, released before human review</guid>
+      <pubDate>Thu, 19 Nov 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Ubuntu Pro customers can now opt in to patches from Surge, a chain of agents that matches vulnerability reports to Ubuntu packages, pulls the upstream fix, has several models write competing backports and lets a panel of judge models pick one, escalating to a human only on deadlock or low confidence. Patches still go through Ubuntu's deterministic build tests, cover known userspace flaws only, and leave out the kernel, which moves to a two-week SRU cycle. Leave Edge off for production unless you can test the patches yourself, since enabling it moves the job of judging patch safety from Canonical to you. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>Arize Phoenix CVSS 10 flaw lets an unauthenticated GraphQL call leak env vars and PHOENIX_SECRET via chat templates</title>
+      <link>https://www.rapid7.com/db/vulnerabilities/cve-2026-53998/</link>
+      <guid isPermaLink="false">2026-11-19|https://www.rapid7.com/db/vulnerabilities/cve-2026-53998/|Arize Phoenix CVSS 10 flaw lets an unauthenticated GraphQL call leak env vars and PHOENIX_SECRET via chat templates</guid>
+      <pubDate>Thu, 19 Nov 2026 06:52:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[Critical 10.0 · CVE-2026-53998] In the Arize Phoenix LLM observability platform, the applyChatTemplate GraphQL query passes attacker-supplied f-string templates to a formatter that does not block private attributes, so a crafted field can walk Python internals and read environment variables and module state. Leaking PHOENIX_SECRET would let an attacker forge admin sessions and decrypt stored credentials, and the endpoint needs no login on default installs. Rapid7 lists versions from 13.0.0 as affected and 15.7.0 as the fix; upgrade to the current release, keep Phoenix off the public internet, and rotate PHOENIX_SECRET and stored provider keys if it was exposed. (Source: Rapid7)</description>
+    </item>
+    <item>
+      <title>macOS 27.3 beta splits broad Mac permissions into narrower grants as Apple reacts to AI agents taking control of desktops</title>
+      <link>https://thehackernews.com/2026/11/apple-tightens-macos-app-permissions-to.html</link>
+      <guid isPermaLink="false">2026-11-19|https://thehackernews.com/2026/11/apple-tightens-macos-app-permissions-to.html|macOS 27.3 beta splits broad Mac permissions into narrower grants as Apple reacts to AI agents taking control of desktops</guid>
+      <pubDate>Thu, 19 Nov 2026 06:51:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Apple is splitting the old Device Control and Data Access permission into System &amp; App Protection Override and Accessibility, scoping Full Disk Access to chosen folders, offering an ask-every-time option, and showing an indicator when one app drives another. Apple ties the change to the risk of handing agent apps whole-Mac access; existing grants stay in place for now. Developers of agent and automation tools should handle folder-limited access in onboarding and apply for entitlements where needed, and Mac admins should review which apps hold broad grants. (Source: The Hacker News)</description>
+    </item>
     <item>
       <title>'Java4Shell': AVX-512 Base64 decoder overflow in OpenJDK gives pre-auth RCE in Jenkins, Confluence, Keycloak and more</title>
       <link>https://www.sentinelone.com/blog/java4shell-vulnerability-in-openjdk-enables-rce-on-avx-512-cpus/</link>
@@ -830,86 +910,6 @@
       <pubDate>Fri, 06 Nov 2026 06:53:00 +0800</pubDate>
       <category>AI security</category>
       <description>Google expanded CodeMender with OS-level or VM sandboxes for exploit validation and human approval gates before agents write files or run commands, and made Auth Manager generally available to keep agent credentials in an IAM-governed vault. Agent Identity JWTs (preview) replace long-lived API keys, and a Model Armor topic detector (preview) keeps agent conversations in scope. It is a useful reference design for any team running agents: isolate execution, require approval for side effects, and avoid static secrets. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>JPCERT/CC: attackers are exploiting a 9.9 Airbyte Connector Builder flaw to run code on self-hosted instances</title>
-      <link>https://securityonline.info/airbyte-vulnerability-exploited/</link>
-      <guid isPermaLink="false">2026-11-05|https://securityonline.info/airbyte-vulnerability-exploited/|JPCERT/CC: attackers are exploiting a 9.9 Airbyte Connector Builder flaw to run code on self-hosted instances</guid>
-      <pubDate>Thu, 05 Nov 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.9] An unsafe-reflection bug in Airbyte's Connector Builder / Manifest Server (GHSA-g35w-6r6v-h4r7, JVN12040144) lets users run code on self-managed deployments, and JPCERT/CC says it has been confirmed exploited in the wild. Every release before 2.2.0 is affected, 1.x will not be fixed, and 1.x on the legacy Helm chart is reachable by anyone with network access. Upgrade to 2.2.0 (manifest-server 7.23.7); until then, restrict the builder service so only the Airbyte server can reach it, trim Workspace/Organization Reader roles, review container logs and rotate the connector credentials Airbyte stores. Airbyte Cloud needs no action. (Source: SecurityOnline)</description>
-    </item>
-    <item>
-      <title>Unpatched CVSS 10 WordPress CryptoPayment Gateway plugin bug is being probed to pull wallet credentials</title>
-      <link>https://thehackernews.com/2026/11/attackers-target-unpatched.html</link>
-      <guid isPermaLink="false">2026-11-05|https://thehackernews.com/2026/11/attackers-target-unpatched.html|Unpatched CVSS 10 WordPress CryptoPayment Gateway plugin bug is being probed to pull wallet credentials</guid>
-      <pubDate>Thu, 05 Nov 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 10.0 · CVE-2026-81648] An AJAX endpoint in the CryptoPayment Gateway plugin (versions 1.2.1-1.2.2) has no authorization check, so anyone can delete server files, rewrite the gateway configuration or read stored wallet credentials in cleartext. Defused Cyber has seen exploitation attempts in the wild, and WPScan lists no fix; the plugin was pulled from the WordPress directory in August after about 1,800 downloads. Remove it, rotate any wallet keys it held, and audit the site for unexpected changes. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Sekoia ties 'Poisoned Source' watering holes, including a hijacked Plerdy analytics script, to APT29 iOS and Android exploit chains</title>
-      <link>https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html</link>
-      <guid isPermaLink="false">2026-11-05|https://thehackernews.com/2026/11/apt29-linked-hackers-hijack-web.html|Sekoia ties 'Poisoned Source' watering holes, including a hijacked Plerdy analytics script, to APT29 iOS and Android exploit chains</guid>
-      <pubDate>Thu, 05 Nov 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[CVE-2025-43529 · CVE-2024-27834 · CVE-2026-20700 · CVE-2025-14174 · CVE-2025-43510 · CVE-2025-43520 · CVE-2026-3910 · CVE-2025-27038] Sekoia says APT29 served exploit chains through compromised sites, lookalike domains such as america250[.]holiday, and Plerdy's tracking script (a.plerdy[.]com/public/js/click/main.js), which was tampered with between 27 August and 3 September. Visitors on iOS 16.7 and 18.5 got cookie-theft or full data-exfiltration payloads (the latter via the DarkSword chain), while Android Chrome 139-145 users got an RCE and sandbox-escape chain dropping the AndroSnitch stealer. Keep iOS and Chrome fully updated, check whether any of your sites loaded the Plerdy script in that window, and hunt for traffic to ad.starx-net[.]com. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Rails ships fixes for a 9.8 Active Storage flaw that lets crafted uploads write files through ImageMagick</title>
-      <link>https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html</link>
-      <guid isPermaLink="false">2026-11-05|https://thehackernews.com/2026/11/critical-rails-flaw-lets-attackers.html|Rails ships fixes for a 9.8 Active Storage flaw that lets crafted uploads write files through ImageMagick</guid>
-      <pubDate>Thu, 05 Nov 2026 06:57:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[Critical 9.8] Advisory GHSA-f3w6-w445-fwh9 (no CVE yet) covers Active Storage's ImageMagick analyzer: apps that use mini_magick, accept untrusted uploads and run a permissive ImageMagick policy (Debian and Ubuntu defaults qualify) can have server files written, and Disk-service apps can also leak files. Fixed in 8.1.4.1 and 8.0.5.2, with mini_magick 5.1+ also required; pre-8.0 series get nothing, and 8.0 support ends 7 November. Upgrade, confirm the shipped policy actually loads and isn't overridden by your own policy.xml, and if you use the Disk service rotate secret_key_base and every credential the app can read. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>APT retry bug lets a man-in-the-middle swap verified Debian and Ubuntu packages and get root</title>
-      <link>https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html</link>
-      <guid isPermaLink="false">2026-11-05|https://thehackernews.com/2026/11/debian-and-ubuntu-apt-flaw-lets-mitm.html|APT retry bug lets a man-in-the-middle swap verified Debian and Ubuntu packages and get root</guid>
-      <pubDate>Thu, 05 Nov 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>[High (CVSS 4.0 7.7) · CVE-2026-109518] A flaw in how APT retries failed downloads lets an attacker on the network path substitute a package after verification, leading to code execution as root; retries are on by default from Debian 12 and Ubuntu 22.04, and older releases are exposed if scripts set Acquire::Retries. Debian and Ubuntu published fixes on 4 November (for example 2.8.4ubuntu0.1 on 24.04 and 2.4.15ubuntu0.1 on 22.04), and no exploitation has been reported. Update apt itself first, including in base images and CI runners, and check build scripts for retry settings on older systems. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Red Hat raises Linux IPv4 TCP use-after-free to 9.8 and patches RHEL 8-10; Ubuntu fixes still in testing</title>
-      <link>https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html</link>
-      <guid isPermaLink="false">2026-11-05|https://thehackernews.com/2026/11/red-hat-patches-98-rated-linux-tcp-rce.html|Red Hat raises Linux IPv4 TCP use-after-free to 9.8 and patches RHEL 8-10; Ubuntu fixes still in testing</guid>
-      <pubDate>Thu, 05 Nov 2026 06:55:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.8 · CVE-2026-98432] A use-after-free in the kernel's IPv4 TCP code, present since Linux 4.4, now has trigger-only proof code on GitHub, and Anthropic has said an internal model produced a working remote root exploit it has not released; no in-the-wild attacks are reported. Red Hat shipped fixed kernels for RHEL 8.10, 9.8 and 10.2 on 1 November and Debian, SUSE, Oracle and Amazon Linux patched in October, while Ubuntu's kernels are still in -proposed. Patch and reboot; Red Hat's nftables rule dropping inbound IPv4 packets with IP options is only a partial stopgap, and disabling MPTCP does not help. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>NIKKE PC launcher scripts on the publisher's CDN were tampered with to load a RAT and wallet stealer for five weeks</title>
-      <link>https://bleepingcomputer.com/news/security/nikke-pc-game-launcher-hacked-to-spread-remote-access-data-stealing-malware</link>
-      <guid isPermaLink="false">2026-11-05|https://bleepingcomputer.com/news/security/nikke-pc-game-launcher-hacked-to-spread-remote-access-data-stealing-malware|NIKKE PC launcher scripts on the publisher's CDN were tampered with to load a RAT and wallet stealer for five weeks</guid>
-      <pubDate>Thu, 05 Nov 2026 06:54:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Four JavaScript files in the Goddess of Victory: NIKKE launcher, served from Level Infinite's CDN, were reportedly altered on 27 September to fetch code from insightjs[.]com/insightjs[.]org, installing the K2F remote-access agent, a LuaJIT payload and a DLL with MetaMask, Phantom and Coinbase Wallet stealing code. Clean files and a client update arrived on 3-4 November and the publisher says it is investigating. Players should look for 'k2f_chan registered' in Launcher/intl_service/debug.log, reinstall Windows if found, and reset credentials from a clean device; it is another reminder to integrity-check scripts that desktop apps pull from CDNs at runtime. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Check Point: a popular Codex 'enhancement' pack is a jailbreak that plants ads in the agent's global instructions</title>
-      <link>https://thehackernews.com/2026/11/researchers-uncover-prompt-adware.html</link>
-      <guid isPermaLink="false">2026-11-05|https://thehackernews.com/2026/11/researchers-uncover-prompt-adware.html|Check Point: a popular Codex 'enhancement' pack is a jailbreak that plants ads in the agent's global instructions</guid>
-      <pubDate>Thu, 05 Nov 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Check Point found that the Haiou bundle (the haiou-codex GitHub repo, also shipped inside the Codex-X GUI) rewrites OpenAI Codex configuration so simple greetings trigger promotions for a paid LLM gateway at zz.aiapi2025[.]top, persisting them in the global instruction file. It also uses role-play and CTF framing to bypass safety guardrails and installs offensive skills for password cracking and reverse engineering. Treat agent instruction files, skills and config packs as supply chain inputs: vet them before installing and monitor global agent config for unexpected changes. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>CrowdStrike: China-nexus Vapor Panda's ARTEX agent framework hit organizations in 14 countries in 11 days</title>
-      <link>https://www.helpnetsecurity.com/2026/11/03/ai-powered-cyberattacks-artex-cyberstrikeai/</link>
-      <guid isPermaLink="false">2026-11-05|https://www.helpnetsecurity.com/2026/11/03/ai-powered-cyberattacks-artex-cyberstrikeai/|CrowdStrike: China-nexus Vapor Panda's ARTEX agent framework hit organizations in 14 countries in 11 days</guid>
-      <pubDate>Thu, 05 Nov 2026 06:52:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>CrowdStrike says Vapor Panda began running the ARTEX multi-agent framework, mostly on DeepSeek, on 17 October, with planner and worker agents sharing a knowledge graph; one intrusion burned about 1.4 billion input tokens. It confirmed post-exploitation and BloodAlchemy backdoors at nine organizations, including foreign ministries, US defense and semiconductor firms, telecoms and think tanks, plus password spraying against at least 12 more. CrowdStrike advises rotating credentials after any suspected exposure, enforcing SAML signature validation and IMDSv2, patching edge appliances and hunting for ARTEX markers. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>UK NCSC expects AI-driven malware in a ransomware attack on critical infrastructure by 2028</title>
-      <link>https://www.theregister.com/security/2026/11/03/britain-on-notice-ai-powered-ransomware-attacks-to-arrive-by-2028/5307200</link>
-      <guid isPermaLink="false">2026-11-05|https://www.theregister.com/security/2026/11/03/britain-on-notice-ai-powered-ransomware-attacks-to-arrive-by-2028/5307200|UK NCSC expects AI-driven malware in a ransomware attack on critical infrastructure by 2028</guid>
-      <pubDate>Thu, 05 Nov 2026 06:51:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>In its annual review and a two-year AI threat assessment, the NCSC calls it highly likely that AI-powered malware will feature in a ransomware attack on UK critical national infrastructure by 2028, and notes open-source AI red-team tools such as ARTEX are already being turned against targets. It also flags a realistic possibility of autonomous, self-replicating attackers and harder attribution. The practical guidance is unglamorous: get baseline controls such as Cyber Essentials in place and scale resilience to your risk, because AI mainly compresses attacker timelines. (Source: The Register)</description>
     </item>
   </channel>
 </rss>
