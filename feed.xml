@@ -6,7 +6,71 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>vCenter directory-service auth bypass was a Chinese APT zero-day for over two months before Broadcom's fix</title>
+      <link>https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/</link>
+      <guid isPermaLink="false">2026-11-20|https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/|vCenter directory-service auth bypass was a Chinese APT zero-day for over two months before Broadcom's fix</guid>
+      <pubDate>Fri, 20 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-123890] Mandiant says the suspected China-nexus group Armory Castle (formerly UNC5221) used a custom tool, Bonesaw, to abuse a VMware Directory Service flaw that turns an unauthenticated network request into an admin session. They then pulled SAML signing material, created an SSO admin, forged tokens, took the vCenter master key and moved on to ESXi; initial access in one case came through a BeyondTrust Remote Support zero-day. Fixes are in vCenter 9.1.1.0200, 9.0.2.0200 and 8.0 U3m, and there is no public patch for end-of-support 7.0. Patch now, and hunt for unexpected SSO admin accounts, forged SAML sessions and signs of LMDB theft. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Update: clustered Cisco Expressway root RCE exploited soon after a public GitHub PoC, with AI-assisted pivot scripts</title>
+      <link>https://www.securityweek.com/hackers-exploit-cisco-expressway-vulnerability-soon-after-poc-release/</link>
+      <guid isPermaLink="false">2026-11-20|https://www.securityweek.com/hackers-exploit-cisco-expressway-vulnerability-soon-after-poc-release/|Update: clustered Cisco Expressway root RCE exploited soon after a public GitHub PoC, with AI-assisted pivot scripts</guid>
+      <pubDate>Fri, 20 Nov 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-76466] Russian firm F6 investigated a breach where attackers rooted two internet-facing Expressway X15.5.3 cluster nodes, pivoted to two internal nodes, and ran custom Python scripts (with comments suggesting AI help) to map SMB shares, poke SQL Server and WinRM, and mine GitLab for credentials. Only clustered Expressway Core and Edge deployments are affected, and Cisco's advisory still does not mention exploitation. Upgrade to X15.5.20 (X14 and older must migrate); if you cannot yet, block TCP 4371-4372 to everything but trusted cluster peers and review the Erlang system logs. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Update: Java4Shell probing begins as Cisco, Elastic, Red Hat, Atlassian and Siemens publish advisories</title>
+      <link>https://www.securityweek.com/java4shell-exploitation-attempts-begin-as-vendors-rush-out-advisories/</link>
+      <guid isPermaLink="false">2026-11-20|https://www.securityweek.com/java4shell-exploitation-attempts-begin-as-vendors-rush-out-advisories/|Update: Java4Shell probing begins as Cisco, Elastic, Red Hat, Atlassian and Siemens publish advisories</guid>
+      <pubDate>Fri, 20 Nov 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical (Red Hat) · CVE-2026-114938] GreyNoise, watchTowr, Cloudflare and Previdian all report scanning and blind exploit attempts against the OpenJDK AVX-512 Base64 decoder bug, though no confirmed compromises yet; VulnCheck already offers a full RCE exploit to customers. Vendor status is uneven: Cisco lists more than a dozen affected products with no fix, Siemens says take Industrial Edge Management offline, Elastic says Elasticsearch 7.17.3+ is affected, and Keycloak shipped patched 26.8.2-3 images. Install patched JDK builds and restart Java services; where that is not yet possible, follow vendor workarounds such as disabling AVX-512 on Atlassian Data Center hosts. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Update: PHP 8.5.13, 8.4.28, 8.3.37 and 8.2.36 land with fixes for 18 CVEs, including PHP-FPM request smuggling</title>
+      <link>https://www.bleepingcomputer.com/news/security/php-security-updates-fix-18-flaws-including-critical-rce-bugs</link>
+      <guid isPermaLink="false">2026-11-20|https://www.bleepingcomputer.com/news/security/php-security-updates-fix-18-flaws-including-critical-rce-bugs|Update: PHP 8.5.13, 8.4.28, 8.3.37 and 8.2.36 land with fixes for 18 CVEs, including PHP-FPM request smuggling</guid>
+      <pubDate>Fri, 20 Nov 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical 9.2 · CVE-2026-129289 · CVE-2026-129474 · CVE-2026-129496 · CVE-2026-126714 · CVE-2026-115560 · CVE-2026-129291 · CVE-2026-128090] The pre-announced PHP security release is out. The headline bug is a PHP-FPM request smuggling flaw (CVSS 9.2) that hits nginx, Apache, HAProxy or LSAPI setups reusing backend connections, alongside several use-after-free and session-handling RCEs and a PHAR signature downgrade; the PHP team says the critical ones need non-default or unusual configurations. Upgrade every supported branch now. Until then, set session.upload_progress.enabled=0, turn off persistent backend connections to PHP-FPM, and keep FPM/LSAPI listeners off untrusted networks. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Drupal core: anonymous re-run of install.php can lead to site takeover or RCE</title>
+      <link>https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaw-warns-exploits-may-surface-quickly/</link>
+      <guid isPermaLink="false">2026-11-20|https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaw-warns-exploits-may-surface-quickly/|Drupal core: anonymous re-run of install.php can lead to site takeover or RCE</guid>
+      <pubDate>Fri, 20 Nov 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical · CVE-2026-132165 · CVE-2026-132166] Drupal fixed a critical core bug that lets an unauthenticated visitor trigger the installer again and take over the site or run code, plus a moderately critical gadget chain that needs admin rights and untrusted deserialization. The security team warned exploits could appear within hours or days. Upgrade to 10.6.22, 11.3.22 or 11.4.13; if you cannot, block /core/install.php at the web server and make sure the server cannot write to or chmod settings.php. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Splunk fixes about 140 bugs across Enterprise, Enterprise Security and SOAR, five of them critical</title>
+      <link>https://www.securityweek.com/splunk-patches-nearly-140-flaws-across-three-core-products/</link>
+      <guid isPermaLink="false">2026-11-20|https://www.securityweek.com/splunk-patches-nearly-140-flaws-across-three-core-products/|Splunk fixes about 140 bugs across Enterprise, Enterprise Security and SOAR, five of them critical</guid>
+      <pubDate>Fri, 20 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical · CVE-2026-76536 · CVE-2026-76535 · CVE-2026-131202 · CVE-2026-131253 · CVE-2026-131287] Splunk Enterprise has two critical issues that let unauthenticated attackers read or change clustering configuration via an empty shared secret or run arbitrary SPL; Enterprise Security has an ess_admin-to-RCE chain; SOAR has two authenticated RCEs. No exploitation is reported. Upgrade Enterprise to 10.6.1, 10.4.5, 10.2.9, 10.0.12 or 9.4.17, Enterprise Security/PCI app to 8.7.0 and SOAR to 8.8.0, and make sure clustering shared secrets are actually set. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Amazon decoys catch ARTEX-style agents hunting exposed LiteLLM, Dify, Langflow and RAGFlow installs for API keys</title>
+      <link>https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html</link>
+      <guid isPermaLink="false">2026-11-20|https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html|Amazon decoys catch ARTEX-style agents hunting exposed LiteLLM, Dify, Langflow and RAGFlow installs for API keys</guid>
+      <pubDate>Fri, 20 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>[CVE-2025-3248 · CVE-2026-28797] Amazon's MadPot honeypots, posing as LLM apps, logged autonomous attacker agents (moderate confidence ARTEX, operated by China-linked groups) that found exposed AI gateways and apps, pulled provider keys via default LiteLLM master keys, open management endpoints, SSRF and leaked env/source-map files, then validated and pooled the keys. Cloudflare separately saw ARTEX abuse a stolen CI/CD API token to fire hundreds of database dump requests and plant artex-* Workers. Treat AI gateways as production: require auth, change default master keys, patch Langflow to 1.3.0+ and RAGFlow to 0.25.0+, scope and expire API tokens, rotate exposed keys and watch AI provider spend. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Nudge Security: business-platform AI agents mostly run on their creator's OAuth grants, so logs show the human</title>
+      <link>https://www.helpnetsecurity.com/2026/11/19/ai-agents-employee-credentials-nudge-security-report/</link>
+      <guid isPermaLink="false">2026-11-20|https://www.helpnetsecurity.com/2026/11/19/ai-agents-employee-credentials-nudge-security-report/|Nudge Security: business-platform AI agents mostly run on their creator's OAuth grants, so logs show the human</guid>
+      <pubDate>Fri, 20 Nov 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Telemetry in Nudge Security's 2026 AI adoption report shows the median organization with agents runs seven of them across multiple platforms such as Rovo, Zapier, ChatGPT Agents and Cursor Automations, usually borrowing an employee's OAuth token or API key rather than having their own identity. That makes agent actions indistinguishable from the employee's in audit logs and widens the blast radius of a stolen token. Inventory agents and whose access they use, prune unused AI OAuth grants, rotate any secret pasted into a prompt, and move agent identities under your IdP where possible. (Source: Help Net Security)</description>
+    </item>
     <item>
       <title>Puppet report-processing deserialization bug (CVSS 9.4) is now in CISA KEV as attackers exploit it</title>
       <link>https://thehackernews.com/2026/11/hackers-exploiting-critical-puppet-rce.html</link>
@@ -846,70 +910,6 @@
       <pubDate>Sat, 07 Nov 2026 06:52:00 +0800</pubDate>
       <category>AI security</category>
       <description>OpenAI's GPT-6 Cyber, a vulnerability-hunting variant of GPT-6 Astra, is rolling out through the API and Codex to approved Daybreak Red customers. OpenAI says it found 81 previously unknown Firefox bugs that Mozilla rated high severity and produced working exploits for 948 Linux kernel vulnerabilities, and it rates the model Critical for cybersecurity under its Preparedness Framework. Expect faster bug discovery and shorter patch windows in widely used code, and if you use such models, run them sandboxed with human review of high-risk actions. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Update: CISA lists the Apple PAC bypass used in the APT29-linked 'Poisoned Source' chain, with a November 18 deadline</title>
-      <link>https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html</link>
-      <guid isPermaLink="false">2026-11-06|https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html|Update: CISA lists the Apple PAC bypass used in the APT29-linked 'Poisoned Source' chain, with a November 18 deadline</guid>
-      <pubDate>Fri, 06 Nov 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Medium 5.5 (exploited) · CVE-2024-27834] CISA added CVE-2024-27834, an Apple pointer authentication (PAC) bypass, to its Known Exploited Vulnerabilities catalog on November 4 after Sekoia tied it to zero-click watering-hole attacks that drop a cookie-stealing payload. The flaw was fixed in May 2024 (iOS/iPadOS 16.7.8 and 17.5, macOS Sonoma 14.5, tvOS 17.5, watchOS 10.5, Safari 17.5), so any device still exploitable is badly out of date. Find and update or retire stragglers in your Apple fleet; US federal agencies must patch by November 18. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Xen XSA-523 grant-copy bugs let a malicious guest read and write other VMs' memory, including dom0</title>
-      <link>https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html</link>
-      <guid isPermaLink="false">2026-11-06|https://thehackernews.com/2026/11/xen-hypervisor-flaws-let-one-malicious.html|Xen XSA-523 grant-copy bugs let a malicious guest read and write other VMs' memory, including dom0</guid>
-      <pubDate>Fri, 06 Nov 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical (vendor rating, XCP-ng) · CVE-2026-102703 · CVE-2026-102704] Two flaws in Xen's grant copy path skip a permission re-check during batched copies, letting one guest reach the memory of other guests and dom0 on the same host; Xen 4.6 and later are affected and the project says there is no mitigation besides patching. Patches exist for 4.17 through unstable, XCP-ng 8.3 has a fixed build (reboot required), Qubes 4.3 fixes are in security-testing, and Debian stable branches were still listed as vulnerable on November 4. No exploitation is reported; multi-tenant Xen operators should schedule patch-and-reboot windows now, and hosts on unsupported 4.6-4.16 releases have no upstream fix. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>OpenSSH 10.6p2 fixes a critical password-auth bypass on musl systems such as Alpine</title>
-      <link>https://thehackernews.com/2026/11/openssh-issues-emergency-fix-for-flaw.html</link>
-      <guid isPermaLink="false">2026-11-06|https://thehackernews.com/2026/11/openssh-issues-emergency-fix-for-flaw.html|OpenSSH 10.6p2 fixes a critical password-auth bypass on musl systems such as Alpine</guid>
-      <pubDate>Fri, 06 Nov 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical (vendor rating)] OpenSSH shipped an emergency release after a bug let long passwords bypass authentication on musl-based Linux when sshd checks passwords without PAM, password auth is on, and the box has both a passwordless account and another account with a SHA-256/512 hash. Alpine has fixed packages and point releases (3.21.10, 3.22.8, 3.23.8, 3.24.4); glibc and PAM-based systems are not affected, and no CVE or attacks have been reported yet. Upgrade and restart sshd, or disable PasswordAuthentication until you can, and also check OpenWrt, Buildroot and Yocto images and auth logs for unexpected password logins. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Android's November bulletin fixes 216 flaws, including a zero-click media RCE in Android 14-17</title>
-      <link>https://thehackernews.com/2026/11/google-patches-critical-android-flaw.html</link>
-      <guid isPermaLink="false">2026-11-06|https://thehackernews.com/2026/11/google-patches-critical-android-flaw.html|Android's November bulletin fixes 216 flaws, including a zero-click media RCE in Android 14-17</guid>
-      <pubDate>Fri, 06 Nov 2026 06:57:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical · CVE-2026-58868 · CVE-2026-58882 · CVE-2026-58876 · CVE-2026-58936] Google's November update covers 216 vulnerabilities, 23 of them critical, led by CVE-2026-58868, a heap overflow in frame decoding that can give remote code execution without user interaction on Android 14 through 17. It also fixes CVE-2026-58882, a malformed WAP Push SMS that crashes the phone process and drops calls, though Google has not confirmed it is the same bug as the recent public 'SMS of Death' PoC. Google reports no exploitation; push devices to the 2026-11-05 patch level, which also covers kernel, MediaTek and Qualcomm fixes. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Binance report: a tampered Homebrew install and a rigged coding test led to the hot-wallet theft</title>
-      <link>https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/</link>
-      <guid isPermaLink="false">2026-11-06|https://www.securityweek.com/rigged-coding-assignment-abused-ai-tool-opened-path-to-6-billion-binance-heist/|Binance report: a tampered Homebrew install and a rigged coding test led to the hot-wallet theft</guid>
-      <pubDate>Fri, 06 Nov 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Binance's first incident report says attackers first compromised a wallet engineer who installed a trojanized Homebrew package of an AI coding tool, then later sent a second engineer a fake job 'coding assignment' whose repository ran malware on setup that endpoint protection missed. From there they pivoted between engineers' machines, deployed a container with stolen credentials and abused an internal wallet signing service; the FBI blames North Korea's TraderTraitor. Developer endpoints and their tokens are now the front door: verify installer sources, block take-home code on work devices, and keep deploy credentials off workstations. (Source: SecurityWeek)</description>
-    </item>
-    <item>
-      <title>Check Point escaped ChatGPT's HTML preview sandbox to get around Lockdown Mode and exfiltrate chats</title>
-      <link>https://thehackernews.com/2026/11/researchers-bypass-chatgpt-lockdown.html</link>
-      <guid isPermaLink="false">2026-11-06|https://thehackernews.com/2026/11/researchers-bypass-chatgpt-lockdown.html|Check Point escaped ChatGPT's HTML preview sandbox to get around Lockdown Mode and exfiltrate chats</guid>
-      <pubDate>Fri, 06 Nov 2026 06:55:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Researchers found that ChatGPT's nested sandboxed frames for HTML previews still permitted popups, and a further nested frame could reach an unpatched popup function whose content ran outside the sandbox, defeating Lockdown Mode's exfiltration limits. They showed zero-click chat theft in the desktop app, with payloads delivered via prompts, malicious GPTs or shared chats. OpenAI fixed it on September 18; make sure desktop clients are current, and treat AI app rendering features as part of the attack surface, not just the model. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>WorkOS says attackers used the Artex AI pentest framework to breach a sales app, as Northflank also reports a hack</title>
-      <link>https://www.securityweek.com/ai-linked-breaches-mount-as-workos-northflank-trigger-dev-disclose-hacks/</link>
-      <guid isPermaLink="false">2026-11-06|https://www.securityweek.com/ai-linked-breaches-mount-as-workos-northflank-trigger-dev-disclose-hacks/|WorkOS says attackers used the Artex AI pentest framework to breach a sales app, as Northflank also reports a hack</guid>
-      <pubDate>Fri, 06 Nov 2026 06:54:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>WorkOS disclosed that on October 30 attackers broke into an internal sales application and took customer contact and account-history data, automating steps with Artex, the open-source AI pentesting framework already tied to other recent intrusions. Northflank and Trigger.dev disclosed incidents in the same wave, which appears focused on stored customer secrets. Customers of these platforms should follow the vendors' notices and rotate any API keys, including AI provider keys, stored there. (Source: SecurityWeek)</description>
-    </item>
-    <item>
-      <title>Google Cloud adds sandboxing, human sign-off and vaulted credentials for its security AI agents</title>
-      <link>https://www.helpnetsecurity.com/2026/11/05/google-cloud-ai-agents-security-controls/</link>
-      <guid isPermaLink="false">2026-11-06|https://www.helpnetsecurity.com/2026/11/05/google-cloud-ai-agents-security-controls/|Google Cloud adds sandboxing, human sign-off and vaulted credentials for its security AI agents</guid>
-      <pubDate>Fri, 06 Nov 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Google expanded CodeMender with OS-level or VM sandboxes for exploit validation and human approval gates before agents write files or run commands, and made Auth Manager generally available to keep agent credentials in an IAM-governed vault. Agent Identity JWTs (preview) replace long-lived API keys, and a Model Armor topic detector (preview) keeps agent conversations in scope. It is a useful reference design for any team running agents: isolate execution, require approval for side effects, and avoid static secrets. (Source: Help Net Security)</description>
     </item>
   </channel>
 </rss>

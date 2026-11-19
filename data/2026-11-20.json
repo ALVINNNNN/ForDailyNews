@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-20",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "vCenter directory-service auth bypass was a Chinese APT zero-day for over two months before Broadcom's fix",
+      "cve": ["CVE-2026-123890"],
+      "severity": "Critical 9.8",
+      "summary": "Mandiant says the suspected China-nexus group Armory Castle (formerly UNC5221) used a custom tool, Bonesaw, to abuse a VMware Directory Service flaw that turns an unauthenticated network request into an admin session. They then pulled SAML signing material, created an SSO admin, forged tokens, took the vCenter master key and moved on to ESXi; initial access in one case came through a BeyondTrust Remote Support zero-day. Fixes are in vCenter 9.1.1.0200, 9.0.2.0200 and 8.0 U3m, and there is no public patch for end-of-support 7.0. Patch now, and hunt for unexpected SSO admin accounts, forged SAML sessions and signs of LMDB theft.",
+      "source": "SecurityWeek",
+      "published": "2026-11-19",
+      "url": "https://www.securityweek.com/newly-patched-vmware-vcenter-flaw-exploited-as-zero-day-by-chinese-apt/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: clustered Cisco Expressway root RCE exploited soon after a public GitHub PoC, with AI-assisted pivot scripts",
+      "cve": ["CVE-2026-76466"],
+      "severity": "Critical 9.8",
+      "summary": "Russian firm F6 investigated a breach where attackers rooted two internet-facing Expressway X15.5.3 cluster nodes, pivoted to two internal nodes, and ran custom Python scripts (with comments suggesting AI help) to map SMB shares, poke SQL Server and WinRM, and mine GitLab for credentials. Only clustered Expressway Core and Edge deployments are affected, and Cisco's advisory still does not mention exploitation. Upgrade to X15.5.20 (X14 and older must migrate); if you cannot yet, block TCP 4371-4372 to everything but trusted cluster peers and review the Erlang system logs.",
+      "source": "SecurityWeek",
+      "published": "2026-11-19",
+      "url": "https://www.securityweek.com/hackers-exploit-cisco-expressway-vulnerability-soon-after-poc-release/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: Java4Shell probing begins as Cisco, Elastic, Red Hat, Atlassian and Siemens publish advisories",
+      "cve": ["CVE-2026-114938"],
+      "severity": "Critical (Red Hat)",
+      "summary": "GreyNoise, watchTowr, Cloudflare and Previdian all report scanning and blind exploit attempts against the OpenJDK AVX-512 Base64 decoder bug, though no confirmed compromises yet; VulnCheck already offers a full RCE exploit to customers. Vendor status is uneven: Cisco lists more than a dozen affected products with no fix, Siemens says take Industrial Edge Management offline, Elastic says Elasticsearch 7.17.3+ is affected, and Keycloak shipped patched 26.8.2-3 images. Install patched JDK builds and restart Java services; where that is not yet possible, follow vendor workarounds such as disabling AVX-512 on Atlassian Data Center hosts.",
+      "source": "SecurityWeek",
+      "published": "2026-11-19",
+      "url": "https://www.securityweek.com/java4shell-exploitation-attempts-begin-as-vendors-rush-out-advisories/"
+    },
+    {
+      "category": "appsec",
+      "title": "Update: PHP 8.5.13, 8.4.28, 8.3.37 and 8.2.36 land with fixes for 18 CVEs, including PHP-FPM request smuggling",
+      "cve": ["CVE-2026-129289", "CVE-2026-129474", "CVE-2026-129496", "CVE-2026-126714", "CVE-2026-115560", "CVE-2026-129291", "CVE-2026-128090"],
+      "severity": "Critical 9.2",
+      "summary": "The pre-announced PHP security release is out. The headline bug is a PHP-FPM request smuggling flaw (CVSS 9.2) that hits nginx, Apache, HAProxy or LSAPI setups reusing backend connections, alongside several use-after-free and session-handling RCEs and a PHAR signature downgrade; the PHP team says the critical ones need non-default or unusual configurations. Upgrade every supported branch now. Until then, set session.upload_progress.enabled=0, turn off persistent backend connections to PHP-FPM, and keep FPM/LSAPI listeners off untrusted networks.",
+      "source": "BleepingComputer",
+      "published": "2026-11-19",
+      "url": "https://www.bleepingcomputer.com/news/security/php-security-updates-fix-18-flaws-including-critical-rce-bugs"
+    },
+    {
+      "category": "appsec",
+      "title": "Drupal core: anonymous re-run of install.php can lead to site takeover or RCE",
+      "cve": ["CVE-2026-132165", "CVE-2026-132166"],
+      "severity": "Critical",
+      "summary": "Drupal fixed a critical core bug that lets an unauthenticated visitor trigger the installer again and take over the site or run code, plus a moderately critical gadget chain that needs admin rights and untrusted deserialization. The security team warned exploits could appear within hours or days. Upgrade to 10.6.22, 11.3.22 or 11.4.13; if you cannot, block /core/install.php at the web server and make sure the server cannot write to or chmod settings.php.",
+      "source": "BleepingComputer",
+      "published": "2026-11-19",
+      "url": "https://www.bleepingcomputer.com/news/security/drupal-patches-critical-rce-flaw-warns-exploits-may-surface-quickly/"
+    },
+    {
+      "category": "appsec",
+      "title": "Splunk fixes about 140 bugs across Enterprise, Enterprise Security and SOAR, five of them critical",
+      "cve": ["CVE-2026-76536", "CVE-2026-76535", "CVE-2026-131202", "CVE-2026-131253", "CVE-2026-131287"],
+      "severity": "Critical",
+      "summary": "Splunk Enterprise has two critical issues that let unauthenticated attackers read or change clustering configuration via an empty shared secret or run arbitrary SPL; Enterprise Security has an ess_admin-to-RCE chain; SOAR has two authenticated RCEs. No exploitation is reported. Upgrade Enterprise to 10.6.1, 10.4.5, 10.2.9, 10.0.12 or 9.4.17, Enterprise Security/PCI app to 8.7.0 and SOAR to 8.8.0, and make sure clustering shared secrets are actually set.",
+      "source": "SecurityWeek",
+      "published": "2026-11-19",
+      "url": "https://www.securityweek.com/splunk-patches-nearly-140-flaws-across-three-core-products/"
+    },
+    {
+      "category": "ai",
+      "title": "Amazon decoys catch ARTEX-style agents hunting exposed LiteLLM, Dify, Langflow and RAGFlow installs for API keys",
+      "cve": ["CVE-2025-3248", "CVE-2026-28797"],
+      "severity": "",
+      "summary": "Amazon's MadPot honeypots, posing as LLM apps, logged autonomous attacker agents (moderate confidence ARTEX, operated by China-linked groups) that found exposed AI gateways and apps, pulled provider keys via default LiteLLM master keys, open management endpoints, SSRF and leaked env/source-map files, then validated and pooled the keys. Cloudflare separately saw ARTEX abuse a stolen CI/CD API token to fire hundreds of database dump requests and plant artex-* Workers. Treat AI gateways as production: require auth, change default master keys, patch Langflow to 1.3.0+ and RAGFlow to 0.25.0+, scope and expire API tokens, rotate exposed keys and watch AI provider spend.",
+      "source": "The Hacker News",
+      "published": "2026-11-16",
+      "url": "https://thehackernews.com/2026/11/amazon-uncovers-ai-agent-campaign.html"
+    },
+    {
+      "category": "ai",
+      "title": "Nudge Security: business-platform AI agents mostly run on their creator's OAuth grants, so logs show the human",
+      "cve": [],
+      "severity": "",
+      "summary": "Telemetry in Nudge Security's 2026 AI adoption report shows the median organization with agents runs seven of them across multiple platforms such as Rovo, Zapier, ChatGPT Agents and Cursor Automations, usually borrowing an employee's OAuth token or API key rather than having their own identity. That makes agent actions indistinguishable from the employee's in audit logs and widens the blast radius of a stolen token. Inventory agents and whose access they use, prune unused AI OAuth grants, rotate any secret pasted into a prompt, and move agent identities under your IdP where possible.",
+      "source": "Help Net Security",
+      "published": "2026-11-19",
+      "url": "https://www.helpnetsecurity.com/2026/11/19/ai-agents-employee-credentials-nudge-security-report/"
+    }
+  ]
+}
