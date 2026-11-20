@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-21",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "'FastUnlock': public PoC uses Narrator at the Windows lock screen to run programs on a stolen, locked PC; no patch yet",
+      "cve": [],
+      "severity": "Unpatched, PoC public",
+      "summary": "A researcher posting as 'Nightmare Eclipse' released a GitHub proof of concept that abuses Narrator and the Microsoft-account recovery options on the lock screen to launch programs under a limited built-in account, and ThreatLocker confirmed it works. It needs physical access, and TPM-only BitLocker does not help because the drive is already unlocked at the lock screen. There is no CVE or fix and no sign of real-world use yet. Add a BitLocker startup PIN on sensitive laptops, have users shut down or hibernate rather than lock when a device leaves their hands, and watch for a Microsoft update.",
+      "source": "The Hacker News",
+      "published": "2026-11-20",
+      "url": "https://thehackernews.com/2026/11/new-unpatched-windows-0-day-fastunlock.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Linux KVM use-after-free on AMD hosts with nested virtualization lets a guest reach host memory",
+      "cve": ["CVE-2026-99312"],
+      "severity": "High 8.8",
+      "summary": "A dangling pointer left after a nested VM is stopped lets a guest touch freed host memory on AMD KVM hosts with nested virtualization on, which is the kvm_amd default; Intel hosts are not affected. The bug came in with a 2022 fix and was found by Terra Security via DigitalOcean's bug bounty; no exploit is public. Upstream fixes are in 7.3.5, 6.18.64 and 6.12.118, but Debian, Ubuntu and RHEL 9/10 packages were not yet fixed at publication. Patch and reboot hosts (guest updates do nothing), or set kvm_amd nested=0 until a kernel is available.",
+      "source": "The Hacker News",
+      "published": "2026-11-20",
+      "url": "https://thehackernews.com/2026/11/new-linux-kvm-flaw-cve-2026-99312-lets.html"
+    },
+    {
+      "category": "ai",
+      "title": "Amazon: China-nexus operators let Cairn AI agents find and exploit a MONAI Label zero-day to root a university server",
+      "cve": [],
+      "severity": "",
+      "summary": "Amazon Threat Intelligence found a publicly exposed instance of the open-source Cairn pentest framework and traced a September campaign against East Asian universities in which autonomous agents went from mapping an API to a working path-traversal file write in MONAI Label in about 11 minutes, then got a root reverse shell via sitecustomize.py. The agents spent hours on failed Redis, Log4Shell, SSRF and credential-spray attempts without human steering. MONAI Label shipped a fix on November 18 (GHSA-qc22-rmgc-vg94); update it and keep AI/ML tooling off the internet. Reported source IPs include 142.4.98[.]145 and 142.4.107[.]34.",
+      "source": "BleepingComputer",
+      "published": "2026-11-20",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/"
+    },
+    {
+      "category": "appsec",
+      "title": "Depthfirst publishes PoCs turning low-privilege database accounts into OS code execution on PostgreSQL, MySQL, Oracle and ClickHouse",
+      "cve": ["CVE-2026-116331", "CVE-2026-101786", "CVE-2026-114819", "CVE-2026-91609"],
+      "severity": "Oracle Text 9.9",
+      "summary": "Researcher Zheng Yu showed that accounts with only object or temp-table creation rights can reach code execution on PostgreSQL (fixed in 18.7, 17.12, 16.16, 15.20, 14.25) and MySQL 26.7.0-26.7.1, and that two Oracle bugs in Oracle Text and ORDS GraphQL chain into an unauthenticated attack; ClickHouse fixed a similar issue without a CVE. No in-the-wild use is reported, but the proofs of concept are public. Apply the October and November fixes, strip the TEMPORARY privilege and temp-table rights from app accounts that do not need them, and keep ORDS endpoints off the internet.",
+      "source": "The Hacker News",
+      "published": "2026-11-19",
+      "url": "https://thehackernews.com/2026/11/researcher-demonstrates-database-rce.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Intruder on an N-able cloud server knocks out Mail Assure and SpamExperts management in three regions",
+      "cve": [],
+      "severity": "",
+      "summary": "N-able confirmed unauthorized access to one server, with the management portals, APIs, quarantine and logging for Mail Assure and SpamExperts Hosted Cloud down in the Americas, APAC and Europe since November 16; mail filtering itself kept running. The company says it has no evidence of customer data or mailbox access so far and that this is separate from the recent N-central flaws. MSPs and customers on these services should watch for N-able's guidance, expect blind spots in quarantine and logs, and be ready to rotate any API credentials tied to the platform.",
+      "source": "The Hacker News",
+      "published": "2026-11-19",
+      "url": "https://thehackernews.com/2026/11/n-able-confirms-hackers-accessed-cloud.html"
+    },
+    {
+      "category": "ai",
+      "title": "Signal now blocks OS-level AI agents like Siri and Gemini from reading chats unless the user opts in",
+      "cve": [],
+      "severity": "",
+      "summary": "Signal's iOS and Android apps now block screenshots by default, which stops on-device assistants that read the screen from seeing messages; users can turn it off after a warning. Signal says this is only a partial fix because agents may read app data from the file system, and it cannot yet do the same on macOS. For defenders, it is a reminder to inventory which OS assistants and agents have screen or data access on managed devices and to restrict them for sensitive apps.",
+      "source": "The Register",
+      "published": "2026-11-20",
+      "url": "https://www.theregister.com/security/2026/11/20/signal-slams-door-on-prying-ai-agents-to-protect-privacy/5311466"
+    },
+    {
+      "category": "ai",
+      "title": "Research: automated prompt-injection red teams mostly rediscover the same trick; PIPETTE rewards new techniques instead",
+      "cve": [],
+      "severity": "",
+      "summary": "Researchers from Waterloo, Zhejiang and KTH found that RL-based attack generators produce thousands of 'successful' injections that collapse into a handful of techniques, so agents hardened on them still fail against new ones. Their PIPETTE method groups attacks by technique, rewards novelty and trains agents to check each action against the user's request; on AgentDojo, off-the-shelf attacks succeeded under half a percent of the time with no loss in task completion. When buying AI red-team or guardrail services, ask how many distinct techniques were covered and how the agent holds up against attackers allowed hundreds of attempts.",
+      "source": "Help Net Security",
+      "published": "2026-11-20",
+      "url": "https://www.helpnetsecurity.com/2026/11/20/ai-prompt-injection-red-team/"
+    }
+  ]
+}
