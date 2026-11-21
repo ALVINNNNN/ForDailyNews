@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-22",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Attackers abused a Microsoft Entra Connect Health API flaw to read tenant metadata; fixed server-side",
+      "cve": [],
+      "severity": "Exploited",
+      "summary": "Microsoft is notifying admins that a bug in the Entra Connect Health API, introduced in July and found on November 9, was exploited for read-only access to tenant-level data such as admin and technical contact emails, tenant IDs, domains, license tier and sync status. A server-side fix went out on November 19; Microsoft says no passwords, tokens or valid keys were exposed and customers do not need to patch anything. It has not said who was behind it or how many tenants were hit, and MSPs report notices for multiple customers. Expect targeted phishing at the exposed admin addresses: enforce phishing-resistant MFA on privileged accounts and review Entra sign-in and audit logs plus Connect Health settings.",
+      "source": "BleepingComputer",
+      "published": "2026-11-21",
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: CISA puts vCenter, Apache Roller, Cisco Expressway and an old SAP NetWeaver bug in KEV, due November 23",
+      "cve": ["CVE-2026-123890", "CVE-2026-129448", "CVE-2026-76466", "CVE-2025-42884"],
+      "severity": "KEV",
+      "summary": "CISA added four exploited flaws to KEV on November 20: the vCenter auth bypass tied to the Armory Castle espionage group (CVSS 9.8), the pre-auth Apache Roller XML-RPC deserialization RCE (9.8), the Cisco Expressway hard-coded credential root RCE (9.8), and a 2025 SAP NetWeaver Enterprise Portal JNDI injection (6.5). The first three were covered earlier this week; the SAP entry is new, though the article notes no public reporting on how it is being exploited. Federal agencies must remediate by November 23, so treat any unpatched instance of these four as urgent, and apply SAP's November 2025 fix if you have not.",
+      "source": "The Hacker News",
+      "published": "2026-11-21",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-vmware-cisco.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Ruby2Shell: one-byte heap overflow in Ruby case conversion reachable pre-auth via Rails and Sinatra; upgrade Ruby",
+      "cve": ["CVE-2026-132825"],
+      "severity": "High 7.4",
+      "summary": "Ruby 4.0.10, 3.4.13 and 3.3.14 fix seven memory-safety bugs in the regex engine and string case mapping, led by Ruby2Shell, an off-by-one heap write when changing case in legacy single-byte encodings such as ISO-8859-1. Researchers say unauthenticated requests can reach it in default Rails and classic Sinatra apps through method-override middleware; versions back to 2.4.0 are affected and EOL 3.2 and older get no fix. No attacks are reported and experts expect real-world RCE to be hard, but a PoC release is planned. Upgrade Ruby, rebuild container images, restart app servers and workers, and check products that bundle their own Ruby (GitLab, GitHub Enterprise Server, Mastodon, Discourse and others) for fixed releases.",
+      "source": "SecurityWeek",
+      "published": "2026-11-20",
+      "url": "https://www.securityweek.com/ruby-patches-ruby2shell-vulnerability-that-could-lead-to-rce/"
+    },
+    {
+      "category": "appsec",
+      "title": "Spring's November fixes include a CVSS 9.8 SpEL injection in Spring Security and filter injection bugs in Spring AI",
+      "cve": ["CVE-2026-59273", "CVE-2026-59367", "CVE-2026-123886", "CVE-2026-59378", "CVE-2026-59369", "CVE-2026-59361"],
+      "severity": "Critical 9.8",
+      "summary": "The Spring team's November release fixes a batch of flaws; the worst, CVE-2026-59273, is a SpEL injection in Spring Security Web's ELRequestMatcher that can give pre-auth code execution when raw user input reaches the matcher. Others include a fixed admin password in the spring-ldap-test embedded LDAP server that listens on all interfaces (9.4), SpEL injection via Spring Data Elasticsearch @Query (8.8), an Actuator health-path login bypass (8.2), and vector-store filter injection in Spring AI. None are reported exploited. Update to Spring Security 7.1.3/7.0.9, Spring Data Elasticsearch 6.1.3/6.0.9 and Spring AI 2.0.3 (or the matching patched lines), and make sure test LDAP servers are never reachable from untrusted networks.",
+      "source": "SecurityOnline",
+      "published": "2026-11-20",
+      "url": "https://securityonline.info/spring-security-vulnerabilities-november-2026/"
+    },
+    {
+      "category": "ai",
+      "title": "One malicious webpage let researchers pull Meta Muse chats, memories and stored credentials; Meta fixed it",
+      "cve": [],
+      "severity": "",
+      "summary": "NebuSec showed that when Meta's Muse agent browsed an attacker's page, it could send the user's conversation history and saved memories to an outside server without any approval prompt, getting past the Sentinel egress gate. Chaining a bug in Muse's built-in browser with a shared Linux kernel flaw gave root on the user's cloud VM, reaching the credentials Muse holds for connected accounts. This was a lab demonstration, not an in-the-wild attack, and the researchers say every issue was fixed before publication, though Meta has not confirmed it publicly. For teams running browsing agents, it is a reminder to keep credentials out of the agent's runtime and not to trust a single egress filter.",
+      "source": "The Hacker News",
+      "published": "2026-11-21",
+      "url": "https://thehackernews.com/2026/11/a-single-malicious-webpage-let.html"
+    },
+    {
+      "category": "ai",
+      "title": "Bell Canada says an 'agentic' threat actor got into a pre-production Maximo system and took enterprise customer data",
+      "cve": [],
+      "severity": "",
+      "summary": "Bell Canada told enterprise customers that an intruder it calls an 'agentic' threat actor accessed a pre-production environment of its Maximo network-provisioning system on November 17. The data included business contact details, ticket titles and some network-element IP addresses, but Bell says no credentials or sensitive personal information; services were not affected. Bell has not named the actor, explained what 'agentic' means, or said how many customers were hit, and is sharing IOCs privately with customers and the Canadian Centre for Cyber Security. Bell enterprise customers should get those IOCs and watch for phishing that uses the leaked ticket context; everyone else should treat pre-production systems holding real customer data as production.",
+      "source": "BleepingComputer",
+      "published": "2026-11-20",
+      "url": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/"
+    }
+  ]
+}
