@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-23",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Attackers used a GL.iNet GoodCloud flaw to plant malware on routers and remote KVMs; some infections date back months",
+      "cve": [],
+      "severity": "Exploited",
+      "summary": "GL.iNet says an unauthorized party abused a vulnerability in its GoodCloud remote-management service to push malware onto some routers and KVM devices (RM1, RM10, RM1PE, RM4PE, RMQ1 and others); the cloud hole is closed, but that does not clean devices already hit. Analysis of the dropped ni.sh script shows it hides as 'crond -i /tmp/.log', swaps netstat to conceal connections, adds SSH keys and on some units opens root reverse shells, with files dating to December 2025. Check for that process, install the latest security firmware (BleepingComputer lists 1.10.3+ for most RM KVMs and 1.8.7+ for RMQ1; stable router builds were due November 22), reflash without keeping settings if infected, rotate exposed credentials, and examine computers attached to compromised KVMs. Hunt for traffic to 170.39.226[.]219, 66.245.219[.]252 and 65.20.71[.]131.",
+      "source": "BleepingComputer",
+      "published": "2026-11-22",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-glinet-cloud-flaw-to-infect-routers-kvm-devices/"
+    },
+    {
+      "category": "appsec",
+      "title": "GPGME double free triggered by an OpenPGP key with an oversized user ID; update to 2.3.1 and rebuild apps that bundle it",
+      "cve": ["CVE-2026-129975"],
+      "severity": "Critical (vendor)",
+      "summary": "GnuPG disclosed a double free in GPGME's status and colon-line parsing: a failed buffer reallocation on a key with a very long user ID leaves a stale pointer that is freed twice, and the project does not rule out remote code execution. Everything using GPGME before 2.3.0 is affected, including mail and XMPP clients, Samba and Gpg4win; no attacks are reported and there is no workaround. Upgrade to GPGME 2.3.1 (or 1.24.4 / the advisory patch on the legacy branch) and Gpg4win 5.1.2 on Windows, and remember that statically linked or bundled copies need a vendor rebuild, not just a system package update.",
+      "source": "The Hacker News",
+      "published": "2026-11-21",
+      "url": "https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html"
+    },
+    {
+      "category": "ai",
+      "title": "European Commission confirms AI tools were used in a campaign that knocked HR and payroll systems offline for about ten days",
+      "cve": [],
+      "severity": "",
+      "summary": "A Commission spokesperson confirmed a cyber campaign first detected on October 22 was carried out with AI tools; an EU official told Politico that CERT-EU identified the public ARTEX AI pentest framework, which the Commission itself declined to name. Sysper (pay, leave, timesheets), MyPMO (medical reimbursements) and translation services were disrupted for roughly ten days, and Sysper went down again on November 18; the Commission says it has no evidence of a staff-wide data breach but has not said whether any personal data was taken. Defenders should treat ARTEX-style agent tooling as a real intrusion accelerator: shrink exposed attack surface on internal HR and business apps, alert on rapid automated recon and exploitation, and follow CERT-EU's earlier ARTEX guidance.",
+      "source": "The Brussels Times",
+      "published": "2026-11-19",
+      "url": "https://www.brusselstimes.com/2414026/european-commission-confirms-ai-assisted-cyberattack-on-internal-systems-tbtb"
+    }
+  ]
+}
