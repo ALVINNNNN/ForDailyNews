@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-24",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Mandiant sees attackers exploiting a deserialization bug in the long-abandoned Idunno.AntiCsrf ASP.NET module for pre-auth RCE",
+      "cve": ["CVE-2026-131914"],
+      "severity": "Critical 9.3",
+      "summary": "Idunno.AntiCsrf 0.9.1 (including the 0.9.1 Beta), a third-party anti-CSRF module for classic ASP.NET that has not been updated since 2008, deserializes untrusted input, so one unauthenticated POST can run code inside the IIS worker process. Mandiant says it has seen this exploited in the wild, and there is no patch because the project is dead. Search Web.config files and bin/ folders for Idunno.AntiCsrf or AntiCsrfModule, replace it with ASP.NET's built-in anti-forgery features, and look in IIS logs for odd POSTs to .aspx pages that returned 302 or 500. If you find signs of compromise, rotate machineKey values and database credentials and check webroots for files that shouldn't be there.",
+      "source": "The Hacker News",
+      "published": "2026-11-23",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-aspnet-anti.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Norway's NSM says an Azure API Management flaw was used to go after secrets at energy companies",
+      "cve": [],
+      "severity": "",
+      "summary": "Norway's National Security Authority says an unknown actor abused a weakness in Azure API Management Classic tiers to target tokens, secrets and named values, and Equinor and Skagerak Energi have both reported incidents, though both say they found no evidence of data theft or compromise. Microsoft found the issue on November 18 and closed the access path the next day. The v2 tiers are not affected, and no CVE has been given. If you run APIM Classic, treat named values, identity-provider client secrets, subscription keys and management API tokens as exposed and rotate them, then work out what data could be reached through the service.",
+      "source": "SecurityWeek",
+      "published": "2026-11-23",
+      "url": "https://www.securityweek.com/azure-flaw-exploited-to-target-secrets-at-norwegian-energy-firms/"
+    },
+    {
+      "category": "ai",
+      "title": "Dragos bait prompts show at least three AI inference providers were breached and leaked customer prompts without noticing",
+      "cve": [],
+      "severity": "",
+      "summary": "From July to November, Dragos sent about two million prompts carrying trackable URLs, hostnames and fake credentials through AI inference providers. The bait was later used by attackers, which showed that at least three providers had been compromised and that customer prompts were being stolen without the providers spotting it. The biggest haul was about 200 AWS test keys taken in late October, and OpenRouter has since dropped three providers. Assume anything sent to a third-party model endpoint could be read by someone else: keep secrets out of prompts and agent context, and choose providers by how well they can detect intrusions.",
+      "source": "SecurityWeek",
+      "published": "2026-11-23",
+      "url": "https://www.securityweek.com/ai-inference-providers-failed-to-detect-hacking-and-prompt-theft-says-dragos/"
+    },
+    {
+      "category": "appsec",
+      "title": "pwn.ai turns a Ghostscript font-loading use-after-free into sandbox-escape RCE through uploads in about ten apps",
+      "cve": ["CVE-2026-125396"],
+      "severity": "High 8.5",
+      "summary": "A use-after-free in Ghostscript's font-loading code switches off the -dSAFER sandbox. Researchers at pwn.ai showed it can be reached over the network through print jobs, email and file uploads in about ten applications. Ghostscript 10.08.0, released in September, fixes it, but some distro packages were still vulnerable when the research was published. The public PoC shows only the memory-corruption part, and no attacks have been reported. Find every Ghostscript copy you actually run, including copies inside containers and other apps, and update it. Until then, require authentication on print queues, restrict which file types you accept, and add AppArmor confinement where you can.",
+      "source": "The Hacker News",
+      "published": "2026-11-22",
+      "url": "https://thehackernews.com/2026/11/researchers-demonstrate-ghostscript.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Depthfirst details 'phpAfterShell', a session-file corruption path to RCE fixed in last week's PHP releases",
+      "cve": ["CVE-2026-126714"],
+      "severity": "Critical 9.2",
+      "summary": "Depthfirst has published details of phpAfterShell, which brings back the PHP2Shell attack route. If a PHP process stops partway through writing a session file to default file storage (most easily triggered through upload-progress tracking), a later session_start() can load the corrupted data and, if the app has a usable deserialization gadget, run code. The fix is in the November 19 releases, PHP 8.5.13, 8.4.28, 8.3.37 and 8.2.36, as well as 8.6.0. No exploitation has been reported. If you haven't installed those releases yet, do so now, and think about turning off session upload progress where you don't use it.",
+      "source": "SecurityWeek",
+      "published": "2026-11-23",
+      "url": "https://www.securityweek.com/phpaftershell-vulnerability-revives-php2shells-attack-path/"
+    },
+    {
+      "category": "appsec",
+      "title": "Elecbrakes trailer brake controllers accept unauthenticated Bluetooth braking commands; the oldest model will not be fixed",
+      "cve": [],
+      "severity": "Critical 9.6",
+      "summary": "Element Digital researchers used Claude Code to analyze a decompiled copy of the Elecbrakes app and found that the controllers take braking commands over Bluetooth as plain, unauthenticated bytes. Anyone in radio range could apply the brakes or apply more force than intended. CISA has issued three CVEs, two of them scored 9.6, in advisory ICSA-26-323-02. The in-car and trailer-mounted models have patches that owners must install by hand, but the older ELBC2000 will not get one. For builders of connected devices, the takeaway is to require pairing and message authentication on every safety-critical BLE command, not just some of them.",
+      "source": "The Register",
+      "published": "2026-11-23",
+      "url": "https://www.theregister.com/security/2026/11/23/bluetooth-brakes-are-broken-as-researchers-find-anyone-can-control-them/5311748"
+    }
+  ]
+}
