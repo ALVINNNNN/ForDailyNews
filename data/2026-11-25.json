@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-25",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: Drupal installer takeover bug is now exploited on live sites and in CISA KEV, due November 27",
+      "cve": [
+        "CVE-2026-132165"
+      ],
+      "severity": "Drupal: Highly critical 20/25",
+      "summary": "The Drupal core flaw that lets an unauthenticated visitor re-run core/install.php and take over a site (SA-CORE-2026-017) moved from patched to actively exploited: Drupal's security team got reports of attacks on live sites from November 19, and CISA added it to KEV on November 24 with a November 27 deadline for federal agencies. Exploitation needs an uncommon configuration, but it requires no login. Upgrade to 10.6.22, 11.3.22 or 11.4.13 now; sites on end-of-life branches get no fix, so block or delete install.php at the web server and plan the upgrade. Check access logs for requests to install.php since November 19.",
+      "source": "Rescana",
+      "published": "2026-11-24",
+      "url": "https://rescana.com/post/drupal-core-installer-flaw-cve-2026-132165-exploited-and-in-cisa-kev-update-now"
+    },
+    {
+      "category": "zero-day",
+      "title": "CISA adds N-able Mail Assure SSRF and the MONAI Label path traversal to KEV, both due November 26",
+      "cve": [
+        "CVE-2026-134624",
+        "CVE-2026-133968"
+      ],
+      "severity": "Critical 9.8 / 9.3",
+      "summary": "CISA put two flaws in KEV: the MONAI Label path traversal (CVE-2026-133968, CVSS 9.8, fixed in 0.8.6) that AI-agent-driven attackers used against universities, and an SSRF in N-able Mail Assure / SpamExperts LDAP sync checks (CVE-2026-134624, CVSS 9.3) found while N-able investigated a breach of a Hosted Cloud server. N-able has patched its hosted platform (build 20261121.1943), revoked customer API and OAuth tokens, and says it has not confirmed the SSRF was the way in. Hosted customers should re-issue credentials for any scripts or integrations; SpamExperts Local Cloud operators should confirm they are on build 20261121.1943, and MONAI Label users should upgrade and keep it off the internet.",
+      "source": "Security Affairs",
+      "published": "2026-11-24",
+      "url": "https://securityaffairs.com/203882/hacking/u-s-cisa-adds-n-able-mailassure-and-project-monai-flaws-to-its-known-exploited-vulnerabilities-catalog.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "VMware fixes 23 flaws including a CVSS 9.8 vCenter Directory Service auth bypass and two critical ESX I/O filter bugs",
+      "cve": [
+        "CVE-2026-123903",
+        "CVE-2026-123910",
+        "CVE-2026-123911",
+        "CVE-2026-123912"
+      ],
+      "severity": "Critical 9.8",
+      "summary": "Broadcom's VMSA-2026-0011 covers vCenter, ESX, VMware Tools, Workstation, Fusion and Avi Load Balancer, headlined by an authentication bypass in the vCenter Directory Service and a heap overflow and use-after-free in the ESX I/O filter service, all rated 9.8, plus a 9.3 XHCI USB bug that lets a VM admin run code in the VMX process. Broadcom does not list any of these as exploited, but vCenter has been a repeat target this month, so treat it as urgent. Patch vCenter first (8.0 U3m or the 9.1.x fix), then ESX and the desktop products, and handle the separate SDDC Manager updates from VMSA-2026-0009.",
+      "source": "SecurityWeek",
+      "published": "2026-11-24",
+      "url": "https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/"
+    },
+    {
+      "category": "appsec",
+      "title": "Rackspace is shutting down its Spot managed Kubernetes service after attackers read customer cluster Secrets",
+      "cve": [],
+      "severity": "",
+      "summary": "An attacker with compromised credentials created pods in Rackspace Spot customer clusters on November 17, read Kubernetes Secrets and could reach files on storage volumes; Rackspace restored service on November 21 but will terminate the platform on December 8. Spot customers should treat API and refresh tokens, kubeconfigs and every cluster Secret as exposed and rotate them, review logs back to November 16, and look for pods or objects with the prefixes i1, glm- or probe and connections from 23.224.79[.]106 or 23.224.0[.]0/15. Move workloads and download data before the deadline.",
+      "source": "BleepingComputer",
+      "published": "2026-11-24",
+      "url": "https://www.bleepingcomputer.com/news/security/rackspace-shuts-down-spot-cloud-platform-after-security-breach/"
+    },
+    {
+      "category": "appsec",
+      "title": "binary-parser for npm lets attacker-controlled parser definitions inject JavaScript; incomplete fix for an earlier CVE",
+      "cve": [
+        "CVE-2026-134814"
+      ],
+      "severity": "Critical 9.2",
+      "summary": "The binary-parser npm package dropped several string options (length, lengthInBytes, key, tag, offset and the namely() alias) straight into the JavaScript it generates, so anyone who controls a parser definition can run code in the Node.js process when it compiles. This is an incomplete fix for CVE-2026-1245 from January; parsing untrusted data with a trusted definition is not affected, and there is no report of exploitation. Upgrade to 2.3.1, which rejects expressions in those options, and treat any parser definition from outside your code as executable.",
+      "source": "The Hacker News",
+      "published": "2026-11-23",
+      "url": "https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html"
+    },
+    {
+      "category": "ai",
+      "title": "WebSec benchmark: search APIs used by coding agents returned known-malicious results in about 1.4% of searches",
+      "cve": [],
+      "severity": "",
+      "summary": "AIR Research Lab ran about 37,700 searches through eight commercial search APIs that AI coding agents rely on and found 534 surfaced known-malicious content, with install and package-selection queries the riskiest; one example was a starred GitHub repo whose README PowerShell one-liner installed a NetSupport RAT. The Cloud Security Alliance notes the benchmark is vendor-produced and not yet replicated, but the pattern matches real agent compromises. Treat search results and READMEs as untrusted input, require human approval for download-and-execute commands (curl|sh, iwr|iex), check package age and registry presence before installs, and keep agent runtimes away from credentials.",
+      "source": "Cloud Security Alliance",
+      "published": "2026-11-24",
+      "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-search-api-poisoning-coding-agents-2026112/"
+    },
+    {
+      "category": "ai",
+      "title": "CERT-In warns AI-assisted intruders are altering approval workflows to push unauthorized payments at Indian banks and fintechs",
+      "cve": [],
+      "severity": "",
+      "summary": "CERT-In advisory CIAD-2026-0062 describes attackers, helped by AI agent frameworks such as ARTEX, PentAGI, CAIRN and CyberStrikeAI, changing business records and approval relationships inside banks, NBFCs and payment providers so that legitimate disbursement processes sent multi-crore sums to mule accounts without tripping alerts. The abuse targets business logic rather than payment APIs. Verify changes to payee records and approval chains, tighten reconciliation, make sure monitoring covers misuse of trusted workflows, and patch internet-facing AI apps such as Langflow and RAGFlow; one related CyberStrikeAI IP is 43.240.29[.]11.",
+      "source": "The Hacker News",
+      "published": "2026-11-23",
+      "url": "https://thehackernews.com/2026/11/ai-assisted-cyberattacks-trigger.html"
+    }
+  ]
+}

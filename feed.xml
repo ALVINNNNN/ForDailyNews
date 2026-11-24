@@ -6,7 +6,63 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Update: Drupal installer takeover bug is now exploited on live sites and in CISA KEV, due November 27</title>
+      <link>https://rescana.com/post/drupal-core-installer-flaw-cve-2026-132165-exploited-and-in-cisa-kev-update-now</link>
+      <guid isPermaLink="false">2026-11-25|https://rescana.com/post/drupal-core-installer-flaw-cve-2026-132165-exploited-and-in-cisa-kev-update-now|Update: Drupal installer takeover bug is now exploited on live sites and in CISA KEV, due November 27</guid>
+      <pubDate>Wed, 25 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Drupal: Highly critical 20/25 · CVE-2026-132165] The Drupal core flaw that lets an unauthenticated visitor re-run core/install.php and take over a site (SA-CORE-2026-017) moved from patched to actively exploited: Drupal's security team got reports of attacks on live sites from November 19, and CISA added it to KEV on November 24 with a November 27 deadline for federal agencies. Exploitation needs an uncommon configuration, but it requires no login. Upgrade to 10.6.22, 11.3.22 or 11.4.13 now; sites on end-of-life branches get no fix, so block or delete install.php at the web server and plan the upgrade. Check access logs for requests to install.php since November 19. (Source: Rescana)</description>
+    </item>
+    <item>
+      <title>CISA adds N-able Mail Assure SSRF and the MONAI Label path traversal to KEV, both due November 26</title>
+      <link>https://securityaffairs.com/203882/hacking/u-s-cisa-adds-n-able-mailassure-and-project-monai-flaws-to-its-known-exploited-vulnerabilities-catalog.html</link>
+      <guid isPermaLink="false">2026-11-25|https://securityaffairs.com/203882/hacking/u-s-cisa-adds-n-able-mailassure-and-project-monai-flaws-to-its-known-exploited-vulnerabilities-catalog.html|CISA adds N-able Mail Assure SSRF and the MONAI Label path traversal to KEV, both due November 26</guid>
+      <pubDate>Wed, 25 Nov 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 / 9.3 · CVE-2026-134624 · CVE-2026-133968] CISA put two flaws in KEV: the MONAI Label path traversal (CVE-2026-133968, CVSS 9.8, fixed in 0.8.6) that AI-agent-driven attackers used against universities, and an SSRF in N-able Mail Assure / SpamExperts LDAP sync checks (CVE-2026-134624, CVSS 9.3) found while N-able investigated a breach of a Hosted Cloud server. N-able has patched its hosted platform (build 20261121.1943), revoked customer API and OAuth tokens, and says it has not confirmed the SSRF was the way in. Hosted customers should re-issue credentials for any scripts or integrations; SpamExperts Local Cloud operators should confirm they are on build 20261121.1943, and MONAI Label users should upgrade and keep it off the internet. (Source: Security Affairs)</description>
+    </item>
+    <item>
+      <title>VMware fixes 23 flaws including a CVSS 9.8 vCenter Directory Service auth bypass and two critical ESX I/O filter bugs</title>
+      <link>https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/</link>
+      <guid isPermaLink="false">2026-11-25|https://www.securityweek.com/vmware-updates-patch-critical-esx-vcenter-vulnerabilities/|VMware fixes 23 flaws including a CVSS 9.8 vCenter Directory Service auth bypass and two critical ESX I/O filter bugs</guid>
+      <pubDate>Wed, 25 Nov 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-123903 · CVE-2026-123910 · CVE-2026-123911 · CVE-2026-123912] Broadcom's VMSA-2026-0011 covers vCenter, ESX, VMware Tools, Workstation, Fusion and Avi Load Balancer, headlined by an authentication bypass in the vCenter Directory Service and a heap overflow and use-after-free in the ESX I/O filter service, all rated 9.8, plus a 9.3 XHCI USB bug that lets a VM admin run code in the VMX process. Broadcom does not list any of these as exploited, but vCenter has been a repeat target this month, so treat it as urgent. Patch vCenter first (8.0 U3m or the 9.1.x fix), then ESX and the desktop products, and handle the separate SDDC Manager updates from VMSA-2026-0009. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Rackspace is shutting down its Spot managed Kubernetes service after attackers read customer cluster Secrets</title>
+      <link>https://www.bleepingcomputer.com/news/security/rackspace-shuts-down-spot-cloud-platform-after-security-breach/</link>
+      <guid isPermaLink="false">2026-11-25|https://www.bleepingcomputer.com/news/security/rackspace-shuts-down-spot-cloud-platform-after-security-breach/|Rackspace is shutting down its Spot managed Kubernetes service after attackers read customer cluster Secrets</guid>
+      <pubDate>Wed, 25 Nov 2026 06:57:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>An attacker with compromised credentials created pods in Rackspace Spot customer clusters on November 17, read Kubernetes Secrets and could reach files on storage volumes; Rackspace restored service on November 21 but will terminate the platform on December 8. Spot customers should treat API and refresh tokens, kubeconfigs and every cluster Secret as exposed and rotate them, review logs back to November 16, and look for pods or objects with the prefixes i1, glm- or probe and connections from 23.224.79[.]106 or 23.224.0[.]0/15. Move workloads and download data before the deadline. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>binary-parser for npm lets attacker-controlled parser definitions inject JavaScript; incomplete fix for an earlier CVE</title>
+      <link>https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html</link>
+      <guid isPermaLink="false">2026-11-25|https://thehackernews.com/2026/11/critical-binary-parser-flaw-enables.html|binary-parser for npm lets attacker-controlled parser definitions inject JavaScript; incomplete fix for an earlier CVE</guid>
+      <pubDate>Wed, 25 Nov 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical 9.2 · CVE-2026-134814] The binary-parser npm package dropped several string options (length, lengthInBytes, key, tag, offset and the namely() alias) straight into the JavaScript it generates, so anyone who controls a parser definition can run code in the Node.js process when it compiles. This is an incomplete fix for CVE-2026-1245 from January; parsing untrusted data with a trusted definition is not affected, and there is no report of exploitation. Upgrade to 2.3.1, which rejects expressions in those options, and treat any parser definition from outside your code as executable. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>WebSec benchmark: search APIs used by coding agents returned known-malicious results in about 1.4% of searches</title>
+      <link>https://labs.cloudsecurityalliance.org/research/csa-research-note-search-api-poisoning-coding-agents-2026112/</link>
+      <guid isPermaLink="false">2026-11-25|https://labs.cloudsecurityalliance.org/research/csa-research-note-search-api-poisoning-coding-agents-2026112/|WebSec benchmark: search APIs used by coding agents returned known-malicious results in about 1.4% of searches</guid>
+      <pubDate>Wed, 25 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>AIR Research Lab ran about 37,700 searches through eight commercial search APIs that AI coding agents rely on and found 534 surfaced known-malicious content, with install and package-selection queries the riskiest; one example was a starred GitHub repo whose README PowerShell one-liner installed a NetSupport RAT. The Cloud Security Alliance notes the benchmark is vendor-produced and not yet replicated, but the pattern matches real agent compromises. Treat search results and READMEs as untrusted input, require human approval for download-and-execute commands (curl|sh, iwr|iex), check package age and registry presence before installs, and keep agent runtimes away from credentials. (Source: Cloud Security Alliance)</description>
+    </item>
+    <item>
+      <title>CERT-In warns AI-assisted intruders are altering approval workflows to push unauthorized payments at Indian banks and fintechs</title>
+      <link>https://thehackernews.com/2026/11/ai-assisted-cyberattacks-trigger.html</link>
+      <guid isPermaLink="false">2026-11-25|https://thehackernews.com/2026/11/ai-assisted-cyberattacks-trigger.html|CERT-In warns AI-assisted intruders are altering approval workflows to push unauthorized payments at Indian banks and fintechs</guid>
+      <pubDate>Wed, 25 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>CERT-In advisory CIAD-2026-0062 describes attackers, helped by AI agent frameworks such as ARTEX, PentAGI, CAIRN and CyberStrikeAI, changing business records and approval relationships inside banks, NBFCs and payment providers so that legitimate disbursement processes sent multi-crore sums to mule accounts without tripping alerts. The abuse targets business logic rather than payment APIs. Verify changes to payee records and approval chains, tighten reconciliation, make sure monitoring covers misuse of trusted workflows, and patch internet-facing AI apps such as Langflow and RAGFlow; one related CyberStrikeAI IP is 43.240.29[.]11. (Source: The Hacker News)</description>
+    </item>
     <item>
       <title>Mandiant sees attackers exploiting a deserialization bug in the long-abandoned Idunno.AntiCsrf ASP.NET module for pre-auth RCE</title>
       <link>https://thehackernews.com/2026/11/hackers-exploit-critical-aspnet-anti.html</link>
@@ -750,70 +806,6 @@
       <pubDate>Thu, 12 Nov 2026 06:52:00 +0800</pubDate>
       <category>AI security</category>
       <description>Corelight found that 23 of 35 MCP servers it reviewed are installed with uvx or npx 'latest' launchers that fetch dependencies fresh from PyPI or npm, so one community server produced 15 different dependency sets over 19 rebuilds in five weeks. Because those packages run inside the server process, a hijacked dependency would get the server's API tokens, files and network access, the same pattern worms like Shai-Hulud exploit. This is a deployment choice rather than a protocol bug: pin servers to a commit, install from a hash-locked lockfile, launch them directly, disable startup update checks, and run each under its own least-privilege account. (Source: Cyber Security News)</description>
-    </item>
-    <item>
-      <title>November Patch Tuesday: Outlook spoofing zero-day leaks NTLMv2 hashes and is already being exploited</title>
-      <link>https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/</link>
-      <guid isPermaLink="false">2026-11-11|https://www.securityweek.com/exploited-outlook-zero-day-among-1094-flaws-patched-by-microsoft/|November Patch Tuesday: Outlook spoofing zero-day leaks NTLMv2 hashes and is already being exploited</guid>
-      <pubDate>Wed, 11 Nov 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Moderate 6.5 (exploited) · CVE-2026-124194] Microsoft's November release fixes about 1,094 flaws, including an Outlook bug under active attack in which a crafted message file makes Outlook reach out to an attacker-controlled location without its usual external-content warning, handing over the user's NTLMv2 hash. The victim has to open the file (the Preview Pane is not a trigger), and Microsoft 365 Apps for Enterprise plus Office LTSC 2021 and 2024 are affected. Push the Office update first, and limit hash relay risk by blocking outbound SMB/NTLM to the internet and adding affected users to Protected Users where possible. (Source: SecurityWeek)</description>
-    </item>
-    <item>
-      <title>Chrome's eighth exploited zero-day of 2026 is a use-after-free in its XML handling</title>
-      <link>https://thehackernews.com/2026/11/google-issues-chrome-security-update.html</link>
-      <guid isPermaLink="false">2026-11-11|https://thehackernews.com/2026/11/google-issues-chrome-security-update.html|Chrome's eighth exploited zero-day of 2026 is a use-after-free in its XML handling</guid>
-      <pubDate>Wed, 11 Nov 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[High (exploited) · CVE-2026-125350] Google shipped an emergency Chrome update for a use-after-free in the XML component after confirming an exploit exists in the wild; an anonymous researcher reported it on November 6 and Google is withholding details. Fixed builds are 157.0.8103.50/.51 on Windows and macOS and 157.0.8103.50 on Linux. Force a browser restart across the fleet and watch for patches in Chromium-based browsers such as Edge, Brave and Opera. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Exploited Xen Orchestra cookie bug logs attackers in as an existing admin and leads to root on XCP-ng hosts</title>
-      <link>https://www.bleepingcomputer.com/news/security/critical-xen-orchestra-auth-bypass-flaw-exploited-to-hijack-vm-servers/</link>
-      <guid isPermaLink="false">2026-11-11|https://www.bleepingcomputer.com/news/security/critical-xen-orchestra-auth-bypass-flaw-exploited-to-hijack-vm-servers/|Exploited Xen Orchestra cookie bug logs attackers in as an existing admin and leads to root on XCP-ng hosts</guid>
-      <pubDate>Wed, 11 Nov 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical (exploited, no CVE yet)] Vates warns that an authentication bypass in Xen Orchestra and the XOA appliance lets anyone who can reach the management interface send a cookie holding an empty JSON object and be logged in with an existing user's token, opening the way to code execution on managed pools. The flaw (VSA-2026-062) is being exploited, and attackers have left a VM called 'pivot2', zz-ustar cron files and connections to 91.211.251[.]112:8001. Upgrade to Xen Orchestra 6.9.1 or 6.10.0 (xo-server 5.211.2 or 5.213.1), keep the interface on a management-only network, hunt for the published indicators in HTTP traffic since logs show nothing, and rotate virtualization secrets if anything turns up. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Update: CISA adds the FreeSWITCH SIP injection flaw to KEV, along with an exploited GPUStack admin bypass</title>
-      <link>https://securityaffairs.com/202813/hacking/u-s-cisa-adds-ibm-signalwire-freeswitch-openssh-and-gpustack-flaws-to-its-known-exploited-vulnerabilities-catalog.html</link>
-      <guid isPermaLink="false">2026-11-11|https://securityaffairs.com/202813/hacking/u-s-cisa-adds-ibm-signalwire-freeswitch-openssh-and-gpustack-flaws-to-its-known-exploited-vulnerabilities-catalog.html|Update: CISA adds the FreeSWITCH SIP injection flaw to KEV, along with an exploited GPUStack admin bypass</guid>
-      <pubDate>Wed, 11 Nov 2026 06:57:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.8 · CVE-2026-116779 · CVE-2026-102895] The FreeSWITCH bug we flagged last week as missing from KEV is now listed: crafted SIP MESSAGE requests can run FreeSWITCH API commands and from there OS commands, and SignalWire has confirmed attacks; 1.11.3 fixes it. CISA also listed a GPUStack flaw where unauthenticated requests that appear to come from the local machine get admin rights on the GPU cluster manager, already exploited against 2.1.1 and fixed in 2.2.0. Upgrade both, keep GPUStack and SIP services off the open internet, and review admin accounts and API keys on any GPUStack server that was exposed. (Source: Security Affairs)</description>
-    </item>
-    <item>
-      <title>Attacker rode Qubole's trusted AWS roles into dozens of customer accounts to harvest secrets and S3 data</title>
-      <link>https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/</link>
-      <guid isPermaLink="false">2026-11-11|https://www.bleepingcomputer.com/news/security/hackers-exploit-trusted-aws-access-to-breach-multiple-cloud-environments/|Attacker rode Qubole's trusted AWS roles into dozens of customer accounts to harvest secrets and S3 data</guid>
-      <pubDate>Wed, 11 Nov 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Wiz, Sentra and Mandiant say compromised IAM users in Qubole's AWS account were used from October 14 to 26 to assume dormant cross-account roles that customers had granted the data platform, then pull Secrets Manager, SSM and Lambda environment values, validate keys with TruffleHog and bulk-download S3 objects. One customer lost millions of files, and Entra ID and Okta client secrets were also targeted. Search CloudTrail from October 1 for activity from Qubole's account, rotate anything those roles could read, revoke sessions, and remove or tightly scope third-party trust relationships you no longer use. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Update: Railway breach began with a build-sandbox escape and cost about $740,000 in stolen AI usage</title>
-      <link>https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/</link>
-      <guid isPermaLink="false">2026-11-11|https://www.bleepingcomputer.com/news/apple/railway-breach-leads-to-740-000-in-fraudulent-ai-charges/|Update: Railway breach began with a build-sandbox escape and cost about $740,000 in stolen AI usage</guid>
-      <pubDate>Wed, 11 Nov 2026 06:55:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Railway's incident report says attackers escaped filesystem isolation in its build infrastructure on October 20, took an internal credential, copied source code from build histories, and then abused a misconfigured trust relationship to obtain keys that decrypt customer environment variables for at most about 1.85% of workspaces. They mainly hunted AI provider keys and ran up roughly $740,000 in charges, and linked-account tokens such as GitHub OAuth tokens for 1,852 users were reset. If you deploy on Railway and have not rotated every stored secret since October 22, do it now and check AI provider billing for unexplained usage. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Near AI breach started with an SGLang RCE on an inference server and reached data from 18 agents</title>
-      <link>https://decrypt.co/382965/near-ai-breach-exposes-user-details-data-ai-agents</link>
-      <guid isPermaLink="false">2026-11-11|https://decrypt.co/382965/near-ai-breach-exposes-user-details-data-ai-agents|Near AI breach started with an SGLang RCE on an inference server and reached data from 18 agents</guid>
-      <pubDate>Wed, 11 Nov 2026 06:54:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Near AI says an attacker exploited a remote code execution flaw in the open-source SGLang serving engine on one inference server, then moved through its infrastructure to take account data for about 100 users and chat histories, settings and logs for 18 agents, plus two customers' API keys that have since been revoked. The company noted that its confidential-computing isolation does not help when the software running inside it is vulnerable. If you self-host SGLang or similar inference engines, keep them patched, never expose them directly, and keep agent logs free of secrets. (Source: Decrypt)</description>
-    </item>
-    <item>
-      <title>Fireworks AI discloses a second intrusion, this time via a compromised cloud provider, exposing some weights and datasets</title>
-      <link>https://www.theregister.com/cyber-crime/2026/11/10/fireworks-ai-gets-burned-twice-as-customer-data-exposure-widens/5308722</link>
-      <guid isPermaLink="false">2026-11-11|https://www.theregister.com/cyber-crime/2026/11/10/fireworks-ai-gets-burned-twice-as-customer-data-exposure-widens/5308722|Fireworks AI discloses a second intrusion, this time via a compromised cloud provider, exposing some weights and datasets</guid>
-      <pubDate>Wed, 11 Nov 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>After an October credential-abuse incident that exposed customer API keys, Fireworks AI now says a third-party cloud provider hosting its R&amp;D machines was breached on October 23 and used the next day to reach development systems, exposing resource metadata, billing details and partial model weights and datasets for some customers. The company suspects LLMjacking crews, and Notion says a small share of its AI chat sessions may have been caught up in it. Fireworks customers should rotate keys and tokens, and teams relying on hosted inference should ask providers how their own suppliers are isolated. (Source: The Register)</description>
     </item>
   </channel>
 </rss>
