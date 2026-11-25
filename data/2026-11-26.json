@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-26",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Juniper now reports exploitation of the unauthenticated Session Smart Conductor command injection; upgrade to 7.0.5, 7.1.7 or 7.2.3",
+      "cve": [
+        "CVE-2026-103406"
+      ],
+      "severity": "Critical 9.8",
+      "summary": "Juniper updated bulletin JSA112183 on November 24 to say at least one malicious exploitation of CVE-2026-103406 has been reported to its SIRT; the October advisory had said no attacks were known. The bug lets an unauthenticated attacker run OS commands on Session Smart Conductor during key management, and the same bulletin fixes a 9.8 admin-takeover flaw in Session Smart Router (CVE-2026-103409). There is no workaround, so move to 7.0.5, 7.1.7, 7.2.3 or later and keep Conductor and router management interfaces off untrusted networks until you do.",
+      "source": "SecurityOnline",
+      "published": "2026-11-25",
+      "url": "https://securityonline.info/juniper-session-smart-router-vulnerabilities/"
+    },
+    {
+      "category": "appsec",
+      "title": "Attackers used a CVSS 10 deserialization bug in the hex.pm registry server to run commands on six production hosts",
+      "cve": [
+        "CVE-2026-129514",
+        "CVE-2026-124283",
+        "CVE-2026-133555",
+        "CVE-2026-130411"
+      ],
+      "severity": "Critical 10.0",
+      "summary": "The Elixir/Erlang package registry hex.pm disclosed that its server accepted Erlang-format request bodies containing struct maps before routing and authentication, a check removed back in 2016, which chained into OS command execution; the attacker sent 69 exploit requests and got code running on six servers before everything was patched. The team's audit found no tampered packages, but it cannot rule out reads of account data such as emails, password hashes and 2FA secrets, so all sessions were revoked. Hex users should change their password, reset 2FA and re-authenticate the client, fetch only from repo.hex.pm until the updated client ships, and anyone self-hosting the hexpm server should deploy the fix; related library fixes landed in ash 3.38.0, db_connection 2.10.3 and new flop releases.",
+      "source": "The Hacker News",
+      "published": "2026-11-25",
+      "url": "https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html"
+    },
+    {
+      "category": "appsec",
+      "title": "1Password says a hijacked employee GitHub account let an attacker plant code in backend services and pull customer account records",
+      "cve": [],
+      "severity": "",
+      "summary": "1Password found on November 19 that an employee's corporate GitHub account had been compromised and used to reach private repositories, reach the CI/CD environment and inject code into backend services that collected customer account metadata such as names, emails, IDs, public keys, SRP parameters and invitation or recovery tokens. The company says vaults and their encryption keys were not exposed, a small number of customers were notified, the stolen token was revoked and infrastructure credentials were rotated. It is a reminder to treat developer GitHub identities and CI secrets as production credentials: enforce phishing-resistant MFA and short-lived tokens, and alert on code pushed to deploy paths from unusual sessions; 1Password customers should watch for unexpected invitations, recovery requests and phishing.",
+      "source": "BleepingComputer",
+      "published": "2026-11-25",
+      "url": "https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: Palo Alto ships PAN-OS fixes for the Fragnesia kernel bug that PHP2Shell attackers used to root firewalls",
+      "cve": [
+        "CVE-2026-46300",
+        "CVE-2026-109618"
+      ],
+      "severity": "Exploited",
+      "summary": "Palo Alto Networks published PAN-SA-2026-0015 with fixed PAN-OS builds across the 10.2, 11.1, 11.2, 12.1 and 12.2 trains for CVE-2026-46300, the Linux kernel ESP-in-TCP privilege escalation that a China-linked group chained after PHP2Shell RCE to get root on 25 servers. The vendor says the only known path to exploiting it is first compromising an internet-exposed management interface via PHP2Shell. Install the hotfix for your train, confirm the October PHP2Shell patches are in place, and restrict management interfaces to a dedicated network or VPN.",
+      "source": "SecurityWeek",
+      "published": "2026-11-25",
+      "url": "https://www.securityweek.com/palo-alto-networks-patches-fragnesia-flaw-used-to-root-firewalls/"
+    },
+    {
+      "category": "zero-day",
+      "title": "Eclypsium: most exploited flaws fixed in network appliance advisories last month sat in bundled PHP, Node.js and OpenSSH",
+      "cve": [
+        "CVE-2026-109618",
+        "CVE-2026-109619",
+        "CVE-2026-76466",
+        "CVE-2026-114625",
+        "CVE-2026-19868"
+      ],
+      "severity": "",
+      "summary": "Eclypsium's InfraTrust Pulse reviewed 373 advisories from 23 infrastructure vendors between mid-October and November 19 and found 38 that addressed CISA KEV flaws, 33 of them in third-party components the vendors ship inside their appliances. PHP2Shell fixes were still partial or missing for several vendors as of November 20, and the report's priority list includes Cisco Expressway, Arista VeloCloud Orchestrator, Cisco ASA/FTD VPN and SonicWall SSO VPN bugs already exploited in the wild. Track bundled-component CVEs per appliance rather than per vendor, take management interfaces off the internet, and check devices that were exposed for backdoors that survive patching.",
+      "source": "BleepingComputer",
+      "published": "2026-11-25",
+      "url": "https://www.bleepingcomputer.com/news/security/infratrust-warns-of-exploited-supply-chain-flaws-in-network-appliances/"
+    },
+    {
+      "category": "ai",
+      "title": "GreyNoise tracks an agent-driven actor that has compromised 24 Check Point management servers across at least 22 organizations",
+      "cve": [],
+      "severity": "",
+      "summary": "GreyNoise says the actor it calls GT13 uses agentic harnesses to scan and exploit automatically from 99 IP addresses, with some hands-on-keyboard work, and has hit energy, finance, government, manufacturing and transport targets in several countries since early October. In one victim it tried a long list of old and new CVEs across Citrix, Ivanti, Exchange, vCenter, NetLogon and Check Point SmartConsole, which shows how cheaply AI tooling lets an attacker cycle through known bugs. Patch the whole edge and management estate rather than just the latest headline CVE, and review Check Point Security Management servers for unexpected admin sessions; GreyNoise believes the campaign is ongoing.",
+      "source": "SecurityWeek",
+      "published": "2026-11-24",
+      "url": "https://www.securityweek.com/check-point-security-management-servers-hacked-in-ai-assisted-campaign/"
+    },
+    {
+      "category": "ai",
+      "title": "Swiss NCSC confirms its first AI-agent intrusions, hitting critical infrastructure operators in at least two sectors",
+      "cve": [],
+      "severity": "",
+      "summary": "Switzerland's NCSC says it received its first reports of attacks run with agentic offensive frameworks, and in every case it knows of the attackers got into the victims' systems through weak passwords, known flaws or exposed services. It notes that internet-reachable instances of agent tools such as ARTEX and CyberStrikeAI have nearly doubled since October. Its advice is basic but now urgent: shrink exposure with allow-lists or geo-blocking, put webmail and VPN behind MFA or passkeys, enforce least privilege, watch for unusual data volumes, and patch critical internet-facing flaws within 24 hours of release.",
+      "source": "Security Affairs",
+      "published": "2026-11-25",
+      "url": "https://securityaffairs.com/204004/hacking/switzerland-confirms-first-ai-agent-cyberattacks-on-local-organisations.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Decoy container images show bots using AWS keys leaked in public registries within seconds and draining LLM API credit",
+      "cve": [],
+      "severity": "",
+      "summary": "Stony Brook University researchers pushed 300 nginx look-alike images carrying decoy AWS, OpenAI and Anthropic keys to eight registries; the AWS keys drew over 140,000 API calls from more than 5,000 IPs, with a median of 51 seconds and a fastest of under 8 seconds to first use. The bots watch newest-image listings and pull only the layers likely to hold credentials, and the LLM keys had their balances drained. Keep secrets out of image layers entirely (use build secrets and multi-stage builds), scan images before pushing, scope keys tightly, and rotate immediately if one ever ships in an image.",
+      "source": "Help Net Security",
+      "published": "2026-11-25",
+      "url": "https://www.helpnetsecurity.com/2026/11/25/docker-aws-key-exposure-bots/"
+    },
+    {
+      "category": "appsec",
+      "title": "WHMCS patches an unauthenticated cart SQL injection that exposes client data and admin password hashes",
+      "cve": [
+        "CVE-2026-82981",
+        "CVE-2026-82979",
+        "CVE-2026-93700"
+      ],
+      "severity": "High 8.7",
+      "summary": "WHMCS fixed three flaws: a no-login SQL injection in the shopping cart (CVE-2026-82981), an authenticated Client Area SQL injection, and an email-campaign bug rated 9.0 that lets a logged-in client read configuration files including database credentials and possibly run code. Fixes are in 9.0.10 and 8.13.8, with 9.1.2 announced for the 9.1 line; 8.0 to 8.12 get no patch, and no attacks have been reported yet. Self-hosted operators should upgrade now, then delete planned or running email campaigns and empty the template cache as the advisory instructs.",
+      "source": "The Hacker News",
+      "published": "2026-11-24",
+      "url": "https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html"
+    },
+    {
+      "category": "ai",
+      "title": "OpenAI and Cisco open-source Shirudo, where AI agents write signed eBPF shields to block exploits until a patch lands",
+      "cve": [],
+      "severity": "",
+      "summary": "Shirudo is a Linux runtime built on Tetragon in which AI agents draft eBPF rules that block a specific exploit path without restarting the service; shields are signed, verified via TPM on the host, start in monitor-only mode and need operator approval before they block. In a demo, a Codex-generated shield stopped a Java4Shell attempt against a live Elasticsearch service. It is an early, interesting model for AI-assisted virtual patching, but treat agent-written kernel policy like any other change: review it, stage it in monitor mode, and keep the real patch on schedule.",
+      "source": "The Hacker News",
+      "published": "2026-11-24",
+      "url": "https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html"
+    }
+  ]
+}

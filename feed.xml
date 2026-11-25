@@ -6,7 +6,87 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Juniper now reports exploitation of the unauthenticated Session Smart Conductor command injection; upgrade to 7.0.5, 7.1.7 or 7.2.3</title>
+      <link>https://securityonline.info/juniper-session-smart-router-vulnerabilities/</link>
+      <guid isPermaLink="false">2026-11-26|https://securityonline.info/juniper-session-smart-router-vulnerabilities/|Juniper now reports exploitation of the unauthenticated Session Smart Conductor command injection; upgrade to 7.0.5, 7.1.7 or 7.2.3</guid>
+      <pubDate>Thu, 26 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 9.8 · CVE-2026-103406] Juniper updated bulletin JSA112183 on November 24 to say at least one malicious exploitation of CVE-2026-103406 has been reported to its SIRT; the October advisory had said no attacks were known. The bug lets an unauthenticated attacker run OS commands on Session Smart Conductor during key management, and the same bulletin fixes a 9.8 admin-takeover flaw in Session Smart Router (CVE-2026-103409). There is no workaround, so move to 7.0.5, 7.1.7, 7.2.3 or later and keep Conductor and router management interfaces off untrusted networks until you do. (Source: SecurityOnline)</description>
+    </item>
+    <item>
+      <title>Attackers used a CVSS 10 deserialization bug in the hex.pm registry server to run commands on six production hosts</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html</link>
+      <guid isPermaLink="false">2026-11-26|https://thehackernews.com/2026/11/hackers-exploited-cvss-100-hexpm-rce.html|Attackers used a CVSS 10 deserialization bug in the hex.pm registry server to run commands on six production hosts</guid>
+      <pubDate>Thu, 26 Nov 2026 06:59:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical 10.0 · CVE-2026-129514 · CVE-2026-124283 · CVE-2026-133555 · CVE-2026-130411] The Elixir/Erlang package registry hex.pm disclosed that its server accepted Erlang-format request bodies containing struct maps before routing and authentication, a check removed back in 2016, which chained into OS command execution; the attacker sent 69 exploit requests and got code running on six servers before everything was patched. The team's audit found no tampered packages, but it cannot rule out reads of account data such as emails, password hashes and 2FA secrets, so all sessions were revoked. Hex users should change their password, reset 2FA and re-authenticate the client, fetch only from repo.hex.pm until the updated client ships, and anyone self-hosting the hexpm server should deploy the fix; related library fixes landed in ash 3.38.0, db_connection 2.10.3 and new flop releases. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>1Password says a hijacked employee GitHub account let an attacker plant code in backend services and pull customer account records</title>
+      <link>https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/</link>
+      <guid isPermaLink="false">2026-11-26|https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/|1Password says a hijacked employee GitHub account let an attacker plant code in backend services and pull customer account records</guid>
+      <pubDate>Thu, 26 Nov 2026 06:58:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>1Password found on November 19 that an employee's corporate GitHub account had been compromised and used to reach private repositories, reach the CI/CD environment and inject code into backend services that collected customer account metadata such as names, emails, IDs, public keys, SRP parameters and invitation or recovery tokens. The company says vaults and their encryption keys were not exposed, a small number of customers were notified, the stolen token was revoked and infrastructure credentials were rotated. It is a reminder to treat developer GitHub identities and CI secrets as production credentials: enforce phishing-resistant MFA and short-lived tokens, and alert on code pushed to deploy paths from unusual sessions; 1Password customers should watch for unexpected invitations, recovery requests and phishing. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>Update: Palo Alto ships PAN-OS fixes for the Fragnesia kernel bug that PHP2Shell attackers used to root firewalls</title>
+      <link>https://www.securityweek.com/palo-alto-networks-patches-fragnesia-flaw-used-to-root-firewalls/</link>
+      <guid isPermaLink="false">2026-11-26|https://www.securityweek.com/palo-alto-networks-patches-fragnesia-flaw-used-to-root-firewalls/|Update: Palo Alto ships PAN-OS fixes for the Fragnesia kernel bug that PHP2Shell attackers used to root firewalls</guid>
+      <pubDate>Thu, 26 Nov 2026 06:57:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Exploited · CVE-2026-46300 · CVE-2026-109618] Palo Alto Networks published PAN-SA-2026-0015 with fixed PAN-OS builds across the 10.2, 11.1, 11.2, 12.1 and 12.2 trains for CVE-2026-46300, the Linux kernel ESP-in-TCP privilege escalation that a China-linked group chained after PHP2Shell RCE to get root on 25 servers. The vendor says the only known path to exploiting it is first compromising an internet-exposed management interface via PHP2Shell. Install the hotfix for your train, confirm the October PHP2Shell patches are in place, and restrict management interfaces to a dedicated network or VPN. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Eclypsium: most exploited flaws fixed in network appliance advisories last month sat in bundled PHP, Node.js and OpenSSH</title>
+      <link>https://www.bleepingcomputer.com/news/security/infratrust-warns-of-exploited-supply-chain-flaws-in-network-appliances/</link>
+      <guid isPermaLink="false">2026-11-26|https://www.bleepingcomputer.com/news/security/infratrust-warns-of-exploited-supply-chain-flaws-in-network-appliances/|Eclypsium: most exploited flaws fixed in network appliance advisories last month sat in bundled PHP, Node.js and OpenSSH</guid>
+      <pubDate>Thu, 26 Nov 2026 06:56:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[CVE-2026-109618 · CVE-2026-109619 · CVE-2026-76466 · CVE-2026-114625 · CVE-2026-19868] Eclypsium's InfraTrust Pulse reviewed 373 advisories from 23 infrastructure vendors between mid-October and November 19 and found 38 that addressed CISA KEV flaws, 33 of them in third-party components the vendors ship inside their appliances. PHP2Shell fixes were still partial or missing for several vendors as of November 20, and the report's priority list includes Cisco Expressway, Arista VeloCloud Orchestrator, Cisco ASA/FTD VPN and SonicWall SSO VPN bugs already exploited in the wild. Track bundled-component CVEs per appliance rather than per vendor, take management interfaces off the internet, and check devices that were exposed for backdoors that survive patching. (Source: BleepingComputer)</description>
+    </item>
+    <item>
+      <title>GreyNoise tracks an agent-driven actor that has compromised 24 Check Point management servers across at least 22 organizations</title>
+      <link>https://www.securityweek.com/check-point-security-management-servers-hacked-in-ai-assisted-campaign/</link>
+      <guid isPermaLink="false">2026-11-26|https://www.securityweek.com/check-point-security-management-servers-hacked-in-ai-assisted-campaign/|GreyNoise tracks an agent-driven actor that has compromised 24 Check Point management servers across at least 22 organizations</guid>
+      <pubDate>Thu, 26 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>GreyNoise says the actor it calls GT13 uses agentic harnesses to scan and exploit automatically from 99 IP addresses, with some hands-on-keyboard work, and has hit energy, finance, government, manufacturing and transport targets in several countries since early October. In one victim it tried a long list of old and new CVEs across Citrix, Ivanti, Exchange, vCenter, NetLogon and Check Point SmartConsole, which shows how cheaply AI tooling lets an attacker cycle through known bugs. Patch the whole edge and management estate rather than just the latest headline CVE, and review Check Point Security Management servers for unexpected admin sessions; GreyNoise believes the campaign is ongoing. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>Swiss NCSC confirms its first AI-agent intrusions, hitting critical infrastructure operators in at least two sectors</title>
+      <link>https://securityaffairs.com/204004/hacking/switzerland-confirms-first-ai-agent-cyberattacks-on-local-organisations.html</link>
+      <guid isPermaLink="false">2026-11-26|https://securityaffairs.com/204004/hacking/switzerland-confirms-first-ai-agent-cyberattacks-on-local-organisations.html|Swiss NCSC confirms its first AI-agent intrusions, hitting critical infrastructure operators in at least two sectors</guid>
+      <pubDate>Thu, 26 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Switzerland's NCSC says it received its first reports of attacks run with agentic offensive frameworks, and in every case it knows of the attackers got into the victims' systems through weak passwords, known flaws or exposed services. It notes that internet-reachable instances of agent tools such as ARTEX and CyberStrikeAI have nearly doubled since October. Its advice is basic but now urgent: shrink exposure with allow-lists or geo-blocking, put webmail and VPN behind MFA or passkeys, enforce least privilege, watch for unusual data volumes, and patch critical internet-facing flaws within 24 hours of release. (Source: Security Affairs)</description>
+    </item>
+    <item>
+      <title>Decoy container images show bots using AWS keys leaked in public registries within seconds and draining LLM API credit</title>
+      <link>https://www.helpnetsecurity.com/2026/11/25/docker-aws-key-exposure-bots/</link>
+      <guid isPermaLink="false">2026-11-26|https://www.helpnetsecurity.com/2026/11/25/docker-aws-key-exposure-bots/|Decoy container images show bots using AWS keys leaked in public registries within seconds and draining LLM API credit</guid>
+      <pubDate>Thu, 26 Nov 2026 06:53:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Stony Brook University researchers pushed 300 nginx look-alike images carrying decoy AWS, OpenAI and Anthropic keys to eight registries; the AWS keys drew over 140,000 API calls from more than 5,000 IPs, with a median of 51 seconds and a fastest of under 8 seconds to first use. The bots watch newest-image listings and pull only the layers likely to hold credentials, and the LLM keys had their balances drained. Keep secrets out of image layers entirely (use build secrets and multi-stage builds), scan images before pushing, scope keys tightly, and rotate immediately if one ever ships in an image. (Source: Help Net Security)</description>
+    </item>
+    <item>
+      <title>WHMCS patches an unauthenticated cart SQL injection that exposes client data and admin password hashes</title>
+      <link>https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html</link>
+      <guid isPermaLink="false">2026-11-26|https://thehackernews.com/2026/11/whmcs-sql-injection-flaw-could-expose.html|WHMCS patches an unauthenticated cart SQL injection that exposes client data and admin password hashes</guid>
+      <pubDate>Thu, 26 Nov 2026 06:52:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[High 8.7 · CVE-2026-82981 · CVE-2026-82979 · CVE-2026-93700] WHMCS fixed three flaws: a no-login SQL injection in the shopping cart (CVE-2026-82981), an authenticated Client Area SQL injection, and an email-campaign bug rated 9.0 that lets a logged-in client read configuration files including database credentials and possibly run code. Fixes are in 9.0.10 and 8.13.8, with 9.1.2 announced for the 9.1 line; 8.0 to 8.12 get no patch, and no attacks have been reported yet. Self-hosted operators should upgrade now, then delete planned or running email campaigns and empty the template cache as the advisory instructs. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>OpenAI and Cisco open-source Shirudo, where AI agents write signed eBPF shields to block exploits until a patch lands</title>
+      <link>https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html</link>
+      <guid isPermaLink="false">2026-11-26|https://thehackernews.com/2026/11/openai-and-cisco-unveil-ai-assisted.html|OpenAI and Cisco open-source Shirudo, where AI agents write signed eBPF shields to block exploits until a patch lands</guid>
+      <pubDate>Thu, 26 Nov 2026 06:51:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>Shirudo is a Linux runtime built on Tetragon in which AI agents draft eBPF rules that block a specific exploit path without restarting the service; shields are signed, verified via TPM on the host, start in monitor-only mode and need operator approval before they block. In a demo, a Codex-generated shield stopped a Java4Shell attempt against a live Elasticsearch service. It is an early, interesting model for AI-assisted virtual patching, but treat agent-written kernel policy like any other change: review it, stage it in monitor mode, and keep the real patch on schedule. (Source: The Hacker News)</description>
+    </item>
     <item>
       <title>Update: Drupal installer takeover bug is now exploited on live sites and in CISA KEV, due November 27</title>
       <link>https://rescana.com/post/drupal-core-installer-flaw-cve-2026-132165-exploited-and-in-cisa-kev-update-now</link>
@@ -734,78 +814,6 @@
       <pubDate>Fri, 13 Nov 2026 06:52:00 +0800</pubDate>
       <category>AI security</category>
       <description>Proofpoint demonstrated that an attacker can publish a multi-tenant Microsoft Entra Agent ID blueprint and trick a user into consenting, which gives the blueprint a permission it says cannot be revoked and lets the attacker create agent identities inside the victim's tenant that can then call Microsoft Graph. It is a research proof of concept that has not been seen in attacks and was reported to Microsoft, but the exposure grows as regular users gain the ability to create blueprints by default this month. Apply the same user-consent restrictions to agent blueprints and identities as to apps, classify risky Graph permissions, put Conditional Access on agents, and alert on 'Add application' and 'Add service principal' audit events with signInAudience set to AzureADMultipleOrgs. (Source: Cybersecurity News)</description>
-    </item>
-    <item>
-      <title>Update: Cisco BroadWorks XXE abused in the AI-driven 'Operation Snowball' telecom intrusion lands in CISA KEV</title>
-      <link>https://thehackernews.com/2026/11/cisco-broadworks-and-openwave-flaws.html</link>
-      <guid isPermaLink="false">2026-11-12|https://thehackernews.com/2026/11/cisco-broadworks-and-openwave-flaws.html|Update: Cisco BroadWorks XXE abused in the AI-driven 'Operation Snowball' telecom intrusion lands in CISA KEV</guid>
-      <pubDate>Thu, 12 Nov 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[High 7.5 (BroadWorks), exploited · CVE-2026-20320 · CVE-2026-111793] CISA has added the Cisco BroadWorks OCI XML parser XXE flaw, which lets an unauthenticated attacker read configuration data and was used to pull the platform's XSP identity private key in the Operation Snowball telecom attack, to its exploited-vulnerabilities catalog. An Openwave Messaging Webtop media transcoder bug (CVSS 4.3) that lets authenticated users process unintended file types was added alongside it after the vendor confirmed attacks. Cisco shipped its fix in August and Openwave in October; federal agencies have until November 24. Patch, review BroadWorks XSP hosts (especially anything exposing port 2208) for Sliver, Chisel or Behinder web shells, and rotate credentials and certificates on any box that may have been reached. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>IBM Aspera Faspex authorization bypass that hands users full admin rights is now flagged as exploited</title>
-      <link>https://www.securityweek.com/ibm-aspera-faspex-signalwire-freeswitch-vulnerabilities-exploited-in-attacks/</link>
-      <guid isPermaLink="false">2026-11-12|https://www.securityweek.com/ibm-aspera-faspex-signalwire-freeswitch-vulnerabilities-exploited-in-attacks/|IBM Aspera Faspex authorization bypass that hands users full admin rights is now flagged as exploited</guid>
-      <pubDate>Thu, 12 Nov 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.8 · CVE-2026-123218] CISA put an IBM Aspera Faspex flaw on its KEV list, where a logged-in user can send crafted messages to bypass authorization checks and gain full administrator privileges on the file-transfer server. IBM's advisory does not describe the attacks and no public technical write-up exists yet, but federal agencies were given only three days to patch. Upgrade Faspex to 5.0.19 PL1 or later now, and review admin accounts and recent configuration changes on internet-facing instances. (Source: SecurityWeek)</description>
-    </item>
-    <item>
-      <title>Update: N-able ships N-central 2026.4 HF2, but says it fixes only 'some' of the 30-plus published zero-days</title>
-      <link>https://bleepingcomputer.com/news/security/n-able-releases-security-hotfixes-for-zero-day-vulnerabilities</link>
-      <guid isPermaLink="false">2026-11-12|https://bleepingcomputer.com/news/security/n-able-releases-security-hotfixes-for-zero-day-vulnerabilities|Update: N-able ships N-central 2026.4 HF2, but says it fixes only 'some' of the 30-plus published zero-days</guid>
-      <pubDate>Thu, 12 Nov 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical, public PoC · CVE-2026-125878 · CVE-2026-125882 · CVE-2026-125883 · CVE-2026-125879 · CVE-2026-125881 · CVE-2026-125880 · CVE-2026-91000] N-able has released N-central 2026.4 HF2 with patches for the most serious of the Able2Shell bugs, including OGNL injection, multiple XXE flaws, a path-traversal upload RCE and a root privilege escalation, and says all hosted servers are now upgraded. The vendor has not confirmed that every disclosed issue is fixed and has not reported exploitation, but Defused saw probing of agent sessions and the unauthenticated remote-control endpoint, and the researcher's exploit code is public. On-prem customers should keep servers offline until upgraded, follow N-able's upgrade guidance, and check for unexpected 'Default Administrator' accounts. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>SAP fixes 'ICM2SHELL' WebSocket bug that Onapsis turned into unauthenticated RCE, plus a Gateway ACL bypass</title>
-      <link>https://www.securityweek.com/sap-patches-critical-icm2shell-proxygate-vulnerabilities/</link>
-      <guid isPermaLink="false">2026-11-12|https://www.securityweek.com/sap-patches-critical-icm2shell-proxygate-vulnerabilities/|SAP fixes 'ICM2SHELL' WebSocket bug that Onapsis turned into unauthenticated RCE, plus a Gateway ACL bypass</guid>
-      <pubDate>Thu, 12 Nov 2026 06:57:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Maximum severity · CVE-2026-76964 · CVE-2026-89126 · CVE-2026-89103 · CVE-2026-120017] SAP's November notes fix four maximum-severity issues: ICM2SHELL, a fragmented-WebSocket reassembly flaw in the kernel's ICM and Web Dispatcher for which Onapsis built a working unauthenticated exploit running as the &lt;sid&gt;adm user; ProxyGate, a Gateway prxyinfo ACL bypass using requests that appear internal; and a NetWeaver missing-authentication bug enabling impersonation. No in-the-wild exploitation or public PoC is reported. Apply the November notes quickly, starting with internet-facing Web Dispatcher and ICM, and plan kernel upgrades for out-of-maintenance releases that ProxyGate also affects. (Source: SecurityWeek)</description>
-    </item>
-    <item>
-      <title>Prompt-injected issue in openai/codex chained to a runner memory read, cache poisoning and a path to publish the npm package</title>
-      <link>https://depi.security/blog/20261111-backdooring-codex/</link>
-      <guid isPermaLink="false">2026-11-12|https://depi.security/blog/20261111-backdooring-codex/|Prompt-injected issue in openai/codex chained to a runner memory read, cache poisoning and a path to publish the npm package</guid>
-      <pubDate>Thu, 12 Nov 2026 06:56:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Depi researchers showed that an issue-labeling workflow in the openai/codex repo fed untrusted issue text to a Codex agent that any user could trigger, letting them run commands, escape the write sandbox through unauthenticated .NET debug pipes, and read GITHUB_TOKEN and ACTIONS_RUNTIME_TOKEN from runner memory. With those tokens they poisoned a cache restored by a privileged CI workflow, which they say could have led to an OIDC token and a malicious @openai/codex release. OpenAI fixed it after a Bugcrowd report and no user action is needed. Teams running AI agents in GitHub Actions should never pass issue or PR text to agents with shell access, restrict who can trigger them, keep token permissions minimal, and isolate caches from untrusted triggers. (Source: Depi Security)</description>
-    </item>
-    <item>
-      <title>ESET: North Korean crews push loaders through npm and trojanized Notepad++ plugins and rewrite Git history to hide implants</title>
-      <link>https://cybersecuritynews.com/north-korean-hackers-3/</link>
-      <guid isPermaLink="false">2026-11-12|https://cybersecuritynews.com/north-korean-hackers-3/|ESET: North Korean crews push loaders through npm and trojanized Notepad++ plugins and rewrite Git history to hide implants</guid>
-      <pubDate>Thu, 12 Nov 2026 06:55:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>ESET's latest APT report describes DeceptiveDevelopment and related North Korean groups planting loaders in small, individually maintained packages across npm, PyPI, Packagist and Go, including the npm packages bianira-ui@1.27.0 and fluid-type-ui@2.0.8, and swapping WinMerge plugins for trojanized Notepad++ ones. With stolen Git credentials and SSH keys they inject code into public and private repositories and rewrite commit history to cover it, while the DEV#POPPER RAT hooks VS Code and Cursor so it runs on every launch. Search for the named packages and C2 address 166[.]88[.]134[.]62, audit recent history rewrites, and rotate credentials for developers who ran 'coding test' material from recruiters. (Source: Cyber Security News)</description>
-    </item>
-    <item>
-      <title>Microsoft's 'Lazarus' research backdoors an agent's model by editing fewer than 10 dormant neurons</title>
-      <link>https://www.helpnetsecurity.com/2026/11/11/microsoft-hidden-ai-backdoors-lazarus/</link>
-      <guid isPermaLink="false">2026-11-12|https://www.helpnetsecurity.com/2026/11/11/microsoft-hidden-ai-backdoors-lazarus/|Microsoft's 'Lazarus' research backdoors an agent's model by editing fewer than 10 dormant neurons</guid>
-      <pubDate>Thu, 12 Nov 2026 06:54:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Microsoft researchers showed that changing fewer than ten rarely used neurons in a model's weights can plant a trigger, such as a date change, that makes an agent download and run attacker code using permissions it already has, with no retraining and no change in safety-test results. The attacker needs write access to stored weights, for example via a compromised account, pipeline or storage bucket, and Microsoft has not seen it used in the wild. Diff every checkpoint against its declared base model before deployment and after updates, keep agent permissions tight, sandbox generated code, limit egress, and require human approval for high-impact tool calls. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Open-source 'AntiFox' AI pentest platform tied to real intrusions that reached AWS production secrets</title>
-      <link>https://thehackernews.com/2026/11/antifox-ai-pentesting-platform-linked.html</link>
-      <guid isPermaLink="false">2026-11-12|https://thehackernews.com/2026/11/antifox-ai-pentesting-platform-linked.html|Open-source 'AntiFox' AI pentest platform tied to real intrusions that reached AWS production secrets</guid>
-      <pubDate>Thu, 12 Nov 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Arctic Wolf Labs linked Alibaba Cloud hosts running the AntiFox autonomous pentesting framework to attacks that planted an ASPX web shell through IIS's w3wp.exe, harvested web.config connection strings, and staged files in upload folders. In separate cases a valid AWS key of unknown origin was used to enumerate dozens of services, read a production secret with GetSecretValue and access S3. Alert on w3wp.exe spawning shells or PowerShell, hunt for new ASPX files in web roots, move database credentials out of web.config, and review CloudTrail for broad enumeration and secret reads from unfamiliar identities. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Corelight finds most MCP servers silently pull new dependencies on every start</title>
-      <link>https://cybersecuritynews.com/hackers-could-exploit-mcp-server/</link>
-      <guid isPermaLink="false">2026-11-12|https://cybersecuritynews.com/hackers-could-exploit-mcp-server/|Corelight finds most MCP servers silently pull new dependencies on every start</guid>
-      <pubDate>Thu, 12 Nov 2026 06:52:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Corelight found that 23 of 35 MCP servers it reviewed are installed with uvx or npx 'latest' launchers that fetch dependencies fresh from PyPI or npm, so one community server produced 15 different dependency sets over 19 rebuilds in five weeks. Because those packages run inside the server process, a hijacked dependency would get the server's API tokens, files and network access, the same pattern worms like Shai-Hulud exploit. This is a deployment choice rather than a protocol bug: pin servers to a commit, install from a hash-locked lockfile, launch them directly, disable startup update checks, and run each under its own least-privilege account. (Source: Cyber Security News)</description>
     </item>
   </channel>
 </rss>
