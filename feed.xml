@@ -6,7 +6,71 @@
     <atom:link href="https://mindtheaigap.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Zero-days and exploited vulnerabilities, AppSec, and AI security. AI-written summaries with links to the original reporting.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 26 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 07:00:00 +0800</lastBuildDate>
+    <item>
+      <title>Update: Drupal discloses a second installer takeover bug, CVE-2026-136716, already exploited on sites patched for Fail2Install</title>
+      <link>https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html</link>
+      <guid isPermaLink="false">2026-11-27|https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html|Update: Drupal discloses a second installer takeover bug, CVE-2026-136716, already exploited on sites patched for Fail2Install</guid>
+      <pubDate>Fri, 27 Nov 2026 07:00:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Highly critical · CVE-2026-136716 · CVE-2026-132165] Drupal says a new core flaw is being exploited to take over sites whose installer was still reachable after the fix for last week's Fail2Install bug (CVE-2026-132165); sites that locked down install.php are not affected. Fixes are in 11.4.14, 11.3.23 and 10.6.23, while 11.0-11.2 and 10.5 and older are end-of-life and get nothing. Update and run update.php, block access to the installer, and check logs for changes to or by user 1, confirming its email is yours and resetting its password if in doubt. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>CISA adds 10 exploited flaws to KEV, including five Mitel MiCollab AWV bugs and a Xen Orchestra token auth bypass</title>
+      <link>https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html</link>
+      <guid isPermaLink="false">2026-11-27|https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html|CISA adds 10 exploited flaws to KEV, including five Mitel MiCollab AWV bugs and a Xen Orchestra token auth bypass</guid>
+      <pubDate>Fri, 27 Nov 2026 06:59:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[Critical 10.0 · CVE-2026-133323 · CVE-2026-133303 · CVE-2026-133275 · CVE-2026-133311 · CVE-2026-133324 · CVE-2026-133469 · CVE-2023-25914 · CVE-2023-25915 · CVE-2025-41450 · CVE-2026-103406] The November 25 KEV batch covers five Mitel MiCollab AWV flaws (led by a CVSS 10 command injection and a 9.0 XML injection), a 9.8 Xen Orchestra authentication bypass using a crafted token, three Danfoss AK-SM 800A controller bugs, and the Juniper Session Smart Conductor injection we covered yesterday. Federal agencies must fix most of them by November 28 and the remaining two by December 9. Move MiCollab to 10.3.0.18 or later (or cut external access to AWV), patch Xen Orchestra, and keep Danfoss controllers behind a VPN in Strict mode; since patching does not remove an existing foothold, check exposed MiCollab servers for staged files. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Update: Singapore's CSA says the NGINX HTTP/2 heap overflow with public PoCs is now reportedly exploited</title>
+      <link>https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-168/</link>
+      <guid isPermaLink="false">2026-11-27|https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-168/|Update: Singapore's CSA says the NGINX HTTP/2 heap overflow with public PoCs is now reportedly exploited</guid>
+      <pubDate>Fri, 27 Nov 2026 06:58:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High 8.1 · CVE-2026-123007 · CVE-2026-123633] A November 26 CSA alert says CVE-2026-123007, the HTTP/2 flow-control heap overflow in NGINX that researchers released proof-of-concept code for last week, is reportedly being exploited; a companion worker use-after-free (CVE-2026-123633) is not listed as exploited. Affected builds are NGINX Open Source 1.9.5 up to 1.30.7 and 1.31.0 up to 1.31.9, plus NGINX Plus R34-R36 and 37.x before 37.0.8.1 or 37.3.0.1. Upgrade now with a full restart rather than a reload, check distro-packaged NGINX separately, and turn off HTTP/2 where patching has to wait. (Source: Cyber Security Agency of Singapore)</description>
+    </item>
+    <item>
+      <title>watchTowr sees probes for two newly disclosed GeoServer bugs as researchers publish unauthenticated RCE chains</title>
+      <link>https://www.securityweek.com/two-newly-disclosed-geoserver-vulnerabilities-under-attack/</link>
+      <guid isPermaLink="false">2026-11-27|https://www.securityweek.com/two-newly-disclosed-geoserver-vulnerabilities-under-attack/|watchTowr sees probes for two newly disclosed GeoServer bugs as researchers publish unauthenticated RCE chains</guid>
+      <pubDate>Fri, 27 Nov 2026 06:57:00 +0800</pubDate>
+      <category>Zero-day / exploit</category>
+      <description>[High · CVE-2026-120705 · CVE-2026-129243 · CVE-2026-129245 · CVE-2026-120704 · CVE-2026-129244 · CVE-2026-129242] GeoServer published advisories on November 24 for a set of flaws, and watchTowr's honeypots caught error-based probes for the WFS XML injection (CVE-2026-120705) and the service-rule access bypass (CVE-2026-129243) within a day, aimed at finding vulnerable servers rather than achieving code execution so far. Eye Security and Rapid7 have each shown chains, one using a predictable remember-me signing key (CVE-2026-129245), that reach unauthenticated RCE, and a public PoC exists. Upgrade to GeoServer 3.0.2, 2.28.6 or 2.27.7, restrict internet access to instances you cannot patch quickly, and check for credential leaks or unexpected admin sessions. (Source: SecurityWeek)</description>
+    </item>
+    <item>
+      <title>WordPress.org closes six WP Connect plugins after backdoored releases were caught before going out</title>
+      <link>https://thehackernews.com/2026/11/wordpress-blocks-six-backdoored-wp.html</link>
+      <guid isPermaLink="false">2026-11-27|https://thehackernews.com/2026/11/wordpress-blocks-six-backdoored-wp.html|WordPress.org closes six WP Connect plugins after backdoored releases were caught before going out</guid>
+      <pubDate>Fri, 27 Nov 2026 06:56:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>[Critical 9.8 · CVE-2026-135202] After the developer account behind WP Connect appears to have been compromised, WordPress.org closed six of its Airtable, Notion, Brevo and Contact Form 7 integration plugins (about 3,600 installs) and stopped the malicious updates from being released. The planted file, includes/airwp-online.php, would have called out to tascredit-pay[.]com on every request and run returned PHP, giving full file, shell and database control. Sites are unlikely to have received the backdoor, but anyone using Air WP Sync, WP Sync for Notion or the other closed plugins should remove them, since they will get no further fixes, and look for that file and odd WP-Cron hooks. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Socket finds 13 malicious NuGet packages posing as WinUI and WPF button controls in fake .NET job tests</title>
+      <link>https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html</link>
+      <guid isPermaLink="false">2026-11-27|https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html|Socket finds 13 malicious NuGet packages posing as WinUI and WPF button controls in fake .NET job tests</guid>
+      <pubDate>Fri, 27 Nov 2026 06:55:00 +0800</pubDate>
+      <category>AppSec</category>
+      <description>Socket found 13 NuGet packages, including WinUI.Button, VS_Builder.WinUI3Controls, HappyOne.MSBuildAnalyzer and WinUI3IconButton, that were handed to developers as part of fake take-home assessments and used MSBuild targets to drop a sideloaded DLL and further payloads at build time. The same operators ran lookalike axios repos on GitHub and npm packages such as axios-native and fs-extra-core; NuGet has removed all 13 packages. Treat unsolicited coding tests as untrusted code, build them only in a throwaway VM, and search build hosts for the listed package IDs and for %LOCALAPPDATA%\osk\OskSupport.dll. (Source: The Hacker News)</description>
+    </item>
+    <item>
+      <title>Microsoft says Chinese and North Korean state groups now run intrusions with the ARTEX agentic pentest framework</title>
+      <link>https://www.techradar.com/pro/security/microsoft-says-chinese-and-north-korean-hacking-groups-are-now-actively-using-artex-in-their-attacks</link>
+      <guid isPermaLink="false">2026-11-27|https://www.techradar.com/pro/security/microsoft-says-chinese-and-north-korean-hacking-groups-are-now-actively-using-artex-in-their-attacks|Microsoft says Chinese and North Korean state groups now run intrusions with the ARTEX agentic pentest framework</guid>
+      <pubDate>Fri, 27 Nov 2026 06:54:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>In a November 25 report, Microsoft says China-linked groups including Salt Typhoon and Crystal Typhoon, North Korean actors and financially motivated crews are using the AI-driven ARTEX framework for reconnaissance, credential attacks and exploitation, and notes a clone called AntiFox. Because the agents work at machine speed and the default artex-enrich user agent is easy to change, signature detection alone will miss them. Alert on bursts of high-rate activity from single sources, harden identity protections, and put decoys in place to catch automated recon. (Source: TechRadar)</description>
+    </item>
+    <item>
+      <title>Google will require AI agents to reach Workspace data only through its MCP servers or CLI from February 2027</title>
+      <link>https://www.helpnetsecurity.com/2026/11/26/google-ai-agent-security-requirements/</link>
+      <guid isPermaLink="false">2026-11-27|https://www.helpnetsecurity.com/2026/11/26/google-ai-agent-security-requirements/|Google will require AI agents to reach Workspace data only through its MCP servers or CLI from February 2027</guid>
+      <pubDate>Fri, 27 Nov 2026 06:53:00 +0800</pubDate>
+      <category>AI security</category>
+      <description>From February 1, 2027, autonomous agents must use Google's now generally available Workspace MCP servers or CLI under a new AI Tools Addendum, with dedicated OAuth client IDs, narrower scopes and quotas; ordinary apps can keep using REST APIs. On Google Cloud, Agent Gateway adds IAM enforcement, default-deny egress and Model Armor prompt-injection screening, and the addendum bans training on or permanently storing raw Workspace data. Admins should inventory connected agents and OAuth grants now, and developers should move agent integrations over and add user confirmation and injection defenses before the deadline. (Source: Help Net Security)</description>
+    </item>
     <item>
       <title>Juniper now reports exploitation of the unauthenticated Session Smart Conductor command injection; upgrade to 7.0.5, 7.1.7 or 7.2.3</title>
       <link>https://securityonline.info/juniper-session-smart-router-vulnerabilities/</link>
@@ -742,78 +806,6 @@
       <pubDate>Sat, 14 Nov 2026 06:52:00 +0800</pubDate>
       <category>AI security</category>
       <description>In a lab, Darktrace researchers with a foothold and stolen Claude Console credentials used a memory store as a mailbox (heartbeat, input and output files) polled by Claude Code harness processes running as a transient systemd service; the agent ran recon, sprayed a found password against a domain controller and exfiltrated a 1 GB file through the Files API, all over the same API endpoint used for normal inference. Darktrace says it has not seen this in the wild, but it shows why AI API keys need the same protection as cloud credentials. Baseline what your agent harnesses normally execute, alert on unusual tool-call command lines and API data-transfer volumes, and scope, monitor and rotate AI provider keys. (Source: Darktrace)</description>
-    </item>
-    <item>
-      <title>Update: Barracuda confirms in-the-wild attacks on the ESG root chain, and CISA puts both bugs in KEV</title>
-      <link>https://www.bleepingcomputer.com/news/security/hackers-exploit-barracuda-email-security-gateway-flaws-to-get-root-access/</link>
-      <guid isPermaLink="false">2026-11-13|https://www.bleepingcomputer.com/news/security/hackers-exploit-barracuda-email-security-gateway-flaws-to-get-root-access/|Update: Barracuda confirms in-the-wild attacks on the ESG root chain, and CISA puts both bugs in KEV</guid>
-      <pubDate>Fri, 13 Nov 2026 07:00:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.3 / High 8.6 · CVE-2026-116606 · CVE-2026-111560] Barracuda has revised its advisory to say a small number of organizations have been hit through the two Email Security Gateway flaws that chain an authentication weakness in configuration restore into a root-level command injection; when watchTowr published the chain last week, no exploitation was known. CISA added both CVEs to the KEV catalog on November 10 with an unusually short federal deadline of November 13. Confirm every ESG has the BNSF-40425 or BNSF-40430 patch and that the other affected products (Load Balancer ADC, Message Archiver, WAF, WAF Control Center, Web Security Gateway) are patched, turn automatic patching back on if it was disabled, keep the admin UI off untrusted networks, and review appliances that were exposed for signs of compromise. (Source: BleepingComputer)</description>
-    </item>
-    <item>
-      <title>Update: new '4EverAble2Shell' and 'Agent2Shell' N-central exploits work on the freshly patched build, and probing has started</title>
-      <link>https://thehackernews.com/2026/11/new-n-central-exploits-work-against.html</link>
-      <guid isPermaLink="false">2026-11-13|https://thehackernews.com/2026/11/new-n-central-exploits-work-against.html|Update: new '4EverAble2Shell' and 'Agent2Shell' N-central exploits work on the freshly patched build, and probing has started</guid>
-      <pubDate>Fri, 13 Nov 2026 06:59:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[CVE-2026-90436] Researcher Sean Bales, who published the earlier Able2Shell bugs, released new exploits that he says give unauthenticated root RCE on on-premise N-central 2026.4.1.26 (the build N-able shipped on November 10) when the Legacy API is enabled, plus a chain of more than ten bugs that runs commands as SYSTEM on managed Windows agents if the appliance ID is known. Within hours, Presidian saw attempts that used the Apache Axis flaw CVE-2026-90436 (CVSS 9.8) for initial execution followed by 4EverAble2Shell to reach root, sourced from 157.20.241[.]16; watchTowr also logged probes, though no successful compromise had been confirmed at writing and N-able says hosted instances are unaffected. Disable the Legacy API now, apply the November 6 Axis patches, block that IP and hunt for unexpected curl-and-run shell activity on the server. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Apache 2.4.71 fixes a CVSS 9.8 mod_http2 bug that Red Hat says has a reliable public exploit</title>
-      <link>https://thehackernews.com/2026/11/critical-apache-http2-flaw-could-let.html</link>
-      <guid isPermaLink="false">2026-11-13|https://thehackernews.com/2026/11/critical-apache-http2-flaw-could-let.html|Apache 2.4.71 fixes a CVSS 9.8 mod_http2 bug that Red Hat says has a reliable public exploit</guid>
-      <pubDate>Fri, 13 Nov 2026 06:58:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.8 · CVE-2026-119618] A flaw in Apache HTTP Server's HTTP/2 module can let an unauthenticated remote attacker run code on servers with HTTP/2 enabled; it affects 2.4.55 through 2.4.70 and the standalone mod_h2 2.0.8 through 2.0.42, and it is not covered by the earlier CVE-2026-23918 fix. Red Hat says public research has shown a reliable exploit against default mod_http2 setups, while Wiz reports no public exploit or in-the-wild use, so treat it as urgent either way. Upgrade to 2.4.71 or your distro's fixed package (RHEL 9 and 10 have them; several Debian releases and Amazon Linux were still pending), and where you cannot patch yet, drop h2 and h2c from the Protocols directive globally and in every virtual host. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Unpatched 'SignDrop' exploit claims SYSTEM on Windows by abusing the CLFS log-signing mitigation</title>
-      <link>https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html</link>
-      <guid isPermaLink="false">2026-11-13|https://thehackernews.com/2026/11/new-signdrop-zero-day-exploit-turns.html|Unpatched 'SignDrop' exploit claims SYSTEM on Windows by abusing the CLFS log-signing mitigation</guid>
-      <pubDate>Fri, 13 Nov 2026 06:57:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>Exploit code published on GitHub under the name 'MSNightmare' targets the Common Log File System authentication check Microsoft added in late 2025, and was tested on Windows 11 26H2 and Windows Server 2025 builds; Microsoft has not assigned a CVE and nothing was fixed in the November updates. An independent tester found it works but not reliably, and there are no reports of use in attacks. Check the Mode value under HKLM\SYSTEM\CurrentControlSet\Services\CLFS\Authentication to see whether hosts are in scope, but do not switch the mitigation off, since that reopens older CLFS memory-corruption bugs; watch MSRC for a fix and keep EDR rules for local privilege escalation tight. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>Public PoC for a pre-auth MongoDB use-after-free that can crash lagging replica members after failover</title>
-      <link>https://thehackernews.com/2026/11/critical-pre-auth-mongodb-flaw-cve-2026.html</link>
-      <guid isPermaLink="false">2026-11-13|https://thehackernews.com/2026/11/critical-pre-auth-mongodb-flaw-cve-2026.html|Public PoC for a pre-auth MongoDB use-after-free that can crash lagging replica members after failover</guid>
-      <pubDate>Fri, 13 Nov 2026 06:56:00 +0800</pubDate>
-      <category>Zero-day / exploit</category>
-      <description>[Critical 9.5 (CVSS 4.0) · CVE-2026-118383] An unauthenticated client can send two crafted ping commands using readConcern.afterOpTime that leave a use-after-free behind, which crashes the mongod if that member later wins an election while still behind; replica set and sharded cluster members are affected, standalone mongod is not. Datadog Security Labs reproduced the crash and a GitHub PoC exists, though its reliable mode needs a test-only setting, researchers did not get code execution, and MongoDB knows of no exploitation. Upgrade every replica set and shard member to the fixed release for its branch (including containers and members that were offline during maintenance), don't defer Atlas maintenance, restrict network access to the database, and look for log IDs 51803, 21359 and 21363. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>'wfx-loot': 4,837 hijacked GitHub accounts slipped a CI secret stealer into 1,800+ repositories</title>
-      <link>https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html</link>
-      <guid isPermaLink="false">2026-11-13|https://thehackernews.com/2026/11/4837-hijacked-github-accounts-ran-ci.html|'wfx-loot': 4,837 hijacked GitHub accounts slipped a CI secret stealer into 1,800+ repositories</guid>
-      <pubDate>Fri, 13 Nov 2026 06:55:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Starting November 10, an attacker used stolen credentials for thousands of GitHub accounts to open probe pull requests ('docs: dependency audit notes' from a wfx-docs branch) in 61,764 repositories, then planted a stealer through existing workflows or npm postinstall hooks; Aikido says it ran in at least 1,806 repos, grabbing Actions secrets, GITHUB_TOKEN and OIDC tokens, cloud, npm, PyPI and SSH credentials and runner memory, and adding persistent AWS trust policy and Entra federated credential changes. Data went to 194.150.166[.]244, 18.143.168[.]96, 153.75.82[.]159 and Telegram, so a missing wfx-loot artifact does not prove you are clean, and the Packagist package digitalelvis/neuronai-studio 3.14.3 is malicious. Search your orgs for the branch, PR title and 'ci: refresh build cache' style commits, rotate everything affected workflows could reach, remove wfx-ci-* federated credentials and wfx-* role changes, and close the many probe PRs that are still open. (Source: The Hacker News)</description>
-    </item>
-    <item>
-      <title>.NET 11 ships a NuGet package-age cooldown and reproducible container digests as .NET 8 and 9 reach end of support</title>
-      <link>https://www.helpnetsecurity.com/2026/11/12/net-11-security-changes/</link>
-      <guid isPermaLink="false">2026-11-13|https://www.helpnetsecurity.com/2026/11/12/net-11-security-changes/|.NET 11 ships a NuGet package-age cooldown and reproducible container digests as .NET 8 and 9 reach end of support</guid>
-      <pubDate>Fri, 13 Nov 2026 06:54:00 +0800</pubDate>
-      <category>AppSec</category>
-      <description>Microsoft released .NET 11 on November 10 with a new NuGet source setting for a minimum package publication age, so freshly published (and possibly hijacked) versions are not picked up immediately, plus reproducible container image digests via SOURCE_DATE_EPOCH and CRC32 checks when reading ZIP entries. The same day .NET 8 and .NET 9 went out of support and will get no more security fixes. Plan migrations to .NET 10 LTS or .NET 11, turn on the NuGet cooldown in your restore configuration, and add digest verification for published images to your pipeline. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>Unit 42: China-linked actor used a forked open-source AI pentest framework, Cairn, to breach 10 organizations</title>
-      <link>https://www.helpnetsecurity.com/2026/11/12/cairn-autonomous-ai-cyberattacks/</link>
-      <guid isPermaLink="false">2026-11-13|https://www.helpnetsecurity.com/2026/11/12/cairn-autonomous-ai-cyberattacks/|Unit 42: China-linked actor used a forked open-source AI pentest framework, Cairn, to breach 10 organizations</guid>
-      <pubDate>Fri, 13 Nov 2026 06:53:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Palo Alto Networks' Unit 42 tracks the cluster as CL-STA-1238 and says a customized Cairn fork with an added exploitation skill pack ran 25 operations against at least 19 organizations, getting in or taking data at 10, including a standards body, a U.S. teachers' union and a semiconductor firm. The agents mostly leaned on password spraying, auth bypasses, weak or default credentials, exposed cloud APIs and old CVEs, so the AI added speed and coverage rather than new techniques. Block 154.44.31[.]4 and 82.29.129[.]54, and prioritize MFA, removing default credentials, closing open registration endpoints and patching known CVEs on internet-facing apps. (Source: Help Net Security)</description>
-    </item>
-    <item>
-      <title>'BluePhishing': Proofpoint shows how consent phishing for Entra agent blueprints can plant agent identities in a victim tenant</title>
-      <link>https://cybersecuritynews.com/hackers-could-abuse-microsoft-entra-ai-agents/</link>
-      <guid isPermaLink="false">2026-11-13|https://cybersecuritynews.com/hackers-could-abuse-microsoft-entra-ai-agents/|'BluePhishing': Proofpoint shows how consent phishing for Entra agent blueprints can plant agent identities in a victim tenant</guid>
-      <pubDate>Fri, 13 Nov 2026 06:52:00 +0800</pubDate>
-      <category>AI security</category>
-      <description>Proofpoint demonstrated that an attacker can publish a multi-tenant Microsoft Entra Agent ID blueprint and trick a user into consenting, which gives the blueprint a permission it says cannot be revoked and lets the attacker create agent identities inside the victim's tenant that can then call Microsoft Graph. It is a research proof of concept that has not been seen in attacks and was reported to Microsoft, but the exposure grows as regular users gain the ability to create blueprints by default this month. Apply the same user-consent restrictions to agent blueprints and identities as to apps, classify risky Graph permissions, put Conditional Access on agents, and alert on 'Add application' and 'Add service principal' audit events with signInAudience set to AzureADMultipleOrgs. (Source: Cybersecurity News)</description>
     </item>
   </channel>
 </rss>

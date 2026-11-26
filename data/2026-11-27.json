@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-27",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Update: Drupal discloses a second installer takeover bug, CVE-2026-136716, already exploited on sites patched for Fail2Install",
+      "cve": [
+        "CVE-2026-136716",
+        "CVE-2026-132165"
+      ],
+      "severity": "Highly critical",
+      "summary": "Drupal says a new core flaw is being exploited to take over sites whose installer was still reachable after the fix for last week's Fail2Install bug (CVE-2026-132165); sites that locked down install.php are not affected. Fixes are in 11.4.14, 11.3.23 and 10.6.23, while 11.0-11.2 and 10.5 and older are end-of-life and get nothing. Update and run update.php, block access to the installer, and check logs for changes to or by user 1, confirming its email is yours and resetting its password if in doubt.",
+      "source": "The Hacker News",
+      "published": "2026-11-26",
+      "url": "https://thehackernews.com/2026/11/drupal-warns-of-new-highly-critical.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "CISA adds 10 exploited flaws to KEV, including five Mitel MiCollab AWV bugs and a Xen Orchestra token auth bypass",
+      "cve": [
+        "CVE-2026-133323",
+        "CVE-2026-133303",
+        "CVE-2026-133275",
+        "CVE-2026-133311",
+        "CVE-2026-133324",
+        "CVE-2026-133469",
+        "CVE-2023-25914",
+        "CVE-2023-25915",
+        "CVE-2025-41450",
+        "CVE-2026-103406"
+      ],
+      "severity": "Critical 10.0",
+      "summary": "The November 25 KEV batch covers five Mitel MiCollab AWV flaws (led by a CVSS 10 command injection and a 9.0 XML injection), a 9.8 Xen Orchestra authentication bypass using a crafted token, three Danfoss AK-SM 800A controller bugs, and the Juniper Session Smart Conductor injection we covered yesterday. Federal agencies must fix most of them by November 28 and the remaining two by December 9. Move MiCollab to 10.3.0.18 or later (or cut external access to AWV), patch Xen Orchestra, and keep Danfoss controllers behind a VPN in Strict mode; since patching does not remove an existing foothold, check exposed MiCollab servers for staged files.",
+      "source": "The Hacker News",
+      "published": "2026-11-26",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-10-vulnerabilities.html"
+    },
+    {
+      "category": "zero-day",
+      "title": "Update: Singapore's CSA says the NGINX HTTP/2 heap overflow with public PoCs is now reportedly exploited",
+      "cve": [
+        "CVE-2026-123007",
+        "CVE-2026-123633"
+      ],
+      "severity": "High 8.1",
+      "summary": "A November 26 CSA alert says CVE-2026-123007, the HTTP/2 flow-control heap overflow in NGINX that researchers released proof-of-concept code for last week, is reportedly being exploited; a companion worker use-after-free (CVE-2026-123633) is not listed as exploited. Affected builds are NGINX Open Source 1.9.5 up to 1.30.7 and 1.31.0 up to 1.31.9, plus NGINX Plus R34-R36 and 37.x before 37.0.8.1 or 37.3.0.1. Upgrade now with a full restart rather than a reload, check distro-packaged NGINX separately, and turn off HTTP/2 where patching has to wait.",
+      "source": "Cyber Security Agency of Singapore",
+      "published": "2026-11-26",
+      "url": "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-168/"
+    },
+    {
+      "category": "zero-day",
+      "title": "watchTowr sees probes for two newly disclosed GeoServer bugs as researchers publish unauthenticated RCE chains",
+      "cve": [
+        "CVE-2026-120705",
+        "CVE-2026-129243",
+        "CVE-2026-129245",
+        "CVE-2026-120704",
+        "CVE-2026-129244",
+        "CVE-2026-129242"
+      ],
+      "severity": "High",
+      "summary": "GeoServer published advisories on November 24 for a set of flaws, and watchTowr's honeypots caught error-based probes for the WFS XML injection (CVE-2026-120705) and the service-rule access bypass (CVE-2026-129243) within a day, aimed at finding vulnerable servers rather than achieving code execution so far. Eye Security and Rapid7 have each shown chains, one using a predictable remember-me signing key (CVE-2026-129245), that reach unauthenticated RCE, and a public PoC exists. Upgrade to GeoServer 3.0.2, 2.28.6 or 2.27.7, restrict internet access to instances you cannot patch quickly, and check for credential leaks or unexpected admin sessions.",
+      "source": "SecurityWeek",
+      "published": "2026-11-25",
+      "url": "https://www.securityweek.com/two-newly-disclosed-geoserver-vulnerabilities-under-attack/"
+    },
+    {
+      "category": "appsec",
+      "title": "WordPress.org closes six WP Connect plugins after backdoored releases were caught before going out",
+      "cve": [
+        "CVE-2026-135202"
+      ],
+      "severity": "Critical 9.8",
+      "summary": "After the developer account behind WP Connect appears to have been compromised, WordPress.org closed six of its Airtable, Notion, Brevo and Contact Form 7 integration plugins (about 3,600 installs) and stopped the malicious updates from being released. The planted file, includes/airwp-online.php, would have called out to tascredit-pay[.]com on every request and run returned PHP, giving full file, shell and database control. Sites are unlikely to have received the backdoor, but anyone using Air WP Sync, WP Sync for Notion or the other closed plugins should remove them, since they will get no further fixes, and look for that file and odd WP-Cron hooks.",
+      "source": "The Hacker News",
+      "published": "2026-11-25",
+      "url": "https://thehackernews.com/2026/11/wordpress-blocks-six-backdoored-wp.html"
+    },
+    {
+      "category": "appsec",
+      "title": "Socket finds 13 malicious NuGet packages posing as WinUI and WPF button controls in fake .NET job tests",
+      "cve": [],
+      "severity": "",
+      "summary": "Socket found 13 NuGet packages, including WinUI.Button, VS_Builder.WinUI3Controls, HappyOne.MSBuildAnalyzer and WinUI3IconButton, that were handed to developers as part of fake take-home assessments and used MSBuild targets to drop a sideloaded DLL and further payloads at build time. The same operators ran lookalike axios repos on GitHub and npm packages such as axios-native and fs-extra-core; NuGet has removed all 13 packages. Treat unsolicited coding tests as untrusted code, build them only in a throwaway VM, and search build hosts for the listed package IDs and for %LOCALAPPDATA%\\osk\\OskSupport.dll.",
+      "source": "The Hacker News",
+      "published": "2026-11-26",
+      "url": "https://thehackernews.com/2026/11/13-malicious-nuget-packages-turn-fake.html"
+    },
+    {
+      "category": "ai",
+      "title": "Microsoft says Chinese and North Korean state groups now run intrusions with the ARTEX agentic pentest framework",
+      "cve": [],
+      "severity": "",
+      "summary": "In a November 25 report, Microsoft says China-linked groups including Salt Typhoon and Crystal Typhoon, North Korean actors and financially motivated crews are using the AI-driven ARTEX framework for reconnaissance, credential attacks and exploitation, and notes a clone called AntiFox. Because the agents work at machine speed and the default artex-enrich user agent is easy to change, signature detection alone will miss them. Alert on bursts of high-rate activity from single sources, harden identity protections, and put decoys in place to catch automated recon.",
+      "source": "TechRadar",
+      "published": "2026-11-26",
+      "url": "https://www.techradar.com/pro/security/microsoft-says-chinese-and-north-korean-hacking-groups-are-now-actively-using-artex-in-their-attacks"
+    },
+    {
+      "category": "ai",
+      "title": "Google will require AI agents to reach Workspace data only through its MCP servers or CLI from February 2027",
+      "cve": [],
+      "severity": "",
+      "summary": "From February 1, 2027, autonomous agents must use Google's now generally available Workspace MCP servers or CLI under a new AI Tools Addendum, with dedicated OAuth client IDs, narrower scopes and quotas; ordinary apps can keep using REST APIs. On Google Cloud, Agent Gateway adds IAM enforcement, default-deny egress and Model Armor prompt-injection screening, and the addendum bans training on or permanently storing raw Workspace data. Admins should inventory connected agents and OAuth grants now, and developers should move agent integrations over and add user confirmation and injection defenses before the deadline.",
+      "source": "Help Net Security",
+      "published": "2026-11-26",
+      "url": "https://www.helpnetsecurity.com/2026/11/26/google-ai-agent-security-requirements/"
+    }
+  ]
+}
