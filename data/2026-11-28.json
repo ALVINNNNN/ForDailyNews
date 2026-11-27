@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-28",
+  "items": [
+    {
+      "category": "zero-day",
+      "title": "Unpatched Cacti 1.2.31 bug lets anonymous guests reach code execution, and exploit code is public",
+      "cve": [],
+      "severity": "Critical (no CVE yet)",
+      "summary": "A researcher disclosed '4HTTP2ROOT' on November 26, a second-order SQL injection in Cacti where input stored through anonymous guest access is later used in a query, letting an attacker alter polling configuration and run commands. There is no patch, CVE or CVSS score yet; Previdian (tracking it as VULN-2026-0010) reproduced the public PoC, and no in-the-wild exploitation was confirmed at disclosure. Disable the guest user in Authentication Settings and the guest account under Users, keep Cacti reachable only from management networks or VPN, drop unneeded root privileges from its poller, and rotate device credentials Cacti holds if you see unexpected settings or polling changes.",
+      "source": "GBHackers",
+      "published": "2026-11-27",
+      "url": "https://gbhackers.com/cacti-4http2root-zero-day/"
+    },
+    {
+      "category": "zero-day",
+      "title": "NFS2ROOT: 12-year-old Linux nfsd heap overflow gives unauthenticated remote root on exposed NFS servers",
+      "cve": ["CVE-2026-99362"],
+      "severity": "Critical",
+      "summary": "CVE-2026-99362 is a heap buffer overflow in the kernel NFS server, present since 3.16, that a remote attacker can trigger with crafted NFSv4.1/4.2 requests to leak memory, defeat KASLR and run a command as root, with no credentials or user interaction. Kernels older than 6.12.117, 6.18.61, 7.3.2 or 7.4-rc1 are affected when nfsd is running and TCP 2049 is reachable; OpenSec built a full exploit and shared it with maintainers, but no exploitation in the wild has been reported. Install your distro's kernel update and reboot, limit port 2049 to trusted clients until then, and disable nfs-server where it is not needed.",
+      "source": "BleepingComputer",
+      "published": "2026-11-27",
+      "url": "https://www.bleepingcomputer.com/news/security/new-nfs2root-linux-flaw-can-let-attackers-gain-root-privileges/"
+    },
+    {
+      "category": "appsec",
+      "title": "SAP confirms an incident after reports that stolen employee tokens were used to copy and alter code on GitHub",
+      "cve": [],
+      "severity": "",
+      "summary": "SAP says it detected suspicious activity and took urgent action, and has so far found no sign that customer business data was accessed; German media citing insiders report attackers took employee authentication tokens and used them to copy and modify source code in SAP's GitHub environment. Handelsblatt reports SAP is rotating signing keys, restricting GitHub access and pausing automated development pipelines, and nothing so far shows tampered code reached customer deliveries. If you consume SAP's public GitHub repos or samples, pin to known commits and verify signatures on anything pulled recently, and treat this as another reminder to scope and expire developer tokens tightly.",
+      "source": "SecurityWeek",
+      "published": "2026-11-27",
+      "url": "https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/"
+    },
+    {
+      "category": "appsec",
+      "title": "North Korea-linked PolinRider has planted a blockchain-driven Python loader in thousands of GitHub repositories",
+      "cve": [],
+      "severity": "High",
+      "summary": "PolinRider hides a loader in small utils modules or conftest.py files; when Python imports it, it reads an Ethereum transaction to fetch JavaScript, runs it with Node.js and opens a session to a C2 server such as 103.179.142[.]155 or 95.135.181[.]84. SafeDep found it in 375 public repos and Apiiro estimates at least 7,609 repos across 2,330 accounts, spread through force-pushed commits from compromised developer machines, malicious pull requests, fake job sites and a rogue VS Code extension. Review recent commits and PRs that touch conftest.py or utility packages, alert on Python processes spawning node, and rotate secrets on developer machines that ran affected code.",
+      "source": "The Hacker News",
+      "published": "2026-11-26",
+      "url": "https://thehackernews.com/2026/11/north-korea-linked-polinrider-poisons.html"
+    },
+    {
+      "category": "ai",
+      "title": "llama.cpp fixes a CVSS 9.8 out-of-bounds write in its unauthenticated RPC server, the third critical RPC bug in weeks",
+      "cve": ["CVE-2026-137567"],
+      "severity": "Critical 9.8",
+      "summary": "CVE-2026-137567 lets anyone who can reach the ggml rpc-server write to arbitrary heap addresses by sending a copy_tensor command with a zero-element destination tensor, which can crash the server or lead to code execution. Builds b11450 up to b12657 are affected and b12658 fixes it; it is not in KEV and no exploitation has been reported. Upgrade every host running rpc-server, bind it to localhost or a private inference-only segment (default port 50052), since the RPC service has no authentication at all.",
+      "source": "OpenCVE",
+      "published": "2026-11-26",
+      "url": "https://app.opencve.io/cve/CVE-2026-137567"
+    },
+    {
+      "category": "ai",
+      "title": "Shadowserver counts about 4,200 internet-exposed AI hacking-framework servers, most of them ARTEX",
+      "cve": [],
+      "severity": "",
+      "summary": "Shadowserver saw roughly 4,200 exposed instances of agentic attack frameworks on November 23, up from just under 3,700 a day earlier, with ARTEX making up about 70%, and logged over 10,000 honeypot events from more than 80 source IPs between November 9 and 23. About one in ten sources sent exploit or injection attempts, most often against the old Metabase flaw CVE-2023-38646. Patch internet-facing apps with known exploited bugs first, rate-limit bursty scanning, and if you find one of these frameworks on your own network, confirm it is an approved deployment and lock it behind a VPN and strong authentication, or isolate it and investigate.",
+      "source": "Cyber Security News",
+      "published": "2026-11-26",
+      "url": "https://cybersecuritynews.com/4000-servers-running-ai-hacking-agents-are-exposed/"
+    }
+  ]
+}
